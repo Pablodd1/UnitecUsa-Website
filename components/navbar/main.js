@@ -47,16 +47,16 @@ const BrandToggle = () => {
         >
             {activeBrand === 'binw' ? (
                 <Image
-                    src="/unitec-logo.png"
-                    alt="UNITEC Logo"
+                    src="/logo.png"
+                    alt="Building Innovation Logo"
                     width={60}
                     height={40}
                     className="object-contain"
                 />
             ) : (
                 <Image
-                    src="/logo.png"
-                    alt="BINW Logo"
+                    src="/unitec-logo.png"
+                    alt="Unitec Logo"
                     width={60}
                     height={40}
                     className="object-contain"
