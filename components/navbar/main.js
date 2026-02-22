@@ -73,10 +73,10 @@ const NavBar = ({ searchParams }) => {
 
     return (
         <header className="sticky top-0 z-30 bg-primary/75 shadow-accent2 border-b border-gray-300 shadow-sm backdrop-blur-md text-black  pr-8 pl-5 py-2.5">
-            <div className="max-w-400 mx-auto flex items-center justify-between">
+            <div className="max-w-[1400px] mx-auto flex items-center justify-between relative">
 
                 {/* Mobile Menu Button */}
-                <button 
+                <button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
                     aria-label="Toggle mobile menu"

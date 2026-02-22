@@ -11,9 +11,10 @@ import NoProductsFound from "./noproduct";
 
 
 export default function Collections_UI({ searchParams, h1, description, productURL, cover, prefilters }) {
-    
+
     const queryCategory = searchParams.category;
     const querySubcategory = searchParams.subcategory;
+    const queryCollection = searchParams.collection;
 
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,16 +26,17 @@ export default function Collections_UI({ searchParams, h1, description, productU
     // Sync filters with URL params
     useEffect(() => {
         const syncFilters = () => {
-            if (queryCategory || querySubcategory) {
+            if (queryCategory || querySubcategory || queryCollection) {
                 setFilters(prev => ({
                     ...prev,
                     category: queryCategory || prev.category,
+                    collection: queryCollection || prev.collection,
                     subcategories: querySubcategory ? [querySubcategory] : prev.subcategories
                 }));
             }
         }
         syncFilters()
-    }, [queryCategory, querySubcategory]);
+    }, [queryCategory, querySubcategory, queryCollection]);
 
     // Fetch products
     useEffect(() => {

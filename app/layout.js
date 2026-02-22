@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 export async function generateMetadata({ params }) {
   const lang = params?.lang || 'en';
   const dict = getDictionary(lang);
-  
+
   const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL || "";
   const resolveBaseUrl = (value) => {
     if (!value) return "http://localhost:3000";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
       return "http://localhost:3000";
     }
   };
-  
+
   const BASE_URL = resolveBaseUrl(rawBaseUrl);
   const canonicalUrl = `${BASE_URL}${lang === 'en' ? '' : `/${lang}`}`;
 
@@ -143,7 +143,7 @@ export default async function RootLayout({ children, params }) {
   const dict = getDictionary(lang);
 
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         {/* Structured Data / JSON-LD */}
         <script
