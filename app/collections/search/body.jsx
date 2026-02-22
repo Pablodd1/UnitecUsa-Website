@@ -15,14 +15,17 @@ export default function SearchBody({ query }) {
     // Fetch products
     useEffect(() => {
         if (query) {
-            setLoading(true);
-            fetch(`/API/collections?query=${encodeURI(query)}&currentPage=${currentPage}`)
-                .then(res => res.json())
-                .then(data => {
-                    setProducts(data.items);
-                    setTotalItems(data.totalItems);
-                    setLoading(false);
-                }).catch(() => setLoading(false));
+            const fetchProducts = () => {
+                setLoading(true);
+                fetch(`/API/collections?query=${encodeURI(query)}&currentPage=${currentPage}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setProducts(data.items);
+                        setTotalItems(data.totalItems);
+                        setLoading(false);
+                    }).catch(() => setLoading(false));
+            };
+            fetchProducts();
         }
     }, [currentPage, query]);
 

@@ -24,25 +24,31 @@ export default function Collections_UI({ searchParams, h1, description, productU
 
     // Sync filters with URL params
     useEffect(() => {
-        if (queryCategory || querySubcategory) {
-            setFilters(prev => ({
-                ...prev,
-                category: queryCategory || prev.category,
-                subcategories: querySubcategory ? [querySubcategory] : prev.subcategories
-            }));
+        const syncFilters = () => {
+            if (queryCategory || querySubcategory) {
+                setFilters(prev => ({
+                    ...prev,
+                    category: queryCategory || prev.category,
+                    subcategories: querySubcategory ? [querySubcategory] : prev.subcategories
+                }));
+            }
         }
+        syncFilters()
     }, [queryCategory, querySubcategory]);
 
     // Fetch products
     useEffect(() => {
-        setLoading(true);
-        fetch(`${productURL}currentPage=${currentPage}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data.items);
-                setTotalItems(data.totalItems);
-                setLoading(false);
-            }).catch(() => setLoading(false));
+        const fetchProducts = () => {
+            setLoading(true);
+            fetch(`${productURL}currentPage=${currentPage}`)
+                .then(res => res.json())
+                .then(data => {
+                    setProducts(data.items);
+                    setTotalItems(data.totalItems);
+                    setLoading(false);
+                }).catch(() => setLoading(false));
+        }
+        fetchProducts()
     }, [currentPage]);
 
 

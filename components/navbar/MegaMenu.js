@@ -6,6 +6,11 @@ import { ArrowRight, Package, Home, Building2, Layers, Droplets, Sparkles, TreeD
 
 const productCategories = {
     Interior: {
+        "ALL INTERIOR": {
+            page: "/collections/interior",
+            subcategories: [],
+            isAll: true
+        },
         "PAREDES": {
             page: "/collections/paredes",
             subcategories: ["ROLLO MARMOL", "ACOLCHADO", "MARMOL", "ACUSTICO", "PANEL PS", "PU", "MUROFLEX", "UNIFLEX"]
@@ -32,6 +37,11 @@ const productCategories = {
         }
     },
     Exterior: {
+        "ALL EXTERIOR": {
+            page: "/collections/exterior",
+            subcategories: [],
+            isAll: true
+        },
         "CUBIERTAS UPVC": {
             page: "/collections/cubiertas-upvc",
             subcategories: ["TEJAS"]
@@ -90,27 +100,40 @@ const MegaMenu = () => {
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                             {Object.entries(productCategories.Interior).map(([category, data]) => {
                                 const Icon = categoryIcons[category] || Package;
+                                const isAll = data.isAll;
                                 return (
-                                    <div key={category} className="group/item">
-                                        <Link
-                                            href={data.page}
-                                            className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
-                                        >
-                                            <Icon className="w-5 h-5" />
-                                            {category}
-                                        </Link>
-                                        <ul className="space-y-1 ml-7">
-                                            {data.subcategories.map(sub => (
-                                                <li key={sub}>
-                                                    <Link
-                                                        href={`${data.page}?subcategory=${sub}`}
-                                                        className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
-                                                    >
-                                                        {sub}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div key={category} className={`group/item ${isAll ? 'col-span-2 mb-2' : ''}`}>
+                                        {isAll ? (
+                                            <Link
+                                                href={data.page}
+                                                className="flex items-center gap-3 font-extrabold text-white hover:text-primary mb-3 text-lg uppercase transition-colors bg-gradient-to-r from-primary to-primary/50 px-4 py-2 rounded-lg"
+                                            >
+                                                <ArrowRight className="w-5 h-5" />
+                                                {category}
+                                            </Link>
+                                        ) : (
+                                            <>
+                                                <Link
+                                                    href={data.page}
+                                                    className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
+                                                >
+                                                    <Icon className="w-5 h-5" />
+                                                    {category}
+                                                </Link>
+                                                <ul className="space-y-1 ml-7">
+                                                    {data.subcategories.map(sub => (
+                                                        <li key={sub}>
+                                                            <Link
+                                                                href={`${data.page}?subcategory=${sub}`}
+                                                                className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
+                                                            >
+                                                                {sub}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
                                 );
                             })}
@@ -126,27 +149,40 @@ const MegaMenu = () => {
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                             {Object.entries(productCategories.Exterior).map(([category, data]) => {
                                 const Icon = categoryIcons[category] || Package;
+                                const isAll = data.isAll;
                                 return (
-                                    <div key={category} className="group/item">
-                                        <Link
-                                            href={data.page}
-                                            className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
-                                        >
-                                            <Icon className="w-5 h-5" />
-                                            {category}
-                                        </Link>
-                                        <ul className="space-y-1 ml-7">
-                                            {data.subcategories.map(sub => (
-                                                <li key={sub}>
-                                                    <Link
-                                                        href={`${data.page}?subcategory=${sub}`}
-                                                        className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
-                                                    >
-                                                        {sub}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div key={category} className={`group/item ${isAll ? 'col-span-2 mb-2' : ''}`}>
+                                        {isAll ? (
+                                            <Link
+                                                href={data.page}
+                                                className="flex items-center gap-3 font-extrabold text-white hover:text-primary mb-3 text-lg uppercase transition-colors bg-gradient-to-r from-primary to-primary/50 px-4 py-2 rounded-lg"
+                                            >
+                                                <ArrowRight className="w-5 h-5" />
+                                                {category}
+                                            </Link>
+                                        ) : (
+                                            <>
+                                                <Link
+                                                    href={data.page}
+                                                    className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
+                                                >
+                                                    <Icon className="w-5 h-5" />
+                                                    {category}
+                                                </Link>
+                                                <ul className="space-y-1 ml-7">
+                                                    {data.subcategories.map(sub => (
+                                                        <li key={sub}>
+                                                            <Link
+                                                                href={`${data.page}?subcategory=${sub}`}
+                                                                className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
+                                                            >
+                                                                {sub}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
                                 );
                             })}

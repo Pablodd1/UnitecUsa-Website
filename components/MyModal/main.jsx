@@ -7,7 +7,10 @@ import { ChevronRight } from 'lucide-react';
 const Modal = ({ header, children, footer, wrapperClasses, open, onClose, isCenter, isBusy, showCloseIcon = false, loadingUI, noGap, headerClass = "p-4 bg-primary text-black font-semibold", footerClass }) => {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const mountModal = () => setMounted(true);
+    mountModal();
+  }, []);
 
   if (!mounted || !open) return null;
 

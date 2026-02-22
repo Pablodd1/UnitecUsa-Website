@@ -13,6 +13,7 @@ export default function CheckoutPage() {
     const [mounted, setMounted] = useState(false)
     const [submitted, setSubmitted] = useState(false)
     const printRef = useRef()
+    const [referenceId] = useState(() => `QR-${Date.now().toString(36).toUpperCase()}`)
 
     const [formData, setFormData] = useState({
         companyName: "",
@@ -29,8 +30,11 @@ export default function CheckoutPage() {
     })
 
     useEffect(() => {
-        setMounted(true)
-        setCart(getCart())
+        const initializeCheckout = () => {
+            setMounted(true)
+            setCart(getCart())
+        }
+        initializeCheckout()
     }, [])
 
     const calculateTotal = () => {
@@ -119,7 +123,7 @@ export default function CheckoutPage() {
                             <div className="border-b-2 border-gray-200 pb-6 mb-6">
                                 <h2 className="text-2xl font-bold mb-2">Quote Request Summary</h2>
                                 <p className="text-gray-600">Request Date: {new Date().toLocaleDateString()}</p>
-                                <p className="text-gray-600">Reference: QR-{Date.now().toString(36).toUpperCase()}</p>
+                                <p className="text-gray-600">Reference: {referenceId}</p>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-8 mb-8">

@@ -16,13 +16,16 @@ export default function RecommendationsSection({ itemID, title }) {
 
     // Fetch products
     useEffect(() => {
-        setLoading(true);
-        fetch(`/API/products/recommended?current=${itemID}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data.items);
-                setLoading(false);
-            }).catch(() => setLoading(false));
+        const fetchRecommendations = () => {
+            setLoading(true);
+            fetch(`/API/products/recommended?current=${itemID}`)
+                .then(res => res.json())
+                .then(data => {
+                    setProducts(data.items);
+                    setLoading(false);
+                }).catch(() => setLoading(false));
+        };
+        fetchRecommendations()
     }, [itemID]);
 
 

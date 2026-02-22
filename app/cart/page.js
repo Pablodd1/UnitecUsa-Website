@@ -13,8 +13,11 @@ export default function CartPage() {
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setMounted(true)
-        setCart(getCart())
+        const initializeCart = () => {
+            setMounted(true)
+            setCart(getCart())
+        }
+        initializeCart()
     }, [])
 
     const updateCart = () => {

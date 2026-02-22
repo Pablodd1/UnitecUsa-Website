@@ -39,33 +39,36 @@ export default function RenderItemsList({ container }) {
 
     /* Fetch product details when item list changes */
     useEffect(() => {
-        if (!items.length) {
-            setProducts({})
-            setLoading(false)
-            return
-        }
+        const fetchProductDetails = () => {
+            if (!items.length) {
+                setProducts({})
+                setLoading(false)
+                return
+            }
 
-        let alive = true
-        setLoading(true)
+            let alive = true
+            setLoading(true)
 
-        Promise.all(
-            items.map(async (item) => {
-                if (products[item.ID]) return [item.ID, products[item.ID]]
-                const data = await fetchProduct(item.ID)
-                return { ID: item.ID, ...data }
+            Promise.all(
+                items.map(async (item) => {
+                    if (products[item.ID]) return [item.ID, products[item.ID]]
+                    const data = await fetchProduct(item.ID)
+                    return { ID: item.ID, ...data }
+                })
+            ).then(entries => {
+                if (!alive) return
+                setProducts(prev => ({
+                    ...prev,
+                    ...Object.fromEntries(entries.map(entry => [entry.ID, entry]))
+                }))
+                setLoading(false)
             })
-        ).then(entries => {
-            if (!alive) return
-            setProducts(prev => ({
-                ...prev,
-                ...Object.fromEntries(entries.map(entry => [entry.ID, entry]))
-            }))
-            setLoading(false)
-        })
 
-        return () => {
-            alive = false
+            return () => {
+                alive = false
+            }
         }
+        fetchProductDetails()
     }, [items])
 
     if (loading)
