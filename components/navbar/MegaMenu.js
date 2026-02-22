@@ -6,56 +6,52 @@ import { ArrowRight, Package, Home, Building2, Layers, Droplets, Sparkles, TreeD
 
 const productCategories = {
     Interior: {
-        "PAREDES": [
-            "ROLLO MARMOL",
-            "ACOLCHADO",
-            "MARMOL",
-            "ACUSTICO",
-            "PANEL PS",
-            "PU",
-            "MUROFLEX",
-            "UNIFLEX"
-        ],
-        "LAMINAS": [
-            "FOAM BOARD",
-            "MARMOL",
-            "PAREDES",
-            "PVC BOARD"
-        ],
-        "JARDINES ARTIFICIALES": [
-            "Vertical Gardens",
-            "Green Walls",
-            "Artificial Plants"
-        ],
-        "PANELES WPC Y ANGULOS": [
-            "WPC Interior"
-        ],
-        "PISOS": [
-            "SPC"
-        ],
-        "ZOCALOS": [
-            "SPC"
-        ]
+        "PAREDES": {
+            page: "/collections/paredes",
+            subcategories: ["ROLLO MARMOL", "ACOLCHADO", "MARMOL", "ACUSTICO", "PANEL PS", "PU", "MUROFLEX", "UNIFLEX"]
+        },
+        "LAMINAS": {
+            page: "/collections/laminas",
+            subcategories: ["FOAM BOARD", "MARMOL", "PAREDES", "PVC BOARD"]
+        },
+        "JARDINES ARTIFICIALES": {
+            page: "/collections/jardines-artificiales",
+            subcategories: ["Vertical Gardens", "Green Walls", "Artificial Plants"]
+        },
+        "PANELES WPC Y ANGULOS": {
+            page: "/collections/paneles-wpc",
+            subcategories: ["WPC Interior"]
+        },
+        "PISOS": {
+            page: "/collections/pisos",
+            subcategories: ["SPC"]
+        },
+        "ZOCALOS": {
+            page: "/collections/zocalos",
+            subcategories: ["SPC"]
+        }
     },
     Exterior: {
-        "CUBIERTAS UPVC": [
-            "TEJAS"
-        ],
-        "PAREDES": [
-            "FACHADA",
-            "POLIFACHADA"
-        ],
-        "JARDINES ARTIFICIALES": [
-            "Outdoor Gardens",
-            "Faux Foliage",
-            "UV Resistant Plants"
-        ],
-        "PANELES WPC Y ANGULOS": [
-            "WPC Exterior"
-        ],
-        "PISOS": [
-            "DECK"
-        ]
+        "CUBIERTAS UPVC": {
+            page: "/collections/cubiertas-upvc",
+            subcategories: ["TEJAS"]
+        },
+        "FACHADAS": {
+            page: "/collections/fachadas",
+            subcategories: ["FACHADA", "POLIFACHADA"]
+        },
+        "JARDINES ARTIFICIALES": {
+            page: "/collections/jardines-artificiales",
+            subcategories: ["Outdoor Gardens", "Faux Foliage", "UV Resistant Plants"]
+        },
+        "PANELES WPC Y ANGULOS": {
+            page: "/collections/paneles-wpc",
+            subcategories: ["WPC Exterior"]
+        },
+        "PISOS DECK": {
+            page: "/collections/pisos-deck",
+            subcategories: ["DECK"]
+        }
     }
 };
 
@@ -65,8 +61,10 @@ const categoryIcons = {
     "JARDINES ARTIFICIALES": TreeDeciduous,
     "PANELES WPC Y ANGULOS": Building2,
     "PISOS": Home,
+    "PISOS DECK": Home,
     "ZOCALOS": Grid3X3,
     "CUBIERTAS UPVC": Home,
+    "FACHADAS": Layers,
 };
 
 const MegaMenu = () => {
@@ -90,23 +88,22 @@ const MegaMenu = () => {
                             <h3 className="text-xl font-bold text-white uppercase tracking-wider">Interior</h3>
                         </div>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                            {Object.entries(productCategories.Interior).map(([category, subcategories]) => {
+                            {Object.entries(productCategories.Interior).map(([category, data]) => {
                                 const Icon = categoryIcons[category] || Package;
-                                const isJardines = category === "JARDINES ARTIFICIALES";
                                 return (
                                     <div key={category} className="group/item">
                                         <Link
-                                            href={isJardines ? "/collections/jardines-artificiales" : `/collections/interior?category=${category}`}
+                                            href={data.page}
                                             className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
                                         >
                                             <Icon className="w-5 h-5" />
                                             {category}
                                         </Link>
                                         <ul className="space-y-1 ml-7">
-                                            {subcategories.map(sub => (
+                                            {data.subcategories.map(sub => (
                                                 <li key={sub}>
                                                     <Link
-                                                        href={isJardines ? `/collections/jardines-artificiales?subcategory=${sub}` : `/collections/interior?category=${category}&subcategory=${sub}`}
+                                                        href={`${data.page}?subcategory=${sub}`}
                                                         className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
                                                     >
                                                         {sub}
@@ -127,23 +124,22 @@ const MegaMenu = () => {
                             <h3 className="text-xl font-bold text-white uppercase tracking-wider">Exterior</h3>
                         </div>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                            {Object.entries(productCategories.Exterior).map(([category, subcategories]) => {
+                            {Object.entries(productCategories.Exterior).map(([category, data]) => {
                                 const Icon = categoryIcons[category] || Package;
-                                const isJardines = category === "JARDINES ARTIFICIALES";
                                 return (
                                     <div key={category} className="group/item">
                                         <Link
-                                            href={isJardines ? "/collections/jardines-artificiales" : `/collections/exterior?category=${category}`}
+                                            href={data.page}
                                             className="flex items-center gap-2 font-bold text-gray-100 hover:text-white mb-2 text-sm uppercase transition-colors"
                                         >
                                             <Icon className="w-5 h-5" />
                                             {category}
                                         </Link>
                                         <ul className="space-y-1 ml-7">
-                                            {subcategories.map(sub => (
+                                            {data.subcategories.map(sub => (
                                                 <li key={sub}>
                                                     <Link
-                                                        href={isJardines ? `/collections/jardines-artificiales?subcategory=${sub}` : `/collections/exterior?category=${category}&subcategory=${sub}`}
+                                                        href={`${data.page}?subcategory=${sub}`}
                                                         className="text-gray-400 hover:text-white text-sm transition-colors block py-1"
                                                     >
                                                         {sub}
