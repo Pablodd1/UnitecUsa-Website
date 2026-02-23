@@ -90,7 +90,7 @@ const MegaMenu = () => {
     const { lang } = useLanguage();
 
     return (
-        <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[900px] max-w-[calc(100vw-2rem)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
+        <div className="hidden lg:block fixed left-1/2 -translate-x-1/2 top-[60px] pt-2 w-[900px] max-w-[calc(100vw-2rem)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
             <div className="bg-white/98 backdrop-blur-md shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] rounded-3xl border border-gray-100 overflow-hidden">
 
                 {/* Minimal Header */}
