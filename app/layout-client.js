@@ -8,6 +8,7 @@ import NavBar from "My_UI/navbar/main";
 import CartInit from "lib/cart/initCart";
 import CartDrawer from "My_UI/cart/CartDrawer.client";
 import WhatsAppBubble from "My_UI/ui/whatsapp_bubble";
+import VirtualFrontDesk from "My_UI/ui/VirtualFrontDesk";
 import LanguageSwitcher from "My_UI/ui/LanguageSwitcher";
 import Providers from "./providers";
 
@@ -25,6 +26,7 @@ export default function RootLayoutClient({ children, lang, dict }) {
       <CartInit />
       <CartDrawer />
       <WhatsAppBubble />
+      <VirtualFrontDesk />
       <LanguageSwitcher currentLang={lang} />
       <div id="modal-root" />
       <div id="notify-container" />
