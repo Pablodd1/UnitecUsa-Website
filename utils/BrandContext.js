@@ -10,6 +10,7 @@ export const BRAND_CONFIG = {
         name: "Building Innovation",
         logoText: "BINW",
         logoImage: "/logo.png",
+        favicon: "/favicons/favicon.ico",
         metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
         colors: {
             primary: '#9EBECB',
@@ -24,6 +25,7 @@ export const BRAND_CONFIG = {
         name: "UNITEC USA Design",
         logoText: "UNITEC",
         logoImage: "/unitec-logo.png",
+        favicon: "/favicons/unitec-favicon.png",
         metaTitle: "UNITEC USA Design | Premium Building Solutions",
         colors: {
             primary: '#1B3A4B',
@@ -56,13 +58,27 @@ export function BrandProvider({ children }) {
 
     const brand = BRAND_CONFIG[activeBrand];
 
-    // Apply CSS variables when brand changes
+    // Apply CSS variables + favicon + title when brand changes
     useEffect(() => {
         if (brand?.colors) {
             document.documentElement.style.setProperty('--color-primary', brand.colors.primary);
             document.documentElement.style.setProperty('--color-secondary', brand.colors.secondary);
             document.documentElement.style.setProperty('--color-accent1', brand.colors.secondary);
             document.documentElement.style.setProperty('--color-accent2', brand.colors.accent);
+        }
+        // Swap favicon
+        if (brand?.favicon) {
+            let link = document.querySelector("link[rel~='icon']");
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            link.href = brand.favicon;
+        }
+        // Update page title
+        if (brand?.metaTitle) {
+            document.title = brand.metaTitle;
         }
     }, [brand]);
 
