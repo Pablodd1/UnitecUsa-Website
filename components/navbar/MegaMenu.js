@@ -12,6 +12,7 @@ import {
     Sparkles
 } from 'lucide-react';
 import { useLanguage } from 'lib/LanguageContext';
+import { useBrand } from 'utils/BrandContext';
 
 const productCategories = {
     Interior: {
@@ -94,6 +95,7 @@ const productCategories = {
 
 const MegaMenu = () => {
     const { language, t } = useLanguage();
+    const { brand } = useBrand();
 
     return (
         <div
