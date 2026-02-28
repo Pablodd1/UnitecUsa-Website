@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { UnfoldVertical, Crop, Move, Layers } from "lucide-react";
 import Stylish_H2 from "My_UI/stylish_h2";
 
+import { useLanguage } from "lib/LanguageContext";
+
 const ICONS = {
     width: <UnfoldVertical className="text-current rotate-90 " />,
     height: <Crop className="text-current" />,
@@ -12,6 +14,7 @@ const ICONS = {
 };
 
 export default function ProductDimensions({ dimension }) {
+    const { language } = useLanguage();
     if (!dimension) return null;
 
     // Check if we have valid dimensions to show
@@ -23,20 +26,16 @@ export default function ProductDimensions({ dimension }) {
 
     return (
         <section className="mt-20 w-full mx-auto px-4 md:px-0">
-            <Stylish_H2 h2={"Technical Specifications"} />
+            <Stylish_H2 h2={language === 'es' ? "Especificaciones Técnicas" : "Technical Specifications"} />
 
             <div className="flex items-stretch justify-center flex-wrap w-full gap-6">
                 {['width', 'length', 'thickness'].map((key) => {
-                    const metricParams = dimension?.metric;
-                    const imperialParams = dimension?.imperial;
+                    const params = language === 'es' ? dimension?.metric : dimension?.imperial;
 
-                    const valMetric = metricParams?.[key];
-                    const unitMetric = metricParams?.[`${key}Unit`];
+                    const val = params?.[key];
+                    const unit = params?.[`${key}Unit`];
 
-                    const valImp = imperialParams?.[key];
-                    const unitImp = imperialParams?.[`${key}Unit`];
-
-                    if (!valMetric && !valImp) return null;
+                    if (!val) return null;
 
                     return (
                         <motion.div
@@ -51,18 +50,14 @@ export default function ProductDimensions({ dimension }) {
                             </div>
 
                             <div className="text-center">
-                                <p className="text-gray-400 uppercase text-[10px] font-bold tracking-[0.2em] mb-2">{key}</p>
+                                <p className="text-gray-400 uppercase text-[10px] font-bold tracking-[0.2em] mb-2">
+                                    {language === 'es' ? (key === 'width' ? 'ANCHO' : key === 'length' ? 'LARGO' : 'ESPESOR') : key.toUpperCase()}
+                                </p>
                                 <div className="flex flex-col gap-1">
-                                    {valMetric && valMetric !== 0 && (
-                                        <span className="text-2xl font-bold text-gray-800">
-                                            {Number(valMetric).toLocaleString('en-US')} <span className="text-sm font-normal text-gray-500">{unitMetric}</span>
-                                        </span>
-                                    )}
-                                    {valImp && valImp !== 0 && (
-                                        <span className="text-sm font-medium text-gray-400 border-t border-gray-100 pt-1 mt-1 inline-block">
-                                            {Number(valImp).toLocaleString('en-US', { maximumFractionDigits: 2 })} {unitImp}
-                                        </span>
-                                    )}
+                                    <span className="text-2xl font-bold text-gray-800">
+                                        {Number(val).toLocaleString(language === 'es' ? 'es-ES' : 'en-US', { maximumFractionDigits: 2 })}
+                                        <span className="text-sm font-normal text-gray-500 pl-1">{unit}</span>
+                                    </span>
                                 </div>
                             </div>
                         </motion.div>

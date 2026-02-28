@@ -33,11 +33,11 @@ const productCategories = {
             collection: "INTERIOR",
             subcategories: ["Vertical Gardens", "Green Walls"]
         },
-        "PANELES WPC": {
+        "PANELES WPC Y ANGULOS": {
             page: "/collections/paneles-wpc",
             icon: Building2,
             collection: "INTERIOR",
-            subcategories: ["WPC INTERIOR"]
+            subcategories: ["WPC INTERIOR", "PANELES", "LISTONES", "ANGULOS"]
         },
         "PISOS": {
             page: "/collections/pisos",
@@ -50,6 +50,12 @@ const productCategories = {
             icon: LayoutGrid,
             collection: "INTERIOR",
             subcategories: ["SPC"]
+        },
+        "COMPLEMENTOS": {
+            page: "/collections/complementos",
+            icon: Sparkles,
+            collection: "INTERIOR",
+            subcategories: ["CINTAS", "PEGANTE", "PELICULA INTELIGENTE"]
         }
     },
     Exterior: {
@@ -75,7 +81,7 @@ const productCategories = {
             page: "/collections/paneles-wpc",
             icon: Building2,
             collection: "EXTERIOR",
-            subcategories: ["WPC EXTERIOR"]
+            subcategories: ["WPC EXTERIOR", "LISTONES"]
         },
         "PISOS DECK": {
             page: "/collections/pisos-deck",
@@ -87,7 +93,7 @@ const productCategories = {
 };
 
 const MegaMenu = () => {
-    const { lang } = useLanguage();
+    const { language, t } = useLanguage();
 
     return (
         <div
@@ -101,7 +107,7 @@ const MegaMenu = () => {
                     <div className="flex items-center gap-3">
                         <Sparkles className="w-4 h-4 text-blue-500 animate-pulse" />
                         <span className="text-gray-900 font-black text-[10px] uppercase tracking-[0.2em]">
-                            {lang === 'es' ? 'Materiales de Construcción' : 'Building Materials'}
+                            {language === 'es' ? brand.heroTagline_es : brand.heroTagline}
                         </span>
                     </div>
                 </div>
@@ -114,41 +120,59 @@ const MegaMenu = () => {
                                 <Home className="w-6 h-6 text-blue-600" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter leading-none">Interior</h3>
-                                <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{lang === 'es' ? 'Soluciones Internas' : 'Indoor Solutions'}</span>
+                                <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter leading-none">{t('nav.interiors')}</h3>
+                                <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{language === 'es' ? 'Soluciones Internas' : 'Indoor Solutions'}</span>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 gap-y-7">
-                            {Object.entries(productCategories.Interior).map(([category, data]) => (
-                                <div key={category} className="group/item">
-                                    <Link
-                                        href={`${data.page}?collection=${data.collection}`}
-                                        className="flex items-center gap-3 font-bold text-gray-900 group-hover/item:text-blue-600 mb-3 text-xs uppercase tracking-widest transition-all"
-                                    >
-                                        <data.icon className="w-4 h-4" />
-                                        {category}
-                                    </Link>
-                                    <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
-                                        {data.subcategories.map(sub => (
-                                            <Link
-                                                key={sub}
-                                                href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
-                                                className="text-gray-400 hover:text-gray-900 text-[10px] font-black uppercase transition-all whitespace-nowrap hover:scale-105"
-                                            >
-                                                {sub}
-                                            </Link>
-                                        ))}
+                            {Object.entries(productCategories.Interior).map(([category, data]) => {
+                                // Simple mapping for category keys to translation keys
+                                const catKey = category.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
+                                let tKey = `nav.${catKey}`;
+                                if (category === "PANELES WPC Y ANGULOS") tKey = "nav.panelesWpc";
+
+                                return (
+                                    <div key={category} className="group/item">
+                                        <Link
+                                            href={`${data.page}?collection=${data.collection}`}
+                                            className="flex items-center gap-3 font-bold text-gray-900 group-hover/item:text-blue-600 mb-3 text-xs uppercase tracking-widest transition-all"
+                                        >
+                                            <data.icon className="w-4 h-4" />
+                                            {t(tKey) || category}
+                                        </Link>
+                                        <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
+                                            {data.subcategories.map(sub => {
+                                                const subKey = sub.toLowerCase().replace(/ /g, '').replace('é', 'e');
+                                                let tSubKey = `nav.${subKey}`;
+                                                if (sub === "PANELES") tSubKey = "nav.paneles";
+                                                if (sub === "LISTONES") tSubKey = "nav.listones";
+                                                if (sub === "ANGULOS") tSubKey = "nav.angulos";
+                                                if (sub === "CINTAS") tSubKey = "nav.cintas";
+                                                if (sub === "PEGANTE") tSubKey = "nav.pegante";
+                                                if (sub === "PELICULA INTELIGENTE") tSubKey = "nav.peliculaInteligente";
+
+                                                return (
+                                                    <Link
+                                                        key={sub}
+                                                        href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
+                                                        className="text-gray-400 hover:text-gray-900 text-[10px] font-black uppercase transition-all whitespace-nowrap hover:scale-105"
+                                                    >
+                                                        {t(tSubKey) || sub}
+                                                    </Link>
+                                                );
+                                            })}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         <Link
                             href="/collections/interior"
                             className="flex items-center justify-center gap-3 bg-blue-600 text-white py-4 mt-12 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 transition-all shadow-md group/all"
                         >
-                            {lang === 'es' ? 'Explorar Todo Interior' : 'Explore All Interior'}
+                            {language === 'es' ? 'Explorar Todo Interior' : 'Explore All Interior'}
                             <ArrowRight size={16} className="group-hover/all:translate-x-1 transition-transform" />
                         </Link>
                     </div>
@@ -160,41 +184,53 @@ const MegaMenu = () => {
                                 <Building2 className="w-6 h-6 text-emerald-600" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter leading-none">Exterior</h3>
-                                <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{lang === 'es' ? 'Resistencia Climática' : 'Climate Resistant'}</span>
+                                <h3 className="text-xl font-black text-gray-900 uppercase tracking-tighter leading-none">{t('nav.exteriors')}</h3>
+                                <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{language === 'es' ? 'Resistencia Climática' : 'Climate Resistant'}</span>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 gap-y-7">
-                            {Object.entries(productCategories.Exterior).map(([category, data]) => (
-                                <div key={category} className="group/item">
-                                    <Link
-                                        href={`${data.page}?collection=${data.collection}`}
-                                        className="flex items-center gap-3 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-3 text-xs uppercase tracking-widest transition-all"
-                                    >
-                                        <data.icon className="w-4 h-4" />
-                                        {category}
-                                    </Link>
-                                    <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
-                                        {data.subcategories.map(sub => (
-                                            <Link
-                                                key={sub}
-                                                href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
-                                                className="text-gray-400 hover:text-gray-900 text-[10px] font-black uppercase transition-all whitespace-nowrap hover:scale-105"
-                                            >
-                                                {sub}
-                                            </Link>
-                                        ))}
+                            {Object.entries(productCategories.Exterior).map(([category, data]) => {
+                                const catKey = category.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
+                                let tKey = `nav.${catKey}`;
+                                if (category === "WPC EXTERIOR") tKey = "nav.wpcexterior";
+
+                                return (
+                                    <div key={category} className="group/item">
+                                        <Link
+                                            href={`${data.page}?collection=${data.collection}`}
+                                            className="flex items-center gap-3 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-3 text-xs uppercase tracking-widest transition-all"
+                                        >
+                                            <data.icon className="w-4 h-4" />
+                                            {t(tKey) || category}
+                                        </Link>
+                                        <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
+                                            {data.subcategories.map(sub => {
+                                                const subKey = sub.toLowerCase().replace(/ /g, '').replace('é', 'e');
+                                                let tSubKey = `nav.${subKey}`;
+                                                if (sub === "LISTONES") tSubKey = "nav.listones";
+
+                                                return (
+                                                    <Link
+                                                        key={sub}
+                                                        href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
+                                                        className="text-gray-400 hover:text-gray-900 text-[10px] font-black uppercase transition-all whitespace-nowrap hover:scale-105"
+                                                    >
+                                                        {t(tSubKey) || sub}
+                                                    </Link>
+                                                );
+                                            })}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         <Link
                             href="/collections/exterior"
                             className="flex items-center justify-center gap-3 bg-emerald-600 text-white py-4 mt-12 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-200 transition-all shadow-md group/all"
                         >
-                            {lang === 'es' ? 'Explorar Todo Exterior' : 'Explore All Exterior'}
+                            {language === 'es' ? 'Explorar Todo Exterior' : 'Explore All Exterior'}
                             <ArrowRight size={16} className="group-hover/all:translate-x-1 transition-transform" />
                         </Link>
                     </div>

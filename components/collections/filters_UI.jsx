@@ -32,14 +32,14 @@ export default function FilterUI({ filters, products, setFilters }) {
             <div className="flex items-center justify-between mb-6">
                 <Stylish_H2 h2="Filters" />
             </div>
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 overflow-visible">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-end overflow-visible relative z-10">
                 <CollectionToggle value={filters.collection} onChange={v => setFilters(f => ({ ...f, collection: v }))} />
-                <div className="sm:col-span-2 md:col-span-2 lg:col-span-2 overflow-visible">
+                <div className="sm:col-span-2 md:col-span-2 lg:col-span-2 overflow-visible relative z-20">
                     <MultiSelect label="Subcategories" options={subCategoriesFromData} value={filters.subcategories} onChange={v => setFilters(f => ({ ...f, subcategories: v }))} />
                 </div>
-                <SortDropdown value={filters.sort} onChange={v => setFilters(f => ({ ...f, sort: v }))} />
+                <SortDropdown value={filters.sort} onChange={v => setFilters(f => ({ ...f, sort: v }))} xl={true} />
             </div>
-            
+
             {/* Dimension filters in a separate row */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-100">
                 <RangeCheckboxGroup title="Thickness (mm)" options={thicknessRanges} value={filters.thicknessRange} onChange={v => setFilters(f => ({ ...f, thicknessRange: toggleRange(f.thicknessRange, v) }))} />

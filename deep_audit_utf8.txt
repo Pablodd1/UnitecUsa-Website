@@ -1,0 +1,302 @@
+﻿[
+  {
+    "name": "PANEL ACOLCHADO DUOBIG AZUL FRACTAL (806)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOBIG BRILLO PLATA (823)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOBIG GRIS LUMINOSO (041)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOBIG VAINILLA (820)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOSMALL AZUL  FRACTAL (806)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOSMALL BRILLO PLATA (823)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOSMALL GRIS LUMINOSO (041)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACOLCHADO DUOSMALL VAINILLA (820)",
+    "category": "PAREDES",
+    "subcategory": "ACOLCHADO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL ARGENTEA",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL AUREA (ZS3D030 Y)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL GOLDEN (ZS3D038 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL IMPERIAL (ZS3D037 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL LEGACY (ZS3D029 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL MAGNA (ZS3D039 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL MAJESTIC (ZS3D040 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL ONYX ROYAL (ZS3D045 J)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL SILVER (ZS3D038 Y)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACRILICO MARMOL VENENCIANO (ZS3D065 Y)",
+    "category": "PAREDES",
+    "subcategory": "MARMOL",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 1 BLACK OAK 8210C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 1 WALNUT 8292C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 1 WHITE OAK 3728N",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 1 YELLOW OAK 8438S",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 2 BLACK OAK 8210C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 2 WALNUT 8292C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 2 WHITE OAK 3728N",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 2 YELLOW OAK 8438S",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 3 BLACK OAK 8210C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 3 WALNUT 8292C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 3 WHITE OAK 3728N",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 3 YELLOW OAK 8438S",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 4 BLACK OAK 8210C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 4 WALNUT 8292C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 4 WHITE OAK 3728N",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 4 YELLOW OAK 8438S",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 5 BLACK OAK 8210C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 5 WALNUT 8292C",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 5 WHITE OAK 3728N",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 5 YELLOW OAK 8438S",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 6 WHITE OAK + BLACK OAK",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 6 WHITE OAK + WALNUT",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 6 YELLOW OAK + BLACK OAK",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL ACUSTICO TIPO 6 YELLOW OAK + WALNUT",
+    "category": "PAREDES",
+    "subcategory": "ACUSTICO",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL BELICE GRIS HH24101",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS BISELADO MADERA MIEL  HH24102",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS BISELADO MADERA TEKA HH24103",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS BISELADO MALAGA HH24114",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS CHOCO MIX HH24117",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS ESTUARIO CAF├ë FUSI├ôN HH24112",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS ESTUARIO CREAM HH24111",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  },
+  {
+    "name": "PANEL PS ESTUARIO GRIS HH24110",
+    "category": "PAREDES",
+    "subcategory": "PANEL PS",
+    "collection": "INTERIOR"
+  }
+]

@@ -13,7 +13,48 @@ const translations = {
             ourMission: "Our Mission",
             ourVision: "Our Vision",
             qualityCommitment: "Committed to Quality",
-            businessModels: "Business Models"
+            businessModels: "Business Models",
+            panelesWpc: "WPC Panels & Corners",
+            complementos: "Accessories",
+            listones: "Slats / Battens",
+            paneles: "Panels",
+            angulos: "Angles",
+            cintas: "Tapes",
+            pegante: "Adhesive",
+            peliculaInteligente: "Smart Film",
+            cubiertasupvc: "UPVC Roofing",
+            fachadas: "Facades",
+            wpcexterior: "WPC Exterior",
+            pisosdeck: "Deck Flooring",
+            interiors: "Interior",
+            exteriors: "Exterior",
+            tagline: "Building Materials"
+        },
+        dimensions: {
+            width: "WIDTH",
+            length: "LENGTH",
+            thickness: "THICKNESS",
+            note: "Note: Dimensions with 0 value are not displayed."
+        },
+        technical: {
+            title: "Product Overview & Ideal Applications",
+            overview: {
+                title: "Product Overview",
+                text: "Unitec USA Design PVC and WPC materials combine durability, aesthetics, and eco-conscious manufacturing. Engineered for long-lasting performance, our products are 100% waterproof, maintenance-free, and ideal for both residential and commercial projects.",
+                features: {
+                    installation: "Quick and efficient installation",
+                    precision: "Precision-engineered dimensions for uniformity",
+                    quality: "Architectural-grade material quality",
+                    residential: "Durable, low-maintenance residential applications"
+                }
+            },
+            applications: {
+                title: "Ideal Applications",
+                resi: { title: "Residential interiors", text: "walls, ceilings, and decorative finishes" },
+                comm: { title: "Commercial environments", text: "offices, lobbies, and conference rooms" },
+                arch: { title: "Architectural detailing", text: "moldings, panels, and cladding" },
+                reno: { title: "Renovation & retrofitting", text: "fast-install solutions for minimal disruption" }
+            }
         },
         hero: {
             title_start: "Fill Your",
@@ -590,7 +631,48 @@ const translations = {
             ourMission: "Nuestra Misión",
             ourVision: "Nuestra Visión",
             qualityCommitment: "Comprometidos con la Calidad",
-            businessModels: "Modalidades de Negociaciones"
+            businessModels: "Modalidades de Negociaciones",
+            panelesWpc: "Paneles WPC y Ángulos",
+            complementos: "Complementos",
+            listones: "Listones",
+            paneles: "Paneles",
+            angulos: "Ángulos",
+            cintas: "Cintas",
+            pegante: "Pegante",
+            peliculaInteligente: "Película Inteligente",
+            cubiertasupvc: "Cubiertas UPVC",
+            fachadas: "Fachadas",
+            wpcexterior: "WPC Exterior",
+            pisosdeck: "Pisos Deck",
+            interiors: "Interior",
+            exteriors: "Exterior",
+            tagline: "Materiales de Construcción"
+        },
+        dimensions: {
+            width: "ANCHO",
+            length: "LARGO",
+            thickness: "ESPESOR",
+            note: "Nota: Las dimensiones con valor 0 no se muestran."
+        },
+        technical: {
+            title: "Descripción del Producto y Aplicaciones Ideales",
+            overview: {
+                title: "Descripción General",
+                text: "Los materiales de PVC y WPC de Building Innovation combinan durabilidad, estética y fabricación ecológica. Diseñados para un rendimiento duradero, nuestros productos son 100% impermeables, no requieren mantenimiento e ideales tanto para proyectos residenciales como comerciales.",
+                features: {
+                    installation: "Instalación rápida y eficiente",
+                    precision: "Dimensiones de ingeniería de precisión para uniformidad",
+                    quality: "Calidad de material de grado arquitectónico",
+                    residential: "Aplicaciones residenciales duraderas y de bajo mantenimiento"
+                }
+            },
+            applications: {
+                title: "Aplicaciones Ideales",
+                resi: { title: "Interiores residenciales", text: "paredes, techos y acabados decorativos" },
+                comm: { title: "Entornos comerciales", text: "oficinas, vestíbulos y salas de conferencias" },
+                arch: { title: "Detalles arquitectónicos", text: "molduras, paneles y revestimientos" },
+                reno: { title: "Renovación y modernización", text: "soluciones de instalación rápida para una interrupción mínima" }
+            }
         },
         hero: {
             title_start: "Llene Su",

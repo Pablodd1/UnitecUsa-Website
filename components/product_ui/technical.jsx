@@ -1,38 +1,39 @@
 import { Home, Building, Ruler, Zap } from "lucide-react";
 import Stylish_H2 from "My_UI/stylish_h2";
+import { useLanguage } from "lib/LanguageContext";
 
 export default function ProductUseCases({ description }) {
+    const { t } = useLanguage();
     return (
         <section className="mt-20 max-w-6xl mx-auto px-4 md:px-0">
-            <Stylish_H2 h2="Product Overview & Ideal Applications" />
+            <Stylish_H2 h2={t('technical.title')} />
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Product Overview */}
                 <div className="space-y-4">
                     <h3 className="text-sm uppercase tracking-wide text-gray-500">
-                        Product Overview
+                        {t('technical.overview.title')}
                     </h3>
                     <p className="text-gray-700 text-sm leading-relaxed">
-                        {description ||
-                            "Unitec USA Design PVC and WPC materials combine durability, aesthetics, and eco-conscious manufacturing. Engineered for long-lasting performance, our products are 100% waterproof, maintenance-free, and ideal for both residential and commercial projects."}
+                        {description || t('technical.overview.text')}
                     </p>
 
                     <div className="mt-6 space-y-3 text-gray-600 text-sm">
                         <div className="flex items-start gap-3">
                             <Zap className="text-blue-600 mt-1" size={18} />
-                            <span>Quick and efficient installation</span>
+                            <span>{t('technical.overview.features.installation')}</span>
                         </div>
                         <div className="flex items-start gap-3">
                             <Ruler className="text-blue-600 mt-1" size={18} />
-                            <span>Precision-engineered dimensions for uniformity</span>
+                            <span>{t('technical.overview.features.precision')}</span>
                         </div>
                         <div className="flex items-start gap-3">
                             <Building className="text-blue-600 mt-1" size={18} />
-                            <span>Architectural-grade material quality</span>
+                            <span>{t('technical.overview.features.quality')}</span>
                         </div>
                         <div className="flex items-start gap-3">
                             <Home className="text-blue-600 mt-1" size={18} />
-                            <span>Durable, low-maintenance residential applications</span>
+                            <span>{t('technical.overview.features.residential')}</span>
                         </div>
                     </div>
                 </div>
@@ -40,29 +41,29 @@ export default function ProductUseCases({ description }) {
                 {/* Ideal Applications */}
                 <div className="rounded-2xl border bg-white p-6 shadow-sm">
                     <h3 className="text-lg font-semibold">
-                        Ideal Applications
+                        {t('technical.applications.title')}
                     </h3>
 
                     <div className="mt-4 space-y-4">
                         <Difference
                             icon={Home}
-                            title="Residential interiors"
-                            text="walls, ceilings, and decorative finishes"
+                            title={t('technical.applications.resi.title')}
+                            text={t('technical.applications.resi.text')}
                         />
                         <Difference
                             icon={Building}
-                            title="Commercial environments"
-                            text="offices, lobbies, and conference rooms"
+                            title={t('technical.applications.comm.title')}
+                            text={t('technical.applications.comm.text')}
                         />
                         <Difference
                             icon={Ruler}
-                            title="Architectural detailing"
-                            text="oldings, panels, and cladding"
+                            title={t('technical.applications.arch.title')}
+                            text={t('technical.applications.arch.text')}
                         />
                         <Difference
                             icon={Zap}
-                            title="Renovation & retrofitting"
-                            text="fast-install solutions for minimal disruption"
+                            title={t('technical.applications.reno.title')}
+                            text={t('technical.applications.reno.text')}
                         />
                     </div>
                 </div>
