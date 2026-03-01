@@ -57,6 +57,12 @@ const productCategories = {
             icon: Sparkles,
             collection: "INTERIOR",
             subcategories: ["CINTAS", "PEGANTE", "PELICULA INTELIGENTE"]
+        },
+        "LISTONES": {
+            page: "/collections/listones",
+            icon: Layers,
+            collection: "INTERIOR",
+            subcategories: []
         }
     },
     Exterior: {
@@ -89,6 +95,12 @@ const productCategories = {
             icon: Home,
             collection: "EXTERIOR",
             subcategories: ["DECK"]
+        },
+        "LISTONES": {
+            page: "/collections/listones",
+            icon: Layers,
+            collection: "EXTERIOR",
+            subcategories: []
         }
     }
 };

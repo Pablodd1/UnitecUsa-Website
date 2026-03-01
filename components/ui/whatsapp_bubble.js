@@ -1,10 +1,13 @@
 'use client';
 import { MessageCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useBrand } from "lib/BrandContext";
 
 export default function WhatsAppBubble() {
-    // Colombian WhatsApp Number
-    const phoneNumber = "573142332147";
+    const { activeBrand } = useBrand();
+
+    // Select the phone number based on the active brand
+    const phoneNumber = activeBrand === 'unitec' ? "573142332147" : "17869685783";
     const message = encodeURIComponent("Hello, I am interested in your products.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

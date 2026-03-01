@@ -79,19 +79,23 @@ export async function generateMetadata({ params }, parent) {
 }
 
 async function fetchProduct(id) {
-  const res = await fetch(
-    `${process.env.BASE_URL}/API/products/${id}?fields=id,category,collection,itemsPerBox,subcategory,name,basePrice,image,discountPercent,description,dimensions`,
-    { cache: "no-store" }
-  )
-  if (!res.ok) return <NotFoundPage />
-  return res.json()
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/API/products/${id}?fields=id,category,collection,itemsPerBox,subcategory,name,basePrice,image,discountPercent,description,dimensions`,
+      { cache: "no-store" }
+    )
+    if (!res.ok) return null
+    return res.json()
+  } catch (e) {
+    return null
+  }
 }
-
-
 
 export default async function ProductPage({ params }) {
   const ID = (await params)?.ID;
   const product = await fetchProduct(ID)
+
+  if (!product) return <NotFoundPage />
 
   return (
     <main className="">

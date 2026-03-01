@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { UnfoldVertical, Crop, Move, Layers } from "lucide-react";
 import Stylish_H2 from "My_UI/stylish_h2";
-
 import { useLanguage } from "lib/LanguageContext";
 
 const ICONS = {
@@ -15,6 +14,7 @@ const ICONS = {
 
 export default function ProductDimensions({ dimension }) {
     const { language } = useLanguage();
+    
     if (!dimension) return null;
 
     // Check if we have valid dimensions to show
@@ -36,6 +36,9 @@ export default function ProductDimensions({ dimension }) {
                     const unit = params?.[`${key}Unit`];
 
                     if (!val) return null;
+
+                    // If language is es (Spanish), we only want to show the LATAM (metric) formatted correctly
+                    const isLatam = lang === 'es';
 
                     return (
                         <motion.div
