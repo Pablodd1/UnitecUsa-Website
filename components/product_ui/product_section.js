@@ -164,7 +164,7 @@ function PriceBreakdown({ product, lang }) {
     const container20ft = CONTAINERS[0];
     const container40ft = CONTAINERS[1];
     
-    const productVolume = calcSheetVol(product.dimensions);
+    const productVolume = calcSheetVol(product.dimensions.metric || product.dimensions);
     const volume20ft = container20ft.dimensions.length * container20ft.dimensions.width * container20ft.dimensions.height;
     const volume40ft = container40ft.dimensions.length * container40ft.dimensions.width * container40ft.dimensions.height;
     
