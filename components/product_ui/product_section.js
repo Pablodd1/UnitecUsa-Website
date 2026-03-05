@@ -209,7 +209,7 @@ function PriceBreakdown({ product, lang }) {
 }
 
 export default function ProductSection({ product }) {
-    const { lang } = useLanguage();
+    const { language: lang } = useLanguage();
     const isSpanish = lang === 'es';
 
     return (

@@ -37,7 +37,7 @@ const inquiryTypes = [
 ];
 
 export default function VirtualFrontDesk() {
-    const { t, lang } = useLanguage();
+    const { t, language: lang } = useLanguage();
     const { activeBrand, brand } = useBrand();
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('menu');

@@ -9,7 +9,7 @@ import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 
 export default function CheckoutPage() {
-    const { t, lang } = useLanguage()
+    const { t, language: lang } = useLanguage()
     const isSpanish = lang === 'es';
     const [cart, setCart] = useState([])
     const [mounted, setMounted] = useState(false)

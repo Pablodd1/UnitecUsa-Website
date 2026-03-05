@@ -35,7 +35,7 @@ const TikTokIcon = ({ className }) => (
 );
 
 export default function ContactPage() {
-    const { t, lang } = useLanguage();
+    const { t, language: lang } = useLanguage();
     const { activeBrand, brand } = useBrand();
     const isSpanish = lang === 'es';
     const brandData = teamData[activeBrand] || teamData.binw;
