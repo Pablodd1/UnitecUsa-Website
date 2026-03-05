@@ -1,5 +1,5 @@
 import ProductSection from "My_UI/product_ui/product_section";
-// import productReview from "static_data/products.json";
+// import productReview from "StaticData/products.json";
 import RecommendationsSection from "My_UI/product_ui/recommended_section";
 import ReviewsSection from "My_UI/product_ui/review_section";
 import HowShippingWorks from "My_UI/product_ui/steps";

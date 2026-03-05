@@ -1,4 +1,4 @@
-import productData from "static_data/products_full.json";
+import productData from "StaticData/products_full.json";
 
 // fields to return (easy to manage / edit)
 const FIELDS = [
