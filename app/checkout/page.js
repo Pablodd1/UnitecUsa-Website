@@ -2,9 +2,9 @@
 
 import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
-import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileText, Package, DollarSign, Send, AlertTriangle, Truck } from "lucide-react"
+import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileText, Package, DollarSign, Send, AlertTriangle, Truck, Trash2, Plus } from "lucide-react"
 import { useLanguage } from "lib/LanguageContext"
-import { getCart } from "utils/cart/cart.core"
+import { getCart, removeContainer } from "utils/cart/cart.core"
 import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 
@@ -90,6 +90,13 @@ export default function CheckoutPage() {
         window.scrollTo(0, 0)
     }
 
+    const handleRemoveContainer = (id) => {
+        if (confirm("Are you sure you want to remove this container from your quote?")) {
+            removeContainer(id);
+            setCart([...getCart()]);
+        }
+    }
+
     const handlePrint = () => {
         window.print()
     }
@@ -101,6 +108,26 @@ export default function CheckoutPage() {
                     <div className="text-center">
                         <h1 className="text-3xl font-bold mb-4">Loading Checkout...</h1>
                     </div>
+                </div>
+            </main>
+        )
+    }
+
+    if (cart.length === 0 && !submitted) {
+        return (
+            <main className="w-full min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center max-w-md mx-auto p-8">
+                    <Package className="w-16 h-16 mx-auto text-gray-400 mb-6" />
+                    <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
+                    <p className="text-gray-600 mb-8">
+                        Looks like you removed all items or haven't added any yet.
+                    </p>
+                    <Link
+                        href="/collections"
+                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-xl font-semibold hover:bg-gray-900 transition-colors"
+                    >
+                        Return to Shop
+                    </Link>
                 </div>
             </main>
         )
@@ -495,14 +522,31 @@ export default function CheckoutPage() {
                                         const isPartial = fillPercent < 80;
                                         
                                         return (
-                                            <div key={container.id} className="border-b border-gray-100 pb-4 last:border-0">
+                                            <div key={container.id} className="border-b border-gray-100 pb-4 last:border-0 relative group">
                                                 <div className="flex justify-between items-start mb-2">
-                                                    <h4 className="font-semibold text-sm">{container.name}</h4>
-                                                    {isPartial && (
-                                                        <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full">
-                                                            {fillPercent.toFixed(0)}% full
-                                                        </span>
-                                                    )}
+                                                    <div>
+                                                        <h4 className="font-semibold text-sm">{container.name}</h4>
+                                                        {isPartial && (
+                                                            <span className="inline-block mt-1 text-[10px] px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold uppercase tracking-wider">
+                                                                {fillPercent.toFixed(0)}% full
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <div className="flex gap-1">
+                                                        {isPartial && (
+                                                            <Link href="/collections" className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Add More Products to Fill">
+                                                                <Plus size={16} />
+                                                            </Link>
+                                                        )}
+                                                        <button 
+                                                            type="button"
+                                                            onClick={() => handleRemoveContainer(container.id)}
+                                                            className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                            title="Remove Container"
+                                                        >
+                                                            <Trash2 size={16} />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 {container.items.map((item) => (
                                                     <div key={item.id} className="flex justify-between text-sm text-gray-600 py-1">
