@@ -92,15 +92,14 @@ export default function ContactPage() {
         <main className="w-full">
             {/* ================= HERO ================= */}
             <section className="relative overflow-hidden py-20 text-white min-h-fit">
-                {/* Background Image / Video */}
+                {/* Background Image */}
                 <div className="absolute inset-0 z-0">
-                    <video
-                        src="/videos/hero-video.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="object-cover w-full h-full"
+                    <Image
+                        src="/raster/contact-hero.jpg"
+                        alt="Contact Us"
+                        fill
+                        className="object-cover object-center w-full h-full"
+                        priority
                     />
                     <div className="absolute inset-0 bg-black/70"></div>
                 </div>
