@@ -95,7 +95,7 @@ export default function ContactPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/raster/contact-hero.jpg"
+                        src="/raster/Representation.png"
                         alt="Contact Us"
                         fill
                         className="object-cover object-center w-full h-full"
