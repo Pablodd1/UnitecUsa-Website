@@ -30,8 +30,8 @@ function calculateUnitsPerContainer(productVolume, containerVolume, itemsPerBox 
 }
 
 function ContainerCapacity({ product, lang }) {
-    const dimensions = product.dimensions?.metric || product.dimensions;
-    const itemsPerBox = product.itemsPerBox || 1;
+    const dimensions = product?.dimensions?.metric || product?.dimensions || {};
+    const itemsPerBox = product?.itemsPerBox || 1;
     
     const productVolume = calcSheetVol(dimensions);
     

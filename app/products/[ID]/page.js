@@ -7,7 +7,6 @@ import HowShippingWorks from "My_UI/product_ui/steps";
 import ProductDimensions from "My_UI/product_ui/dimension";
 import ProductUseCases from "My_UI/product_ui/technical";
 import ProductStory from "My_UI/product_ui/story";
-import { notify } from "lib/notify";
 import NotFoundPage from "../../not-found";
 
 // app/products/[ID]/page.jsx (or equivalent)
@@ -16,58 +15,55 @@ export async function generateMetadata({ params }, parent) {
   const parentMeta = await parent;
   const { ID } = await params;
 
-  const product = productData.find((item) => String(item.id) === String(ID));
+  try {
+    const product = productData.find((item) => String(item.id) === String(ID));
 
-  const title =
-    product?.name
+    if (!product) {
+      return {
+        title: "Product Not Found | Unitec USA Design",
+        description: "The requested product could not be found.",
+      };
+    }
+
+    const title = product?.name
       ? `${product.name} | PVC & WPC Building Materials | Unitec USA Design`
       : "Product Details | Unitec USA Design";
 
-  const description =
-    product?.description
+    const description = product?.description
       ? String(product.description).slice(0, 160)
       : "Explore high-performance PVC and WPC building materials by Unitec USA Design, engineered for durability, aesthetics, and zero maintenance.";
 
-  const image =
-    product?.image?.url || product?.image || process.env.DEFAULT_IMAGE || "/raster/interior.webp";
+    const image = product?.image || process.env.DEFAULT_IMAGE || "/raster/interior.webp";
 
-  const canonical = `${process.env.BASE_URL}/products/${ID}`;
+    const canonical = `${process.env.BASE_URL}/products/${ID}`;
 
-  return {
-    ...parentMeta,
-    title,
-    description,
-
-    alternates: {
-      canonical,
-    },
-
-    openGraph: {
-      ...parentMeta.openGraph,
+    return {
+      ...parentMeta,
       title,
       description,
-      url: canonical,
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: product?.name || "Unitec USA Design Product",
-        },
-      ],
-    },
-
-    twitter: {
-      ...parentMeta.twitter,
-      title,
-      description,
-      images: [image],
-    },
-  };
+      alternates: { canonical },
+      openGraph: {
+        ...parentMeta.openGraph,
+        title,
+        description,
+        url: canonical,
+        images: [{ url: image, width: 1200, height: 630, alt: product?.name || "Unitec USA Design Product" }],
+      },
+      twitter: { ...parentMeta.twitter, title, description, images: [image] },
+    };
+  } catch (error) {
+    console.error("Error generating metadata for product:", ID, error);
+    return { title: "Product | Unitec USA Design" };
+  }
 }
 
 async function fetchProduct(id) {
-  return productData.find((item) => String(item.id) === String(id)) || null;
+  try {
+    return productData.find((item) => String(item.id) === String(id)) || null;
+  } catch (error) {
+    console.error("Error fetching product:", id, error);
+    return null;
+  }
 }
 
 export default async function ProductPage({ params }) {
@@ -76,18 +72,31 @@ export default async function ProductPage({ params }) {
 
   if (!product) return <NotFoundPage />
 
+  // Ensure product has required fields with defaults
+  const safeProduct = {
+    ...product,
+    name: product.name || "Unnamed Product",
+    description: product.description || "",
+    basePrice: product.basePrice || 0,
+    category: product.category || "",
+    subcategory: product.subcategory || "",
+    collection: product.collection || "",
+    itemsPerBox: product.itemsPerBox || 1,
+    dimensions: product.dimensions || { metric: {}, imperial: {} },
+    image: product.image || "/raster/product.jpg"
+  };
+
   return (
     <main className="">
       <div className="max-w-6xl mx-auto bg-white px-2 md:px-5 lg:px-12 flex flex-col gap-15 py-16">
-        <ProductSection product={product} />
-        <ProductStory product={product} description={product.description} />
-        <ProductDimensions dimension={product.dimensions} />
-        <ProductUseCases description={product.description} />
+        <ProductSection product={safeProduct} />
+        <ProductStory product={safeProduct} description={safeProduct.description} />
+        <ProductDimensions dimension={safeProduct.dimensions} />
+        <ProductUseCases description={safeProduct.description} />
       </div>
       <HowShippingWorks />
       <div className="max-w-11/12 mx-auto bg-white px-12 py-16">
         <RecommendationsSection itemID={ID} />
-        {/* <ReviewsSection reviews={productReview.reviews} /> */}
       </div>
     </main>
   );
