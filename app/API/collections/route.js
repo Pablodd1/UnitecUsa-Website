@@ -21,6 +21,8 @@ export async function GET(request) {
   const onlyDiscounted = searchParams.get("onlyDiscounted") === "true";
   const currentPage = Number(searchParams.get("currentPage")) || 1;
 
+  const nopaginate = searchParams.get("nopaginate") === "true";
+
   const ITEMS_PER_PAGE = 15;
 
   // Filter pipeline (order matters)
@@ -33,6 +35,20 @@ export async function GET(request) {
     );
 
   const totalItems = filteredProducts.length;
+
+  if (nopaginate) {
+    const allItems = filteredProducts.map((item) =>
+      FIELDS.reduce((acc, field) => {
+        acc[field] = item[field];
+        return acc;
+      }, {})
+    );
+    return Response.json({
+      currentPage: 1,
+      totalItems,
+      items: allItems,
+    });
+  }
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;

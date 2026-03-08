@@ -18,7 +18,6 @@ export default function Collections_UI({ searchParams, h1, description, productU
 
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalItems, setTotalItems] = useState(0);
     const [loading, setLoading] = useState(true);
 
     const [filters, setFilters] = useState(prefilters);
@@ -42,21 +41,31 @@ export default function Collections_UI({ searchParams, h1, description, productU
     useEffect(() => {
         const fetchProducts = () => {
             setLoading(true);
-            fetch(`${productURL}currentPage=${currentPage}`)
+            fetch(`${productURL}nopaginate=true`)
                 .then(res => res.json())
                 .then(data => {
+                    // API now returns all items
                     setProducts(data.items);
-                    setTotalItems(data.totalItems);
                     setLoading(false);
                 }).catch(() => setLoading(false));
         }
         fetchProducts()
-    }, [currentPage]);
-
+    }, [productURL]);
 
     // Apply filters + sorting
     const filtered = applyFilters(products, filters);
-    const displayedProducts = sortProducts(filtered, filters.sort);
+    const sortedProducts = sortProducts(filtered, filters.sort);
+    const totalItems = sortedProducts.length;
+
+    // Client-side pagination
+    const ITEMS_PER_PAGE = 15;
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const displayedProducts = sortedProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    // Reset page when filters change
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filters]);
 
     return (
         <div className="overflow-visible">

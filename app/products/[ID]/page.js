@@ -78,13 +78,13 @@ export async function generateMetadata({ params }, parent) {
   };
 }
 
+import productData from "StaticData/products_full.json";
+
 async function fetchProduct(id) {
-  const res = await fetch(
-    `${process.env.BASE_URL}/API/products/${id}?fields=id,category,collection,itemsPerBox,subcategory,name,basePrice,image,discountPercent,description,dimensions`,
-    { cache: "no-store" }
-  )
-  if (!res.ok) return <NotFoundPage />
-  return res.json()
+  // Bypass fetch to avoid domain/env issues in Server Component
+  const product = productData.find((item) => String(item.id) === String(id));
+  if (!product) return null;
+  return product;
 }
 
 
@@ -92,6 +92,8 @@ async function fetchProduct(id) {
 export default async function ProductPage({ params }) {
   const ID = (await params)?.ID;
   const product = await fetchProduct(ID)
+
+  if (!product) return <NotFoundPage />
 
   return (
     <main className="">

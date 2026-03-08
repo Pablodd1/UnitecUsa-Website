@@ -8,7 +8,11 @@ import ContainerModal from "./selectContainer";
 
 export default function AddToContainer({ item, isProductPage = false, callback }) {
     const [showModal, setShowModal] = useState(false);
-    const toggleModal = () => {
+    const toggleModal = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         setShowModal(prev => {
             const next = !prev;
             return next;

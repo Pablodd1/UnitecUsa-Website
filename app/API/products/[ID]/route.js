@@ -23,7 +23,7 @@ export async function GET(request, { params }) {
 
     // If no fields requested, return full product
     if (!fields) {
-        return NextResponse.json({});
+        return NextResponse.json(product);
     }
 
     // Pick only requested fields

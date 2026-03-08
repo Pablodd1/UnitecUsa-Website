@@ -8,9 +8,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 
+import { useRouter } from "next/navigation";
+
 export default function ProductItem({ item, isSlides = false, index = 0 }) {
+    const router = useRouter();
+
     return (
         <motion.li
+            onClick={() => router.push(`/products/${item.id}`)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -60,12 +65,13 @@ export default function ProductItem({ item, isSlides = false, index = 0 }) {
                 {/* Spacer to push button to bottom */}
                 <div className="flex-grow"></div>
 
-                {/* Add to Container Button */}
                 <AddToContainer
                     item={{
                         id: item.id,
                         dimensions: item.dimensions,
-                        price: item.basePrice
+                        price: item.basePrice,
+                        name: item.name,
+                        image: item.image?.url || item.image || '/raster/product.jpg'
                     }}
                 />
             </div>

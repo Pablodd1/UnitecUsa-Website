@@ -6,6 +6,7 @@ import { Trash2, Plus, Minus, Printer, ShoppingCart, ArrowRight, Package } from 
 import { useLanguage } from "lib/LanguageContext"
 import { getCart, removeContainer, removeOne, addOne } from "utils/cart/cart.core"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function CartPage() {
     const { t } = useLanguage()
@@ -151,6 +152,14 @@ export default function CartPage() {
                                     <div className="divide-y divide-gray-100">
                                         {container.items.map((item) => (
                                             <div key={item.id} className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                                <div className="flex-shrink-0 w-20 h-20 relative bg-gray-50 rounded-lg overflow-hidden border border-gray-100">
+                                                    <Image
+                                                        src={item.image || '/raster/product.jpg'}
+                                                        alt={item.name}
+                                                        fill
+                                                        className="object-contain p-2 mix-blend-multiply"
+                                                    />
+                                                </div>
                                                 {/* Product Info */}
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className="font-medium text-gray-900 truncate">{item.name}</h4>

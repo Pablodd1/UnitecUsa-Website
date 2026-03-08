@@ -6,6 +6,7 @@ import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileTe
 import { useLanguage } from "lib/LanguageContext"
 import { getCart } from "utils/cart/cart.core"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function CheckoutPage() {
     const { t } = useLanguage()
@@ -443,10 +444,23 @@ export default function CheckoutPage() {
                                         <div key={container.id} className="border-b border-gray-100 pb-4 last:border-0">
                                             <h4 className="font-semibold text-sm mb-2">{container.name}</h4>
                                             {container.items.map((item) => (
-                                                <div key={item.id} className="flex justify-between text-sm text-gray-600 py-1">
-                                                    <span>{item.name} × {item.qty}</span>
+                                                <div key={item.id} className="flex gap-3 text-sm text-gray-600 py-2 border-b border-gray-50 last:border-0">
+                                                    <div className="flex-shrink-0 w-12 h-12 relative bg-gray-50 rounded-md overflow-hidden border border-gray-100">
+                                                        <Image
+                                                            src={item.image || '/raster/product.jpg'}
+                                                            alt={item.name}
+                                                            fill
+                                                            className="object-contain p-1 mix-blend-multiply"
+                                                        />
+                                                    </div>
+                                                    <div className="flex-1 flex flex-col justify-between min-w-0">
+                                                        <span className="truncate">{item.name}</span>
+                                                        <span className="text-xs text-gray-500">Qty: {item.qty}</span>
+                                                    </div>
                                                     {item.price && (
-                                                        <span>${(item.price * item.qty).toFixed(2)}</span>
+                                                        <div className="flex flex-col justify-end text-right">
+                                                            <span className="font-semibold text-gray-900">${(item.price * item.qty).toFixed(2)}</span>
+                                                        </div>
                                                     )}
                                                 </div>
                                             ))}
