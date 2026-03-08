@@ -10,6 +10,7 @@ export default function RecommendationsSection({ itemID, title }) {
     const { t } = useLanguage();
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([])
+    const [error, setError] = useState(false)
 
     // Determine title to display. If no title passed, or if it matches the legacy default, uses translation.
     const displayTitle = title && title !== "Best Selling Products" ? title : t('recommendations.title');
@@ -18,27 +19,38 @@ export default function RecommendationsSection({ itemID, title }) {
     useEffect(() => {
         const fetchRecommendations = () => {
             setLoading(true);
+            setError(false);
             fetch(`/API/products/recommended?current=${itemID}`)
-                .then(res => res.json())
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to fetch');
+                    return res.json();
+                })
                 .then(data => {
-                    setProducts(data.items);
+                    setProducts(data.items || []);
                     setLoading(false);
-                }).catch(() => setLoading(false));
+                })
+                .catch((err) => {
+                    console.error("Error fetching recommendations:", err);
+                    setError(true);
+                    setLoading(false);
+                });
         };
-        fetchRecommendations()
+        if (itemID) {
+            fetchRecommendations()
+        }
     }, [itemID]);
 
 
     return (
         <section className="my-24 w-11/12">
             <Stylish_H2 h2={displayTitle} />
-            {/* <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-8"> */}
             {
                 loading
-                    ? <div className="text-center  col-span-full min-h-24 w-full min-w-96 py-20 text-gray-500">{t("recommendations.loading")}</div>
-                    : <EmblaCarousel slides={products} options={OPTIONS} />
+                    ? <div className="text-center col-span-full min-h-24 w-full min-w-96 py-20 text-gray-500">{t("recommendations.loading")}</div>
+                    : error || !products.length
+                        ? <div className="text-center col-span-full py-10 text-gray-400">{t("recommendations.loading")}</div>
+                        : <EmblaCarousel slides={products} options={OPTIONS} />
             }
-            {/* </div> */}
         </section>
     );
 }

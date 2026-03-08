@@ -11,7 +11,13 @@ import './css/embla.css'
 import ProductItem from 'My_UI/product/item'
 
 const EmblaCarousel = (props) => {
-    const { slides, options } = props
+    const { slides = [], options = {} } = props
+    
+    // Handle empty or invalid slides
+    if (!slides || !Array.isArray(slides) || slides.length === 0) {
+        return null
+    }
+
     const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -29,7 +35,7 @@ const EmblaCarousel = (props) => {
             <div className={`px-4 md:px-10 embla__viewport`} ref={emblaRef}>
                 <ul className="embla__container">
                     {slides.map((item, i) => (
-                        <li key={i} className="embla__slide pl-6">
+                        <li key={item?.id || i} className="embla__slide pl-6">
                             <ProductItem isSlides item={item} index={i} />
                         </li>
                     ))}
