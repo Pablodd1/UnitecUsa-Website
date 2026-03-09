@@ -1,3 +1,5 @@
+"use client";
+
 import { Home, Building, Ruler, Zap } from "lucide-react";
 import Stylish_H2 from "My_UI/stylish_h2";
 import { useLanguage } from "lib/LanguageContext";

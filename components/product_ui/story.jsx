@@ -2,6 +2,7 @@ import { Home, Building2, Ruler, Layers, Box, Grid3X3, Package } from "lucide-re
 import Stylish_H2 from "My_UI/stylish_h2";
 
 export default function ProductStory({ product, description }) {
+    if (!product) return null;
     const { category, subcategory, collection, itemsPerBox } = product;
     return (
         <section className="mt-20 ">
@@ -55,7 +56,7 @@ export default function ProductStory({ product, description }) {
                     <HighlightItem
                         icon={<Package  />}
                         label="Packaging"
-                        value={`${itemsPerBox} item / box`}
+                        value={itemsPerBox ? `${itemsPerBox} item / box` : 'N/A'}
                     />
                 </div>
             </section>

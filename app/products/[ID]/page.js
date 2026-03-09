@@ -1,12 +1,10 @@
 import ProductSection from "My_UI/product_ui/product_section";
-// import productReview from "StaticData/products.json";
 import RecommendationsSection from "My_UI/product_ui/recommended_section";
 import ReviewsSection from "My_UI/product_ui/review_section";
 import HowShippingWorks from "My_UI/product_ui/steps";
 import ProductDimensions from "My_UI/product_ui/dimension";
 import ProductUseCases from "My_UI/product_ui/technical";
 import ProductStory from "My_UI/product_ui/story";
-import { notify } from "lib/notify";
 import NotFoundPage from "../../not-found";
 
 // app/products/[ID]/page.jsx (or equivalent)
