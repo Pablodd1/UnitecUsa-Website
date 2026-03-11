@@ -2,6 +2,7 @@ import AddToContainer from "My_UI/cart/addToContainer";
 import GetFinalPrice from "My_UI/getFinalPrice";
 import Image from "next/image";
 import NotFoundPage from "../../app/not-found";
+import { ProductContent } from "./ProductContent.client";
 
 export default async function ProductSection({ product }) {
 
@@ -21,34 +22,7 @@ export default async function ProductSection({ product }) {
                 </div>
 
                 {/* Middle Column - Product Info */}
-                <div className="lg:col-span-4 flex flex-col pt-2 lg:pt-6">
-                    <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-2">
-                        {product.name}
-                    </h1>
-                    
-                    <div className="text-sm text-blue-600 font-semibold mb-4 uppercase tracking-wider">
-                        {product.collection || 'Collection'} • {product.category || 'Category'}
-                    </div>
-
-                    <div className="border-b border-gray-200 pb-4 mb-4">
-                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
-                            <span className="flex items-center text-yellow-500">
-                                ★★★★☆
-                            </span>
-                            <span className="text-blue-600 hover:underline cursor-pointer">142 ratings</span>
-                        </div>
-                    </div>
-
-                    <div className="mb-6">
-                        <div className="text-sm font-semibold text-gray-900 mb-2">About this item</div>
-                        <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                            <li>{product.description}</li>
-                            <li>Engineered for durability and high performance.</li>
-                            <li>Perfectly suited for {product.subcategory?.toLowerCase() || 'various applications'}.</li>
-                            {product.itemsPerBox && <li>Items per box: {product.itemsPerBox}</li>}
-                        </ul>
-                    </div>
-                </div>
+                <ProductContent product={product} />
 
                 {/* Right Column - Buy Box */}
                 <div className="lg:col-span-3 pt-2 lg:pt-6">

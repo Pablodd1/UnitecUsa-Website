@@ -69,7 +69,9 @@ export default function ProductDimensions({ dimension }) {
             </div>
 
             <p className="mt-6 text-xs text-gray-500 text-center md:text-left">
-                Note: Dimensions with 0 value are not displayed. Relative bars visualize size comparisons for quick understanding.
+                {language === 'es' 
+                    ? "Nota: Las dimensiones con valor 0 no se muestran. Las barras relativas visualizan comparaciones de tamaño para rápida comprensión."
+                    : "Note: Dimensions with 0 value are not displayed. Relative bars visualize size comparisons for quick understanding."}
             </p>
         </section>
     );
