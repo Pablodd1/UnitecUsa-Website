@@ -9,8 +9,6 @@ import {
     Layers,
     LayoutGrid,
     Trees,
-    LayoutGrid,
-    Trees,
     Sparkles,
     Zap,
     Pipette,
