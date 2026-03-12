@@ -26,55 +26,55 @@ const productCategories = {
             page: "/collections/interior",
             icon: PanelTop,
             collection: "INTERIOR",
-            subcategories: []
+            subcategories: ["CIELO RASO PVC"]
         },
         "ILUMINACIÓN": {
             page: "/collections/interior",
             icon: Zap,
             collection: "INTERIOR",
-            subcategories: ["Perfil LED", "Transformador LED", "Control"]
+            subcategories: ["ILUMINACION"]
         },
         "JARDINES ARTIFICIALES": {
             page: "/collections/jardines-artificiales",
             icon: Trees,
             collection: "INTERIOR",
-            subcategories: ["Línea Moss"]
+            subcategories: ["JARDINES INTERIOR", "JARDINES MOSS"]
         },
         "LÁMINAS": {
             page: "/collections/laminas",
             icon: LayoutGrid,
             collection: "INTERIOR",
-            subcategories: ["Laminas Foam Board", "Laminas Mármol PVC", "Laminas PVC Board", "Laminas Sintéticas"]
+            subcategories: ["FOAM BOARD", "LAMINAS MARMOL PVC", "LAMINAS PVC BOARD", "LAMINAS SINTETICAS"]
         },
         "LISTONES": {
             page: "/collections/interior",
             icon: Layers,
             collection: "INTERIOR",
-            subcategories: ["Listones PVC Cielo Raso", "Listones PVC Interior"]
+            subcategories: ["LISTONES PVC CIELO RASO", "LISTONES PVC INTERIOR ESTRUCTURAL"]
         },
         "PANELES Y ÁNGULOS": {
             page: "/collections/paneles-wpc",
             icon: Building2,
             collection: "INTERIOR",
-            subcategories: ["Paneles WPC Interior", "Paneles WPC redondos"]
+            subcategories: ["PANEL WPC INTERIOR", "PANEL WPC REDONDO"]
         },
         "PAREDES": {
             page: "/collections/paredes",
             icon: Box,
             collection: "INTERIOR",
-            subcategories: ["Paneles Acrílicos de Mármol", "Paneles Acolchados", "Paneles Acústicos", "Paneles PS Interior", "Paredes Acolchadas", "Paredes Muroflex", "Paredes PU ArqUnitec", "Rollos Adhesivos de mármol"]
+            subcategories: ["PANEL PS", "PANEL ACUSTICO", "PANEL ACOLCHADO", "MUROFLEX", "ARQUNITEC", "PIEDRA FLEXIBLE"]
         },
         "CINTAS Y PEGANTES": {
             page: "/collections/interior",
             icon: Pipette,
             collection: "INTERIOR",
-            subcategories: ["Cinta Adhesiva Metálica", "Cinta Adhesiva de Papel", "Pegatec Blanco", "Pegatec Transparente"]
+            subcategories: ["CINTAS", "PEGANTES"]
         },
         "PISOS Y ZÓCALOS": {
             page: "/collections/pisos",
             icon: Home,
             collection: "INTERIOR",
-            subcategories: ["Piso SPC", "Zócalos SPC"]
+            subcategories: ["PISO SPC", "ZOCALO SPC"]
         }
     },
     Exterior: {
@@ -82,25 +82,25 @@ const productCategories = {
             page: "/collections/cubiertas-upvc",
             icon: Home,
             collection: "EXTERIOR",
-            subcategories: ["Cubierta Ondulada ROMA", "UPVC 2.5mm Blanca Onda Alta", "UPVC 2.0mm Blanca Onda Baja", "Teja PVC Terracota Colonial", "Teja UPVC Tipo Zinc", "Cubierta Acanalada UPVC 11.80", "Cubierta Traslúcida Onda Alta Opal"]
+            subcategories: ["CUBIERTA ACANALADA UPVC BLANCA 11.80", "CUBIERTA ONDULADA ROMA", "CUBIERTA TERMOACUSTICA UPVC 2.0mm BLANCA ONDA BAJA", "CUBIERTA TERMOACUSTICA UPVC 2.5mm BLANCA ONDA ALTA", "CUBIERTA TRASLUCIDA ONDA ALTA OPAL", "LAMINA ALVEOLAR POLICARBONATO"]
         },
         "JARDINES EXTERIORES": {
             page: "/collections/jardines-artificiales",
             icon: Trees,
             collection: "EXTERIOR",
-            subcategories: []
+            subcategories: ["JARDINES EXTERIOR"]
         },
         "REVESTIMIENTOS": {
             page: "/collections/fachadas",
             icon: Building2,
             collection: "EXTERIOR",
-            subcategories: ["Listones WPC Exterior", "Paneles WPC Exterior", "Fachada Deck", "Fachada Exterior PVC", "Paredes Uniflex", "Polifachada"]
+            subcategories: ["FACHADA DECK", "FACHADA EXTERIOR PVC", "LISTONES WPC EXTERIOR"]
         },
         "PISOS DECK": {
             page: "/collections/pisos-deck",
             icon: Waves,
             collection: "EXTERIOR",
-            subcategories: ["Piso Deck"]
+            subcategories: ["PISO DECK"]
         }
     }
 };
@@ -144,7 +144,7 @@ const MegaMenu = () => {
                                 // Simple mapping for category keys to translation keys
                                 // Helper to map category names to translation keys
                                 const getCatKey = (name) => {
-                                    if (name === "CIELO RASO PVC") return "cieloRasoPvc";
+                                    if (name === "CIELO RASO PVC") return "cielorasopvc";
                                     if (name === "ILUMINACIÓN") return "iluminacion";
                                     if (name === "JARDINES ARTIFICIALES") return "jardinesArtificiales";
                                     if (name === "LÁMINAS") return "laminas";
@@ -153,7 +153,7 @@ const MegaMenu = () => {
                                     if (name === "PAREDES") return "paredes";
                                     if (name === "CINTAS Y PEGANTES") return "complementos";
                                     if (name === "PISOS Y ZÓCALOS") return "pisos";
-                                    return name.toLowerCase().replace(/ /g, '');
+                                    return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
                                 };
                                 const tKey = `nav.${getCatKey(category)}`;
 
@@ -169,33 +169,8 @@ const MegaMenu = () => {
                                         <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
                                             {data.subcategories.map(sub => {
                                                 const getSubKey = (name) => {
-                                                    if (name === "Perfil LED") return "perfilLed";
-                                                    if (name === "Transformador LED") return "transformadorLed";
-                                                    if (name === "Control") return "control";
-                                                    if (name === "Línea Moss") return "lineaMoss";
-                                                    if (name === "Laminas Foam Board") return "laminasFoamBoard";
-                                                    if (name === "Laminas Mármol PVC") return "laminasMarmolPvc";
-                                                    if (name === "Laminas PVC Board") return "laminasPvcBoard";
-                                                    if (name === "Laminas Sintéticas") return "laminasSinteticas";
-                                                    if (name === "Listones PVC Cielo Raso") return "listonesPvcCieloRaso";
-                                                    if (name === "Listones PVC Interior") return "listonesPvcInterior";
-                                                    if (name === "Paneles WPC Interior") return "panelesWpcInterior";
-                                                    if (name === "Paneles WPC redondos") return "panelesWpcRedondos";
-                                                    if (name === "Paneles Acrílicos de Mármol") return "panelesAcrilicosMarmol";
-                                                    if (name === "Paneles Acolchados") return "panelesAcolchados";
-                                                    if (name === "Paneles Acústicos") return "panelesAcusticos";
-                                                    if (name === "Paneles PS Interior") return "panelesPsInterior";
-                                                    if (name === "Paredes Acolchadas") return "paredesAcolchadas";
-                                                    if (name === "Paredes Muroflex") return "paredesMuroflex";
-                                                    if (name === "Paredes PU ArqUnitec") return "paredesPuArqUnitec";
-                                                    if (name === "Rollos Adhesivos de mármol") return "rollosAdhesivosMarmol";
-                                                    if (name === "Cinta Adhesiva Metálica") return "cintaAdhesivaMetalica";
-                                                    if (name === "Cinta Adhesiva de Papel") return "cintaAdhesivaPapel";
-                                                    if (name === "Pegatec Blanco") return "pegatecBlanco";
-                                                    if (name === "Pegatec Transparente") return "pegatecTransparente";
-                                                    if (name === "Piso SPC") return "pisoSpc";
-                                                    if (name === "Zócalos SPC") return "zocalosSpc";
-                                                    return name.toLowerCase().replace(/ /g, '');
+                                                    // Standardize formatting for translation keys
+                                                    return name.toLowerCase().replace(/ /g, '').replace(/\./g, '').replace(/-/g, '');
                                                 };
                                                 const tSubKey = `nav.${getSubKey(sub)}`;
 
@@ -243,7 +218,7 @@ const MegaMenu = () => {
                                     if (name === "JARDINES EXTERIORES") return "jardinesArtificiales";
                                     if (name === "REVESTIMIENTOS") return "fachadas";
                                     if (name === "PISOS DECK") return "pisosdeck";
-                                    return name.toLowerCase().replace(/ /g, '');
+                                    return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
                                 };
                                 const tKey = `nav.${getCatKey(category)}`;
 
@@ -259,21 +234,7 @@ const MegaMenu = () => {
                                         <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
                                             {data.subcategories.map(sub => {
                                                 const getSubKey = (name) => {
-                                                    if (name === "Ondulada ROMA") return "cubiertaOnduladaRoma";
-                                                    if (name === "UPVC 2.5mm Blanca Onda Alta") return "upvc25Alta";
-                                                    if (name === "UPVC 2.0mm Blanca Onda Baja") return "upvc20Baja";
-                                                    if (name === "Teja PVC Terracota Colonial") return "tejaPvcTerracota";
-                                                    if (name === "Teja UPVC Tipo Zinc") return "tejaUpvcZinc";
-                                                    if (name === "Cubierta Acanalada UPVC 11.80") return "acanaladaUpvc1180";
-                                                    if (name === "Cubierta Traslúcida Onda Alta Opal") return "traslucidaOndaAltaOpal";
-                                                    if (name === "Listones WPC Exterior") return "listonesWpcExterior";
-                                                    if (name === "Paneles WPC Exterior") return "panelesWpcExterior";
-                                                    if (name === "Fachada Deck") return "fachadaDeck";
-                                                    if (name === "Fachada Exterior PVC") return "fachadaExteriorPvc";
-                                                    if (name === "Paredes Uniflex") return "paredesUniflex";
-                                                    if (name === "Polifachada") return "polifachada";
-                                                    if (name === "Piso Deck") return "pisosdeck";
-                                                    return name.toLowerCase().replace(/ /g, '');
+                                                    return name.toLowerCase().replace(/ /g, '').replace(/\./g, '').replace(/-/g, '');
                                                 };
                                                 const tSubKey = `nav.${getSubKey(sub)}`;
 
