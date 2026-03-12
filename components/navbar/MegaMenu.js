@@ -9,92 +9,100 @@ import {
     Layers,
     LayoutGrid,
     Trees,
-    Sparkles
+    LayoutGrid,
+    Trees,
+    Sparkles,
+    Zap,
+    Pipette,
+    Maximize,
+    Box,
+    PanelTop,
+    Waves
 } from 'lucide-react';
 import { useLanguage } from 'lib/LanguageContext';
 import { useBrand } from 'utils/BrandContext';
 
 const productCategories = {
     Interior: {
-        "PAREDES": {
-            page: "/collections/paredes",
-            icon: Layers,
+        "CIELO RASO PVC": {
+            page: "/collections/interior",
+            icon: PanelTop,
             collection: "INTERIOR",
-            subcategories: ["ROLLO MARMOL", "ACOLCHADO", "MARMOL", "ACUSTICO", "PANEL PS", "PU", "MUROFLEX", "UNIFLEX"]
+            subcategories: []
         },
-        "LAMINAS": {
-            page: "/collections/laminas",
-            icon: LayoutGrid,
+        "ILUMINACIÓN": {
+            page: "/collections/interior",
+            icon: Zap,
             collection: "INTERIOR",
-            subcategories: ["FOAM BOARD", "MARMOL", "PAREDES", "PVC BOARD"]
+            subcategories: ["Perfil LED", "Transformador LED", "Control"]
         },
         "JARDINES ARTIFICIALES": {
             page: "/collections/jardines-artificiales",
             icon: Trees,
             collection: "INTERIOR",
-            subcategories: ["Vertical Gardens", "Green Walls"]
+            subcategories: ["Línea Moss"]
         },
-        "PANELES WPC Y ANGULOS": {
+        "LÁMINAS": {
+            page: "/collections/laminas",
+            icon: LayoutGrid,
+            collection: "INTERIOR",
+            subcategories: ["Laminas Foam Board", "Laminas Mármol PVC", "Laminas PVC Board", "Laminas Sintéticas"]
+        },
+        "LISTONES": {
+            page: "/collections/interior",
+            icon: Layers,
+            collection: "INTERIOR",
+            subcategories: ["Listones PVC Cielo Raso", "Listones PVC Interior"]
+        },
+        "PANELES Y ÁNGULOS": {
             page: "/collections/paneles-wpc",
             icon: Building2,
             collection: "INTERIOR",
-            subcategories: ["WPC INTERIOR", "PANELES", "LISTONES", "ANGULOS"]
+            subcategories: ["Paneles WPC Interior", "Paneles WPC redondos"]
         },
-        "PISOS": {
+        "PAREDES": {
+            page: "/collections/paredes",
+            icon: Box,
+            collection: "INTERIOR",
+            subcategories: ["Paneles Acrílicos de Mármol", "Paneles Acolchados", "Paneles Acústicos", "Paneles PS Interior", "Paredes Acolchadas", "Paredes Muroflex", "Paredes PU ArqUnitec", "Rollos Adhesivos de mármol"]
+        },
+        "CINTAS Y PEGANTES": {
+            page: "/collections/interior",
+            icon: Pipette,
+            collection: "INTERIOR",
+            subcategories: ["Cinta Adhesiva Metálica", "Cinta Adhesiva de Papel", "Pegatec Blanco", "Pegatec Transparente"]
+        },
+        "PISOS Y ZÓCALOS": {
             page: "/collections/pisos",
             icon: Home,
             collection: "INTERIOR",
-            subcategories: ["SPC"]
-        },
-        "ZOCALOS": {
-            page: "/collections/zocalos",
-            icon: LayoutGrid,
-            collection: "INTERIOR",
-            subcategories: ["SPC"]
-        },
-        "COMPLEMENTOS": {
-            page: "/collections/complementos",
-            icon: Sparkles,
-            collection: "INTERIOR",
-            subcategories: ["CINTAS", "PEGANTES", "PELICULA INTELIGENTE"]
+            subcategories: ["Piso SPC", "Zócalos SPC"]
         }
     },
     Exterior: {
-        "CUBIERTAS UPVC": {
+        "CUBIERTAS": {
             page: "/collections/cubiertas-upvc",
             icon: Home,
             collection: "EXTERIOR",
-            subcategories: ["TEJAS"]
-        },
-        "FACHADAS": {
-            page: "/collections/fachadas",
-            icon: Layers,
-            collection: "EXTERIOR",
-            subcategories: ["FACHADA", "POLIFACHADA"]
+            subcategories: ["Cubierta Ondulada ROMA", "UPVC 2.5mm Blanca Onda Alta", "UPVC 2.0mm Blanca Onda Baja", "Teja PVC Terracota Colonial", "Teja UPVC Tipo Zinc", "Cubierta Acanalada UPVC 11.80", "Cubierta Traslúcida Onda Alta Opal"]
         },
         "JARDINES EXTERIORES": {
             page: "/collections/jardines-artificiales",
             icon: Trees,
             collection: "EXTERIOR",
-            subcategories: ["Outdoor Gardens", "Faux Foliage"]
+            subcategories: []
         },
-        "WPC EXTERIOR": {
-            page: "/collections/paneles-wpc",
+        "REVESTIMIENTOS": {
+            page: "/collections/fachadas",
             icon: Building2,
             collection: "EXTERIOR",
-            subcategories: ["WPC EXTERIOR"]
+            subcategories: ["Listones WPC Exterior", "Paneles WPC Exterior", "Fachada Deck", "Fachada Exterior PVC", "Paredes Uniflex", "Polifachada"]
         },
         "PISOS DECK": {
             page: "/collections/pisos-deck",
-            icon: Home,
+            icon: Waves,
             collection: "EXTERIOR",
-            subcategories: ["DECK"]
-        },
-        "LISTONES": {
-            page: "/collections/listones",
-            icon: Layers,
-            collection: "EXTERIOR",
-            subcategories: []
+            subcategories: ["Piso Deck"]
         }
     }
 };
@@ -136,9 +144,20 @@ const MegaMenu = () => {
                         <div className="grid grid-cols-1 gap-y-7">
                             {Object.entries(productCategories.Interior).map(([category, data]) => {
                                 // Simple mapping for category keys to translation keys
-                                const catKey = category.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
-                                let tKey = `nav.${catKey}`;
-                                if (category === "PANELES WPC Y ANGULOS") tKey = "nav.panelesWpc";
+                                // Helper to map category names to translation keys
+                                const getCatKey = (name) => {
+                                    if (name === "CIELO RASO PVC") return "cieloRasoPvc";
+                                    if (name === "ILUMINACIÓN") return "iluminacion";
+                                    if (name === "JARDINES ARTIFICIALES") return "jardinesArtificiales";
+                                    if (name === "LÁMINAS") return "laminas";
+                                    if (name === "LISTONES") return "listones";
+                                    if (name === "PANELES Y ÁNGULOS") return "panelesWpc";
+                                    if (name === "PAREDES") return "paredes";
+                                    if (name === "CINTAS Y PEGANTES") return "complementos";
+                                    if (name === "PISOS Y ZÓCALOS") return "pisos";
+                                    return name.toLowerCase().replace(/ /g, '');
+                                };
+                                const tKey = `nav.${getCatKey(category)}`;
 
                                 return (
                                     <div key={category} className="group/item">
@@ -151,14 +170,36 @@ const MegaMenu = () => {
                                         </Link>
                                         <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
                                             {data.subcategories.map(sub => {
-                                                const subKey = sub.toLowerCase().replace(/ /g, '').replace('é', 'e');
-                                                let tSubKey = `nav.${subKey}`;
-                                                if (sub === "PANELES") tSubKey = "nav.paneles";
-                                                if (sub === "LISTONES") tSubKey = "nav.listones";
-                                                if (sub === "ANGULOS") tSubKey = "nav.angulos";
-                                                if (sub === "CINTAS") tSubKey = "nav.cintas";
-                                                if (sub === "PEGANTES") tSubKey = "nav.pegantes";
-                                                if (sub === "PELICULA INTELIGENTE") tSubKey = "nav.peliculaInteligente";
+                                                const getSubKey = (name) => {
+                                                    if (name === "Perfil LED") return "perfilLed";
+                                                    if (name === "Transformador LED") return "transformadorLed";
+                                                    if (name === "Control") return "control";
+                                                    if (name === "Línea Moss") return "lineaMoss";
+                                                    if (name === "Laminas Foam Board") return "laminasFoamBoard";
+                                                    if (name === "Laminas Mármol PVC") return "laminasMarmolPvc";
+                                                    if (name === "Laminas PVC Board") return "laminasPvcBoard";
+                                                    if (name === "Laminas Sintéticas") return "laminasSinteticas";
+                                                    if (name === "Listones PVC Cielo Raso") return "listonesPvcCieloRaso";
+                                                    if (name === "Listones PVC Interior") return "listonesPvcInterior";
+                                                    if (name === "Paneles WPC Interior") return "panelesWpcInterior";
+                                                    if (name === "Paneles WPC redondos") return "panelesWpcRedondos";
+                                                    if (name === "Paneles Acrílicos de Mármol") return "panelesAcrilicosMarmol";
+                                                    if (name === "Paneles Acolchados") return "panelesAcolchados";
+                                                    if (name === "Paneles Acústicos") return "panelesAcusticos";
+                                                    if (name === "Paneles PS Interior") return "panelesPsInterior";
+                                                    if (name === "Paredes Acolchadas") return "paredesAcolchadas";
+                                                    if (name === "Paredes Muroflex") return "paredesMuroflex";
+                                                    if (name === "Paredes PU ArqUnitec") return "paredesPuArqUnitec";
+                                                    if (name === "Rollos Adhesivos de mármol") return "rollosAdhesivosMarmol";
+                                                    if (name === "Cinta Adhesiva Metálica") return "cintaAdhesivaMetalica";
+                                                    if (name === "Cinta Adhesiva de Papel") return "cintaAdhesivaPapel";
+                                                    if (name === "Pegatec Blanco") return "pegatecBlanco";
+                                                    if (name === "Pegatec Transparente") return "pegatecTransparente";
+                                                    if (name === "Piso SPC") return "pisoSpc";
+                                                    if (name === "Zócalos SPC") return "zocalosSpc";
+                                                    return name.toLowerCase().replace(/ /g, '');
+                                                };
+                                                const tSubKey = `nav.${getSubKey(sub)}`;
 
                                                 return (
                                                     <Link
@@ -199,9 +240,14 @@ const MegaMenu = () => {
 
                         <div className="grid grid-cols-1 gap-y-7">
                             {Object.entries(productCategories.Exterior).map(([category, data]) => {
-                                const catKey = category.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
-                                let tKey = `nav.${catKey}`;
-                                if (category === "WPC EXTERIOR") tKey = "nav.wpcexterior";
+                                const getCatKey = (name) => {
+                                    if (name === "CUBIERTAS") return "cubiertas";
+                                    if (name === "JARDINES EXTERIORES") return "jardinesArtificiales";
+                                    if (name === "REVESTIMIENTOS") return "fachadas";
+                                    if (name === "PISOS DECK") return "pisosdeck";
+                                    return name.toLowerCase().replace(/ /g, '');
+                                };
+                                const tKey = `nav.${getCatKey(category)}`;
 
                                 return (
                                     <div key={category} className="group/item">
@@ -214,9 +260,24 @@ const MegaMenu = () => {
                                         </Link>
                                         <div className="flex flex-wrap gap-x-4 gap-y-2 ml-1 border-l-2 border-gray-100 pl-4 py-1">
                                             {data.subcategories.map(sub => {
-                                                const subKey = sub.toLowerCase().replace(/ /g, '').replace('é', 'e');
-                                                let tSubKey = `nav.${subKey}`;
-                                                if (sub === "LISTONES") tSubKey = "nav.listones";
+                                                const getSubKey = (name) => {
+                                                    if (name === "Ondulada ROMA") return "cubiertaOnduladaRoma";
+                                                    if (name === "UPVC 2.5mm Blanca Onda Alta") return "upvc25Alta";
+                                                    if (name === "UPVC 2.0mm Blanca Onda Baja") return "upvc20Baja";
+                                                    if (name === "Teja PVC Terracota Colonial") return "tejaPvcTerracota";
+                                                    if (name === "Teja UPVC Tipo Zinc") return "tejaUpvcZinc";
+                                                    if (name === "Cubierta Acanalada UPVC 11.80") return "acanaladaUpvc1180";
+                                                    if (name === "Cubierta Traslúcida Onda Alta Opal") return "traslucidaOndaAltaOpal";
+                                                    if (name === "Listones WPC Exterior") return "listonesWpcExterior";
+                                                    if (name === "Paneles WPC Exterior") return "panelesWpcExterior";
+                                                    if (name === "Fachada Deck") return "fachadaDeck";
+                                                    if (name === "Fachada Exterior PVC") return "fachadaExteriorPvc";
+                                                    if (name === "Paredes Uniflex") return "paredesUniflex";
+                                                    if (name === "Polifachada") return "polifachada";
+                                                    if (name === "Piso Deck") return "pisosdeck";
+                                                    return name.toLowerCase().replace(/ /g, '');
+                                                };
+                                                const tSubKey = `nav.${getSubKey(sub)}`;
 
                                                 return (
                                                     <Link
