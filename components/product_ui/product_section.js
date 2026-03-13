@@ -3,6 +3,7 @@ import GetFinalPrice from "My_UI/getFinalPrice";
 import Image from "next/image";
 import NotFoundPage from "../../app/not-found";
 import { ProductContent } from "./ProductContent.client";
+import { BuyBox } from "./BuyBox.client";
 
 export default async function ProductSection({ product }) {
 
@@ -25,48 +26,7 @@ export default async function ProductSection({ product }) {
                 <ProductContent product={product} />
 
                 {/* Right Column - Buy Box */}
-                <div className="lg:col-span-3 pt-2 lg:pt-6">
-                    <div className="border border-gray-300 rounded-xl p-6 bg-white shadow-sm sticky top-24">
-                        <div className="text-3xl font-medium text-gray-900 mb-4">
-                            <GetFinalPrice basePrice={product.basePrice} discountPercent={product.discountPercent} />
-                        </div>
-
-                        <div className="mb-4">
-                            <div className="text-green-700 font-semibold text-base mb-1">In Stock</div>
-                            <div className="text-sm text-gray-600">Usually ships within 2-3 work days.</div>
-                        </div>
-
-                        <div className="mb-6 space-y-2 text-sm">
-                            <div className="flex justify-between">
-                                <span className="text-gray-500">Ships from</span>
-                                <span className="font-semibold">Unitec USA Design</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="text-gray-500">Sold by</span>
-                                <span className="font-semibold">Unitec USA Design</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="text-gray-500">Returns</span>
-                                <span className="font-semibold text-blue-600">Eligible for Return</span>
-                            </div>
-                        </div>
-
-                        <AddToContainer
-                            item={{
-                                id: product.id,
-                                dimensions: product.dimensions,
-                                price: product.basePrice,
-                                name: product.name,
-                                image: product.image?.url || product.image || '/raster/product.jpg'
-                            }}
-                            isProductPage
-                        />
-                        
-                        <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-xs text-center border-t border-gray-100 pt-4">
-                            <span>🔒 Secure transaction</span>
-                        </div>
-                    </div>
-                </div>
+                <BuyBox product={product} />
             </section>
             : <NotFoundPage />
     );

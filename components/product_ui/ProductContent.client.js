@@ -99,7 +99,8 @@ export function ProductContent({ product }) {
     
     useEffect(() => {
         const translateProduct = async () => {
-            if (language === 'en') {
+            // Source is es, if target is es, no need to translate
+            if (language === 'es') {
                 setTranslatedName(product.name);
                 setTranslatedDesc(product.description);
                 return;
@@ -108,8 +109,8 @@ export function ProductContent({ product }) {
             setIsTranslating(true);
             try {
                 const [name, desc] = await Promise.all([
-                    translateText(product.name, 'es'),
-                    translateText(product.description, 'es')
+                    translateText(product.name, 'en', 'es'),
+                    translateText(product.description, 'en', 'es')
                 ]);
                 setTranslatedName(name);
                 setTranslatedDesc(desc);

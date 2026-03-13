@@ -1,7 +1,7 @@
 const translationCache = new Map();
 
-export async function translateText(text, targetLang = 'es') {
-    if (!text || targetLang === 'en') return text;
+export async function translateText(text, targetLang = 'es', sourceLang = 'es') {
+    if (!text || (targetLang === sourceLang)) return text;
     
     const cacheKey = `${text.slice(0, 50)}_${targetLang}`;
     
@@ -12,7 +12,7 @@ export async function translateText(text, targetLang = 'es') {
     try {
         const encodedText = encodeURIComponent(text);
         const response = await fetch(
-            `https://api.mymemory.translated.net/get?q=${encodedText}&langpair=en|${targetLang}`
+            `https://api.mymemory.translated.net/get?q=${encodedText}&langpair=${sourceLang}|${targetLang}`
         );
         
         if (!response.ok) {

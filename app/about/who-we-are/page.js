@@ -13,7 +13,7 @@ export default function WhoWeArePage() {
     const companyName = getCompanyText(companyKey, 'name');
     const companyTagline = getCompanyText(companyKey, 'tagline');
     
-    const intro = t('whoWeAre.intro') || [];
+    const intro = t('whoWeAre.intro', activeBrand) || [];
     
     return (
         <main className="w-full">
@@ -23,7 +23,7 @@ export default function WhoWeArePage() {
                 style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/raster/containers.webp)' }}
             >
                 <div className="mx-auto max-w-6xl px-4 relative z-10">
-                    <h1 className="text-4xl font-bold mb-10 text-center uppercase tracking-wider">{t('whoWeAre.title')}</h1>
+                    <h1 className="text-4xl font-bold mb-10 text-center uppercase tracking-wider">{t('whoWeAre.title', activeBrand)}</h1>
                 </div>
             </section>
 
@@ -44,15 +44,15 @@ export default function WhoWeArePage() {
 
             <section className="grid md:grid-cols-2 gap-10 mb-16">
                 <div>
-                    <h3 className="text-2xl font-bold mb-4 uppercase tracking-wide border-b-2 border-primary w-fit pb-1">{t('whoWeAre.mission.title')}</h3>
+                    <h3 className="text-2xl font-bold mb-4 uppercase tracking-wide border-b-2 border-primary w-fit pb-1">{t('whoWeAre.mission.title', activeBrand)}</h3>
                     <p className="text-gray-600 leading-relaxed text-lg">
-                        {t('whoWeAre.mission.text')}
+                        {t('whoWeAre.mission.text', activeBrand)}
                     </p>
                 </div>
                 <div>
-                    <h3 className="text-2xl font-bold mb-4 uppercase tracking-wide border-b-2 border-primary w-fit pb-1">{t('whoWeAre.vision.title')}</h3>
+                    <h3 className="text-2xl font-bold mb-4 uppercase tracking-wide border-b-2 border-primary w-fit pb-1">{t('whoWeAre.vision.title', activeBrand)}</h3>
                     <p className="text-gray-600 leading-relaxed text-lg">
-                        {t('whoWeAre.vision.text')}
+                        {t('whoWeAre.vision.text', activeBrand)}
                     </p>
                 </div>
             </section>
@@ -63,11 +63,11 @@ export default function WhoWeArePage() {
                     <div className="flex justify-center mb-6">
                         <MapPin className="w-12 h-12 text-yellow-400" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest text-center">{t('whoWeAre.headquarters.title')}</h3>
+                    <h3 className="text-2xl font-bold mb-6 uppercase tracking-widest text-center">{t('whoWeAre.headquarters.title', activeBrand)}</h3>
                     <address className="not-italic text-lg space-y-2 text-gray-300 text-center">
-                        <p>{t('whoWeAre.headquarters.address')}</p>
-                        <p>{t('whoWeAre.headquarters.city')}</p>
-                        <p>{t('whoWeAre.headquarters.country')}</p>
+                        <p>{t('whoWeAre.headquarters.address', activeBrand)}</p>
+                        <p>{t('whoWeAre.headquarters.city', activeBrand)}</p>
+                        <p>{t('whoWeAre.headquarters.country', activeBrand)}</p>
                     </address>
                     <div className="mt-6 text-center">
                         <p className="text-white font-semibold">{getCompanyText(companyKey, 'headquarters.phone')}</p>

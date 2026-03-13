@@ -3,26 +3,27 @@
 import { motion } from "framer-motion"
 import { Warehouse, Truck, Factory } from "lucide-react"
 import MyButton from "My_UI/btn/main"
-import { useLanguage } from "lib/LanguageContext"
+import { useBrand } from "lib/BrandContext"
 
 export default function WhoItsFor() {
     const { t } = useLanguage();
+    const { activeBrand } = useBrand();
 
     const USERS = [
         {
             icon: Warehouse,
-            title: t("whom.users.wholesalers.title"),
-            desc: t("whom.users.wholesalers.desc"),
+            title: t("whom.users.wholesalers.title", activeBrand),
+            desc: t("whom.users.wholesalers.desc", activeBrand),
         },
         {
             icon: Truck,
-            title: t("whom.users.importers.title"),
-            desc: t("whom.users.importers.desc"),
+            title: t("whom.users.importers.title", activeBrand),
+            desc: t("whom.users.importers.desc", activeBrand),
         },
         {
             icon: Factory,
-            title: t("whom.users.manufacturers.title"),
-            desc: t("whom.users.manufacturers.desc"),
+            title: t("whom.users.manufacturers.title", activeBrand),
+            desc: t("whom.users.manufacturers.desc", activeBrand),
         },
     ]
 
@@ -36,13 +37,13 @@ export default function WhoItsFor() {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-3xl w-4/5 tracking-wider font-medium uppercase">
-                            {t("whom.title")}
+                            {t("whom.title", activeBrand)}
                         </h2>
                         <p className="my-4 text-sm w-8/12 text-gray-600 leading-relaxed">
-                            {t("whom.description")}
+                            {t("whom.description", activeBrand)}
                         </p>
                         <MyButton
-                            label={t("whom.btn")}
+                            label={t("whom.btn", activeBrand)}
                             href="/about"
                             className={{
                                 btn: "bg-primary px-5 py-2 h-10 ",

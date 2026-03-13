@@ -18,12 +18,12 @@ export default function MissionPage() {
                 className="bg-cover bg-center bg-no-repeat relative py-24 text-white"
                 style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/raster/containers.webp)' }}
             >
-                <div className="mx-auto max-w-6xl px-4 text-center">
+                <div className="mx-auto max-w-6xl px-4 text-center relative z-10">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-wider">
-                        {t('about.mission.title')}
+                        {t('about.mission.title', activeBrand)}
                     </h1>
                     <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed italic">
-                        {t('about.mission.p1')}
+                        {t('about.mission.p1', activeBrand)}
                     </p>
                 </div>
             </section>
@@ -31,7 +31,7 @@ export default function MissionPage() {
             {/* Mission Statement */}
             <section className="py-20">
                 <div className="mx-auto max-w-4xl px-4">
-                    <div className="bg-gray-50 p-8 md:p-12 rounded-2xl border border-gray-100">
+                    <div className="bg-gray-50 p-8 md:p-12 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden">
                         <div className="flex justify-center mb-8">
                             <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
                                 <Target className="w-10 h-10 text-white" />
@@ -43,7 +43,7 @@ export default function MissionPage() {
                         </h2>
                         
                         <p className="text-lg text-gray-700 leading-relaxed text-center mb-8">
-                            {t('about.mission.p1')}
+                            {t('about.mission.p1', activeBrand)}
                         </p>
 
                         <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -81,8 +81,8 @@ export default function MissionPage() {
                     </h2>
 
                     <div className="grid md:grid-cols-2 gap-8">
-                        {t('about.mission.items') && Array.isArray(t('about.mission.items')) ? t('about.mission.items').map((item, idx) => (
-                            <div key={idx} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4">
+                        {t('about.mission.items', activeBrand) && Array.isArray(t('about.mission.items', activeBrand)) ? t('about.mission.items', activeBrand).map((item, idx) => (
+                            <div key={idx} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                                 <CheckCircle className="w-6 h-6 text-black flex-shrink-0 mt-1" />
                                 <p className="text-gray-700">{item}</p>
                             </div>

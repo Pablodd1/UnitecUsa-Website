@@ -33,6 +33,48 @@ const translations = {
                     quote: "\"At UNITEC USA, quality is not a standard—it's a promise.\"",
                     intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
                     closing: "Quality you can see, feel, and trust over time"
+                },
+                whoWeAre: {
+                    title: "Who We Are",
+                    tagline: "At the reach of what you imagine.",
+                    intro: [
+                        "Bulk shipping is broken when treated like normal e-commerce. Products are not individual units — they are volumes, dimensions, and constraints within a container.",
+                        "We built our platform around a simple belief: containers go first, products go second. This mindset allows businesses to plan realistic shipments, avoid over-booking, and get total visibility of capacity."
+                    ],
+                    mission: {
+                        title: "Our Mission",
+                        text: "At Unitec USA Design, our mission is to redefine modern construction by delivering innovative, sustainable, and high-quality PVC and WPC building materials that elevate everyday spaces."
+                    },
+                    vision: {
+                        title: "Our Vision",
+                        text: "Our vision is to become the leading provider of PVC and WPC construction solutions across North America — transforming how professionals and homeowners approach building and design."
+                    },
+                    headquarters: {
+                        title: "Global Headquarters",
+                        address: "6120 NW 74th Ave",
+                        city: "Doral, Miami, FL 33166",
+                        country: "United States",
+                        phone: "+1 (786) 968-5783"
+                    }
+                },
+                about: {
+                    mission: {
+                        title: "Our Mission",
+                        p1: "At Unitec USA Design, our mission is to redefine modern construction by delivering innovative, sustainable, and high-quality PVC and WPC building materials that elevate everyday spaces.",
+                        p2: "We believe building materials should do more than function — they should inspire creativity, simplify installation, and contribute to a more sustainable built environment.",
+                        items: [
+                            "Innovative, future-ready product development",
+                            "Eco-conscious materials and manufacturing",
+                            "Premium quality without compromise",
+                            "Solutions that empower professionals and homeowners",
+                            "Accessible materials for projects of any scale"
+                        ]
+                    },
+                    vision: {
+                        title: "Our Vision",
+                        p1: "Our vision is to become the leading provider of PVC and WPC construction solutions across North America — transforming how professionals and homeowners approach building and design.",
+                        p2: "We're building toward a future where sustainable construction, design freedom, and maintenance-free living are the standard, not the exception."
+                    }
                 }
             },
             binw: {
@@ -67,6 +109,49 @@ const translations = {
                     quote: "\"At Building Innovation, quality is not a standard—it's a promise.\"",
                     intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
                     closing: "Quality you can see, feel, and trust over time"
+                },
+                whoWeAre: {
+                    title: "Who We Are",
+                    company: "Building Innovation",
+                    tagline: "\"We design the future!\"",
+                    intro: [
+                        "We are an international company dedicated to the development and supply of innovative solutions for construction and architectural design.",
+                        "We stand out by combining quality, technology, and functionality in every product, transforming spaces and enhancing the value of every project.",
+                        "Our philosophy is built on excellence, continuous improvement, and personalized service, strengthening long-term partnerships with our distributors and strategic partners in the Americas and around the world.",
+                        "We believe in innovation as a driving force for growth, and we work every day to anticipate market trends.",
+                        "We are Building Innovation: design, quality, and the future in every detail."
+                    ],
+                    mission: {
+                        title: "Mission",
+                        text: "At BUILDING INNOVATION, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
+                    },
+                    vision: {
+                        title: "Vision",
+                        text: "To become a leading brand in construction innovation in Latin America, recognized for simplifying construction processes, setting trends in design and sustainability, and delivering high-value architectural solutions."
+                    },
+                    headquarters: {
+                        title: "Global Headquarters",
+                        address: "6120 NW 74th Ave",
+                        city: "Doral, Miami, FL 33166",
+                        country: "United States",
+                        phone: "+1 (786) 968-5783"
+                    }
+                },
+                about: {
+                    mission: {
+                        title: "Mission",
+                        p1: "At BUILDING INNOVATION, we simplify the world of construction through innovative, sustainable, and high-design solutions.",
+                        items: [
+                            "Innovative building development",
+                            "Sustainable materials",
+                            "Premium structural quality",
+                            "Global architectural solutions"
+                        ]
+                    },
+                    vision: {
+                        title: "Vision",
+                        p1: "To become a leading brand in construction innovation in Latin America, recognized for simplifying construction processes and setting trends in design."
+                    }
                 }
             }
         },
@@ -754,6 +839,31 @@ const translations = {
                 city: "Doral, Miami, FL 33166",
                 country: "United States",
                 phone: "+1 (786) 968-5783"
+            },
+            bulk: {
+                title: "Built for Volume. Designed for Control.",
+                subtitle: "Traditional carts weren't made for container shipping. We built a system that thinks in volume, not guesswork.",
+                features: {
+                    container: { title: "Container-Centric Commerce", desc: "Products are grouped by containers, not scattered carts. This ensures precise volume planning and shipping efficiency." },
+                    volume: { title: "Volume-Aware Packing", desc: "Every product contributes to container capacity so you always know how full your shipment is before you pay." },
+                    multi: { title: "Multi-Product Optimization", desc: "Mix and match multiple products intelligently within a single container to drive down cost per unit." },
+                    logistics: { title: "Predictable Logistics", desc: "No hidden shipping surprises. What you see in the container is exactly what gets shipped." }
+                }
+            },
+            whom: {
+                title: "Designed for serious bulk buyers",
+                description: "If your business ships products by container — not parcels — this platform gives you the clarity and control traditional ecommerce never could.",
+                btn: "About Us",
+                users: {
+                    wholesalers: { title: "Wholesalers", desc: "Buy in volume, consolidate shipments, and control cost per unit with precision." },
+                    importers: { title: "Importers & exporters", desc: "Plan container loads in advance and eliminate shipping inefficiencies." },
+                    manufacturers: { title: "Manufacturers", desc: "Ship products in bulk directly to partners without fragmented logistics." }
+                }
+            },
+            cta: {
+                title: "Start filling your first container",
+                text: "Explore products, see how they fit inside containers, and ship with complete confidence — before checkout.",
+                btn: "Browse Products"
             }
         },
         quality: {
@@ -816,6 +926,48 @@ const translations = {
                     quote: "\"En UNITEC USA, la calidad no es un estándar—es una promesa.\"",
                     intro: "Cada producto pasa por procesos de control técnico y selección de materiales certificados, asegurando durabilidad, precisión y acabados de alta gama.",
                     closing: "Calidad que puede ver, sentir y confiar a través del tiempo"
+                },
+                whoWeAre: {
+                    title: "Quiénes Somos",
+                    tagline: "Al alcance de lo que imaginas.",
+                    intro: [
+                        "El envío a granel está roto cuando se trata como el comercio electrónico normal. Los productos no son unidades individuales — son volúmenes, dimensiones y restricciones dentro de un contenedor.",
+                        "Construimos nuestra plataforma alrededor de una creencia simple: los contenedores van primero, los productos van segundo. Esta mentalidad permite a las empresas planificar envíos realistas, evitar sobre reservas y obtener total visibilidad de la capacidad."
+                    ],
+                    mission: {
+                        title: "Nuestra Misión",
+                        text: "En Unitec USA Design, nuestra misión es redefinir la construcción moderna entregando materiales de construcción innovadores, sostenibles y de alta calidad de PVC y WPC que elevan los espacios cotidianos."
+                    },
+                    vision: {
+                        title: "Nuestra Visión",
+                        text: "Nuestra visión es convertirnos en el proveedor líder de soluciones de construcción de PVC y WPC en toda América del Norte — transformando cómo profesionales y propietarios abordan la construcción y el diseño."
+                    },
+                    headquarters: {
+                        title: "Sede Global",
+                        address: "6120 NW 74th Ave",
+                        city: "Doral, Miami, FL 33166",
+                        country: "Estados Unidos",
+                        phone: "+1 (786) 968-5783"
+                    }
+                },
+                about: {
+                    mission: {
+                        title: "Nuestra Misión",
+                        p1: "En Unitec USA Design, nuestra misión es redefinir la construcción moderna entregando materiales de construcción innovadores, sostenibles y de alta calidad de PVC y WPC que elevan los espacios cotidianos.",
+                        p2: "Creemos que los materiales de construcción deben hacer más que funcionar — deben inspirar creatividad, simplificar la instalación y contribuir a un entorno construido más sostenible.",
+                        items: [
+                            "Desarrollo de productos innovador y preparado para el futuro",
+                            "Materiales y manufactura eco-conscientes",
+                            "Calidad premium sin compromiso",
+                            "Soluciones que empoderan profesionales y propietarios",
+                            "Materiales accesibles para proyectos de cualquier escala"
+                        ]
+                    },
+                    vision: {
+                        title: "Nuestra Visión",
+                        p1: "Nuestra visión es convertirse en el proveedor líder de soluciones de construcción de PVC y WPC en toda América del Norte — transformando cómo profesionales y propietarios abordan la construcción y el diseño.",
+                        p2: "Estamos construyendo hacia un futuro donde la construcción sostenible, la libertad de diseño y la vida libre de mantenimiento sean el estándar, no la excepción."
+                    }
                 }
             },
             binw: {
@@ -850,6 +1002,49 @@ const translations = {
                     quote: "\"En Building Innovation, la calidad no es un estándar—es una promesa.\"",
                     intro: "Cada producto pasa por procesos de control técnico y selección de materiales certificados, asegurando durabilidad, precisión y acabados de alta gama.",
                     closing: "Calidad que puede ver, sentir y confiar a través del tiempo"
+                },
+                whoWeAre: {
+                    title: "Quiénes Somos",
+                    company: "Building Innovation",
+                    tagline: "\"¡Diseñamos el futuro!\"",
+                    intro: [
+                        "Somos una empresa internacional dedicada al desarrollo y suministro de soluciones innovadoras para construcción y diseño arquitectónico.",
+                        "Nos destacamos por combinar calidad, tecnología y funcionalidad en cada producto, transformando espacios y mejorando el valor de cada proyecto.",
+                        "Nuestra filosofía se construye sobre excelencia, mejora continua y servicio personalizado, fortaleciendo alianzas a largo plazo con nuestros distribuidores y socios estratégicos en las Américas y alrededor del mundo.",
+                        "Creemos en la innovación como fuerza motriz del crecimiento, y trabajamos todos los días para anticipar las tendencias del mercado.",
+                        "Somos Building Innovation: diseño, calidad y el futuro en cada detalle."
+                    ],
+                    mission: {
+                        title: "Misión",
+                        text: "En BUILDING INNOVATION, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño, ofreciendo un portafolio integral de materiales arquitectónicos que crean valor, fomentan alianzas estratégicas y mejoran la experiencia de construcción y calidad de vida."
+                    },
+                    vision: {
+                        title: "Visión",
+                        text: "Convertirnos en una marca líder en innovación de construcción en América Latina, reconocida por simplificar procesos de construcción, marcar tendencias en diseño y sostenibilidad, y entregar soluciones arquitectónicas de alto valor."
+                    },
+                    headquarters: {
+                        title: "Sede Global",
+                        address: "6120 NW 74th Ave",
+                        city: "Doral, Miami, FL 33166",
+                        country: "Estados Unidos",
+                        phone: "+1 (786) 968-5783"
+                    }
+                },
+                about: {
+                    mission: {
+                        title: "Misión",
+                        p1: "En BUILDING INNOVATION, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño.",
+                        items: [
+                            "Desarrollo innovador de construcción",
+                            "Materiales sostenibles",
+                            "Calidad estructural premium",
+                            "Soluciones arquitectónicas globales"
+                        ]
+                    },
+                    vision: {
+                        title: "Visión",
+                        p1: "Convertirnos en una marca líder en innovación de construcción en América Latina, reconocida por simplificar procesos de construcción y marcar tendencias en diseño."
+                    }
                 }
             }
         },
@@ -1296,6 +1491,31 @@ const translations = {
                 city: "Doral, Miami, FL 33166",
                 country: "Estados Unidos",
                 phone: "+1 (786) 968-5783"
+            },
+            bulk: {
+                title: "Construido para Volumen. Diseñado para el Control.",
+                subtitle: "Los carritos tradicionales no fueron hechos para el envío de contenedores. Construimos un sistema que piensa en volumen, no en conjeturas.",
+                features: {
+                    container: { title: "Comercio Centrado en Contenedores", desc: "Los productos se agrupan por contenedores, no en carritos dispersos. Esto garantiza una planificación de volumen precisa y eficiencia en el envío." },
+                    volume: { title: "Embalaje Consciente del Volumen", desc: "Cada producto contribuye a la capacidad del contenedor, así siempre sabrá qué tan lleno está su envío antes de pagar." },
+                    multi: { title: "Optimización Multiproducto", desc: "Combine múltiples productos de manera inteligente dentro de un solo contenedor para reducir el costo por unidad." },
+                    logistics: { title: "Logística Predecible", desc: "Sin sorpresas de envío ocultas. Lo que ve en el contenedor es exactamente lo que se envía." }
+                }
+            },
+            whom: {
+                title: "Diseñado para compradores mayoristas serios",
+                description: "Si su negocio envía productos por contenedor, no por paquetes, esta plataforma le brinda la claridad y el control que el comercio electrónico tradicional nunca podría ofrecer.",
+                btn: "Sobre Nosotros",
+                users: {
+                    wholesalers: { title: "Mayoristas", desc: "Compre en volumen, consolide envíos y controle el costo por unidad con precisión." },
+                    importers: { title: "Importadores y Exportadores", desc: "Planifique cargas de contenedores con anticipación y elimine ineficiencias de envío." },
+                    manufacturers: { title: "Fabricantes", desc: "Envíe productos a granel directamente a socios sin logística fragmentada." }
+                }
+            },
+            cta: {
+                title: "Comience a llenar su primer contenedor",
+                text: "Explore productos, vea cómo caben en los contenedores y envíe con total confianza, antes de finalizar la compra.",
+                btn: "Explorar Productos"
             }
         },
         quality: {

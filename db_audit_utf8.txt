@@ -1,0 +1,66 @@
+﻿Found Categories and Subcategories in DB:
+
+CATEGORY: CIELO RASO PVC (9 products)
+  - Subcategory: CIELO RASO PVC (9 products) collections: [INTERIOR]
+
+CATEGORY: CINTAS (6 products)
+  - Subcategory: CINTA ADHESIVA DE PAPEL (2 products) collections: [INTERIOR]
+  - Subcategory: CINTA ADHESIVA METALICA (4 products) collections: [INTERIOR]
+
+CATEGORY: CUBIERTAS UPVC (12 products)
+  - Subcategory: CUBIERTA ACANALADA UPVC BLANCA 11.80 (1 products) collections: [EXTERIOR]
+  - Subcategory: CUBIERTA ONDULADA ROMA (1 products) collections: [EXTERIOR]
+  - Subcategory: CUBIERTA TERMOACUSTICA UPVC 2.0mm BLANCA ONDA BAJA (1 products) collections: [EXTERIOR]
+  - Subcategory: CUBIERTA TERMOACUSTICA UPVC 2.5mm BLANCA ONDA ALTA (1 products) collections: [EXTERIOR]
+  - Subcategory: CUBIERTA TRASLUCIDA ONDA ALTA OPAL (1 products) collections: [EXTERIOR]
+  - Subcategory: LAMINA ALVEOLAR POLICARBONATO (3 products) collections: [EXTERIOR]
+  - Subcategory: TEJA PVC TERRACOTA COLONIAL (1 products) collections: [EXTERIOR]
+  - Subcategory: TEJA UPVC TIPO ZINC (3 products) collections: [EXTERIOR]
+
+CATEGORY: ILUMINACION (5 products)
+  - Subcategory: ILUMINACION (5 products) collections: [INTERIOR]
+
+CATEGORY: JARDINES ARTIFICIALES (9 products)
+  - Subcategory: JARDINES EXTERIOR (4 products) collections: [EXTERIOR]
+  - Subcategory: JARDINES INTERIOR (3 products) collections: [INTERIOR]
+  - Subcategory: JARDINES MOSS (2 products) collections: [INTERIOR]
+
+CATEGORY: LAMINAS (76 products)
+  - Subcategory: FOAM BOARD (31 products) collections: [INTERIOR]
+  - Subcategory: LAMINAS MARMOL PVC (30 products) collections: [INTERIOR]
+  - Subcategory: LAMINAS PVC BOARD (13 products) collections: [INTERIOR]
+  - Subcategory: LAMINAS SINTETICAS (2 products) collections: [INTERIOR]
+
+CATEGORY: LISTONES (10 products)
+  - Subcategory: LISTONES PVC CIELO RASO (3 products) collections: [INTERIOR]
+  - Subcategory: LISTONES PVC INTERIOR ESTRUCTURAL (3 products) collections: [INTERIOR]
+  - Subcategory: LISTONES WPC EXTERIOR (4 products) collections: [EXTERIOR]
+
+CATEGORY: PANELES WPC Y ANGULOS (60 products)
+  - Subcategory: PANELES WPC EXTERIOR (8 products) collections: [EXTERIOR]
+  - Subcategory: PANELES WPC INTERIOR (40 products) collections: [INTERIOR]
+  - Subcategory: PANELES WPC REDONDOS (12 products) collections: [INTERIOR]
+
+CATEGORY: PAREDES (125 products)
+  - Subcategory: FACHADA DECK (6 products) collections: [EXTERIOR]
+  - Subcategory: FACHADA EXTERIOR PVC (6 products) collections: [EXTERIOR]
+  - Subcategory: PANEL PS (18 products) collections: [INTERIOR]
+  - Subcategory: PANELES ACOLCHADOS (8 products) collections: [INTERIOR]
+  - Subcategory: PANELES ACRILICOS MARMOL (10 products) collections: [INTERIOR]
+  - Subcategory: PANELES ACUSTICOS (24 products) collections: [INTERIOR]
+  - Subcategory: PAREDES ACOLCHADAS (13 products) collections: [INTERIOR]
+  - Subcategory: PAREDES MUROFLEX (8 products) collections: [INTERIOR]
+  - Subcategory: PAREDES PU ARQUNITEC (10 products) collections: [INTERIOR]
+  - Subcategory: PAREDES UNIFLEX (8 products) collections: [INTERIOR]
+  - Subcategory: POLIFACHADA (10 products) collections: [EXTERIOR]
+  - Subcategory: ROLLOS ADHESIVOS DE MARMOL (4 products) collections: [INTERIOR]
+
+CATEGORY: PEGANTES (2 products)
+  - Subcategory: PEGANTES (2 products) collections: [INTERIOR]
+
+CATEGORY: PISOS (16 products)
+  - Subcategory: PISOS DECK (8 products) collections: [EXTERIOR]
+  - Subcategory: PISOS SPC (8 products) collections: [INTERIOR]
+
+CATEGORY: ZOCALOS (8 products)
+  - Subcategory: ZOCALOS SPC (8 products) collections: [INTERIOR]

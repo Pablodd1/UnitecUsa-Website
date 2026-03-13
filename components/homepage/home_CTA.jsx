@@ -4,10 +4,11 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import MyButton from "My_UI/btn/main"
-import { useLanguage } from "lib/LanguageContext"
+import { useBrand } from "lib/BrandContext"
 
 export default function HomeCTA() {
     const { t } = useLanguage();
+    const { activeBrand } = useBrand();
 
     return (
         <section className="py-24 bg-black text-white">
@@ -18,11 +19,11 @@ export default function HomeCTA() {
                 className="max-w-4xl mx-auto px-4 text-center"
             >
                 <h2 className="text-3xl font-bold">
-                    {t("cta.title")}
+                    {t("cta.title", activeBrand)}
                 </h2>
 
                 <p className="mt-4 text-sm text-gray-300 leading-relaxed">
-                    {t("cta.text")}
+                    {t("cta.text", activeBrand)}
                 </p>
 
                 <motion.div
@@ -35,7 +36,7 @@ export default function HomeCTA() {
                     className="mt-8 flex justify-center"
                 >
                     <MyButton
-                        label={t("cta.btn")}
+                        label={t("cta.btn", activeBrand)}
                         href="/collections"
                         className={{
                             btn: "bg-secondary px-5 py-2 h-10 hover:bg-primary transition-all duration-300",

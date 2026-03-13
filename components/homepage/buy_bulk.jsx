@@ -3,31 +3,32 @@
 import { motion } from "framer-motion"
 import { Boxes, Ruler, Layers3, ShieldCheck } from "lucide-react"
 import Stylish_H2 from "My_UI/stylish_h2"
-import { useLanguage } from "lib/LanguageContext"
+import { useBrand } from "lib/BrandContext"
 
 export default function BuiltForBulk() {
     const { t } = useLanguage();
+    const { activeBrand } = useBrand();
 
     const FEATURES = [
         {
             icon: Boxes,
-            title: t("bulk.features.container.title"),
-            desc: t("bulk.features.container.desc"),
+            title: t("bulk.features.container.title", activeBrand),
+            desc: t("bulk.features.container.desc", activeBrand),
         },
         {
             icon: Ruler,
-            title: t("bulk.features.volume.title"),
-            desc: t("bulk.features.volume.desc"),
+            title: t("bulk.features.volume.title", activeBrand),
+            desc: t("bulk.features.volume.desc", activeBrand),
         },
         {
             icon: Layers3,
-            title: t("bulk.features.multi.title"),
-            desc: t("bulk.features.multi.desc"),
+            title: t("bulk.features.multi.title", activeBrand),
+            desc: t("bulk.features.multi.desc", activeBrand),
         },
         {
             icon: ShieldCheck,
-            title: t("bulk.features.logistics.title"),
-            desc: t("bulk.features.logistics.desc"),
+            title: t("bulk.features.logistics.title", activeBrand),
+            desc: t("bulk.features.logistics.desc", activeBrand),
         },
     ]
 
@@ -40,9 +41,9 @@ export default function BuiltForBulk() {
                     viewport={{ once: true }}
                     className=""
                 >
-                    <Stylish_H2 h2={t("bulk.title")} />
+                    <Stylish_H2 h2={t("bulk.title", activeBrand)} />
                     <p className="mt-4 text-gray-600 text-sm">
-                        {t("bulk.subtitle")}
+                        {t("bulk.subtitle", activeBrand)}
                     </p>
                 </motion.div>
 
