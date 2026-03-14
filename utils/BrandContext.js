@@ -10,7 +10,7 @@ export const BRAND_CONFIG = {
         name: "Building Innovation",
         logoText: "BINW",
         logoImage: "/logo.png",
-        favicon: "/favicons/favicon.ico",
+        favicon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23726e68'/><text x='32' y='40' text-anchor='middle' font-family='Arial' font-size='18' fill='white' font-weight='bold'>BINW</text></svg>",
         metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
         colors: {
             primary: '#9EBECB',
@@ -25,7 +25,7 @@ export const BRAND_CONFIG = {
         name: "UNITEC USA Design",
         logoText: "UNITEC",
         logoImage: "/unitec-logo.png",
-        favicon: "/favicons/unitec-favicon.png",
+        favicon: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231B3A4B'/><text x='32' y='38' text-anchor='middle' font-family='Arial' font-size='14' fill='white' font-weight='bold'>UNITEC</text></svg>",
         metaTitle: "UNITEC USA Design | Premium Building Solutions",
         colors: {
             primary: '#1B3A4B',
