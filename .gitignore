@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Downloaded catalogs and technical sheets
+downloads/
+*.pdf
