@@ -184,7 +184,10 @@ const MegaMenu = () => {
                 <div className="flex divide-x divide-gray-100 h-full min-h-[320px]">
                     {/* Interior Section */}
                     <div className="flex-1 p-5 bg-white hover:bg-gray-50/30 transition-colors">
-                        <div className="flex items-center gap-3 mb-5">
+                        <Link
+                            href="/collections/interior?collection=INTERIOR"
+                            className="flex items-center gap-3 mb-5"
+                        >
                             <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shadow-sm">
                                 <Home className="w-5 h-5 text-blue-600" />
                             </div>
@@ -192,7 +195,7 @@ const MegaMenu = () => {
                                 <h3 className="text-lg font-black text-gray-900 uppercase tracking-tighter leading-none">{t('nav.interiors')}</h3>
                                 <span className="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{language === 'es' ? 'Soluciones Internas' : 'Indoor Solutions'}</span>
                             </div>
-                        </div>
+                        </Link>
 
                         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                                  {Object.entries(productCategories.Interior).map(([category, data]) => {
@@ -240,7 +243,10 @@ const MegaMenu = () => {
 
                     {/* Exterior Section */}
                     <div className="flex-1 p-5 bg-gray-50/20 hover:bg-white transition-colors">
-                        <div className="flex items-center gap-3 mb-5">
+                        <Link
+                            href="/collections/exterior?collection=EXTERIOR"
+                            className="flex items-center gap-3 mb-5"
+                        >
                             <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center shadow-sm">
                                 <Building2 className="w-5 h-5 text-emerald-600" />
                             </div>
@@ -248,7 +254,7 @@ const MegaMenu = () => {
                                 <h3 className="text-lg font-black text-gray-900 uppercase tracking-tighter leading-none">{t('nav.exteriors')}</h3>
                                 <span className="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{language === 'es' ? 'Resistencia Climática' : 'Climate Resistant'}</span>
                             </div>
-                        </div>
+                        </Link>
 
                         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                                  {Object.entries(productCategories.Exterior).map(([category, data]) => {
