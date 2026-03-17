@@ -40,114 +40,168 @@ export default function Container3DView({
       style={{
         width: displayLength,
         height: displayHeight + 20,
-        perspective: "1000px"
+        perspective: "1200px"
       }}
       whileHover={isInteractive ? { scale: 1.02 } : {}}
       whileTap={isInteractive ? { scale: 0.98 } : {}}
       onClick={isInteractive ? onSelect : undefined}
     >
-      {/* Container Box - 3D Effect */}
+      {/* Container Box - Hyperrealistic 3D Effect */}
       <div
         className="absolute inset-0"
         style={{
           transformStyle: "preserve-3d",
-          transform: "rotateX(-20deg) rotateY(-10deg)"
+          transform: "rotateX(-15deg) rotateY(-25deg)",
+          boxShadow: "20px 30px 40px rgba(0,0,0,0.3)"
         }}
       >
         {/* Top Face */}
         <motion.div
-          className="absolute bg-gradient-to-b from-gray-300 to-gray-400 border-2 border-gray-500"
+          className="absolute border-2 border-gray-600"
           style={{
             width: displayLength,
             height: displayWidth,
             transform: `translateZ(${displayHeight / 2}px)`,
             transformOrigin: "center",
             left: 0,
-            top: displayHeight / 4
+            top: displayHeight / 4,
+            background: `
+              linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.2)),
+              repeating-linear-gradient(90deg, #5b6970 0px, #5b6970 10px, #4a575e 10px, #4a575e 20px)
+            `,
+            boxShadow: "inset 0 0 20px rgba(0,0,0,0.5)"
           }}
         />
 
-        {/* Front Face (with door detail) */}
+        {/* Front Face (Open Door showing inside) */}
         <motion.div
-          className="absolute bg-gradient-to-b from-green-700 to-green-800 border-2 border-gray-600"
+          className="absolute border-2 border-gray-700 bg-gray-900"
           style={{
             width: displayLength,
             height: displayHeight,
             transform: `rotateX(-90deg) translateZ(${displayWidth / 2}px)`,
-            transformOrigin: "center bottom"
+            transformOrigin: "center bottom",
+            boxShadow: "inset 0px 10px 30px 10px rgba(0,0,0,0.9)"
           }}
         >
-          {/* Door Lines */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-3/4 h-2 bg-gray-600 opacity-50" />
+          {/* Items inside container */}
+          {items.length > 0 && (
+            <div
+              className="absolute bottom-0 left-0"
+              style={{
+                width: displayLength * 0.95,
+                height: displayHeight * (fillPercent / 100),
+                display: "flex",
+                flexWrap: "wrap-reverse",
+                alignContent: "flex-start",
+                gap: "2px",
+                padding: "4px",
+                overflow: "hidden"
+              }}
+            >
+              {items.slice(0, 40).map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="rounded-sm shadow-md border border-white/20"
+                  style={{
+                    backgroundColor: item.color || "#60A5FA",
+                    width: `${20 + Math.random() * 20}px`,
+                    height: `${20 + Math.random() * 30}px`,
+                    boxShadow: "inset -2px -2px 5px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.5)"
+                  }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.02 }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Left Door open */}
+          <div
+            className="absolute top-0 left-0 h-full border-r-2 border-gray-800"
+            style={{
+              width: "50%",
+              transformOrigin: "left",
+              transform: "rotateY(-110deg)",
+              background: `
+                linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.1)),
+                repeating-linear-gradient(0deg, #1e3a8a 0px, #1e3a8a 15px, #1d4ed8 15px, #1d4ed8 30px)
+              `,
+              boxShadow: "inset 2px 0 10px rgba(0,0,0,0.5)"
+            }}
+          >
+             <div className="absolute right-2 top-1/4 w-1 h-1/2 bg-gray-400 rounded-sm shadow-sm" />
           </div>
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-yellow-400 opacity-30" />
+
+          {/* Right Door open */}
+          <div
+            className="absolute top-0 right-0 h-full border-l-2 border-gray-800"
+            style={{
+              width: "50%",
+              transformOrigin: "right",
+              transform: "rotateY(110deg)",
+              background: `
+                linear-gradient(to left, rgba(0,0,0,0.6), rgba(255,255,255,0.1)),
+                repeating-linear-gradient(0deg, #1e3a8a 0px, #1e3a8a 15px, #1d4ed8 15px, #1d4ed8 30px)
+              `,
+              boxShadow: "inset -2px 0 10px rgba(0,0,0,0.5)"
+            }}
+          >
+             <div className="absolute left-2 top-1/4 w-1 h-1/2 bg-gray-400 rounded-sm shadow-sm" />
+             <div className="absolute left-4 top-1/3 w-8 h-12 bg-yellow-500/80 rounded flex items-center justify-center text-[6px] font-bold">INFO</div>
+          </div>
         </motion.div>
 
-        {/* Right Face */}
+        {/* Right Face (Side of container) */}
         <motion.div
-          className="absolute bg-gradient-to-r from-green-600 to-green-700 border-2 border-gray-600"
+          className="absolute border-2 border-gray-600"
           style={{
             width: displayWidth,
             height: displayHeight,
             transform: `rotateY(90deg) translateZ(${displayLength / 2}px)`,
-            transformOrigin: "center right"
+            transformOrigin: "center right",
+            background: `
+              linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.4)),
+              repeating-linear-gradient(90deg, #1e3a8a 0px, #1e3a8a 20px, #1d4ed8 20px, #1d4ed8 40px)
+            `,
+            boxShadow: "inset 0 0 30px rgba(0,0,0,0.8)"
           }}
-        />
-
-        {/* Items inside container */}
-        {items.length > 0 && (
-          <div
-            className="absolute"
-            style={{
-              width: displayLength * 0.8,
-              height: displayHeight * 0.6,
-              transform: `translateZ(${displayHeight / 3}px) translateX(${displayLength * 0.1}px) translateY(${displayHeight * 0.1}px)`,
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(30px, 1fr))",
-              gap: "2px",
-              padding: "4px"
-            }}
-          >
-            {items.slice(0, 20).map((item, index) => (
-              <motion.div
-                key={index}
-                className="rounded-sm"
-                style={{
-                  backgroundColor: item.color || "#60A5FA",
-                  height: `${15 + Math.random() * 15}px`
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.9, scale: 1 }}
-                transition={{ delay: index * 0.05 }}
-              />
-            ))}
-          </div>
-        )}
+        >
+           {/* Container Decals */}
+           <div className="absolute top-4 right-4 text-white/70 font-mono text-xs tracking-widest rotate-90 origin-top-right">
+              {size.includes('40') ? '45G1' : '22G1'}
+           </div>
+           <div className="absolute top-4 left-4 w-16 h-4 bg-white/80 rounded-sm flex items-center justify-center text-[8px] font-bold text-blue-900">
+              B.I. LOGISTICS
+           </div>
+        </motion.div>
       </div>
 
       {/* Fill Level Indicator */}
       <div
-        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-full"
+        className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-full"
       >
-        <div className="flex items-center gap-2">
-          <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm p-2 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex-1 h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
             <motion.div
-              className="h-full rounded-full"
+              className="h-full rounded-full relative"
               style={{ backgroundColor: fillColor, width: `${Math.min(fillPercent, 100)}%` }}
               initial={{ width: 0 }}
               animate={{ width: `${Math.min(fillPercent, 100)}%` }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            />
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="absolute inset-0 bg-white/20 w-full" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)' }} />
+            </motion.div>
           </div>
-          <span className="text-xs font-medium text-gray-600 min-w-[40px] text-right">
+          <span className="text-sm font-bold text-gray-700 min-w-[45px] text-right">
             {fillPercent.toFixed(0)}%
           </span>
         </div>
       </div>
 
       {/* Size Label */}
-      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-gray-700">
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
         {size} ({width}m × {length}m × {height}m)
       </div>
     </motion.div>

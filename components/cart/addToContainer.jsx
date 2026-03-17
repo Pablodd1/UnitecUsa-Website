@@ -1,6 +1,8 @@
 'use client'
 import { motion } from "framer-motion";
-import { addOne } from "lib/cart/cart.actions";
+import { addProduct } from "lib/cart/cart.actions";
+import { getCart } from "lib/cart/cart.core";
+import { openCart } from "lib/cart/cart.ui";
 import { Loader, Plus } from "lucide-react";
 import { Suspense, useState } from "react";
 import ContainerSelectionModal from "My_UI/product/ContainerSelectionModal";
@@ -16,21 +18,37 @@ export default function AddToContainer({ item, isProductPage = false, callback }
         addToContainer: isSpanish ? "Añadir a Contenedor" : "Add to Container"
     }
 
-    const toggleModal = (e) => {
+    const handleAdd = (e) => {
         if (e) {
             e.preventDefault();
             e.stopPropagation();
         }
-        setShowModal(prev => {
-            const next = !prev;
-            return next;
-        });
+        
+        const currentCart = getCart();
+        
+        if (currentCart && currentCart.length > 0) {
+            // Container exists, add to the last active container
+            const targetContainer = currentCart[currentCart.length - 1];
+            addProduct(targetContainer.id, {
+                id: item.id || item.ID,
+                name: item.name || item.Name,
+                price: item.price || item.basePrice,
+                image: item.image,
+                dimensions: item.dimensions
+            });
+            // Open cart to show the filling process
+            openCart();
+            if (callback) callback();
+        } else {
+            // No container, ask for one time
+            setShowModal(true);
+        }
     }
     
     return (
         <>
             <motion.button
-                onClick={toggleModal}
+                onClick={handleAdd}
                 aria-label={t.addToContainer}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -45,7 +63,13 @@ export default function AddToContainer({ item, isProductPage = false, callback }
             </motion.button>
             <ContainerSelectionModal 
                 isOpen={showModal}
-                onClose={() => setShowModal(false)}
+                onClose={() => {
+                    setShowModal(false);
+                    // Optionally open cart after adding from modal
+                    if (getCart().length > 0) {
+                        setTimeout(() => openCart(), 300);
+                    }
+                }}
                 product={item}
             />
         </>
