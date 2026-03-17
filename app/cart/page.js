@@ -1,13 +1,27 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Trash2, Plus, Minus, Printer, ShoppingCart, ArrowRight, Package } from "lucide-react"
 import { useLanguage } from "lib/LanguageContext"
 import { getCart, removeContainer, removeOne, addOne, setQty } from "utils/cart/cart.core"
 import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
+import Container3DView from "components/cart/Container3DView"
+
+// Helper function to get color based on item category
+const getContainerItemColor = (category) => {
+    const colors = {
+        'PAREDES': '#3B82F6',      // Blue
+        'LAMINAS': '#8B5CF6',      // Purple
+        'PISOS': '#10B981',        // Green
+        'CUBIERTAS UPVC': '#F59E0B', // Amber
+        'PANELES WPC Y ANGULOS': '#EF4444', // Red
+        'default': '#60A5FA'
+    }
+    return colors[category] || colors.default
+}
 
 export default function CartPage() {
     const { t } = useLanguage()
@@ -146,47 +160,62 @@ export default function CartPage() {
                                     className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
                                 >
                                     {/* Container Header */}
-                                        <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                                            <div className="flex items-center gap-3">
-                                                <Package className="w-5 h-5 text-gray-600" />
-                                                <div>
-                                                    <h3 className="font-semibold text-gray-900">{container.name}</h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        {container.dimension?.length || 20}ft Container
-                                                    </p>
-                                                </div>
+                                    <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                                        <div className="flex items-center gap-3">
+                                            <Package className="w-5 h-5 text-gray-600" />
+                                            <div>
+                                                <h3 className="font-semibold text-gray-900">{container.name}</h3>
+                                                <p className="text-sm text-gray-500">
+                                                    {container.dimension?.length || 20}ft Container
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            {/* Container Fill Progress */}
-                                            <div className="flex-1 w-full md:max-w-xs md:mx-auto">
-                                                {(() => {
-                                                    const { filledTotal } = containerFillPercent(container);
-                                                    return (
-                                                        <div className="flex flex-col gap-1 w-full">
-                                                            <div className="flex justify-between text-xs font-semibold">
-                                                                <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-600"}>
-                                                                    {filledTotal >= 99 ? t('cart.containerFull') : t('cart.containerFilling')}
-                                                                </span>
-                                                                <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-900"}>{filledTotal.toFixed(1)}%</span>
-                                                            </div>
-                                                            <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                                                                <div 
-                                                                    className={`h-2 rounded-full transition-all duration-300 ${filledTotal >= 99 ? "bg-green-500" : "bg-blue-600"}`} 
-                                                                    style={{ width: `${filledTotal}%` }}
-                                                                ></div>
-                                                            </div>
+                                        {/* Container Fill Progress */}
+                                        <div className="flex-1 w-full md:max-w-xs md:mx-auto">
+                                            {(() => {
+                                                const { filledTotal } = containerFillPercent(container);
+                                                return (
+                                                    <div className="flex flex-col gap-1 w-full">
+                                                        <div className="flex justify-between text-xs font-semibold">
+                                                            <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-600"}>
+                                                                {filledTotal >= 99 ? t('cart.containerFull') : t('cart.containerFilling')}
+                                                            </span>
+                                                            <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-900"}>{filledTotal.toFixed(1)}%</span>
                                                         </div>
-                                                    )
-                                                })()}
-                                            </div>
+                                                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                                                            <div 
+                                                                className={`h-2 rounded-full transition-all duration-300 ${filledTotal >= 99 ? "bg-green-500" : "bg-blue-600"}`} 
+                                                                style={{ width: `${filledTotal}%` }}
+                                                            ></div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })()}
+                                        </div>
 
-                                            <button
-                                            onClick={() => handleRemoveContainer(container.id)}
-                                            className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                            aria-label={t('cart.removeContainer')}
-                                        >
-                                            <Trash2 size={20} />
-                                        </button>
+                                        <button
+                                        onClick={() => handleRemoveContainer(container.id)}
+                                        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                        aria-label={t('cart.removeContainer')}
+                                    >
+                                        <Trash2 size={20} />
+                                    </button>
+                                    </div>
+
+                                    {/* 3D Container Visualization */}
+                                    <div className="px-6 py-8 bg-gradient-to-b from-gray-100 to-white flex items-center justify-center overflow-hidden">
+                                        <Container3DView
+                                            size={container.name}
+                                            width={container.dimension?.width || 2.35}
+                                            height={container.dimension?.height || 2.39}
+                                            length={container.dimension?.length || 20}
+                                            items={container.items.map(item => ({
+                                                color: getContainerItemColor(item.category)
+                                            }))}
+                                            fillPercent={containerFillPercent(container).filledTotal}
+                                            scale={0.9}
+                                        />
                                     </div>
 
                                     {/* Container Items */}

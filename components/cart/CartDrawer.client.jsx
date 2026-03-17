@@ -7,6 +7,7 @@ import { subscribeCart } from "lib/cart/cart.events"
 import { getCart } from "lib/cart/cart.core"
 import { totalQty } from "lib/cart/cart.selectors"
 import RenderItemsList from "./renderItems"
+import MiniContainerView from "./MiniContainerView"
 import { useLanguage } from "lib/LanguageContext"
 import Link from "next/link"
 
@@ -80,19 +81,28 @@ export default function CartDrawer() {
             </div>
 
             {/* Body */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-6">
-              {containers.length ? (
-                containers.map(container => (
-                  <RenderItemsList
-                    key={container.id}
-                    container={container}
-                  />
-                ))
-              ) : (
-                <p className="text-sm text-gray-500 text-center py-10">
-                  {t.empty}
-                </p>
-              )}
+            <div className="flex-1 overflow-y-auto p-4">
+                <div className="space-y-4">
+                    {containers.length ? (
+                        containers.map(container => (
+                            <MiniContainerView
+                                key={container.id}
+                                container={container}
+                            />
+                        ))
+                    ) : (
+                        <p className="text-sm text-gray-500 text-center py-10">
+                            {t.empty}
+                        </p>
+                    )}
+                </div>
+                {containers.length > 0 && (
+                    <div className="mt-6 pt-4 border-t border-gray-100">
+                        <Link href="/cart" onClick={closeCart} className="w-full text-center py-2 px-4 bg-black text-white rounded-md text-sm font-medium">
+                            View Full Cart Details
+                        </Link>
+                    </div>
+                )}
             </div>
 
             {/* Footer */}
