@@ -51,7 +51,7 @@ export default async function Collections({ searchParams }) {
             productURL="/API/collections?"
             prefilters={{
                 collection: "Interior",
-                subcategories: [],
+                ...(sp.subcategories ? { subcategories: [sp.subcategories] } : {}),
                 thicknessRange: [],
                 widthRange: [],
                 lengthRange: [],
