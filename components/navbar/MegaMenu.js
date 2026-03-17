@@ -195,59 +195,38 @@ const MegaMenu = () => {
                         </div>
 
                         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                            {Object.entries(productCategories.Interior).map(([category, data]) => {
-                                const getCatKey = (name) => {
-                                    if (name === "CIELO RASO PVC") return "cielorasopvc";
-                                    if (name === "ILUMINACIÓN") return "iluminacion";
-                                    if (name === "JARDINES ARTIFICIALES") return "jardinesArtificiales";
-                                    if (name === "LÁMINAS") return "laminas";
-                                    if (name === "PANELES WPC") return "panelesWpc";
-                                    if (name === "PAREDES") return "paredes";
-                                    if (name === "CINTAS") return "cintas";
-                                    if (name === "PEGANTES") return "pegantes";
-                                    if (name === "PISOS") return "pisos";
-                                    if (name === "ZÓCALOS") return "zocalos";
-                                    return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
-                                };
-                                const tKey = `nav.${getCatKey(category)}`;
+                                 {Object.entries(productCategories.Interior).map(([category, data]) => {
+                                 const getCatKey = (name) => {
+                                     if (name === "CIELO RASO PVC") return "cielorasopvc";
+                                     if (name === "ILUMINACIÓN") return "iluminacion";
+                                     if (name === "JARDINES ARTIFICIALES") return "jardinesArtificiales";
+                                     if (name === "LÁMINAS") return "laminas";
+                                     if (name === "PANELES WPC") return "panelesWpc";
+                                     if (name === "PAREDES") return "paredes";
+                                     if (name === "CINTAS") return "cintas";
+                                     if (name === "PEGANTES") return "pegantes";
+                                     if (name === "PISOS") return "pisos";
+                                     if (name === "ZÓCALOS") return "zocalos";
+                                     return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
+                                 };
+                                 const tKey = `nav.${getCatKey(category)}`;
 
-                                // Determine DB tags for link
-                                const catParam = data.dbCategory || category;
-                                const subParam = data.dbSubcategory || null;
-                                const href = subParam 
-                                    ? `${data.page}?category=${catParam}&subcategory=${subParam}&collection=${data.collection}`
-                                    : `${data.page}?category=${catParam}&collection=${data.collection}`;
+                                 // Determine DB tags for link
+                                 const catParam = data.dbCategory || category;
+                                 const href = `${data.page}?category=${catParam}&collection=${data.collection}`;
 
-                                return (
-                                    <div key={category} className="group/item">
-                                        <Link
-                                            href={href}
-                                            className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[9px] uppercase tracking-widest transition-all"
-                                        >
-                                            <data.icon className="w-3.5 h-3.5" />
-                                            {t(tKey) !== tKey ? t(tKey) : category}
-                                        </Link>
-                                        <div className="flex flex-wrap gap-x-3 gap-y-1 ml-0.5 border-l border-gray-100 pl-3 py-0.5">
-                                            {data.subcategories.map(sub => {
-                                                const getSubKey = (name) => {
-                                                    return name.toLowerCase().replace(/ /g, '').replace(/\./g, '').replace(/-/g, '');
-                                                };
-                                                const tSubKey = `nav.${getSubKey(sub)}`;
-
-                                                return (
-                                                    <Link
-                                                        key={sub}
-                                                        href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
-                                                        className="text-gray-400 hover:text-gray-900 text-[8px] font-bold uppercase transition-all whitespace-nowrap hover:scale-105"
-                                                    >
-                                                        {t(tSubKey) !== tSubKey ? t(tSubKey) : sub}
-                                                    </Link>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                                 return (
+                                     <div key={category} className="group/item">
+                                         <Link
+                                             href={href}
+                                             className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[12px] uppercase tracking-widest transition-all"
+                                         >
+                                             <data.icon className="w-4 h-4" />
+                                             {t(tKey) !== tKey ? t(tKey) : category}
+                                         </Link>
+                                     </div>
+                                 );
+                             })}
                         </div>
 
                         <Link
@@ -272,58 +251,37 @@ const MegaMenu = () => {
                         </div>
 
                         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                            {Object.entries(productCategories.Exterior).map(([category, data]) => {
-                                const getCatKey = (name) => {
-                                    if (name === "CUBIERTAS") return "cubiertas";
-                                    if (name === "JARDINES EXTERIORES") return "jardinesArtificiales";
-                                    if (name === "PISOS DECK") return "pisosdeck";
-                                    if (name === "FACHADA DECK") return "fachadadeck";
-                                    if (name === "FACHADA EXTERIOR PVC") return "fachadaexteriorpvc";
-                                    if (name === "LISTONES WPC") return "listoneswpcexterior";
-                                    if (name === "PANELES WPC") return "panelesWpcExterior";
-                                    if (name === "PAREDES UNIFLEX") return "paredesUniflex";
-                                    if (name === "POLIFACHADA") return "polifachada";
-                                    return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
-                                };
-                                const tKey = `nav.${getCatKey(category)}`;
+                                 {Object.entries(productCategories.Exterior).map(([category, data]) => {
+                                 const getCatKey = (name) => {
+                                     if (name === "CUBIERTAS") return "cubiertas";
+                                     if (name === "JARDINES EXTERIORES") return "jardinesArtificiales";
+                                     if (name === "PISOS DECK") return "pisosdeck";
+                                     if (name === "FACHADA DECK") return "fachadadeck";
+                                     if (name === "FACHADA EXTERIOR PVC") return "fachadaexteriorpvc";
+                                     if (name === "LISTONES WPC") return "listoneswpcexterior";
+                                     if (name === "PANELES WPC") return "panelesWpcExterior";
+                                     if (name === "PAREDES UNIFLEX") return "paredesUniflex";
+                                     if (name === "POLIFACHADA") return "polifachada";
+                                     return name.toLowerCase().replace(/ /g, '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u');
+                                 };
+                                 const tKey = `nav.${getCatKey(category)}`;
 
-                                // Determine DB tags for link
-                                const catParam = data.dbCategory || category;
-                                const subParam = data.dbSubcategory || null;
-                                const href = subParam 
-                                    ? `${data.page}?category=${catParam}&subcategory=${subParam}&collection=${data.collection}`
-                                    : `${data.page}?category=${catParam}&collection=${data.collection}`;
+                                 // Determine DB tags for link
+                                 const catParam = data.dbCategory || category;
+                                 const href = `${data.page}?category=${catParam}&collection=${data.collection}`;
 
-                                return (
-                                    <div key={category} className="group/item">
-                                        <Link
-                                            href={href}
-                                            className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[9px] uppercase tracking-widest transition-all"
-                                        >
-                                            <data.icon className="w-3.5 h-3.5" />
-                                            {t(tKey) !== tKey ? t(tKey) : category}
-                                        </Link>
-                                        <div className="flex flex-wrap gap-x-3 gap-y-1 ml-0.5 border-l border-gray-100 pl-3 py-0.5">
-                                            {data.subcategories.map(sub => {
-                                                const getSubKey = (name) => {
-                                                    return name.toLowerCase().replace(/ /g, '').replace(/\./g, '').replace(/-/g, '');
-                                                };
-                                                const tSubKey = `nav.${getSubKey(sub)}`;
-
-                                                return (
-                                                    <Link
-                                                        key={sub}
-                                                        href={`${data.page}?subcategory=${sub}&collection=${data.collection}`}
-                                                        className="text-gray-400 hover:text-gray-900 text-[8px] font-bold uppercase transition-all whitespace-nowrap hover:scale-105"
-                                                    >
-                                                        {t(tSubKey) !== tSubKey ? t(tSubKey) : sub}
-                                                    </Link>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                                 return (
+                                     <div key={category} className="group/item">
+                                         <Link
+                                             href={href}
+                                             className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[12px] uppercase tracking-widest transition-all"
+                                         >
+                                             <data.icon className="w-4 h-4" />
+                                             {t(tKey) !== tKey ? t(tKey) : category}
+                                         </Link>
+                                     </div>
+                                 );
+                             })}
                         </div>
 
                         <Link
