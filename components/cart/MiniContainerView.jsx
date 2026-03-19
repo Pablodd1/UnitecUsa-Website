@@ -18,12 +18,17 @@ export default function MiniContainerView({ container }) {
 
   const fillColor = getFillColor(filledTotal)
 
+  const hashDelay = React.useMemo(() => {
+    const hash = container.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    return (hash % 20) / 100
+  }, [container.name])
+  
   return (
     <motion.div
       className="flex flex-col items-center py-4 px-6 border-b border-gray-100 last:border-b-0"
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: Math.random() * 0.2 }}
+      transition={{ delay: hashDelay }}
     >
       {/* Container Header */}
       <div className="flex w-full items-center justify-between mb-2">

@@ -100,21 +100,25 @@ export default function Container3DView({
                 overflow: "hidden"
               }}
             >
-              {items.slice(0, 40).map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="rounded-sm shadow-md border border-white/20"
-                  style={{
-                    backgroundColor: item.color || "#60A5FA",
-                    width: `${20 + Math.random() * 20}px`,
-                    height: `${20 + Math.random() * 30}px`,
-                    boxShadow: "inset -2px -2px 5px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.5)"
-                  }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.02 }}
-                />
-              ))}
+              {items.slice(0, 40).map((item, index) => {
+                  const itemWidth = React.useMemo(() => 20 + Math.random() * 20, [])
+                  const itemHeight = React.useMemo(() => 20 + Math.random() * 30, [])
+                  return (
+                    <motion.div
+                      key={index}
+                      className="rounded-sm shadow-md border border-white/20"
+                      style={{
+                        backgroundColor: item.color || "#60A5FA",
+                        width: `${itemWidth}px`,
+                        height: `${itemHeight}px`,
+                        boxShadow: "inset -2px -2px 5px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.5)"
+                      }}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.02 }}
+                    />
+                  )
+                })}
             </div>
           )}
 
