@@ -3,6 +3,7 @@
 
 import React from "react"
 import FlameProgress from "./FlameProgress.jsx"
+import ThreeContainer from "./ThreeContainer.jsx"
 import { motion } from "framer-motion"
 
 /**
@@ -43,6 +44,12 @@ export default function Container3DView({
     "/assets/containers/container_texture_04.svg",
   ]
   const textureIndex = textureSeed % textures.length
+  // Enable true 3D container rendering by default
+  const enableThreeD = true
+  // World size for the 3D container (adjust to taste)
+  const worldW = Math.max(0.5, displayLength / 40)
+  const worldH = Math.max(0.5, displayHeight / 40)
+  const worldL = Math.max(0.5, displayLength / 40)
 
   return (
     <motion.div
@@ -56,7 +63,7 @@ export default function Container3DView({
       whileTap={isInteractive ? { scale: 0.98 } : {}}
       onClick={isInteractive ? onSelect : undefined}
     >
-      {/* Container Box - Hyperrealistic 3D Effect */}
+      {/* Container Box - Hyperrealistic 3D Effect (Three.js true 3D container overlay) */}
       <div
         className="absolute inset-0"
         style={{
@@ -65,6 +72,13 @@ export default function Container3DView({
           boxShadow: "20px 30px 40px rgba(0,0,0,0.3)"
         }}
       >
+        {enableThreeD && (
+          <div className="absolute inset-0 z-20" style={{ pointerEvents: 'none' }}>
+            <ThreeContainer width={worldW} height={worldH} length={worldL} textures={textures} />
+          </div>
+        )}
+        {/* Fallback CSS 3D visuals below will render underneath the Three.js canvas */}
+      </div>
         {/* Top Face */}
         <motion.div
           className="absolute border-2 border-gray-600"

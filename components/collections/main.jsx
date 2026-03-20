@@ -39,17 +39,34 @@ export default function Collections_UI({ searchParams, h1, description, productU
 
     // Fetch products
     useEffect(() => {
-        const fetchProducts = () => {
+        const fetchProducts = (extraParams = {}) => {
             setLoading(true);
-            fetch(`${productURL}nopaginate=true`)
+            const url = new URL(`${productURL}nopaginate=true`, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+            Object.entries(extraParams).forEach(([k, v]) => {
+                if (v != null) url.searchParams.set(k, v);
+            });
+            fetch(url.toString())
                 .then(res => res.json())
                 .then(data => {
                     // API now returns all items
-                    setProducts(data.items);
+                    if (data?.items) setProducts(data.items);
                     setLoading(false);
                 }).catch(() => setLoading(false));
         }
-        fetchProducts()
+        // Initial fetch
+        fetchProducts();
+        // Fallback: if no items returned, try with explicit category filter if present in URL
+        // This helps when a mega-menu category has no visible items in the first fetch
+        const searchParams = new URLSearchParams(window?.location?.search || '');
+        const initialCategory = searchParams.get('category') || null;
+        if (initialCategory) {
+            const fallback = () => fetchProducts({ category: initialCategory });
+            // Simple timeout-based fallback after a brief delay if nothing loaded yet
+            const t = setTimeout(() => {
+                if (products.length === 0) fallback();
+            }, 400);
+            return () => clearTimeout(t);
+        }
     }, [productURL]);
 
     // Apply filters + sorting
