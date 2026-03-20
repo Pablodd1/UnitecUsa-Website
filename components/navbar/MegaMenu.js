@@ -101,24 +101,30 @@ const MegaMenu = () => {
                         </Link>
                         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                           {(() => {
-                            const interiorEntries = dynamicCategories && dynamicCategories.Interior
+                            const interiorEntriesRaw = dynamicCategories && dynamicCategories.Interior
                               ? Object.entries(dynamicCategories.Interior)
                               : Object.entries(productCategories.Interior)
+                            // Deduplicate interior entries by category name
+                            const interiorEntries = interiorEntriesRaw.reduce((acc, [cat, data]) => {
+                              if (!acc.find(([c]) => c === cat)) acc.push([cat, data]);
+                              return acc
+                            }, [])
                             return interiorEntries.map(([category, data]) => {
                               const tKey = `nav.${category.toLowerCase().replace(/ /g, '')}`
                               const href = `${data.page}?category=${category}&collection=${data.collection}`
-                              const subcats = data.subcategories || []
+                              const subcats = (data.subcategories || [])
+                              // Deduplicate subcategories
+                              const uniqueSubcats = [...new Set(subcats)]
                               return (
                                 <div key={category} className="group/item mb-2">
                                   <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[12px] uppercase tracking-widest transition-all">
                                     <data.icon className="w-4 h-4" />
                                     {t(tKey) !== tKey ? t(tKey) : category}
                                   </Link>
-                                  {subcats.length > 0 && (
+                                  {uniqueSubcats.length > 0 && (
                                     <div className="ml-6 grid grid-cols-1 gap-1">
-                                      {subcats.map((sub) => {
+                                      {uniqueSubcats.map((sub) => {
                                         const subHref = `${data.page}?category=${category}&collection=${data.collection}&subcategories=${sub}`
-                                        const subKey = `nav.${(sub || '').toLowerCase().replace(/ /g, '')}`
                                         return (
                                           <Link key={sub} href={subHref} className="text-xs text-gray-700 hover:text-blue-600 mb-0.5 ml-2">
                                             {sub}
@@ -132,18 +138,36 @@ const MegaMenu = () => {
                             })
                           })()}
                           {(() => {
-                            const exteriorEntries = dynamicCategories && dynamicCategories.Exterior
+                            const exteriorEntriesRaw = dynamicCategories && dynamicCategories.Exterior
                               ? Object.entries(dynamicCategories.Exterior)
                               : Object.entries(productCategories.Exterior)
+                            const exteriorEntries = exteriorEntriesRaw.reduce((acc, [cat, data]) => {
+                              if (!acc.find(([c]) => c === cat)) acc.push([cat, data]);
+                              return acc
+                            }, [])
                             return exteriorEntries.map(([category, data]) => {
                               const tKey = `nav.${category.toLowerCase().replace(/ /g, '')}`
                               const href = `${data.page}?category=${category}&collection=${data.collection}`
+                              const subcats = data.subcategories || []
+                              const uniqueSubcats = [...new Set(subcats)]
                               return (
                                 <div key={category} className="group/item">
                                   <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[12px] uppercase tracking-widest transition-all">
                                     <data.icon className="w-4 h-4" />
                                     {t(tKey) !== tKey ? t(tKey) : category}
                                   </Link>
+                                  {uniqueSubcats.length > 0 && (
+                                    <div className="ml-6 grid grid-cols-1 gap-1">
+                                      {uniqueSubcats.map((sub) => {
+                                        const subHref = `${data.page}?category=${category}&collection=${data.collection}&subcategories=${sub}`
+                                        return (
+                                          <Link key={sub} href={subHref} className="text-xs text-gray-700 hover:text-blue-600 mb-0.5 ml-2">
+                                            {sub}
+                                          </Link>
+                                        )
+                                      })}
+                                    </div>
+                                  )}
                                 </div>
                               )
                             })
