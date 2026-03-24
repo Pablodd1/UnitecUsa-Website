@@ -132,20 +132,19 @@ const MegaMenu = () => {
                      "PISOS": "Pisos",
                      "ZOCALOS": "Zócalos"
                    }
-                   return interiorEntriesFiltered.map(([category, data]) => {
-                     const subParam = (data.subcategories && data.subcategories.length) ? `&subcategories=${data.subcategories.join(',')}` : ''
-                     const href = `${data.page}?category=${category}&collection=${data.collection}${subParam}`
-                     const label = labelMap[category] || category
-                     return (
-                       <div key={category} className="group/item mb-2">
-                         <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[12px] uppercase tracking-widest transition-all">
-                           <data.icon className="w-4 h-4" />
-                           {label}
-                         </Link>
-                       </div>
-                     )
-                   })
-                 })()}
+                    return interiorEntriesFiltered.map(([category, data]) => {
+                      const subParam = (data.subcategories && data.subcategories.length) ? `&subcategories=${data.subcategories.join(',')}` : ''
+                      const href = `${data.page}?category=${category}&collection=${data.collection}${subParam}`
+                      const label = labelMap[category] || category
+                      return (
+                        <div key={category} className="group/item mb-2">
+                          <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[12px] uppercase tracking-widest transition-all">
+                            <data.icon className="w-4 h-4" />
+                            {label}
+                          </Link>
+                        </div>
+                      )
+                    })}
                </div>
                     </div>
 
@@ -178,15 +177,15 @@ const MegaMenu = () => {
                            const subParam = (data.subcategories && data.subcategories.length) ? `&subcategories=${data.subcategories.join(',')}` : ''
                            const href = `${data.page}?category=${category}&collection=${data.collection}${subParam}`
                            const label = labelMapExt[category] || category
-                           return (
-                             <div key={category} className="group/item">
-                               <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[12px] uppercase tracking-widest transition-all">
-                                 <data.icon className="w-4 h-4" />
-                                 {label}
-                               </Link>
-                             </div>
-                           })
-                       })()}
+                          return (
+                              <div key={category} className="group/item">
+                                <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[12px] uppercase tracking-widest transition-all">
+                                  <data.icon className="w-4 h-4" />
+                                  {label}
+                                </Link>
+                              </div>
+                            )
+                        })}
                      </div>
                    </div>
                 </div>
