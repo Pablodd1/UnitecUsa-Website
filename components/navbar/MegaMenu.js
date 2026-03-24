@@ -119,10 +119,11 @@ const MegaMenu = () => {
                                     "ZOCALOS"
                                 ])
                                 const interiorEntriesFiltered = interiorEntriesMerged.filter(([category]) => allowedInterior.has(category))
-                                const labelMap = {
-                                    "CIELO RASO PVC": "Cielo raso PVC",
-                                    "ILUMINACION": "Iluminación",
-                                    "JARDINES ARTIFICIALES": "Jardines Artificiales",
-                                    "LAMINAS": "Láminas",
-                                    "LISTONES": "Listones",
-                                    "PANELES WPC Y ANGULOS": "Paneles Ángulo
+                                 const labelMap = {
+                                     "CIELO RASO PVC": "Cielo raso PVC",
+                                     "ILUMINACION": "Iluminación",
+                                     "JARDINES ARTIFICIALES": "Jardines Artificiales",
+                                     "LAMINAS": "Láminas",
+                                     "LISTONES": "Listones",
+                                     "PANELES WPC Y ANGULOS": "Paneles Ángulos"
+                                 }
