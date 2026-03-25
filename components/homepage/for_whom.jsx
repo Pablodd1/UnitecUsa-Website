@@ -48,7 +48,7 @@ export default function WhoItsFor() {
                             href="/about"
                             className={{
                                 btn: "bg-primary px-5 py-2 h-10 ",
-                                label: ""
+                                label: "text-white"
                             }}
                         />
                     </motion.div>

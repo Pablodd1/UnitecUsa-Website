@@ -1,26 +1,19 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import translations from "./translations";
 
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children, initialLang = "es" }) {
     const [language, setLanguage] = useState(initialLang);
-    const pathname = usePathname();
 
     useEffect(() => {
         const savedLang = localStorage.getItem("app-language");
         if (savedLang && (savedLang === "en" || savedLang === "es")) {
             setLanguage(savedLang);
-        } else {
-            const urlLang = pathname?.split('/')[1];
-            if (urlLang === "en" || urlLang === "es") {
-                setLanguage(urlLang);
-            }
         }
-    }, [pathname]);
+    }, []);
 
     const switchLanguage = (lang) => {
         if (lang === "en" || lang === "es") {

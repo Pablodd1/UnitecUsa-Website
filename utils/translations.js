@@ -23,10 +23,11 @@ const translations = {
                     description: "We specialize in bulk product handling, container-based shipping, and optimized logistics workflows. Reach out to discuss volumes, containers, and delivery timelines."
                 },
                 headquarters: {
-                    address: "6120 NW 74th Ave",
-                    city: "Doral, Miami, FL 33166",
-                    country: "United States",
-                    phone: "+1 (786) 968-5783"
+                    title: "Colombia Headquarters",
+                    address: "Autopista Sur",
+                    city: "Medellín, Colombia",
+                    country: "Colombia",
+                    phone: "+57 601 235 4321"
                 },
                 quality: {
                     title: "Committed to Quality",
@@ -50,11 +51,11 @@ const translations = {
                         text: "Our vision is to become the leading provider of PVC and WPC construction solutions across North America — transforming how professionals and homeowners approach building and design."
                     },
                     headquarters: {
-                        title: "Global Headquarters",
-                        address: "6120 NW 74th Ave",
-                        city: "Doral, Miami, FL 33166",
-                        country: "United States",
-                        phone: "+1 (786) 968-5783"
+                        title: "Colombia Headquarters",
+                        address: "Autopista Sur",
+                        city: "Medellín, Colombia",
+                        country: "Colombia",
+                        phone: "+57 601 235 4321"
                     }
                 },
                 about: {
@@ -99,6 +100,7 @@ const translations = {
                     description: "We specialize in providing premium building materials for construction projects of all sizes. Reach out to discuss your needs."
                 },
                 headquarters: {
+                    title: "USA Headquarters",
                     address: "6120 NW 74th Ave",
                     city: "Doral, Miami, FL 33166",
                     country: "United States",
@@ -130,7 +132,7 @@ const translations = {
                         text: "To become a leading brand in construction innovation in Latin America, recognized for simplifying construction processes, setting trends in design and sustainability, and delivering high-value architectural solutions."
                     },
                     headquarters: {
-                        title: "Global Headquarters",
+                        title: "USA Headquarters",
                         address: "6120 NW 74th Ave",
                         city: "Doral, Miami, FL 33166",
                         country: "United States",
@@ -917,10 +919,10 @@ const translations = {
                     description: "Nos especializamos en manejo de productos a granel, envío basado en contenedores y flujos de trabajo logísticos optimizados. Contáctenos para discutir volúmenes, contenedores y plazos de entrega."
                 },
                 headquarters: {
-                    address: "6120 NW 74th Ave",
-                    city: "Doral, Miami, FL 33166",
-                    country: "Estados Unidos",
-                    phone: "+1 (786) 968-5783"
+                    address: "Autopista Sur",
+                    city: "Medellín, Colombia",
+                    country: "Colombia",
+                    phone: "+57 601 235 4321"
                 },
                 quality: {
                     title: "Comprometidos con la Calidad",
@@ -945,8 +947,8 @@ const translations = {
                     },
                     headquarters: {
                         title: "Sede Colombia",
-                        address: "Carrera 11 #84-09",
-                        city: "Bogotá, Colombia",
+                        address: "Autopista Sur",
+                        city: "Medellín, Colombia",
                         country: "Colombia",
                         phone: "+57 601 235 4321"
                     }
@@ -1024,7 +1026,7 @@ const translations = {
                         text: "Convertirnos en una marca líder en innovación de construcción en América Latina, reconocida por simplificar procesos de construcción, marcar tendencias en diseño y sostenibilidad, y entregar soluciones arquitectónicas de alto valor."
                     },
                     headquarters: {
-                        title: "Sede Global",
+                        title: "Sede Global USA",
                         address: "6120 NW 74th Ave",
                         city: "Doral, Miami, FL 33166",
                         country: "Estados Unidos",
@@ -1488,7 +1490,7 @@ const translations = {
                 text: "Convertirnos en una marca líder en innovación de construcción en América Latina, reconocida por simplificar procesos de construcción, marcar tendencias en diseño y sostenibilidad, y entregar soluciones arquitectónicas de alto valor. Aspiramos a construir un modelo de negocio escalable y colaborativo, fortaleciendo alianzas estratégicas y creando un impacto positivo en la industria, las personas y el medio ambiente."
             },
             headquarters: {
-                title: "Sede Global",
+                title: "Sede Global USA",
                 address: "6120 NW 74th Ave",
                 city: "Doral, Miami, FL 33166",
                 country: "Estados Unidos",

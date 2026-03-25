@@ -93,7 +93,7 @@ export default function HowShippingWorks() {
                 key={step.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative flex flex-col items-center rounded-xl first-of-type:bg-black first-of-type:text-white bg-primary px-5 py-8 md:py-10 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="relative flex flex-col items-center rounded-xl first-of-type:bg-black first-of-type:text-white bg-primary text-white px-5 py-8 md:py-10 text-center shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
                 <motion.div
@@ -107,10 +107,10 @@ export default function HowShippingWorks() {
                 </motion.div>
 
                 {/* Text */}
-                <h3 className="text-sm font-semibold">
+                <h3 className="text-sm font-semibold text-white">
                   <span className="font-extrabold tracking-wider">0{index + 1}  — </span>{step.title}
                 </h3>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-2 text-xs text-white/80">
                   {step.desc}
                 </p>
 

@@ -38,11 +38,22 @@ export default function AboutPage() {
     return (
         <main className="w-full">
             {/* ================= HERO ================= */}
-            <section 
-                className="bg-cover bg-center bg-no-repeat relative py-24 text-white"
-                style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/raster/containers.webp)' }}
-            >
-                <div className="mx-auto max-w-6xl px-4 relative z-10">
+            <section className="relative py-24 text-white overflow-hidden min-h-[50vh] flex items-center">
+                {/* Video Background */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover z-0"
+                    poster="/raster/containers.webp"
+                >
+                    <source src="/videos/institutional-hero.mp4" type="video/mp4" />
+                </video>
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/65 z-10" />
+
+                <div className="mx-auto max-w-6xl px-4 relative z-20">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

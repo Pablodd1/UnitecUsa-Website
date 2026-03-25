@@ -5,9 +5,51 @@ import { Eye, Rocket, Globe2, Users, Award, TrendingUp, Building2, MapPin } from
 import { useLanguage } from 'lib/LanguageContext';
 import { useBrand } from 'lib/BrandContext';
 
+const visionText = {
+    es: {
+        futureVision: "Nuestra Visión de Futuro",
+        strategicPillars: "Pilares Estratégicos",
+        innovationLeadership: "Liderazgo en Innovación",
+        innovationDesc: "Pioneros en el futuro de la construcción",
+        nationalReach_unitec: "Alcance Nacional",
+        nationalReach_binw: "Expansión Regional",
+        nationalReachDesc_unitec: "En toda Colombia",
+        nationalReachDesc_binw: "En mercados latinoamericanos",
+        simplification: "Simplificación",
+        simplificationDesc: "Haciendo la construcción más fácil",
+        designExcellence: "Excelencia en Diseño",
+        designExcellenceDesc: "Marcando tendencias en la industria",
+        sustainability: "Sostenibilidad",
+        sustainabilityDesc: "Responsabilidad ambiental",
+        partnership: "Alianzas",
+        partnershipDesc: "Ecosistema colaborativo",
+        whereHeading: "Hacia Dónde Vamos",
+    },
+    en: {
+        futureVision: "Our Future Vision",
+        strategicPillars: "Strategic Pillars",
+        innovationLeadership: "Innovation Leadership",
+        innovationDesc: "Pioneering the future of construction",
+        nationalReach_unitec: "National Reach",
+        nationalReach_binw: "Regional Expansion",
+        nationalReachDesc_unitec: "Across Colombia",
+        nationalReachDesc_binw: "Across Latin American markets",
+        simplification: "Simplification",
+        simplificationDesc: "Making construction easier",
+        designExcellence: "Design Excellence",
+        designExcellenceDesc: "Setting industry trends",
+        sustainability: "Sustainability",
+        sustainabilityDesc: "Environmental responsibility",
+        partnership: "Partnership",
+        partnershipDesc: "Collaborative ecosystem",
+        whereHeading: "Where We're Heading",
+    }
+};
+
 export default function VisionPage() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const { activeBrand } = useBrand();
+    const v = visionText[language] || visionText.es;
     
     return (
         <main className="w-full">
@@ -37,7 +79,7 @@ export default function VisionPage() {
                         </div>
                         
                         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 uppercase tracking-wide">
-                            {activeBrand === 'unitec' ? 'Our Future Vision' : 'Where We\'re Heading'}
+                            {activeBrand === 'unitec' ? v.futureVision : v.whereHeading}
                         </h2>
                         
                         <p className="text-xl text-gray-700 leading-relaxed text-center mb-12">
@@ -49,15 +91,19 @@ export default function VisionPage() {
                                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
                                     <Rocket className="w-6 h-6 text-black" />
                                 </div>
-                                <h3 className="text-lg font-bold mb-2">Innovation Leadership</h3>
-                                <p className="text-gray-600 text-sm">Pioneering the future of construction</p>
+                                <h3 className="text-lg font-bold mb-2">{v.innovationLeadership}</h3>
+                                <p className="text-gray-600 text-sm">{v.innovationDesc}</p>
                             </div>
                             <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
                                     <Globe2 className="w-6 h-6 text-black" />
                                 </div>
-                                <h3 className="text-lg font-bold mb-2">{activeBrand === 'unitec' ? 'National Reach' : 'Regional Expansion'}</h3>
-                                <p className="text-gray-600 text-sm">{activeBrand === 'unitec' ? 'Across North America' : 'Across Latin American markets'}</p>
+                                <h3 className="text-lg font-bold mb-2">
+                                    {activeBrand === 'unitec' ? v.nationalReach_unitec : v.nationalReach_binw}
+                                </h3>
+                                <p className="text-gray-600 text-sm">
+                                    {activeBrand === 'unitec' ? v.nationalReachDesc_unitec : v.nationalReachDesc_binw}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +114,7 @@ export default function VisionPage() {
             <section className="bg-gray-50 py-20">
                 <div className="mx-auto max-w-6xl px-4">
                     <h2 className="text-3xl font-bold text-center mb-12 uppercase tracking-wide">
-                        Strategic Pillars
+                        {v.strategicPillars}
                     </h2>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -77,32 +123,32 @@ export default function VisionPage() {
                                 <Building2 className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-3xl font-bold text-gray-200">01</span>
-                            <h3 className="text-lg font-bold mb-2">Simplification</h3>
-                            <p className="text-gray-600 text-sm">Making construction easier</p>
+                            <h3 className="text-lg font-bold mb-2">{v.simplification}</h3>
+                            <p className="text-gray-600 text-sm">{v.simplificationDesc}</p>
                         </div>
                         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
                                 <Award className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-3xl font-bold text-gray-200">02</span>
-                            <h3 className="text-lg font-bold mb-2">Design Excellence</h3>
-                            <p className="text-gray-600 text-sm">Setting industry trends</p>
+                            <h3 className="text-lg font-bold mb-2">{v.designExcellence}</h3>
+                            <p className="text-gray-600 text-sm">{v.designExcellenceDesc}</p>
                         </div>
                         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
                                 <TrendingUp className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-3xl font-bold text-gray-200">03</span>
-                            <h3 className="text-lg font-bold mb-2">Sustainability</h3>
-                            <p className="text-gray-600 text-sm">Environmental responsibility</p>
+                            <h3 className="text-lg font-bold mb-2">{v.sustainability}</h3>
+                            <p className="text-gray-600 text-sm">{v.sustainabilityDesc}</p>
                         </div>
                         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
                                 <Users className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-3xl font-bold text-gray-200">04</span>
-                            <h3 className="text-lg font-bold mb-2">Partnership</h3>
-                            <p className="text-gray-600 text-sm">Collaborative ecosystem</p>
+                            <h3 className="text-lg font-bold mb-2">{v.partnership}</h3>
+                            <p className="text-gray-600 text-sm">{v.partnershipDesc}</p>
                         </div>
                     </div>
                 </div>
@@ -129,7 +175,11 @@ export default function VisionPage() {
                         </div>
                         <div className="rounded-2xl overflow-hidden h-64 md:h-auto min-h-[300px] shadow-lg border border-gray-100">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7221458267713!2d-80.32240568497836!3d25.83166598355336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b9c2ffffffff%3A0x0!2s6120%20NW%2074th%20Ave%2C%20Doral%2C%20FL%2033166!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                                src={
+                                    activeBrand === 'binw'
+                                        ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7221458267713!2d-80.32240568497836!3d25.83166598355336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b9c2ffffffff%3A0x0!2s6120%20NW%2074th%20Ave%2C%20Doral%2C%20FL%2033166!5e0!3m2!1sen!2sus!4v1700000000000"
+                                        : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1234567890!2d-75.5812345!3d6.2312345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAutopista+Sur%2C+Medell%C3%ADn%2C+Colombia!5e0!3m2!1ses!2sco!4v1700000000001"
+                                }
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
