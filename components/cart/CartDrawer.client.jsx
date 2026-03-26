@@ -85,10 +85,12 @@ export default function CartDrawer() {
                 <div className="space-y-4">
                     {containers.length ? (
                         containers.map(container => (
-                            <MiniContainerView
-                                key={container.id}
-                                container={container}
-                            />
+                            <div key={container.id} className="mb-6 last:mb-0">
+                                <MiniContainerView container={container} />
+                                <div className="mt-2 bg-gray-50/50 rounded-xl overflow-hidden p-2">
+                                    <RenderItemsList container={container} />
+                                </div>
+                            </div>
                         ))
                     ) : (
                         <p className="text-sm text-gray-500 text-center py-10">

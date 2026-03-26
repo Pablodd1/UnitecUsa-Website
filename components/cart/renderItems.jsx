@@ -120,7 +120,7 @@ export default function RenderItemsList({ container }) {
                         >
                             <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg relative bg-accent2">
                                 <Image
-                                    src={p.image?.url || "/raster/product.jpg"}
+                                    src={p.image || "/raster/product.jpg"}
                                     alt={p.name}
                                     fill
                                     quality={90}

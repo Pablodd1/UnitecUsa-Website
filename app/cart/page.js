@@ -210,9 +210,12 @@ export default function CartPage() {
                                             width={container.dimension?.width || 2.35}
                                             height={container.dimension?.height || 2.39}
                                             length={container.dimension?.length || 20}
-                                            items={container.items.map(item => ({
-                                                color: getContainerItemColor(item.category)
-                                            }))}
+                                            items={container.items.flatMap(item => 
+                                                Array.from({ length: Math.min(item.qty, 10) }).map(() => ({
+                                                    color: getContainerItemColor(item.category),
+                                                    image: item.image
+                                                }))
+                                            )}
                                             fillPercent={containerFillPercent(container).filledTotal}
                                             scale={0.9}
                                         />

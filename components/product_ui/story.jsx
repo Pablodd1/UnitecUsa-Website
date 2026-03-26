@@ -102,28 +102,28 @@ export default function ProductStory({ product, description }) {
                 />
             </div>
 
-            <section className="mt-10 border-t border-gray-400  pt-10 ">
+            <section className="mt-10 border-t border-gray-400/30 pt-10">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     <HighlightItem
-                        icon={<Layers  />}
+                        icon={<Layers className="text-gray-400" />}
                         label={t.category}
                         value={category}
                     />
 
                     <HighlightItem
-                        icon={<Grid3X3  />}
+                        icon={<Grid3X3 className="text-gray-400" />}
                         label={t.type}
                         value={subcategory}
                     />
 
                     <HighlightItem
-                        icon={<Box  />}
+                        icon={<Box className="text-gray-400" />}
                         label={t.collection}
                         value={collection}
                     />
 
                     <HighlightItem
-                        icon={<Package  />}
+                        icon={<Package className="text-gray-400" />}
                         label={t.packaging}
                         value={itemsPerBox ? `${itemsPerBox} ${t.itemsPerBox}` : t.notAvailable}
                     />
@@ -135,17 +135,16 @@ export default function ProductStory({ product, description }) {
 
 function ApplicationItem({ icon, title, text }) {
     return (
-        <div className="grid relative items-start gap-4 shadow-md border-secondary border min-h-fit bg-primary px-3 py-3 rounded-2xl">
-
-            <div className=" border-l-4 border-accent1/75 py-2 pl-2 ml-1">
-                <p className="text-sm font-medium text-white tracking-wide">
+        <div className="grid relative items-start gap-4 shadow-xl border-gray-700/50 border min-h-fit bg-slate-900 px-6 py-6 rounded-3xl transition-transform hover:-translate-y-1">
+            <div className="border-l-4 border-accent1/75 py-2 pl-4">
+                <p className="text-base font-bold text-white tracking-wide uppercase">
                     {title}
                 </p>
-                <p className="mt-1 text-xs text-white/80 leading-relaxed">
+                <p className="mt-2 text-sm text-gray-300 leading-relaxed">
                     {text}
                 </p>
             </div>
-            <div className="absolute top-2 right-2 mr-1 h-4/5 text-accent1/25">
+            <div className="absolute top-4 right-4 h-1/2 opacity-10 text-white">
                 {icon}
             </div>
         </div>
@@ -154,16 +153,16 @@ function ApplicationItem({ icon, title, text }) {
 
 function HighlightItem({ icon, label, value }) {
     return (
-        <div className="flex items-start gap-4">
-            <div className="mt-1 w-auto h-14 text-gray-700">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 bg-slate-950/40 p-4 rounded-2xl border border-white/5">
+            <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-gray-900 rounded-lg text-white">
                 {icon}
             </div>
 
-            <div>
-                <p className="text-xs uppercase tracking-wide text-gray-500">
+            <div className="text-center sm:text-left">
+                <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">
                     {label}
                 </p>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-semibold text-white leading-tight">
                     {value}
                 </p>
             </div>
