@@ -10,14 +10,14 @@ import { motion } from 'framer-motion';
 const CONTAINERS = [
   {
     id: "20ft",
-    label: "Small Container",
-    image: "/assets/small_container.jpg",
+    label: "20 FT Container",
+    image: "/assets/containers/small_container.png",
     width: 2.35, height: 2.39, length: 5.9
   },
   {
     id: "40ft",
-    label: "Big Container",
-    image: "/assets/big_container.jpg",
+    label: "40 FT Container",
+    image: "/assets/containers/big_container.png",
     width: 2.35, height: 2.69, length: 12.03
   }
 ];

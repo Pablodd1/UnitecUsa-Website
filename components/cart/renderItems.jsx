@@ -123,6 +123,7 @@ export default function RenderItemsList({ container }) {
                                     src={p.image?.url || "/raster/product.jpg"}
                                     alt={p.name}
                                     fill
+                                    quality={90}
                                     className="object-contain p-1"
                                 />
                             </div>

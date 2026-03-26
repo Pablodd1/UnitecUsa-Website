@@ -8,15 +8,22 @@ import { containerFillPercent } from "lib/cart/cart.utils"
 export default function MiniContainerView({ container }) {
   const { filledTotal } = containerFillPercent(container)
   
-  // Get color based on fill percentage
+  // Refined fill color thresholds for clearer visual cues
   const getFillColor = (percent) => {
-    if (percent >= 100) return "#10B981" // Green
-    if (percent >= 95) return "#EF4444" // Orange/Red
-    if (percent >= 70) return "#F59E0B" // Yellow
-    return "#3B82F6" // Blue
-  }
+    if (percent >= 100) return "#10B981"; // Emerald green (full)
+    if (percent >= 80) return "#EF4444"; // Red (high fill)
+    if (percent >= 60) return "#F59E0B"; // Amber (moderate)
+    return "#3B82F6"; // Blue (low)
+  };
 
-  const fillColor = getFillColor(filledTotal)
+  const fillColor = getFillColor(filledTotal);
+
+  // Enhanced percentage label styling
+  const percentLabel = (
+    <div className="mt-1 text-lg font-semibold text-gray-800">
+      {filledTotal.toFixed(0)}% full
+    </div>
+  );
 
   const hashDelay = React.useMemo(() => {
     const hash = container.name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
