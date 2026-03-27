@@ -1,26 +1,50 @@
 "use client";
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { addContainer, addOne } from 'lib/cart/cart.core';
 import { generateID } from 'lib/misc';
-import { ArrowRight, Package, Box as BoxIcon, Smartphone } from 'lucide-react';
+import { ArrowRight, Box as BoxIcon } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from 'lib/LanguageContext';
+
+const containerTranslations = {
+  en: {
+    initializing: "Initializing Container...",
+    logistics: "LOGISTICS",
+    prepare: "Prepare Cargo",
+    volume: "HC VOLUME",
+    smallLabel: "20 FT Standard HC",
+    smallDesc: "Compact & Efficient for regional logistics.",
+    bigLabel: "40 FT High Cube",
+    bigDesc: "Maximum capacity for global distribution."
+  },
+  es: {
+    initializing: "Inicializando Contenedor...",
+    logistics: "LOGÍSTICA",
+    prepare: "Preparar Carga",
+    volume: "VOLUMEN HC",
+    smallLabel: "Contenedor 20 FT HC",
+    smallDesc: "Compacto y eficiente para logística regional.",
+    bigLabel: "Contenedor 40 FT High Cube",
+    bigDesc: "Capacidad máxima para distribución global."
+  }
+};
 
 const CONTAINERS = [
   {
     id: "20ft",
-    label: "20 FT Standard HC",
-    description: "Compact & Efficient for regional logistics.",
-    image: "/assets/containers/small_container_20ft_1774464400341.png",
-    width: 2.35, height: 2.39, length: 5.9
+    key: "small",
+    image: "/assets/containers/small_container.png",
+    width: 2.35, height: 2.39, length: 5.9,
+    vol: "33 m³"
   },
   {
     id: "40ft",
-    label: "40 FT High Cube",
-    description: "Maximum capacity for global distribution.",
-    image: "/assets/containers/big_container_40ft_1774464416227.png",
-    width: 2.35, height: 2.69, length: 12.03
+    key: "big",
+    image: "/assets/containers/big_container.png",
+    width: 2.35, height: 2.69, length: 12.03,
+    vol: "76 m³"
   }
 ];
 
@@ -29,6 +53,8 @@ function ContainerSelectionContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get('product');
   const [loading, setLoading] = useState(false);
+  const { language } = useLanguage();
+  const t = containerTranslations[language] || containerTranslations.en;
 
   const handleSelect = async (container) => {
     setLoading(true);
@@ -37,7 +63,7 @@ function ContainerSelectionContent() {
     // Add the container first
     addContainer({
       id: containerId,
-      name: container.label,
+      name: t[`${container.key}Label`],
       dimension: { length: container.length, width: container.width, height: container.height }
     });
 
@@ -72,13 +98,15 @@ function ContainerSelectionContent() {
                 className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center text-white"
             >
                 <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4" />
-                <p className="text-sm font-bold tracking-widest uppercase">Initializing Container...</p>
+                <p className="text-sm font-bold tracking-widest uppercase">{t.initializing}</p>
             </motion.div>
         )}
       </AnimatePresence>
 
       <div className="absolute top-8 left-8 z-20">
-          <h1 className="text-white text-2xl font-black italic tracking-tighter">B.I. <span className="text-blue-500 font-medium not-italic ml-1">LOGISTICS</span></h1>
+          <h1 className="text-white text-2xl font-black italic tracking-tighter">
+            B.I. <span className="text-blue-500 font-medium not-italic ml-1">{t.logistics}</span>
+          </h1>
       </div>
 
       {CONTAINERS.map((container, idx) => (
@@ -94,7 +122,7 @@ function ContainerSelectionContent() {
           <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-110">
             <Image 
                 src={container.image} 
-                alt={container.label} 
+                alt={t[`${container.key}Label`]} 
                 fill 
                 className="object-cover opacity-60 group-hover:opacity-80 transition-opacity" 
             />
@@ -112,16 +140,16 @@ function ContainerSelectionContent() {
                 <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/10">
                     <BoxIcon className="w-3 h-3 text-blue-400" />
                     <span className="text-[10px] font-bold text-blue-100 uppercase tracking-widest">
-                        {container.id === '20ft' ? 'HC VOLUME 33 m³' : 'HC VOLUME 76 m³'}
+                        {t.volume} {container.vol}
                     </span>
                 </div>
                 
                 <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4">
-                  {container.label}
+                  {t[`${container.key}Label`]}
                 </h2>
                 
                 <p className="text-gray-400 text-sm md:text-base max-w-sm mx-auto mb-8 font-medium">
-                    {container.description}
+                    {t[`${container.key}Desc`]}
                 </p>
 
                 <motion.button
@@ -129,7 +157,7 @@ function ContainerSelectionContent() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                  <span className="relative z-10">Prepare Cargo</span> 
+                  <span className="relative z-10">{t.prepare}</span> 
                   <ArrowRight size={18} className="relative z-10" />
                   <div className="absolute inset-0 bg-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </motion.button>
@@ -156,4 +184,4 @@ export default function ContainerSelectionPage() {
       <ContainerSelectionContent />
     </Suspense>
   );
-}
+}

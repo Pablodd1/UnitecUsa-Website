@@ -160,41 +160,73 @@ export default function Container3DView({
           }}
         />
 
-        {/* INSIDE CARGO - Realistic Boxes Stacking */}
+        {/* INSIDE CARGO - Hyperrealistic 3D Stacking */}
         <div
-            className="absolute inset-0 overflow-hidden"
-            style={{ transform: "translateZ(0px)" }}
+            className="absolute inset-0"
+            style={{ 
+              transform: "translateZ(0px)",
+              perspective: "1200px" 
+            }}
         >
             <div
-              className="absolute bottom-0 left-0 w-full flex flex-wrap-reverse content-start justify-center gap-1 p-2"
-              style={{
-                height: `${fillPercent}%`,
-                transition: "height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)"
-              }}
+              className="absolute bottom-[20%] left-[12%] right-[12%] h-[55%] flex flex-wrap-reverse content-end items-end justify-center gap-x-1 gap-y-0"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              {containerBoxes.map((box, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.5, y: -100 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ delay: box.delay, type: "spring", stiffness: 200 }}
-                  className="relative rounded shadow-lg border border-black/10 overflow-hidden"
-                  style={{
-                    width: box.width,
-                    height: box.height,
-                    backgroundColor: box.color,
-                    backgroundImage: "url('/assets/containers/box_texture.png')",
-                    backgroundSize: 'cover'
-                  }}
-                >
-                    {box.image && (
-                        <div className="absolute inset-1 bg-white/10 rounded overflow-hidden">
-                            <img src={box.image} alt="cargo" className="w-full h-full object-cover opacity-80 mix-blend-multiply" />
-                        </div>
-                    )}
-                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-                </motion.div>
-              ))}
+              {containerBoxes.map((box, idx) => {
+                // Calculate realistic 3D stacking positions
+                const layer = Math.floor(idx / 8); 
+                const row = Math.floor(idx / 24); 
+                const zPos = -layer * 12; 
+                const yPos = -row * 18; 
+                
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.1, y: -300, z: -800 }}
+                    animate={{ 
+                      opacity: 1, 
+                      scale: 1, 
+                      y: yPos,
+                      z: zPos,
+                      rotateX: idx % 2 ? 1 : -1,
+                      rotateY: idx % 3 ? 1 : -1
+                    }}
+                    transition={{ 
+                      delay: idx * 0.04, 
+                      type: "spring", 
+                      stiffness: 100, 
+                      damping: 15 
+                    }}
+                    className="relative rounded shadow-2xl border border-black/30 overflow-hidden"
+                    style={{
+                      width: box.width,
+                      height: box.height,
+                      backgroundColor: box.color,
+                      backgroundImage: "url('/assets/containers/box_texture.png')",
+                      backgroundSize: 'cover',
+                      transformStyle: "preserve-3d",
+                      boxShadow: `0 ${8 + row * 4}px 12px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,0,0,0.3)`
+                    }}
+                  >
+                      {/* Industrial Lighting Highlight Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-500/10 to-white/15 pointer-events-none" />
+                      
+                      {box.image && (
+                          <div className="absolute inset-1.5 bg-white/10 rounded-sm overflow-hidden flex items-center justify-center">
+                              <img src={box.image} alt="cargo" className="max-w-[85%] max-h-[85%] object-contain opacity-90 transition-transform group-hover:scale-110" />
+                          </div>
+                      )}
+                      
+                      {/* 2.5D visual depth effect */}
+                      <div className="absolute inset-y-0 right-0 w-1 bg-black/40" />
+                      <div className="absolute inset-x-0 bottom-0 h-1 bg-black/50" />
+                      
+                      <div className="absolute top-1 left-1 px-0.5 bg-black/30 text-[5px] text-white/40 font-mono rounded select-none">
+                        BATCH-{idx+100}
+                      </div>
+                  </motion.div>
+                );
+              })}
             </div>
         </div>
 
