@@ -1,6 +1,4 @@
-// Trigger Vercel rebuild: 2026-03-17T17:05:00Z
 "use client"
-
 import React from "react"
 import FlameProgress from "./FlameProgress.jsx"
 import ThreeContainer from "./ThreeContainer.jsx"
@@ -11,10 +9,10 @@ import { motion } from "framer-motion"
  * Shows container with items inside as realistic boxes
  */
 export default function Container3DView({
-  size = "20ft",
+  size = "40ft",
   width = 2.35,
   height = 2.39,
-  length = 5.9,
+  length = 12.03,
   items = [],
   fillPercent = 0,
   isInteractive = false,
@@ -25,9 +23,9 @@ export default function Container3DView({
   const displayWidth = width * 100 * scale
   const displayHeight = height * 100 * scale
   const displayLength = length * 35 * scale
-
   const textures = ["/assets/containers/metal_blue.png"]
   const enableThreeD = true
+
   const worldW = Math.max(0.5, displayLength / 40)
   const worldH = Math.max(0.5, displayHeight / 40)
   const worldL = Math.max(0.5, displayLength / 40)
@@ -40,7 +38,7 @@ export default function Container3DView({
       width: 25 + (idx % 3) * 10,
       height: 25 + (idx % 2) * 15,
       delay: idx * 0.05
-    })).slice(0, 50)
+    })).slice(0, 50) // Capped at 50 for mobile performance
   }, [items])
 
   return (
@@ -212,7 +210,7 @@ export default function Container3DView({
             <FlameProgress percent={fillPercent} />
          </div>
       </div>
-
+      
       <div className="absolute -top-6 right-2 bg-black text-white px-2 py-0.5 rounded text-[10px] font-bold border border-white/20 shadow-xl">
         HC {size}
       </div>
