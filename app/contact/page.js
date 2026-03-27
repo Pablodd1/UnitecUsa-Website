@@ -426,21 +426,21 @@ export default function ContactPage() {
                             </p>
 
                             <form className="mt-6 grid gap-4 sm:grid-cols-2">
-                                <Input label={t('contact.fullName')} placeholder="John Doe" />
-                                <Input label={t('contact.companyName')} placeholder="Your Company LLC" />
-                                <Input label={t('contact.email')} placeholder="your-name@example.com" />
-                                <Input label={t('contact.phone')} placeholder="+1 234 567 890" />
+                                <Input label={isSpanish ? "Nombre Completo" : t('contact.fullName')} placeholder="John Doe" />
+                                <Input label={isSpanish ? "Nombre de la Empresa" : t('contact.companyName')} placeholder="Your Company LLC" />
+                                <Input label={isSpanish ? "Correo Electrónico" : t('contact.email')} placeholder="your-name@example.com" />
+                                <Input label={isSpanish ? "Teléfono" : t('contact.phone')} placeholder="+1 234 567 890" />
 
                                 <div className="sm:col-span-2">
                                     <Input
-                                        label={t('contact.estimatedVolume')}
+                                        label={isSpanish ? "Volumen / Contenedores Estimados" : t('contact.estimatedVolume')}
                                         placeholder="e.g. 1x 40ft container"
                                     />
                                 </div>
 
                                 <div className="sm:col-span-2">
                                     <Textarea
-                                        label={t('contact.projectDetails')}
+                                        label={isSpanish ? "Detalles del Proyecto" : t('contact.projectDetails')}
                                         placeholder="Describe product types, quantities, destination, and timeline..."
                                     />
                                 </div>
@@ -451,13 +451,13 @@ export default function ContactPage() {
                                         className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-900 active:scale-[0.98]"
                                     >
                                         <Send size={16} />
-                                        {t('contact.sendInquiry')}
+                                        {isSpanish ? "Enviar Consulta" : t('contact.sendInquiry')}
                                     </button>
                                 </div>
                             </form>
 
                             <p className="mt-4 text-xs text-gray-500">
-                                {t('contact.responseTimeText')}
+                                {isSpanish ? "Nuestro equipo generalmente responde dentro de 24 horas hábiles." : t('contact.responseTimeText')}
                             </p>
                         </div>
                     </div>

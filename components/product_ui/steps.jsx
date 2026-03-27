@@ -93,7 +93,7 @@ export default function HowShippingWorks() {
                 key={step.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative flex flex-col items-center rounded-xl first-of-type:bg-black first-of-type:text-white bg-primary text-white px-5 py-8 md:py-10 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="relative flex flex-col items-center rounded-xl bg-primary text-white px-5 py-8 md:py-10 text-center shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon */}
                 <motion.div
