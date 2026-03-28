@@ -17,6 +17,7 @@ export const BRAND_CONFIG = {
             secondary: '#7296A4',
             accent: '#5A7A85',
         },
+        email: "lidermercadeo@espaciosimportados.com.co",
         heroTagline: "Fill Your Container. Ship Your Way.",
         heroTagline_es: "Llena Tu Contenedor. Envía a Tu Manera.",
     },
@@ -32,6 +33,7 @@ export const BRAND_CONFIG = {
             secondary: '#3D6B7E',
             accent: '#144552',
         },
+        email: "lidermercadeo@espaciosimportados.com.co",
         heroTagline: "At the reach of what you imagine.",
         heroTagline_es: "Al alcance de lo que imaginas.",
     }

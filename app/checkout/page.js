@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useMemo } from "react"
 import { motion } from "framer-motion"
 import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileText, Package, DollarSign, Send } from "lucide-react"
 import { useLanguage } from "lib/LanguageContext"
+import { useBrand } from "lib/BrandContext"
 import { getCart } from "utils/cart/cart.core"
 import Link from "next/link"
 import Image from "next/image"
@@ -95,9 +96,12 @@ export default function CheckoutPage() {
         }))
     }
 
+    const { brand } = useBrand()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         
+        const contactEmail = brand?.email || "lidermercadeo@espaciosimportados.com.co";
         const subject = `New Quote Request - ${formData.companyName || formData.contactName} (${referenceId})`;
         
         let itemsSummary = cart.map(container => {
@@ -126,7 +130,7 @@ export default function CheckoutPage() {
             `ADDITIONAL NOTES:\n` +
             `${formData.notes || 'None'}`;
 
-        window.location.href = `mailto:lidermercadeo@espaciosimportados.com.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
         setSubmitted(true)
         window.scrollTo(0, 0)
@@ -317,7 +321,7 @@ export default function CheckoutPage() {
                                                 onChange={handleInputChange}
                                                 required
                                                 className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
-                                                placeholder="Your Company LLC"
+                                                placeholder="Nombre de su Empresa S.A.S."
                                             />
                                         </div>
                                     </div>
@@ -335,7 +339,7 @@ export default function CheckoutPage() {
                                                 onChange={handleInputChange}
                                                 required
                                                 className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
-                                                placeholder="John Doe"
+                                                placeholder="Juan Pérez"
                                             />
                                         </div>
                                     </div>
@@ -353,7 +357,7 @@ export default function CheckoutPage() {
                                                 onChange={handleInputChange}
                                                 required
                                                 className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
-                                                placeholder="john@company.com"
+                                                placeholder="su-nombre@empresa.com"
                                             />
                                         </div>
                                     </div>
@@ -394,7 +398,7 @@ export default function CheckoutPage() {
                                             onChange={handleInputChange}
                                             required
                                             className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
-                                            placeholder="123 Business Street"
+                                            placeholder="Calle 123 #45-67"
                                         />
                                     </div>
 
@@ -482,7 +486,7 @@ export default function CheckoutPage() {
                                         onChange={handleInputChange}
                                         rows={4}
                                         className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all resize-none"
-                                        placeholder="Special instructions, delivery preferences, or questions..."
+                                        placeholder="Instrucciones especiales, preferencias de entrega o preguntas..."
                                     />
                                 </div>
 

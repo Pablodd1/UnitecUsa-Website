@@ -1,148 +1,138 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import {
-  Truck,
-  Container,
-  PackageSearch,
-  ArrowRight,
+  FormInput,
+  Package,
+  TrendingUp,
+  ChevronRight,
+  Activity,
 } from "lucide-react"
-import Stylish_H2 from "My_UI/stylish_h2"
 import { useLanguage } from "lib/LanguageContext"
 
+/**
+ * HowShippingWorks Component
+ * Unified premium design for logistics workflow.
+ * Version 2.0 - Clean & Interactive
+ */
 export default function HowShippingWorks() {
   const { t } = useLanguage();
 
   const steps = [
     {
-      id: 1,
-      title: t("steps.items.select.title"),
-      desc: t("steps.items.select.desc"),
-      icon: PackageSearch,
+      id: "01",
+      title: t('steps.items.select.title'),
+      desc: t('steps.items.select.desc'),
+      icon: FormInput,
+      color: "from-blue-500/20 to-indigo-500/20",
     },
     {
-      id: 2,
-      title: t("steps.items.fill.title"),
-      desc: t("steps.items.fill.desc"),
-      icon: Container,
+      id: "02",
+      title: t('steps.items.fill.title'),
+      desc: t('steps.items.fill.desc'),
+      icon: Package,
+      color: "from-indigo-500/20 to-purple-500/20",
     },
     {
-      id: 3,
-      title: t("steps.items.ship.title"),
-      desc: t("steps.items.ship.desc"),
-      icon: Truck,
-    },
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  }
+      id: "03",
+      title: t('steps.items.ship.title'),
+      desc: t('steps.items.ship.desc'),
+      icon: TrendingUp,
+      color: "from-purple-500/20 to-fuchsia-500/20",
+    }
+  ];
 
   return (
-    <section className="w-full py-20 md:py-32 my-8 md:my-14 bg-accent1">
-      <div className="mx-auto max-w-5xl px-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section className="py-24 bg-white overflow-hidden" id="como-funciona">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-xs font-black uppercase tracking-[0.2em] mb-8"
+          >
+            <Activity size={14} className="animate-pulse" />
+            <span>Workflow Matrix</span>
+          </motion.div>
+          
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-8 italic uppercase leading-none">
+            {t('steps.title')}
+          </h2>
+          
+          <p className="text-slate-500 text-xl leading-relaxed font-medium">
+            {t('steps.subtitle')}
+          </p>
+        </div>
+
+        {/* Dynamic Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
+          
+          {/* Abstract Connection Line */}
+          <div className="hidden md:block absolute top-[25%] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-slate-100 to-transparent z-0" />
+
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: "circOut" }}
+              whileHover={{ y: -12 }}
+              className="relative group z-10"
+            >
+              <div className="p-12 bg-white rounded-[3.5rem] border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 group-hover:shadow-[0_40px_80px_rgba(37,99,235,0.08)] group-hover:border-blue-100">
+                
+                {/* Step Index Backdrop */}
+                <div className="absolute top-10 right-12 text-7xl font-black text-slate-50/80 italic tracking-tighter group-hover:text-blue-50 transition-colors duration-500 pointer-events-none">
+                  {step.id}
+                </div>
+
+                {/* Visual Icon */}
+                <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-10 transform group-hover:rotate-12 transition-all duration-500 shadow-sm`}>
+                  <step.icon size={32} className="text-slate-800" />
+                </div>
+
+                {/* Text Content */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-black text-slate-900 italic uppercase tracking-tight group-hover:text-blue-600 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-500 leading-relaxed font-semibold text-sm">
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="mt-10 pt-10 border-t border-slate-50 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                  <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">Initialization Ready</span>
+                  <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/40">
+                    <ChevronRight size={16} />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Footer Meta */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ delay: 0.8 }}
+          className="mt-24 text-center"
         >
-          <Stylish_H2 h2={t("steps.title")} className="mb-2 text-center text-lg uppercase tracking-wider font-semibold" />
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-10 md:mb-14 mt-2 text-sm text-muted-foreground text-center"
-        >
-          {t("steps.subtitle")}
-        </motion.p>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid gap-6 md:grid-cols-3"
-        >
-          {steps.map((step, index) => {
-            const Icon = step.icon
-
-            return (
-              <motion.div
-                key={step.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="relative flex flex-col items-center rounded-xl bg-primary text-white px-5 py-8 md:py-10 text-center shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                {/* Icon */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-black text-white"
-                >
-                  <Icon className="h-auto w-2/3 stroke-1" />
-                </motion.div>
-
-                {/* Text */}
-                <h3 className="text-sm font-semibold text-white">
-                  <span className="font-extrabold tracking-wider">0{index + 1}  — </span>{step.title}
-                </h3>
-                <p className="mt-2 text-xs text-white/80">
-                  {step.desc}
-                </p>
-
-                {/* Arrow (desktop only) */}
-                {index !== steps.length - 1 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.5 + index * 0.2 }}
-                  >
-                    <ArrowRight
-                      className="absolute left-full top-1/2 hidden -translate-y-1/2 text-secondary h-10 stroke-3 md:block"
-                    />
-                  </motion.div>
-                )}
-              </motion.div>
-            )
-          })}
-        </motion.div>
-
-        {/* Confidence footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 rounded-xl text-black px-4 py-3 text-center text-xs"
-        >
-          {t("steps.footer")}
+          <div className="inline-block px-6 py-3 bg-slate-50 rounded-full border border-slate-100">
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.3em]">
+              Global Standard Logistics Protocol v4.0
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

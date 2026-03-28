@@ -9,6 +9,7 @@ import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
 import Container3DView from "My_UI/cart/Container3DView"
+import ThreeCartEngine from "components/cart/ThreeCartEngine"
 
 // Helper function to get color based on item category
 const getContainerItemColor = (category) => {
@@ -26,7 +27,9 @@ const getContainerItemColor = (category) => {
 export default function CartPage() {
     const { t } = useLanguage()
     const [cart, setCart] = useState([])
+    const [products, setProducts] = useState({})
     const [mounted, setMounted] = useState(false)
+    const [loadingProducts, setLoadingProducts] = useState(false)
 
     useEffect(() => {
         const initializeCart = () => {
@@ -35,6 +38,38 @@ export default function CartPage() {
         }
         initializeCart()
     }, [])
+
+    useEffect(() => {
+        const fetchProductDetails = async () => {
+            if (cart.length === 0) return
+            
+            const uniqueIds = Array.from(new Set(cart.flatMap(c => c.items.map(i => i.ID || i.id))))
+            const missingIds = uniqueIds.filter(id => !products[id])
+            
+            if (missingIds.length === 0) return
+            
+            setLoadingProducts(true)
+            try {
+                const results = await Promise.all(
+                    missingIds.map(async (id) => {
+                        const res = await fetch(`/API/products/${id}?fields=ID,name,image,dimensions,category`)
+                        return res.json()
+                    })
+                )
+                
+                const newProducts = {}
+                results.forEach(p => { newProducts[p.ID || p.id] = p })
+                
+                setProducts(prev => ({ ...prev, ...newProducts }))
+            } catch (err) {
+                console.error("Failed to fetch products for 3D engine:", err)
+            } finally {
+                setLoadingProducts(false)
+            }
+        }
+        
+        fetchProductDetails()
+    }, [cart])
 
     const updateCart = () => {
         setCart([...getCart()])
@@ -66,7 +101,8 @@ export default function CartPage() {
         if (cart.length === 0) return false;
         for (const container of cart) {
             const { filledTotal } = containerFillPercent(container);
-            if (filledTotal < 99) return false;
+            // Strict 100% requirement as requested
+            if (filledTotal < 99.9) return false;
         }
         return true;
     }
@@ -123,255 +159,159 @@ export default function CartPage() {
     }
 
     return (
-        <main className="w-full min-h-screen bg-gray-50">
-            {/* Hero Section */}
-            <section className="bg-gray-900 py-12 md:py-20 text-white">
-                <div className="mx-auto max-w-7xl px-4">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div>
-                            <h1 className="text-3xl md:text-5xl font-bold mb-2">{t('cart.title')}</h1>
-                            <p className="text-gray-300">
-                                {calculateItemCount()} {t('cart.itemsIn')} {cart.length} {cart.length > 1 ? t('cart.containers') : t('cart.container')}
-                            </p>
+        <main className="w-full min-h-screen bg-black text-white">
+            {/* 3D-First Interactive Dashboard */}
+            <div className="grid lg:grid-cols-[1fr_400px] h-screen overflow-hidden">
+                
+                {/* 🔴 Left Side: The 3D Engine Stage */}
+                <section className="relative flex flex-col p-4 md:p-8 bg-[#0a0a0a]">
+                    <header className="flex items-center justify-between mb-8 z-10">
+                         <div className="flex items-center gap-4">
+                            <Link href="/collections" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
+                                <ArrowRight className="w-5 h-5 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                            </Link>
+                            <div>
+                                <h1 className="text-2xl font-black uppercase tracking-tighter">
+                                    {t('cart.title')}
+                                </h1>
+                                <p className="text-[10px] font-bold text-white/40 tracking-[0.2em] uppercase">
+                                    Container ID: #{cart[0]?.id?.split('-')[0]}
+                                </p>
+                            </div>
                         </div>
-                        <button
-                            onClick={() => window.print()}
-                            className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition-colors"
-                        >
-                            <Printer size={20} />
-                            {t('cart.printSummary')}
-                        </button>
+                        
+                        <div className="flex items-center gap-3">
+                            <button onClick={() => window.print()} className="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl transition-colors">
+                                <Printer size={18} />
+                            </button>
+                            <button onClick={() => handleRemoveContainer(cart[0]?.id)} className="p-2.5 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-xl transition-colors">
+                                <Trash2 size={18} />
+                            </button>
+                        </div>
+                    </header>
+
+                    <div className="flex-1 relative min-h-0">
+                        {cart.length > 0 && (
+                            <ThreeCartEngine 
+                                container={cart[0]}
+                                items={cart[0]?.items}
+                                products={products || {}}
+                            />
+                        )}
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Cart Content */}
-            <section className="py-8 md:py-12">
-                <div className="mx-auto max-w-7xl px-4">
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        {/* Cart Items */}
-                        <div className="lg:col-span-2 space-y-6">
-                            {cart.map((container, containerIndex) => (
+                {/* 🟢 Right Side: Interactive Logistics Panel */}
+                <section className="bg-white text-black flex flex-col shadow-[-20px_0_50px_rgba(0,0,0,0.2)] z-20">
+                    <header className="p-6 border-b border-gray-100 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                             <Package className="w-5 h-5 text-blue-600" />
+                             <h2 className="font-bold uppercase tracking-tight text-lg">Inventory</h2>
+                        </div>
+                        <span className="text-xs font-bold px-2 py-0.5 bg-blue-50 text-blue-600 rounded">
+                            {calculateItemCount()} Items
+                        </span>
+                    </header>
+
+                    {/* Scrollable Item Stream with "Tiny Pictures" and "+" buttons */}
+                    <div className="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+                        <AnimatePresence>
+                             {cart[0]?.items.map((item, idx) => (
                                 <motion.div
-                                    key={container.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: containerIndex * 0.1 }}
-                                    className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                                    key={item.id}
+                                    layout
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="flex items-center gap-4 p-3 rounded-2xl border border-gray-100 hover:border-blue-200 transition-colors group"
                                 >
-                                    {/* Container Header */}
-                                    <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                                        <div className="flex items-center gap-3">
-                                            <Package className="w-5 h-5 text-gray-600" />
-                                            <div>
-                                                <h3 className="font-semibold text-gray-900">{container.name}</h3>
-                                                <p className="text-sm text-gray-500">
-                                                    {container.dimension?.length || 20}ft Container
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        {/* Container Fill Progress */}
-                                        <div className="flex-1 w-full md:max-w-xs md:mx-auto">
-                                            {(() => {
-                                                const { filledTotal } = containerFillPercent(container);
-                                                return (
-                                                    <div className="flex flex-col gap-1 w-full">
-                                                        <div className="flex justify-between text-xs font-semibold">
-                                                            <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-600"}>
-                                                                {filledTotal >= 99 ? t('cart.containerFull') : t('cart.containerFilling')}
-                                                            </span>
-                                                            <span className={filledTotal >= 99 ? "text-green-600 text-sm" : "text-gray-900"}>{filledTotal.toFixed(1)}%</span>
-                                                        </div>
-                                                        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                                                            <div 
-                                                                className={`h-2 rounded-full transition-all duration-300 ${filledTotal >= 99 ? "bg-green-500" : "bg-blue-600"}`} 
-                                                                style={{ width: `${filledTotal}%` }}
-                                                            ></div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })()}
-                                        </div>
-
-                                        <button
-                                        onClick={() => handleRemoveContainer(container.id)}
-                                        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                        aria-label={t('cart.removeContainer')}
-                                    >
-                                        <Trash2 size={20} />
-                                    </button>
-                                    </div>
-
-                                    {/* 3D Container Visualization */}
-                                    <div className="px-6 py-8 bg-gradient-to-b from-gray-100 to-white flex items-center justify-center overflow-hidden">
-                                        <Container3DView
-                                            size={container.name}
-                                            width={container.dimension?.width || 2.35}
-                                            height={container.dimension?.height || 2.39}
-                                            length={container.dimension?.length || 20}
-                                            items={container.items.flatMap(item => 
-                                                Array.from({ length: Math.min(item.qty, 10) }).map(() => ({
-                                                    color: getContainerItemColor(item.category),
-                                                    image: item.image
-                                                }))
-                                            )}
-                                            fillPercent={containerFillPercent(container).filledTotal}
-                                            scale={0.9}
+                                    <div className="w-14 h-14 shrink-0 rounded-xl bg-gray-50 overflow-hidden relative border border-gray-100 p-1">
+                                        <Image
+                                            src={item.image || '/raster/product.jpg'}
+                                            alt={item.name}
+                                            fill
+                                            className="object-contain"
                                         />
                                     </div>
-
-                                    {/* Container Items */}
-                                    <div className="divide-y divide-gray-100">
-                                        {container.items.map((item) => (
-                                            <div key={item.id} className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                                                <div className="flex-shrink-0 w-20 h-20 relative bg-gray-50 rounded-lg overflow-hidden border border-gray-100">
-                                                    <Image
-                                                        src={item.image || '/raster/product.jpg'}
-                                                        alt={item.name}
-                                                        fill
-                                                        className="object-contain p-2 mix-blend-multiply"
-                                                    />
-                                                </div>
-                                                {/* Product Info */}
-                                                <div className="flex-1 min-w-0">
-                                                    <h4 className="font-medium text-gray-900 truncate">{item.name}</h4>
-                                                    <p className="text-sm text-gray-500">{t('cart.id')}: {item.id}</p>
-                                                    {item.price && (
-                                                        <p className="text-sm font-medium text-gray-900 mt-1">
-                                                            ${item.price.toFixed(2)} {t('cart.each')}
-                                                        </p>
-                                                    )}
-                                                </div>
-
-                                                {/* Quantity Controls */}
-                                                <div className="flex flex-col items-center gap-2">
-                                                    <div className="flex items-center gap-2">
-                                                        <button
-                                                            onClick={() => handleRemoveItem(container.id, item.id)}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
-                                                            aria-label={t('cart.decreaseQuantity')}
-                                                        >
-                                                            <Minus size={16} />
-                                                        </button>
-                                                        <input 
-                                                            type="number"
-                                                            value={item.qty}
-                                                            onChange={(e) => handleSetQty(container.id, item, e.target.value)}
-                                                            className="w-16 h-8 text-center font-medium border border-gray-200 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                                                            min="1"
-                                                        />
-                                                        <button
-                                                            onClick={() => handleAddItem(container.id, item)}
-                                                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
-                                                            aria-label={t('cart.increaseQuantity')}
-                                                        >
-                                                            <Plus size={16} />
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                                {/* Item Total */}
-                                                {item.price && (
-                                                    <div className="text-right min-w-[100px]">
-                                                        <p className="font-semibold text-gray-900">
-                                                            ${(item.price * item.qty).toFixed(2)}
-                                                        </p>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ))}
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-xs font-bold leading-tight line-clamp-2 uppercase">
+                                            {item.name}
+                                        </p>
+                                        <div className="mt-1 flex items-center gap-1.5 font-mono text-[10px] text-gray-400">
+                                            <span className="font-bold text-blue-600 capitalize">#{item.category.toLowerCase()}</span>
+                                            <span>•</span>
+                                            <span>SKU: {item.id}</span>
+                                        </div>
                                     </div>
 
-                                    {/* Container Summary */}
-                                    <div className="bg-gray-50 px-6 py-4 border-t border-gray-100">
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-gray-600">
-                                                {container.items.reduce((sum, item) => sum + item.qty, 0)} {t('cart.items')}
-                                            </span>
-                                            {container.items.some(item => item.price) && (
-                                                <span className="font-semibold text-gray-900">
-                                                    {t('cart.subtotal')}: ${container.items.reduce((sum, item) => sum + (item.price || 0) * item.qty, 0).toFixed(2)}
-                                                </span>
-                                            )}
+                                    <div className="flex flex-col items-center gap-1">
+                                        <div className="flex items-center gap-1 bg-gray-50 p-1 rounded-xl border border-gray-100">
+                                            <button 
+                                                onClick={() => handleRemoveItem(cart[0].id, item.id)}
+                                                className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white hover:shadow-sm"
+                                            >
+                                                <Minus size={12} />
+                                            </button>
+                                            <span className="w-6 text-center text-xs font-black">{item.qty}</span>
+                                            <button 
+                                                onClick={() => handleAddItem(cart[0].id, item)}
+                                                className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white hover:shadow-sm text-blue-600"
+                                            >
+                                                <Plus size={12} />
+                                            </button>
                                         </div>
                                     </div>
                                 </motion.div>
-                            ))}
-                        </div>
+                             ))}
+                        </AnimatePresence>
 
-                        {/* Order Summary */}
-                        <div className="lg:col-span-1">
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24"
-                            >
-                                <h2 className="text-xl font-bold mb-6">{t('cart.subtotal')}</h2>
-                                
-                                <div className="space-y-4 mb-6">
-                                    <div className="flex justify-between text-gray-600">
-                                        <span>{cart.length > 1 ? t('cart.containers') : t('cart.container')}</span>
-                                        <span>{cart.length}</span>
-                                    </div>
-                                    <div className="flex justify-between text-gray-600">
-                                        <span>{t('cart.items')}</span>
-                                        <span>{calculateItemCount()}</span>
-                                    </div>
-                                    {calculateTotal() > 0 && (
-                                        <div className="flex justify-between text-gray-600">
-                                            <span>{t('cart.subtotal')}</span>
-                                            <span>${calculateTotal().toFixed(2)}</span>
-                                        </div>
-                                    )}
-                                    <div className="flex justify-between text-gray-600">
-                                        <span>Shipping</span>
-                                        <span>Calculated at checkout</span>
-                                    </div>
-                                </div>
-
-                                <div className="border-t border-gray-100 pt-4 mb-6">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-lg font-bold">{t('cart.total')}</span>
-                                        <span className="text-2xl font-bold">
-                                            {calculateTotal() > 0 ? `$${calculateTotal().toFixed(2)}` : 'Contact for Pricing'}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {cart.length > 0 && !isAllContainersFull() && (
-                                    <div className="mb-4 p-4 bg-orange-50 border border-orange-200 rounded-xl text-orange-800 text-sm">
-                                        <p className="font-medium flex items-center gap-2">⚠️ {t('cart.containerFull')}</p>
-                                        <p className="mt-1">Please completely fill all your containers (100%) to proceed with checkout.</p>
-                                    </div>
-                                )}
-
-                                <Link 
-                                    href={isAllContainersFull() ? "/checkout" : "#"}
-                                    onClick={(e) => { if (!isAllContainersFull() || cart.length === 0) e.preventDefault() }}
-                                    className={`flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold text-white transition ${isAllContainersFull() && cart.length > 0 ? "bg-black hover:bg-gray-900" : "bg-gray-300 cursor-not-allowed"}`}
-                                >
-                                    {t('cart.proceedToCheckout')}
-                                    <ArrowRight size={18} />
-                                </Link>
-
-                                <Link 
-                                    href="/collections"
-                                    className="flex w-full items-center justify-center mt-3 text-gray-600 hover:text-gray-900 transition-colors"
-                                >
-                                    {t('cart.continueShopping')}
-                                </Link>
-
-                                <div className="mt-6 pt-6 border-t border-gray-100 text-sm text-gray-500">
-                                    <p className="mb-2">✓ No account required</p>
-                                    <p className="mb-2">✓ Free shipping on orders over $5,000</p>
-                                    <p>✓ 15-25 year warranties</p>
-                                </div>
-                            </motion.div>
-                        </div>
+                        <Link href="/collections" className="flex items-center justify-center gap-2 p-4 border-2 border-dashed border-gray-100 rounded-2xl text-gray-400 hover:text-blue-600 hover:border-blue-100 transition-all group">
+                             <Plus size={16} className="group-hover:rotate-90 transition-transform" />
+                             <span className="text-xs font-bold uppercase tracking-widest">Add Products</span>
+                        </Link>
                     </div>
-                </div>
-            </section>
+
+                    {/* Checkout "Logic Gate" Integration */}
+                    <footer className="p-6 bg-gray-50 border-t border-gray-100 space-y-4">
+                        <div className="space-y-2">
+                             <div className="flex justify-between items-end">
+                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Pricing Model</span>
+                                <span className="text-xl font-black text-black">
+                                     {calculateTotal() > 0 ? `$${calculateTotal().toFixed(2)}` : 'Quotation Basis'}
+                                </span>
+                             </div>
+                             
+                             <div className="flex flex-col gap-1.5 p-4 bg-white rounded-2xl border border-gray-100">
+                                <div className="flex justify-between items-center text-[10px] font-black uppercase italic">
+                                    <span className={isAllContainersFull() ? 'text-green-600' : 'text-orange-500'}>
+                                        {isAllContainersFull() ? '✓ READY TO SHIP' : '⚠ FILLING CONTAINER'}
+                                    </span>
+                                    <span>{containerFillPercent(cart[0]).filledTotal.toFixed(1)}%</span>
+                                </div>
+                                <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                     <motion.div 
+                                        className={`h-full ${isAllContainersFull() ? 'bg-green-500' : 'bg-blue-600'}`}
+                                        animate={{ width: `${Math.min(containerFillPercent(cart[0]).filledTotal, 100)}%` }}
+                                     />
+                                </div>
+                                {!isAllContainersFull() && (
+                                    <p className="text-[9px] font-bold text-gray-400 uppercase mt-1 leading-normal">
+                                        Minimum 100% capacity required to initiate quote logic and proceed.
+                                    </p>
+                                )}
+                             </div>
+                        </div>
+
+                        <Link 
+                            href={isAllContainersFull() ? "/checkout" : "#"}
+                            onClick={(e) => { if (!isAllContainersFull()) e.preventDefault() }}
+                            className={`w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all ${isAllContainersFull() ? 'bg-black text-white hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-500/20 active:scale-95' : 'bg-gray-100 text-gray-300 cursor-not-allowed'}`}
+                        >
+                            {t('cart.proceedToCheckout')}
+                            <ArrowRight size={16} className={isAllContainersFull() ? 'animate-bounce-x' : ''} />
+                        </Link>
+                    </footer>
+                </section>
+            </div>
         </main>
     )
 }

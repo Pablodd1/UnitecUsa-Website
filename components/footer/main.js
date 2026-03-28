@@ -119,7 +119,7 @@ const Footer = () => {
                                 if (!email) return;
                                 const subject = encodeURIComponent("Website Subscription Request");
                                 const body = encodeURIComponent(`New subscription request from: ${email}\n\nPlease add this email to the mailing list.`);
-                                window.location.href = `mailto:lidermercadeo@espaciosimportados.com.co?subject=${subject}&body=${body}`;
+                                window.location.href = `mailto:${brand.email}?subject=${subject}&body=${body}`;
                             }}
                             className="flex flex-col justify-center my-5"
                         >

@@ -97,13 +97,15 @@ export default function ContactPage() {
 
     const handleMeetingSubmit = (e) => {
         e.preventDefault();
+        const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
         const subject = `Meeting Request - ${meetingData.date} at ${meetingData.time}`;
         const body = `I'd like to schedule a meeting.\n\nName: ${meetingData.name}\nEmail: ${meetingData.email}\nPhone: ${meetingData.phone}\nPreferred Date: ${meetingData.date}\nPreferred Time: ${meetingData.time}\n\nNotes:\n${meetingData.notes}`;
-        window.location.href = `mailto:lidermercadeo@espaciosimportados.com.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     const handleQuoteSubmit = (e) => {
         e.preventDefault();
+        const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
         const subject = `Quote Inquiry - ${quoteData.companyName || quoteData.fullName}`;
         const body = `Quote Request Details:\n\n` +
             `Full Name: ${quoteData.fullName}\n` +
@@ -113,7 +115,7 @@ export default function ContactPage() {
             `Estimated Volume: ${quoteData.volume}\n\n` +
             `Project Details:\n${quoteData.details}`;
         
-        window.location.href = `mailto:lidermercadeo@espaciosimportados.com.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     return (
@@ -450,28 +452,28 @@ export default function ContactPage() {
                             <form onSubmit={handleQuoteSubmit} className="mt-6 grid gap-4 sm:grid-cols-2">
                                 <Input 
                                     label={isSpanish ? "Nombre Completo" : t('contact.fullName')} 
-                                    placeholder="John Doe"
+                                    placeholder="Nombre y Apellido"
                                     value={quoteData.fullName}
                                     onChange={(e) => setQuoteData({ ...quoteData, fullName: e.target.value })}
                                     required 
                                 />
                                 <Input 
                                     label={isSpanish ? "Nombre de la Empresa" : t('contact.companyName')} 
-                                    placeholder="Your Company LLC"
+                                    placeholder="Su Empresa S.A.S."
                                     value={quoteData.companyName}
                                     onChange={(e) => setQuoteData({ ...quoteData, companyName: e.target.value })}
                                 />
                                 <Input 
                                     label={isSpanish ? "Correo Electrónico" : t('contact.email')} 
                                     type="email"
-                                    placeholder="your-name@example.com"
+                                    placeholder="su-nombre@ejemplo.com"
                                     value={quoteData.email}
                                     onChange={(e) => setQuoteData({ ...quoteData, email: e.target.value })}
                                     required
                                 />
                                 <Input 
                                     label={isSpanish ? "Teléfono" : t('contact.phone')} 
-                                    placeholder="+1 234 567 890"
+                                    placeholder="+57 300 000 0000"
                                     value={quoteData.phone}
                                     onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
                                 />
@@ -479,7 +481,7 @@ export default function ContactPage() {
                                 <div className="sm:col-span-2">
                                     <Input
                                         label={isSpanish ? "Volumen / Contenedores Estimados" : t('contact.estimatedVolume')}
-                                        placeholder="e.g. 1x 40ft container"
+                                        placeholder="e.j. 1x contenedor de 40 pies"
                                         value={quoteData.volume}
                                         onChange={(e) => setQuoteData({ ...quoteData, volume: e.target.value })}
                                     />
@@ -488,9 +490,9 @@ export default function ContactPage() {
                                 <div className="sm:col-span-2">
                                     <Textarea
                                         label={isSpanish ? "Detalles del Proyecto" : t('contact.projectDetails')}
-                                        placeholder="Describe product types, quantities, destination, and timeline..."
+                                        placeholder="Describa tipos de productos, cantidades, destino y cronograma..."
                                         value={quoteData.details}
-                                        onChange={(e) => setQuoteData({ ...quoteData, details: e.target.value })}
+                                        onChange={(e) => setQuoteData({ ...quoteData.details, details: e.target.value })}
                                     />
                                 </div>
 
