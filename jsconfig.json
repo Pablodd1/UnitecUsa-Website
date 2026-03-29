@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "My_UI/*": ["./components/*"],
+      "components/*": ["./components/*"],
       "StaticData/*": ["./static_data/*"],
       "lib/*": ["./utils/*"],
       "utils/*": ["./utils/*"],

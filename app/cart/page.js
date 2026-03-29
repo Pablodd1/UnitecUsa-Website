@@ -9,8 +9,8 @@ import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
 import Container3DView from "My_UI/cart/Container3DView"
-import ThreeCartEngine from "components/cart/ThreeCartEngine"
-import CartControlPanel from "components/cart/CartControlPanel"
+import ThreeCartEngine from "My_UI/cart/ThreeCartEngine"
+import CartControlPanel from "My_UI/cart/CartControlPanel"
 
 // Helper function to get color based on item category
 const getContainerItemColor = (category) => {
