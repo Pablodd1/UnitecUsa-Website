@@ -30,7 +30,7 @@ export async function generateMetadata(_, parent) {
             title: "Sale – Unitec USA Design",
             description:
                 "Save on premium PVC & WPC building materials with limited-time offers.",
-            images: [`/raster/sale.jgp` || process.env.DEFAULT_IMAGE],
+            images: [`/raster/sale.webp` || `/raster/exterior.webp` || process.env.DEFAULT_IMAGE],
         },
     };
 }
@@ -44,8 +44,8 @@ export default async function Collections({ searchParams }) {
             h1={"Sale & Clearance Products"}
             description={"Get premium PVC and WPC building materials at reduced prices. Our sale section features discounted, high-quality products ideal for bulk orders, contractor projects, and cost-conscious developments—without compromising on performance, durability, or warranty coverage."}
             cover={{
-                src: '/raster/sale.webp',
-                alt: '/raster/collection-sale'
+                src: '/raster/sale.webp' || '/raster/exterior.webp',
+                alt: 'Unitec USA Sale & Clearance Products'
             }}
             productURL="/API/collections?onlyDiscounted=true&"
             prefilters={{
