@@ -8,19 +8,6 @@ import { containerFillPercent } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
 
-// Helper function to get color based on item category
-const getContainerItemColor = (category) => {
-    const colors = {
-        'PAREDES': '#3B82F6',      // Blue
-        'LAMINAS': '#8B5CF6',      // Purple
-        'PISOS': '#10B981',        // Green
-        'CUBIERTAS UPVC': '#F59E0B', // Amber
-        'PANELES WPC Y ANGULOS': '#EF4444', // Red
-        'default': '#60A5FA'
-    }
-    return colors[category] || colors.default
-}
-
 export default function CartPage() {
     const [cart, setCart] = useState([])
     const [mounted, setMounted] = useState(false)
@@ -69,12 +56,10 @@ export default function CartPage() {
 
     if (!mounted) {
         return (
-            <main className="w-full min-h-screen bg-gray-50">
-                <div className="mx-auto max-w-7xl px-4 py-20">
-                    <div className="text-center">
-                        <ShoppingCart className="w-16 h-16 mx-auto text-gray-300 mb-4" />
-                        <h1 className="text-3xl font-bold mb-4">Loading Cart...</h1>
-                    </div>
+            <main className="w-full min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center">
+                    <ShoppingCart className="w-12 h-12 mx-auto text-gray-300 mb-4 animate-pulse" />
+                    <p className="text-gray-500">Cargando...</p>
                 </div>
             </main>
         )
@@ -83,19 +68,18 @@ export default function CartPage() {
     if (cart.length === 0) {
         return (
             <main className="w-full min-h-screen bg-gray-50">
-                {/* Hero Section */}
-                <section className="bg-gray-900 py-20 text-white">
-                    <div className="mx-auto max-w-6xl px-4 text-center">
-                        <ShoppingCart className="w-16 h-16 mx-auto mb-6" />
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('cart.empty')}</h1>
-                        <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                            {t('cart.emptyDescription')}
+                <section className="bg-gray-900 py-24 text-white">
+                    <div className="mx-auto max-w-2xl px-4 text-center">
+                        <ShoppingCart className="w-16 h-16 mx-auto mb-6 text-gray-400" />
+                        <h1 className="text-4xl font-bold mb-4">Tu carrito esta vacio</h1>
+                        <p className="text-gray-400 mb-8">
+                            Selecciona un contenedor y agrega productos para comenzar.
                         </p>
                         <Link 
                             href="/collections"
-                            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-gray-200"
+                            className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-xl font-semibold hover:bg-gray-200"
                         >
-                            {t('cart.browseProducts')}
+                            Ver Productos
                             <ArrowRight size={18} />
                         </Link>
                     </div>
