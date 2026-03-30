@@ -1,7 +1,7 @@
 "use client";
 import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { addContainer, addOne } from 'lib/cart/cart.core';
+import { addContainer, addOne } from 'utils/cart/cart.core';
 import { generateID } from 'lib/misc';
 import { ArrowRight, Box as BoxIcon } from 'lucide-react';
 import Image from 'next/image';
