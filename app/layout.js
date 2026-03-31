@@ -1,6 +1,7 @@
 import { Montserrat } from 'next/font/google'
 import "./globals.css";
 import { getDictionary } from "lib/i18n/getDictionary";
+import RootLayoutClient from "./layout-client";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -9,8 +10,8 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
-export async function generateMetadata({ params }) {
-  const lang = params?.lang || 'es';
+export async function generateMetadata() {
+  const lang = 'es';
   const dict = getDictionary(lang);
 
   const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL || "";
@@ -132,14 +133,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'es' }];
-}
-
-import RootLayoutClient from "./layout-client";
-
-export default async function RootLayout({ children, params }) {
-  const lang = params?.lang || 'es';
+export default async function RootLayout({ children }) {
+  const lang = 'es';
   const dict = getDictionary(lang);
 
   return (

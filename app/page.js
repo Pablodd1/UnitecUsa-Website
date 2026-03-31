@@ -7,8 +7,8 @@ import WhoItsFor from "My_UI/homepage/for_whom";
 import HomeCTA from "My_UI/homepage/home_CTA";
 import { getDictionary } from "lib/i18n/getDictionary";
 
-export default async function HomePage({ params }) {
-  const lang = params?.lang || 'en';
+export default async function HomePage() {
+  const lang = 'es';
   const dict = getDictionary(lang);
 
   return (
