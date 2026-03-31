@@ -36,23 +36,15 @@ function SplashScreen({ showSplash, children }) {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative w-32 h-32 mb-6"
+          className="relative w-48 h-48"
         >
           <Image src="/logo.png" alt="UNITEC USA" fill className="object-contain" priority />
         </motion.div>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-white text-xl font-light tracking-[0.3em]"
-        >
-          BUILDING INNOVATION
-        </motion.p>
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "60%" }}
           transition={{ delay: 0.5, duration: 1.5 }}
-          className="h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-6 rounded-full"
+          className="h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 mt-8 rounded-full"
         />
       </motion.div>
     </AnimatePresence>
