@@ -1,16 +1,87 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Volume2, Package } from "lucide-react"
+import { useEffect, useState, useCallback, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Volume2, Sparkles } from "lucide-react"
 import { getCart, removeContainer, removeOne, addOne, setQty } from "utils/cart/cart.core"
 import { containerFillPercent, calculateRemainingCapacity } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
+import confetti from "canvas-confetti"
+
+function FlyingProduct({ product }) {
+    return (
+        <motion.div
+            initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+            animate={{ x: -150, y: -100, scale: 0.3, opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+            style={{ position: "fixed", left: "50%", top: "30%", zIndex: 9999, pointerEvents: "none" }}
+        >
+            <div className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
+                <Image src={product.image || '/raster/product.jpg'} alt={product.name} fill className="object-cover rounded-full" />
+            </div>
+        </motion.div>
+    )
+}
+
+function CelebrationParticles() {
+    const colors = ["#22c55e", "#3b82f6", "#f59e0b", "#ec4899", "#8b5cf6"]
+    return (
+        <>
+            {Array.from({ length: 25 }).map((_, i) => (
+                <motion.div
+                    key={i}
+                    initial={{ x: "50%", y: "50%", opacity: 1, scale: 0 }}
+                    animate={{ x: `${50 + (Math.random() - 0.5) * 100}%`, y: `${50 + (Math.random() - 0.5) * 100}%`, opacity: 0, rotate: Math.random() * 360 }}
+                    transition={{ duration: 1 + Math.random(), ease: "easeOut", delay: Math.random() * 0.3 }}
+                    style={{ position: "absolute", width: 12, height: 12, backgroundColor: colors[Math.floor(Math.random() * colors.length)], borderRadius: "50%" }}
+                />
+            ))}
+        </>
+    )
+}
+
+function TopProgressBar({ fill, itemCount }) {
+    const isFull = fill.filledTotal >= 99
+    return (
+        <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-6 py-5">
+            <div className="max-w-4xl mx-auto">
+                <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-6">
+                        <div className="text-center">
+                            <p className="text-xs text-gray-400 uppercase tracking-wide">Volumen</p>
+                            <p className="text-2xl font-bold">{fill.usableVolume?.toFixed(1)}<span className="text-sm text-gray-400">m³</span></p>
+                        </div>
+                        <div className="w-px h-10 bg-gray-700" />
+                        <div className="text-center">
+                            <p className="text-xs text-gray-400 uppercase tracking-wide">Items</p>
+                            <p className="text-2xl font-bold">{itemCount}</p>
+                        </div>
+                        <div className="w-px h-10 bg-gray-700" />
+                        <div className="text-center">
+                            <p className="text-xs text-gray-400 uppercase tracking-wide">Llenado</p>
+                            <p className={`text-2xl font-bold ${isFull ? "text-green-400" : "text-blue-400"}`}>{fill.filledTotal.toFixed(0)}%</p>
+                        </div>
+                    </div>
+                    <div className={`px-4 py-2 rounded-full text-sm font-bold ${isFull ? "bg-green-500" : "bg-blue-600"}`}>
+                        {isFull ? "✓ CONTENEDOR LLENO" : `${fill.remainingVolume?.toFixed(1)}m³ disponible`}
+                    </div>
+                </div>
+                <div className="h-3 bg-gray-700 rounded-full overflow-hidden relative">
+                    <motion.div initial={{ width: 0 }} animate={{ width: `${fill.filledTotal}%` }} transition={{ duration: 0.5, ease: "easeOut" }}
+                        className={`h-full rounded-full ${isFull ? "bg-gradient-to-r from-green-400 via-green-500 to-green-400" : "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 animate-pulse"}`} />
+                </div>
+            </div>
+        </div>
+    )
+}
 
 export default function CartPage() {
     const [cart, setCart] = useState([])
     const [mounted, setMounted] = useState(false)
+    const [flyingProducts, setFlyingProducts] = useState([])
+    const [showCelebration, setShowCelebration] = useState(false)
+    const wasFull = useRef(false)
 
     useEffect(() => {
         const initializeCart = () => {
@@ -19,6 +90,19 @@ export default function CartPage() {
         }
         initializeCart()
     }, [])
+
+    useEffect(() => {
+        if (mounted && cart.length > 0) {
+            const fill = containerFillPercent(cart[0])
+            if (fill.filledTotal >= 99 && !wasFull.current) {
+                wasFull.current = true
+                setShowCelebration(true)
+                confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ["#22c55e", "#3b82f6", "#f59e0b"] })
+                setTimeout(() => setShowCelebration(false), 3000)
+            }
+            if (fill.filledTotal < 99) wasFull.current = false
+        }
+    }, [cart, mounted])
 
     const updateCart = () => {
         setCart([...getCart()])
@@ -34,10 +118,15 @@ export default function CartPage() {
         updateCart()
     }
 
-    const handleAddItem = (containerId, product) => {
-        addOne(containerId, product)
-        updateCart()
-    }
+    const handleAddItem = useCallback((containerId, product) => {
+        const id = Date.now()
+        setFlyingProducts(prev => [...prev, { ...product, tempId: id }])
+        setTimeout(() => {
+            addOne(containerId, product)
+            setFlyingProducts(prev => prev.filter(p => p.tempId !== id))
+            updateCart()
+        }, 100)
+    }, [])
 
     const handleSetQuantity = (containerId, product, qty) => {
         const val = parseInt(qty)
@@ -97,10 +186,27 @@ export default function CartPage() {
 
     const container = cart[0]
     const fill = containerFillPercent(container)
-    const isFull = fill.filledTotal >= 99.9
+    const isFull = fill.filledTotal >= 99
+    const itemCount = calculateItemCount()
 
     return (
         <main className="min-h-screen bg-gray-50 pb-32">
+            <AnimatePresence>
+                {flyingProducts.map((product) => (<FlyingProduct key={product.tempId} product={product} />))}
+            </AnimatePresence>
+            <TopProgressBar fill={fill} itemCount={itemCount} />
+            <AnimatePresence>
+                {showCelebration && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
+                        <CelebrationParticles />
+                        <motion.div initial={{ scale: 0, y: 50 }} animate={{ scale: 1, y: 0 }} className="bg-green-500 text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+                            <Sparkles className="w-8 h-8" />
+                            <span className="text-xl font-bold">¡Contenedor Lleno!</span>
+                            <Sparkles className="w-8 h-8" />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <header className="bg-white border-b border-gray-200 px-6 py-4">
                 <div className="max-w-4xl mx-auto">
                     <div className="flex items-center justify-between mb-3">
@@ -180,7 +286,7 @@ export default function CartPage() {
                                 <span>{item.dimensions?.length}x{item.dimensions?.width}x{item.dimensions?.height}mm</span>
                             </div>
                             <div className={`font-medium ${remaining > 0 ? 'text-green-600' : 'text-orange-500'}`}>
-                                {remaining > 0 ? `+${remaining} mas caben` : 'CONTENEDOR LLENO'}
+                                {remaining > 0 ? `+${remaining} caben` : 'CONTENEDOR LLENO'}
                             </div>
                         </div>
                     </motion.div>
@@ -193,33 +299,13 @@ export default function CartPage() {
                 </Link>
             </div>
 
-            <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-6">
+            <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
                 <div className="max-w-4xl mx-auto">
-                    <div className="mb-4">
-                        <div className="flex justify-between text-sm mb-2">
-                            <span className="text-gray-600">Capacidad usada: {fill.filledTotal.toFixed(1)}%</span>
-                            <span className={`font-bold ${isFull ? 'text-green-600' : 'text-orange-500'}`}>
-                                {isFull ? '✓ CONTENEDOR LLENO' : `${Math.ceil(fill.remainingVolume)}m³ disponible`}
-                            </span>
-                        </div>
-                        <div className="h-4 bg-gray-100 rounded-full overflow-hidden relative">
-                            <motion.div 
-                                className={`h-full rounded-full ${isFull ? 'bg-green-500' : 'bg-gradient-to-r from-blue-400 to-blue-600'}`}
-                                animate={{ width: `${fill.filledTotal}%` }}
-                                transition={{ duration: 0.5 }}
-                            />
-                        </div>
-                        {!isFull && (
-                            <p className="text-xs text-orange-500 mt-2">
-                                Agrega mas productos para llenar el contenedor
-                            </p>
-                        )}
-                    </div>
                     <Link 
                         href={isFull ? "/checkout" : "#"} 
-                        className={`block text-center py-4 rounded-xl font-semibold transition-colors ${isFull ? 'bg-black text-white hover:bg-gray-800' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                        className={`flex items-center justify-center gap-3 py-4 rounded-xl font-semibold transition-all ${isFull ? "bg-green-500 text-white hover:bg-green-600 hover:scale-[1.02] shadow-lg" : "bg-gray-200 text-gray-400 cursor-not-allowed"}`}
                     >
-                        {isFull ? 'Proceder al Checkout' : `Total: $${calculateTotal().toLocaleString()} (${calculateItemCount()} unidades)`}
+                        {isFull ? (<div className="flex items-center gap-3"><Sparkles className="w-5 h-5" /><span>Proceder al Checkout</span></div>) : (`Total: $${calculateTotal().toLocaleString()} (${itemCount} items)`)}
                     </Link>
                 </div>
             </footer>
