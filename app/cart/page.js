@@ -2,11 +2,12 @@
 
 import { useEffect, useState, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Volume2, Sparkles } from "lucide-react"
+import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Volume2, Sparkles, Box as BoxIcon } from "lucide-react"
 import { getCart, removeContainer, removeOne, addOne, setQty } from "utils/cart/cart.core"
 import { containerFillPercent, calculateRemainingCapacity } from "utils/cart/cart.utils"
 import Link from "next/link"
 import Image from "next/image"
+import Container3DView from "components/cart/Container3DView"
 import confetti from "canvas-confetti"
 
 function FlyingProduct({ product }) {
@@ -231,21 +232,29 @@ export default function CartPage() {
                         </button>
                     </div>
                     
-                    {/* Simple Container Visualization */}
-                    <div className="flex items-center gap-4">
-                        <div className="w-24 h-12 border-2 border-gray-300 rounded relative overflow-hidden bg-gray-100">
-                            <div 
-                                className={`absolute bottom-0 left-0 right-0 transition-all duration-500 ${isFull ? 'bg-green-500' : 'bg-blue-500'}`}
-                                style={{ height: `${Math.min(fill.filledTotal, 100)}%` }}
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-xs font-bold text-gray-700">{fill.filledTotal.toFixed(0)}%</span>
+                    {/* Hyperrealistic Container Visualization */}
+                    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-12 shadow-sm">
+                        <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+                            <div className="flex items-center gap-3">
+                                <BoxIcon className="w-5 h-5 text-blue-500" />
+                                <span className="font-bold text-gray-800 uppercase tracking-tight">Simulación de Carga Real</span>
+                            </div>
+                            <div className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                                {container.name}
                             </div>
                         </div>
-                        <div className="text-xs text-gray-500">
-                            <div>Usado: {(fill.usableVolume - fill.remainingVolume)?.toFixed(1)}m³</div>
-                            <div>Disponible: {fill.remainingVolume?.toFixed(1)}m³</div>
-                            <div>Total: {fill.usableVolume?.toFixed(1)}m³</div>
+                        
+                        <div className="aspect-[21/9] md:aspect-[21/7] w-full flex items-center justify-center p-8 bg-[#0a0a0a] overflow-hidden">
+                            <Container3DView 
+                                size={container.name.includes('40') ? '40ft' : '20ft'}
+                                width={container.dimension?.width || 2.35}
+                                height={container.dimension?.height || 2.39}
+                                length={container.dimension?.length || 12.03}
+                                items={container.items}
+                                fillPercent={fill.filledTotal}
+                                isInteractive={false}
+                                scale={1.2}
+                            />
                         </div>
                     </div>
                 </div>
