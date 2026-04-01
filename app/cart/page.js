@@ -246,12 +246,12 @@ export default function CartPage() {
                         
                         <div className="aspect-[21/9] md:aspect-[21/7] w-full flex items-center justify-center p-8 bg-[#0a0a0a] overflow-hidden">
                             <Container3DView 
-                                size={container.name.includes('40') ? '40ft' : '20ft'}
+                                size={container.name && container.name.includes('40') ? '40ft' : '20ft'}
                                 width={container.dimension?.width || 2.35}
                                 height={container.dimension?.height || 2.39}
                                 length={container.dimension?.length || 12.03}
-                                items={container.items}
-                                fillPercent={fill.filledTotal}
+                                items={container.items || []}
+                                fillPercent={fill.filledTotal || 0}
                                 isInteractive={false}
                                 scale={1.2}
                             />
