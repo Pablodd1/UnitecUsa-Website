@@ -13,9 +13,9 @@ const CONTAINER_TOLERANCE = 0.95;
  */
 export function containerFillPercent(container, currentItemId = null) {
     const totalVolume =
-        (container?.meta?.internal?.length || 0) *
-        (container?.meta?.internal?.width || 0) *
-        (container?.meta?.internal?.height || 0)
+        (container?.dimension?.length || 0) *
+        (container?.dimension?.width || 0) *
+        (container?.dimension?.height || 0)
 
     const usableVolume = totalVolume * CONTAINER_TOLERANCE;
 

@@ -89,6 +89,13 @@ export default function CartPage() {
             setCart(getCart())
         }
         initializeCart()
+
+        const handleCartUpdate = () => {
+            setCart([...getCart()])
+        }
+
+        window.addEventListener("cart-updated", handleCartUpdate)
+        return () => window.removeEventListener("cart-updated", handleCartUpdate)
     }, [])
 
     useEffect(() => {

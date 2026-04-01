@@ -39,6 +39,9 @@ export function initCart() {
 
 function persist() {
   sessionStorage.setItem(CART_KEY, JSON.stringify(cart))
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event("cart-updated"))
+  }
 }
 
 export function getCart() {
