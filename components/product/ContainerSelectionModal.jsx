@@ -5,6 +5,7 @@ import Image from "next/image"
 import { addContainer, addOne } from "lib/cart/cart.core"
 import { generateID } from "lib/misc"
 import { useLanguage } from "lib/LanguageContext"
+import { useRouter } from "next/navigation"
 
 // Container definitions
 const CONTAINERS = {
@@ -58,6 +59,7 @@ export default function ContainerSelectionModal({ isOpen, onClose, product }) {
   const [selectedContainer, setSelectedContainer] = useState(null)
   const [isAdding, setIsAdding] = useState(false)
   const { language } = useLanguage()
+  const router = useRouter()
   const isSpanish = language === "es"
   const containers = CONTAINERS[language] || CONTAINERS.en
 
@@ -101,6 +103,7 @@ export default function ContainerSelectionModal({ isOpen, onClose, product }) {
       setTimeout(() => {
         setIsAdding(false)
         onClose()
+        router.push("/cart")
       }, 500)
     } catch (error) {
       console.error("Error adding to container:", error)

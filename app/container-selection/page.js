@@ -56,13 +56,32 @@ function ContainerSelectionContent() {
   const { language } = useLanguage();
   const t = containerTranslations[language] || containerTranslations.en;
 
-  // Check if container already exists - if so, redirect to cart
+  // Check if container already exists - if so, add product and redirect to cart
   useEffect(() => {
-    const existingCart = getCart();
-    if (existingCart && existingCart.length > 0) {
-      router.push('/cart');
+    async function checkExistingAndAdd() {
+      const existingCart = getCart();
+      if (existingCart && existingCart.length > 0) {
+        if (productId) {
+          setLoading(true);
+          const containerId = existingCart[0].id; // Always add to current open container
+          try {
+            const res = await fetch(`/API/products/${productId}`);
+            if (res.ok) {
+              const productData = await res.json();
+              addOne(containerId, productData);
+            } else {
+              addOne(containerId, { id: productId, name: "Product " + productId, price: 0 });
+            }
+          } catch (err) {
+            console.error("Failed to fetch product for existing container", err);
+            addOne(containerId, { id: productId, name: "Product " + productId, price: 0 });
+          }
+        }
+        router.push('/cart');
+      }
     }
-  }, [router]);
+    checkExistingAndAdd();
+  }, [router, productId]);
 
   const handleSelect = async (container) => {
     setLoading(true);
