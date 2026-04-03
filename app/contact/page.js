@@ -34,6 +34,13 @@ const TikTokIcon = ({ className }) => (
     </svg>
 );
 
+import SeoHead from "components/SeoHead"
+
+export const metadata = {
+    title: "Contacto | BIwebsite",
+    description: "Ponte en contacto con nuestro equipo para consultas, soporte o para agendar una reunión."
+};
+
 export default function ContactPage() {
     const { t, language: lang, getCompanyText } = useLanguage();
     const { activeBrand, brand } = useBrand();
@@ -119,7 +126,13 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="w-full">
+        <>
+            <SeoHead 
+                title={metadata.title} 
+                description={metadata.description}
+                canonical="https://yourdomain.com/contact"
+            />
+            <main className="w-full">
             {/* ================= HERO ================= */}
             <section className="relative overflow-hidden py-20 text-white min-h-fit">
                 {/* Background Image */}
@@ -557,6 +570,7 @@ export default function ContactPage() {
                 </div>
             </section>
         </main>
+        </>
     )
 }
 

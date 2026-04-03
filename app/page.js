@@ -7,6 +7,11 @@ import WhoItsFor from "My_UI/homepage/for_whom";
 import HomeCTA from "My_UI/homepage/home_CTA";
 import { getDictionary } from "lib/i18n/getDictionary";
 
+export const metadata = {
+  title: "BIwebsite | Logística e Innovación en Construcción",
+  description: "La plataforma líder en visualización de contenedores y suministro masivo de materiales de construcción."
+};
+
 export default async function HomePage() {
   const lang = 'es';
   const dict = getDictionary(lang);

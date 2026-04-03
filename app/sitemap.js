@@ -1,36 +1,36 @@
-// Function to generate sitemap dynamically
-export default async function Sitemap() {
-  const nav = await import(`My_UI/footer/links.json`).then((module) => module.default);
-
-  // Current date for lastModified
-  const currentDate = new Date();
-  const BASE_URL = process.env.BASE_URL;
-
-  // Helper function to generate sitemap entry
-  const generateSitemapEntry = (href, changeFreq = 'monthly', priority = 0.8) => ({
-    url: `${BASE_URL}${href}`,
-    lastModified: currentDate,
-    changeFrequency: changeFreq,
-    priority: priority,
-  });
-
-  // Sitemap generation
-  const pages = [
-    // Home Page
-    generateSitemapEntry('/'),
-
-    // Information Pages
-    ...nav["information"].map(item =>
-      generateSitemapEntry(item.link, 'monthly', 0.9)
-    ) || [],
-
-    // Residential Services Pages
-    ...nav["helpfulLinks"].map(item =>
-      generateSitemapEntry(item.link, 'monthly', 0.6)
-    ) || [],
-
+export default function sitemap() {
+  const baseUrl = 'https://yourdomain.com';
+  
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/cart`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+        url: `${baseUrl}/collections`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.9,
+    },
   ];
-
-  // Return the pages array which contains all the dynamically generated URLs
-  return pages;
 }

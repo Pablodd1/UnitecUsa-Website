@@ -26,6 +26,13 @@ import Stylish_H2 from "My_UI/stylish_h2"
 import { useLanguage } from 'lib/LanguageContext';
 import { useBrand } from 'lib/BrandContext';
 
+import SeoHead from "components/SeoHead"
+
+export const metadata = {
+    title: "Sobre Nosotros | BIwebsite",
+    description: "Conoce más sobre nuestra visión, misión y el equipo detrás de BIwebsite."
+};
+
 export default function AboutPage() {
     const { t, getCompanyText } = useLanguage();
     const { activeBrand } = useBrand();
@@ -36,7 +43,13 @@ export default function AboutPage() {
     const aboutHeroDescription = getCompanyText(companyKey, 'aboutHero.description');
 
     return (
-        <main className="w-full">
+        <>
+            <SeoHead 
+                title={metadata.title} 
+                description={metadata.description}
+                canonical="https://yourdomain.com/about"
+            />
+            <main className="w-full">
             {/* ================= HERO ================= */}
             <section className="relative py-24 text-white overflow-hidden min-h-[50vh] flex items-center">
                 {/* Video Background */}
@@ -332,6 +345,7 @@ export default function AboutPage() {
                 </div>
             </section>
         </main>
+        </>
     )
 }
 

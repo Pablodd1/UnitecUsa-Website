@@ -1,5 +1,5 @@
 "use client"
-
+import SeoHead from "components/SeoHead"
 import { useEffect, useState, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Volume2, Sparkles, Box as BoxIcon } from "lucide-react"
@@ -10,6 +10,11 @@ import Image from "next/image"
 import Container3DView from "components/cart/Container3DView"
 import ContainerProgressHUD from "components/cart/ContainerProgressHUD"
 import confetti from "canvas-confetti"
+
+export const metadata = {
+  title: "Carrito – Contenedor 40ft",
+  description: "Visualiza en tiempo real el llenado de tu contenedor con la vista Tetris‑style y avanza al checkout cuando esté completo."
+};
 
 function FlyingProduct({ product }) {
     return (
@@ -168,7 +173,13 @@ export default function CartPage() {
     const usedVolume = fill.usableVolume - (fill.remainingVolume ?? 0)
 
     return (
-        <main className="min-h-screen bg-gray-50 pb-32">
+        <>
+            <SeoHead 
+                title="Tu Carrito | BIwebsite" 
+                description="Visualiza el llenado de tu contenedor en tiempo real."
+                canonical="https://yourdomain.com/cart"
+            />
+            <main className="min-h-screen bg-gray-50 pb-32">
             <AnimatePresence>
                 {flyingProducts.map((product) => (<FlyingProduct key={product.tempId} product={product} />))}
             </AnimatePresence>
@@ -298,5 +309,6 @@ export default function CartPage() {
                 </div>
             </footer>
         </main>
+        </>
     )
 }

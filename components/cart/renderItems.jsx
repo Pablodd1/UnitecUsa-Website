@@ -120,24 +120,41 @@ export default function RenderItemsList({ container }) {
                     const p = products[item.ID]
                     if (!p) return null
 
+                    const productSchema = {
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        "name": p.name,
+                        "image": p.image || "/raster/product.jpg",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": p.basePrice || 0,
+                            "priceCurrency": "USD"
+                        }
+                    };
+
                     return (
-                        <motion.div
-                            key={item.ID}
-                            layout
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0 }}
-                            className="flex gap-4 rounded-xl border border-accent1 bg-primary p-3"
-                        >
-                            <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg relative bg-accent2">
-                                <Image
-                                    src={p.image || "/raster/product.jpg"}
-                                    alt={p.name}
-                                    fill
-                                    quality={90}
-                                    className="object-contain p-1"
-                                />
-                            </div>
+                        <div key={`schema-${item.ID}`}>
+                            <script
+                                type="application/ld+json"
+                                dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+                            />
+                            <motion.div
+                                key={item.ID}
+                                layout
+                                initial={{ opacity: 0, y: 6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0 }}
+                                className="flex gap-4 rounded-xl border border-accent1 bg-primary p-3"
+                            >
+                                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg relative bg-accent2">
+                                    <Image
+                                        src={p.image || "/raster/product.jpg"}
+                                        alt={p.name}
+                                        fill
+                                        quality={90}
+                                        className="object-contain p-1"
+                                    />
+                                </div>
 
                             <div className="flex flex-1 flex-col">
                                 <p className="text-sm font-medium leading-tight">
@@ -181,6 +198,7 @@ export default function RenderItemsList({ container }) {
                                 </div>
                             </div>
                         </motion.div>
+                        </div>
                     )
                 })}
             </AnimatePresence>
