@@ -42,7 +42,7 @@ const productCategories = {
     Exterior: {
         "CUBIERTAS UPVC": { page: "/collections/cubiertas-upvc", icon: Sun, collection: "EXTERIOR", subcategories: ["CUBIERTA ACANALADA UPVC BLANCA 11.80", "CUBIERTA ONDULADA ROMA", "CUBIERTA TERMOACUSTICA UPVC 2.0mm BLANCA ONDA BAJA", "CUBIERTA TERMOACUSTICA UPVC 2.5mm BLANCA ONDA ALTA", "CUBIERTA TRASLUCIDA ONDA ALTA OPAL", "LAMINA ALVEOLAR POLICARBONATO", "TEJA PVC TERRACOTA COLONIAL", "TEJA UPVC TIPO ZINC"] },
         "JARDINES ARTIFICIALES": { page: "/collections/jardines-artificiales", icon: Trees, collection: "EXTERIOR", subcategories: ["JARDINES EXTERIOR"] },
-        "PAREDES": { page: "/collections/paredes", icon: Box, collection: "EXTERIOR", subcategories: ["FACHADA DECK", "FACHADA EXTERIOR PVC", "PAREDES UNIFLEX", "POLIFACHADA"] },
+        "PAREDES": { page: "/collections/paredes", icon: Box, collection: "EXTERIOR", subcategories: ["FACHADA DECK", "FACHADA EXTERIOR PVC", "POLIFACHADA"] },
         "LISTONES": { page: "/collections/listones-wpc-exterior", icon: Maximize, collection: "EXTERIOR", subcategories: ["LISTONES WPC EXTERIOR"] },
         "PANELES WPC Y ANGULOS": { page: "/collections/paneles-wpc-exterior", icon: Square, collection: "EXTERIOR", subcategories: ["PANELES WPC EXTERIOR"] },
         "PISOS": { page: "/collections/pisos-deck", icon: Waves, collection: "EXTERIOR", subcategories: ["PISOS DECK"] }

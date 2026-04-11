@@ -27,7 +27,7 @@ const translations = {
                     address: "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
                     city: "Medellín, Colombia",
                     country: "Colombia",
-                    phone: "+57 314 233 7199 / +57 310 576 9694"
+                    phone: "+57 314 233 2147"
                 },
                 quality: {
                     title: "Committed to Quality",
@@ -55,7 +55,7 @@ const translations = {
                         address: "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
                         city: "Medellín, Colombia",
                         country: "Colombia",
-                        phone: "+57 314 233 7199 / +57 310 576 9694"
+                        phone: "+57 314 233 2147"
                     }
                 },
                 about: {
@@ -104,7 +104,7 @@ const translations = {
                     address: "6120 NW 74th Ave",
                     city: "Doral, Miami, FL 33166",
                     country: "United States",
-                    phone: "+1 (786) 968-5783"
+                    phone: "+57 314 233 2147"
                 },
                 quality: {
                     title: "Committed to Quality",
@@ -136,7 +136,7 @@ const translations = {
                         address: "6120 NW 74th Ave",
                         city: "Doral, Miami, FL 33166",
                         country: "United States",
-                        phone: "+1 (786) 968-5783"
+                        phone: "+57 314 233 2147"
                     }
                 },
                 about: {
@@ -855,7 +855,7 @@ const translations = {
                 address: "6120 NW 74th Ave",
                 city: "Doral, Miami, FL 33166",
                 country: "United States",
-                phone: "+1 (786) 968-5783"
+                phone: "+57 314 233 2147"
             },
             bulk: {
                 title: "Built for Volume. Designed for Control.",
@@ -936,7 +936,7 @@ const translations = {
                     address: "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
                     city: "Medellín, Colombia",
                     country: "Colombia",
-                    phone: "+57 314 233 7199 / +57 310 576 9694"
+                    phone: "+57 314 233 2147"
                 },
                 quality: {
                     title: "Comprometidos con la Calidad",
@@ -964,7 +964,7 @@ const translations = {
                         address: "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
                         city: "Medellín, Colombia",
                         country: "Colombia",
-                        phone: "+57 314 233 7199 / +57 310 576 9694"
+                        phone: "+57 314 233 2147"
                     }
                 },
                 about: {
@@ -1012,7 +1012,7 @@ const translations = {
                     address: "6120 NW 74th Ave",
                     city: "Doral, Miami, FL 33166",
                     country: "Estados Unidos",
-                    phone: "+1 (786) 968-5783"
+                    phone: "+57 314 233 2147"
                 },
                 quality: {
                     title: "Comprometidos con la Calidad",
@@ -1044,7 +1044,7 @@ const translations = {
                         address: "6120 NW 74th Ave",
                         city: "Doral, Miami, FL 33166",
                         country: "Estados Unidos",
-                        phone: "+1 (786) 968-5783"
+                        phone: "+57 314 233 2147"
                     }
                 },
                 about: {
@@ -1527,7 +1527,7 @@ const translations = {
                 address: "6120 NW 74th Ave",
                 city: "Doral, Miami, FL 33166",
                 country: "Estados Unidos",
-                phone: "+1 (786) 968-5783"
+                phone: "+57 314 233 2147"
             },
             bulk: {
                 title: "Construido para Volumen. Diseñado para el Control.",

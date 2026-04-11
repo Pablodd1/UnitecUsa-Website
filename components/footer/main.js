@@ -7,6 +7,7 @@ import Logo from 'My_UI/logo';
 import { useLanguage } from 'lib/LanguageContext';
 import { useBrand } from 'lib/BrandContext';
 import teamData from 'StaticData/team.json';
+import { useState } from 'react';
 
 const TikTokIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -57,6 +58,8 @@ const Footer = () => {
             { title: t("footer.helpful.links.search"), link: "/collections/search" }
         ]
     };
+
+    const [isSubscribed, setIsSubscribed] = useState(false);
 
     return (
         <footer className="bg-black text-gray-300 pt-16">
@@ -118,9 +121,14 @@ const Footer = () => {
                                 e.preventDefault();
                                 const email = e.target.email.value;
                                 if (!email) return;
+                                
+                                setIsSubscribed(true);
+                                
                                 const subject = encodeURIComponent("Website Subscription Request");
                                 const body = encodeURIComponent(`New subscription request from: ${email}\n\nPlease add this email to the mailing list.`);
                                 window.location.href = `mailto:${brand.email}?subject=${subject}&body=${body}`;
+                                
+                                setTimeout(() => setIsSubscribed(false), 5000);
                             }}
                             className="flex flex-col justify-center my-5"
                         >
@@ -128,15 +136,17 @@ const Footer = () => {
                                 name="email"
                                 type="email"
                                 required
-                                placeholder={t("footer.subscribe.placeholder")}
-                                className="p-2 rounded-t-lg placeholder:text-accent2 border-2 border-primary text-black"
+                                disabled={isSubscribed}
+                                placeholder={isSubscribed ? "Thank you!" : t("footer.subscribe.placeholder")}
+                                className="p-2 rounded-t-lg placeholder:text-accent2 border-2 border-primary text-black disabled:bg-gray-100"
                             />
                             <button 
                                 type="submit"
                                 aria-label='Subscribe Button' 
-                                className="bg-primary text-secondary  font-semibold hover:bg-secondary hover:text-white transition-all ease-in duration-300 cursor-pointer tracking-superwide uppercase py-2 px-3.5 rounded-b-lg "
+                                disabled={isSubscribed}
+                                className={`bg-primary text-secondary font-semibold transition-all ease-in duration-300 cursor-pointer tracking-superwide uppercase py-2 px-3.5 rounded-b-lg ${isSubscribed ? 'opacity-50' : 'hover:bg-secondary hover:text-white'}`}
                             >
-                                {t("footer.subscribe.btn")}
+                                {isSubscribed ? "✓ Subscribed" : t("footer.subscribe.btn")}
                             </button>
                         </form>
                     </div>
