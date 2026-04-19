@@ -95,8 +95,13 @@ export default function ExperienceCartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.25 }}
+              style={{ 
+                backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.93)), url(/assets/images/cart-bg.jpg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
             >
-              <header className="flex items-center justify-between p-4 border-b bg-gray-50">
+              <header className="flex items-center justify-between p-4 border-b bg-gray-50/50 backdrop-blur-sm">
                 <h2 className="text-lg font-bold">{t.cart}</h2>
                 <button 
                   onClick={() => setOpen(false)}

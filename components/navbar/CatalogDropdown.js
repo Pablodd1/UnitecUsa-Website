@@ -58,7 +58,7 @@ const CatalogDropdown = () => {
                 {/* Footer */}
                 <div className="bg-gray-950 py-2 px-6 flex justify-between items-center">
                     <span className="text-white/40 text-[8px] font-black uppercase tracking-widest">
-                        Building Innovation © 2026
+                        UNITEC USA Design © 2026
                     </span>
                 </div>
             </div>

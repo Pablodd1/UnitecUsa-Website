@@ -37,7 +37,7 @@ export const translations = {
     
     // Why Choose Us
     whyUs: {
-      title: "Why Choose Building Innovation?",
+      title: "Why Choose UNITEC USA Design?",
       subtitle: "Excellence in Every Detail",
       features: {
         waterproof: {
@@ -260,7 +260,7 @@ export const translations = {
     
     // Meta
     meta: {
-      siteName: "Building Innovation",
+      siteName: "UNITEC USA Design",
       siteDescription: "Premium PVC, WPC, and SPC architectural materials for walls, ceilings, floors, and facades. Sustainable, waterproof, and high-design solutions.",
       keywords: "PVC panels, WPC decking, SPC flooring, wall panels, ceiling panels, waterproof materials, sustainable construction, architectural materials"
     },
@@ -312,7 +312,7 @@ export const translations = {
     
     // Why Choose Us
     whyUs: {
-      title: "¿Por Qué Elegir Building Innovation?",
+      title: "¿Por Qué Elegir UNITEC USA Design?",
       subtitle: "Excelencia en Cada Detalle",
       features: {
         waterproof: {
@@ -535,7 +535,7 @@ export const translations = {
     
     // Meta
     meta: {
-      siteName: "Building Innovation",
+      siteName: "UNITEC USA Design",
       siteDescription: "Materiales arquitectónicos premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas. Soluciones sostenibles, impermeables y de alto diseño.",
       keywords: "paneles PVC, decking WPC, piso SPC, paneles pared, paneles techo, materiales impermeables, construcción sostenible, materiales arquitectónicos"
     },

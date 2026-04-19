@@ -21,7 +21,8 @@ export default async function PisosInteriorPage({ searchParams }) {
             productURL="/API/collections?"
             prefilters={{
                 collection: "Interior",
-                subcategories: ["SPC"],
+                category: "PISOS",
+                subcategories: [],
                 thicknessRange: [],
                 widthRange: [],
                 lengthRange: [],

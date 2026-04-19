@@ -17,14 +17,14 @@ export const catalogs = [
         id: 3,
         name: "001. Catálogo Building LATAM (español)",
         language: "Español",
-        company: "BUILDING INNOVATION",
+        company: "UNITEC USA Design",
         url: "https://drive.google.com/file/d/1NqJSJ2l4jzSLEE_WfL-bA3_gjasLjyTp/view?usp=drive_link"
     },
     {
         id: 4,
-        name: "002. Product Catalog USA (English) Building Innovation",
+        name: "002. Product Catalog USA (English) UNITEC USA Design",
         language: "English",
-        company: "BUILDING INNOVATION",
+        company: "UNITEC USA Design",
         url: "https://drive.google.com/file/d/1_CeSXJdX_uqHcsq6b2aNu_fNco4I8E1G/view?usp=drive_link"
     }
 ];

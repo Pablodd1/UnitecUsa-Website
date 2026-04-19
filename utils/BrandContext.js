@@ -7,11 +7,11 @@ const BrandContext = createContext();
 export const BRAND_CONFIG = {
     binw: {
         id: 'binw',
-        name: "Building Innovation",
+        name: "UNITEC USA Design",
         logoText: "BINW",
         logoImage: "/logo.png",
         favicon: "/favicons/favicon-32x32.png",
-        metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
+        metaTitle: "UNITEC USA Design | Premium PVC & WPC Building Materials",
         colors: {
             primary: '#9EBECB',
             secondary: '#7296A4',
@@ -42,20 +42,17 @@ export const BRAND_CONFIG = {
 export function BrandProvider({ children }) {
     const [activeBrand, setActiveBrand] = useState("unitec");
 
-    // Persist brand choice
+    // Persist brand choice (disabled for now to force unitec)
     useEffect(() => {
-        const saved = localStorage.getItem('activeBrand');
-        if (saved && BRAND_CONFIG[saved]) {
-            setActiveBrand(saved);
-        }
+        // Force unitec regardless of saved preference
+        setActiveBrand("unitec");
+        localStorage.setItem('activeBrand', "unitec");
     }, []);
 
     const toggleBrand = () => {
-        setActiveBrand(prev => {
-            const next = prev === 'binw' ? 'unitec' : 'binw';
-            localStorage.setItem('activeBrand', next);
-            return next;
-        });
+        // Toggle is disabled, always stay on unitec
+        setActiveBrand("unitec");
+        localStorage.setItem('activeBrand', "unitec");
     };
 
     const brand = BRAND_CONFIG[activeBrand];

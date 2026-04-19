@@ -22,8 +22,9 @@ const socials = [
 ];
 
 const Footer = () => {
-    const { t, getCompanyText } = useLanguage();
+    const { t, getCompanyText, language: lang } = useLanguage();
     const { activeBrand, brand } = useBrand();
+    const isSpanish = lang === 'es';
 
     const brandData = teamData[activeBrand] || teamData.binw;
     const contact = brandData.contact || {};
@@ -113,8 +114,31 @@ const Footer = () => {
                             ))}
                         </ul>
                     </div>
+                    {/* Sister Company Section */}
+                    <div className="text-center md:text-left mb-8 flex flex-col items-center md:items-start">
+                        <h3 className="text-lg font-bold text-accent1 mb-4 uppercase tracking-widest">
+                            {isSpanish ? "Empresa Hermana" : "Sister Company"}
+                        </h3>
+                        <Link 
+                            href="https://buildinginnovation.com.co" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="group flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all border border-white/10 hover:border-primary/50"
+                        >
+                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 group-hover:scale-110 transition-transform">
+                                <img src="/logo.png" alt="Building Innovation Logo" className="object-contain" />
+                            </div>
+                            <div className="text-left">
+                                <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">Building Innovation</p>
+                                <p className="text-[10px] text-gray-400 uppercase tracking-tighter">
+                                    {isSpanish ? "Logística e Innovación" : "Logistics & Innovation"}
+                                </p>
+                            </div>
+                        </Link>
+                    </div>
+
                     {/* Subscribe Section */}
-                    <div className="text-center mb-8 max-w-64 float-right mx-auto lg:mr-0 relative lg:ml-auto w-full sm:col-span-2 md:col-span-3 lg:col-span-1 ">
+                    <div className="text-center mb-8 max-w-64 float-right mx-auto lg:mr-0 relative lg:ml-auto w-full sm:col-span-2 md:col-span-1 lg:col-span-1 ">
                         <p className="text-lg">{t("footer.subscribe.title")}</p>
                         <form 
                             onSubmit={(e) => {
@@ -181,7 +205,7 @@ const Footer = () => {
                     })}
                     {/* Bottom Copyright */}
                     <div className="text-center font-serif text-sm absolute right-0">
-                        <p>{t('footer.rights')} &copy; - 2026 {brand.name}.</p>
+                        <p>{t('footer.rights')} &copy; - 2026 UNITEC USA Design.</p>
                     </div>
                 </motion.div>
 

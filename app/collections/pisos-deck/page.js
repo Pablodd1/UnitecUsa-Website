@@ -21,7 +21,8 @@ export default async function PisosExteriorPage({ searchParams }) {
             productURL="/API/collections?"
             prefilters={{
                 collection: "Exterior",
-                subcategories: ["DECK"],
+                category: "PISOS",
+                subcategories: ["PISOS DECK"],
                 thicknessRange: [],
                 widthRange: [],
                 lengthRange: [],

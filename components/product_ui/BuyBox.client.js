@@ -31,7 +31,7 @@ export function BuyBox({ product }) {
     const { activeBrand } = useBrand();
     
     const t = buyBoxTranslations[language] || buyBoxTranslations.en;
-    const companyName = activeBrand === 'unitec' ? 'UNITEC USA Design' : 'Building Innovation';
+    const companyName = 'UNITEC USA Design';
 
     return (
         <div className="lg:col-span-3 pt-2 lg:pt-6">

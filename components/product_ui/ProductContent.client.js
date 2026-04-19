@@ -95,7 +95,7 @@ export function ProductContent({ product }) {
     const translatedCategory = categoryTranslations[language]?.[category] || category;
     const translatedCollection = collectionTranslations[language]?.[collection] || collection;
     
-    const companyName = activeBrand === 'unitec' ? 'UNITEC USA Design' : 'Building Innovation';
+    const companyName = 'UNITEC USA Design';
     
     useEffect(() => {
         const translateProduct = async () => {

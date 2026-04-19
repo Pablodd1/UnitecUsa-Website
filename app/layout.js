@@ -47,9 +47,9 @@ export async function generateMetadata() {
     },
     description: defaults.description,
     keywords: defaults.keywords,
-    authors: [{ name: "Building Innovation Team" }],
-    creator: "Building Innovation",
-    publisher: "Building Innovation",
+    authors: [{ name: "UNITEC USA Design Team" }],
+    creator: "UNITEC USA Design",
+    publisher: "UNITEC USA Design",
     applicationName: dict.meta.siteName,
     generator: "Next.js",
     manifest: "/favicons/manifest.json",
@@ -103,7 +103,7 @@ export async function generateMetadata() {
           url: defaults.image,
           width: 1200,
           height: 630,
-          alt: lang === 'es' ? "Building Innovation - Materiales Arquitectónicos" : "Building Innovation - Architectural Materials",
+          alt: lang === 'es' ? "UNITEC USA Design - Materiales Arquitectónicos" : "UNITEC USA Design - Architectural Materials",
         }
       ],
     },
@@ -150,7 +150,7 @@ export default async function RootLayout({ children }) {
                 {
                   "@type": "Organization",
                   "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#organization`,
-                  "name": "Building Innovation",
+                  "name": "UNITEC USA Design",
                   "url": process.env.NEXT_PUBLIC_BASE_URL,
                   "logo": {
                     "@type": "ImageObject",
@@ -171,7 +171,7 @@ export default async function RootLayout({ children }) {
                   "@type": "WebSite",
                   "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#website`,
                   "url": process.env.NEXT_PUBLIC_BASE_URL,
-                  "name": "Building Innovation",
+                  "name": "UNITEC USA Design",
                   "publisher": {
                     "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#organization`
                   },

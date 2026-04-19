@@ -45,31 +45,6 @@ const navItems = [
     { label: 'Contact', id: 'contact', href: '/contact' }
 ];
 
-const BrandToggle = () => {
-    const { activeBrand, toggleBrand, brand } = useBrand();
-    const otherBrand = activeBrand === 'binw' ? 'Unitec USA' : 'Building Innovation';
-    return (
-        <button
-            onClick={toggleBrand}
-            className="group flex items-center gap-2 px-3 py-1.5 bg-black/80 backdrop-blur rounded-full hover:bg-gray-800 transition-all ml-2 border border-gray-700 hover:border-primary"
-            aria-label={`Switch to ${otherBrand}`}
-            title={`Switch to ${otherBrand}`}
-        >
-            <Image
-                key={brand.id}
-                src={brand.logoImage}
-                alt={`${brand.name} Logo`}
-                width={36}
-                height={24}
-                className="object-contain"
-            />
-            <span className="hidden sm:inline-flex items-center gap-1 text-xs text-gray-400 group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 3h5v5" /><path d="M8 21H3v-5" /><path d="M21 3l-9 9" /><path d="M3 21l9-9" /></svg>
-                {otherBrand}
-            </span>
-        </button>
-    )
-}
 
 const NavBar = ({ searchParams }) => {
     const { t } = useLanguage();
@@ -174,7 +149,6 @@ const NavBar = ({ searchParams }) => {
                     <div className="flex items-center gap-1">
                         <CartButton />
                         <LanguageToggle />
-                        <BrandToggle />
                         {/* <div className="px-2 hover:bg-white/5 rounded-full transition-all group">
                             <User className="w-fit h-full text-inherit" />
                         </div> */}

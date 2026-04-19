@@ -79,15 +79,15 @@ const translations = {
                 }
             },
             binw: {
-                name: "Building Innovation",
+                name: "UNITEC USA Design",
                 shortName: "BINW",
                 tagline: "We Design the Future!",
                 heroTitle: "We Design the Future",
                 heroSubtitle: "Sustainable Architectural Materials for Modern Construction. Premium PVC, WPC, and SPC solutions for walls, ceilings, floors, and facades.",
                 heroCta: "Explore Products",
-                metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
+                metaTitle: "UNITEC USA Design | Premium PVC & WPC Building Materials",
                 metaDescription: "Premium PVC, WPC, and SPC solutions for walls, ceilings, floors, and facades. High-design, waterproof, and eco-friendly materials.",
-                whyTitle: "Why Choose Building Innovation?",
+                whyTitle: "Why Choose UNITEC USA Design?",
                 whyDescription: "Excellence in Every Detail. We combine quality, technology, and functionality in every product, transforming spaces and enhancing project value.",
                 aboutHero: {
                     title: "We Design the Future!",
@@ -108,24 +108,24 @@ const translations = {
                 },
                 quality: {
                     title: "Committed to Quality",
-                    quote: "\"At Building Innovation, quality is not a standard—it's a promise.\"",
+                    quote: "\"At UNITEC USA Design, quality is not a standard—it's a promise.\"",
                     intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
                     closing: "Quality you can see, feel, and trust over time"
                 },
                 whoWeAre: {
                     title: "Who We Are",
-                    company: "Building Innovation",
+                    company: "UNITEC USA Design",
                     tagline: "\"We design the future!\"",
                     intro: [
                         "We are an international company dedicated to the development and supply of innovative solutions for construction and architectural design.",
                         "We stand out by combining quality, technology, and functionality in every product, transforming spaces and enhancing the value of every project.",
                         "Our philosophy is built on excellence, continuous improvement, and personalized service, strengthening long-term partnerships with our distributors and strategic partners in the Americas and around the world.",
                         "We believe in innovation as a driving force for growth, and we work every day to anticipate market trends.",
-                        "We are Building Innovation: design, quality, and the future in every detail."
+                        "We are UNITEC USA Design: design, quality, and the future in every detail."
                     ],
                     mission: {
                         title: "Mission",
-                        text: "At BUILDING INNOVATION, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
+                        text: "At UNITEC USA Design, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
                     },
                     vision: {
                         title: "Vision",
@@ -142,7 +142,7 @@ const translations = {
                 about: {
                     mission: {
                         title: "Mission",
-                        p1: "At BUILDING INNOVATION, we simplify the world of construction through innovative, sustainable, and high-design solutions.",
+                        p1: "At UNITEC USA Design, we simplify the world of construction through innovative, sustainable, and high-design solutions.",
                         items: [
                             "Innovative building development",
                             "Sustainable materials",
@@ -411,7 +411,7 @@ const translations = {
         },
         footer: {
             logo: {
-                text: "Building Innovation",
+                text: "UNITEC USA Design",
                 tagline: "",
             },
             contact: {
@@ -600,7 +600,7 @@ const translations = {
         },
         businessModels: {
             title: "Business Models",
-            intro: "At Building Innovation, we operate under leading international trade terms to offer flexibility, transparency, and security for our partners worldwide.",
+            intro: "At UNITEC USA Design, we operate under leading international trade terms to offer flexibility, transparency, and security for our partners worldwide.",
             tradeTerms: {
                 title: "International Trade Terms",
                 subtitle: "We offer flexible Incoterms to accommodate different business needs and logistics preferences",
@@ -671,7 +671,7 @@ const translations = {
         },
         negotiation: {
             title: "Business Terms",
-            intro: "At Building Innovation, we operate under leading international trade terms to offer flexibility and security.",
+            intro: "At UNITEC USA Design, we operate under leading international trade terms to offer flexibility and security.",
             options: {
                 title: "These options allow us to offer our partners:",
                 items: {
@@ -722,7 +722,7 @@ const translations = {
         },
         quality: {
             title: "Committed to Quality",
-            quote: "\"At Building Innovation, quality is not a standard—it's a promise.\"",
+            quote: "\"At UNITEC USA Design, quality is not a standard—it's a promise.\"",
             intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
             commitment: "Our commitment to excellence is reflected in:",
             pillars: {
@@ -833,18 +833,18 @@ const translations = {
         },
         whoWeAre: {
             title: "Who We Are",
-            company: "Building Innovation",
+            company: "UNITEC USA Design",
             tagline: "\"We design the future!\"",
             intro: [
                 "We are an international company dedicated to the development and supply of innovative solutions for construction and architectural design.",
                 "We stand out by combining quality, technology, and functionality in every product, transforming spaces and enhancing the value of every project.",
                 "Our philosophy is built on excellence, continuous improvement, and personalized service, strengthening long-term partnerships with our distributors and strategic partners in the Americas and around the world.",
                 "We believe in innovation as a driving force for growth, and we work every day to anticipate market trends.",
-                "We are Building Innovation: design, quality, and the future in every detail."
+                "We are UNITEC USA Design: design, quality, and the future in every detail."
             ],
             mission: {
                 title: "Mission",
-                text: "At BUILDING INNOVATION, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
+                text: "At UNITEC USA Design, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
             },
             vision: {
                 title: "Vision",
@@ -885,7 +885,7 @@ const translations = {
         },
         quality: {
             title: "Committed to Quality",
-            quote: "\"At Building Innovation, quality is not a standard—it's a promise.\"",
+            quote: "\"At UNITEC USA Design, quality is not a standard—it's a promise.\"",
             intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
             commitment: "Our commitment to excellence is reflected in:",
             pillars: {
@@ -988,15 +988,15 @@ const translations = {
                 }
             },
             binw: {
-                name: "Building Innovation",
+                name: "UNITEC USA Design",
                 shortName: "BINW",
                 tagline: "¡Diseñamos el Futuro!",
                 heroTitle: "Diseñamos el Futuro",
                 heroSubtitle: "Materiales Arquitectónicos Sostenibles para la Construcción Moderna. Soluciones premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas.",
                 heroCta: "Explorar Productos",
-                metaTitle: "Building Innovation | Materiales de Construcción Premium de PVC y WPC",
+                metaTitle: "UNITEC USA Design | Materiales de Construcción Premium de PVC y WPC",
                 metaDescription: "Soluciones premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas. Materiales de alto diseño, impermeables y ecológicos.",
-                whyTitle: "¿Por Qué Elegir Building Innovation?",
+                whyTitle: "¿Por Qué Elegir UNITEC USA Design?",
                 whyDescription: "Excelencia en Cada Detalle. Combinamos calidad, tecnología y funcionalidad en cada producto, transformando espacios y mejorando el valor de cada proyecto.",
                 aboutHero: {
                     title: "¡Diseñamos el Futuro!",
@@ -1016,24 +1016,24 @@ const translations = {
                 },
                 quality: {
                     title: "Comprometidos con la Calidad",
-                    quote: "\"En Building Innovation, la calidad no es un estándar—es una promesa.\"",
+                    quote: "\"En UNITEC USA Design, la calidad no es un estándar—es una promesa.\"",
                     intro: "Cada producto pasa por procesos de control técnico y selección de materiales certificados, asegurando durabilidad, precisión y acabados de alta gama.",
                     closing: "Calidad que puede ver, sentir y confiar a través del tiempo"
                 },
                 whoWeAre: {
                     title: "Quiénes Somos",
-                    company: "Building Innovation",
+                    company: "UNITEC USA Design",
                     tagline: "\"¡Diseñamos el futuro!\"",
                     intro: [
                         "Somos una empresa internacional dedicada al desarrollo y suministro de soluciones innovadoras para construcción y diseño arquitectónico.",
                         "Nos destacamos por combinar calidad, tecnología y funcionalidad en cada producto, transformando espacios y mejorando el valor de cada proyecto.",
                         "Nuestra filosofía se construye sobre excelencia, mejora continua y servicio personalizado, fortaleciendo alianzas a largo plazo con nuestros distribuidores y socios estratégicos en las Américas y alrededor del mundo.",
                         "Creemos en la innovación como fuerza motriz del crecimiento, y trabajamos todos los días para anticipar las tendencias del mercado.",
-                        "Somos Building Innovation: diseño, calidad y el futuro en cada detalle."
+                        "Somos UNITEC USA Design: diseño, calidad y el futuro en cada detalle."
                     ],
                     mission: {
                         title: "Misión",
-                        text: "En BUILDING INNOVATION, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño, ofreciendo un portafolio integral de materiales arquitectónicos que crean valor, fomentan alianzas estratégicas y mejoran la experiencia de construcción y calidad de vida."
+                        text: "En UNITEC USA Design, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño, ofreciendo un portafolio integral de materiales arquitectónicos que crean valor, fomentan alianzas estratégicas y mejoran la experiencia de construcción y calidad de vida."
                     },
                     vision: {
                         title: "Visión",
@@ -1050,7 +1050,7 @@ const translations = {
                 about: {
                     mission: {
                         title: "Misión",
-                        p1: "En BUILDING INNOVATION, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño.",
+                        p1: "En UNITEC USA Design, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño.",
                         items: [
                             "Desarrollo innovador de construcción",
                             "Materiales sostenibles",
@@ -1204,7 +1204,7 @@ const translations = {
             title: "Descripción del Producto y Aplicaciones Ideales",
             overview: {
                 title: "Descripción General",
-                text: "Los materiales de PVC y WPC de Building Innovation combinan durabilidad, estética y fabricación ecológica. Diseñados para un rendimiento duradero, nuestros productos son 100% impermeables, no requieren mantenimiento e ideales tanto para proyectos residenciales como comerciales.",
+                text: "Los materiales de PVC y WPC de UNITEC USA Design combinan durabilidad, estética y fabricación ecológica. Diseñados para un rendimiento duradero, nuestros productos son 100% impermeables, no requieren mantenimiento e ideales tanto para proyectos residenciales como comerciales.",
                 features: {
                     installation: "Instalación rápida y eficiente",
                     precision: "Dimensiones de ingeniería de precisión para uniformidad",
@@ -1505,18 +1505,18 @@ const translations = {
         },
         whoWeAre: {
             title: "Quiénes Somos",
-            company: "Building Innovation",
+            company: "UNITEC USA Design",
             tagline: "\"¡Diseñamos el futuro!\"",
             intro: [
                 "Somos una empresa internacional dedicada al desarrollo y suministro de soluciones innovadoras para construcción y diseño arquitectónico.",
                 "Nos destacamos por combinar calidad, tecnología y funcionalidad en cada producto, transformando espacios y mejorando el valor de cada proyecto.",
                 "Nuestra filosofía se construye sobre excelencia, mejora continua y servicio personalizado, fortaleciendo alianzas a largo plazo con nuestros distribuidores y socios estratégicos en las Américas y alrededor del mundo.",
                 "Creemos en la innovación como fuerza motriz del crecimiento, y trabajamos todos los días para anticipar las tendencias del mercado.",
-                "Somos Building Innovation: diseño, calidad y el futuro en cada detalle."
+                "Somos UNITEC USA Design: diseño, calidad y el futuro en cada detalle."
             ],
             mission: {
                 title: "Misión",
-                text: "En BUILDING INNOVATION, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño, ofreciendo un portafolio integral de materiales arquitectónicos que crean valor, fomentan alianzas estratégicas y mejoran la experiencia de construcción y calidad de vida."
+                text: "En UNITEC USA Design, simplificamos el mundo de la construcción a través de soluciones innovadoras, sostenibles y de alto diseño, ofreciendo un portafolio integral de materiales arquitectónicos que crean valor, fomentan alianzas estratégicas y mejoran la experiencia de construcción y calidad de vida."
             },
             vision: {
                 title: "Visión",
@@ -1557,7 +1557,7 @@ const translations = {
         },
         quality: {
             title: "Comprometidos con la Calidad",
-            quote: "\"En Building Innovation, la calidad no es un estándar—es una promesa.\"",
+            quote: "\"En UNITEC USA Design, la calidad no es un estándar—es una promesa.\"",
             intro: "Cada producto pasa por procesos de control técnico y selección de materiales certificados, asegurando durabilidad, precisión y acabados de alta gama.",
             commitment: "Nuestro compromiso con la excelencia se refleja en:",
             pillars: {
@@ -1582,7 +1582,7 @@ const translations = {
         },
         businessModels: {
             title: "Modelos de Negocio",
-            intro: "En Building Innovation, operamos bajo los principales términos de comercio internacional para ofrecer flexibilidad, transparencia y seguridad para nuestros socios en todo el mundo.",
+            intro: "En UNITEC USA Design, operamos bajo los principales términos de comercio internacional para ofrecer flexibilidad, transparencia y seguridad para nuestros socios en todo el mundo.",
             tradeTerms: {
                 title: "Términos de Comercio Internacional",
                 subtitle: "Ofrecemos Incoterms flexibles para acomodar diferentes necesidades de negocio y preferencias logísticas",
@@ -1659,7 +1659,7 @@ const translations = {
         },
         negotiation: {
             title: "Términos de Negocio",
-            intro: "En Building Innovation, operamos bajo los principales términos de comercio internacional para ofrecer flexibilidad y seguridad.",
+            intro: "En UNITEC USA Design, operamos bajo los principales términos de comercio internacional para ofrecer flexibilidad y seguridad.",
             options: {
                 title: "Estas opciones nos permiten ofrecer a nuestros socios:",
                 items: {

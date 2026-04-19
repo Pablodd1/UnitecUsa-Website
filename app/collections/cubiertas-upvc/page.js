@@ -21,7 +21,8 @@ export default async function CubiertasUpvcPage({ searchParams }) {
             productURL="/API/collections?"
             prefilters={{
                 collection: "Exterior",
-                subcategories: ["TEJAS"],
+                category: "CUBIERTAS UPVC",
+                subcategories: [],
                 thicknessRange: [],
                 widthRange: [],
                 lengthRange: [],

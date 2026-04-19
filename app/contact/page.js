@@ -37,8 +37,8 @@ const TikTokIcon = ({ className }) => (
 import SeoHead from "components/SeoHead"
 
 const contactMetadata = {
-    title: "Contacto | BIwebsite",
-    description: "Ponte en contacto con nuestro equipo para consultas, soporte o para agendar una reunión."
+    title: "Contacto | UNITEC USA Design",
+    description: "Ponte en contacto con nuestro equipo de UNITEC USA para consultas, soporte o para agendar una reunión sobre sus proyectos."
 };
 
 export default function ContactPage() {
@@ -130,7 +130,7 @@ export default function ContactPage() {
             <SeoHead 
                 title={contactMetadata.title} 
                 description={contactMetadata.description}
-                canonical="https://yourdomain.com/contact"
+                canonical="https://unitecusadesign.com/contact"
             />
             <main className="w-full">
             {/* ================= HERO ================= */}

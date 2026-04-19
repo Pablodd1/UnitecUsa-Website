@@ -20,16 +20,14 @@ export default async function Page({ searchParams }) {
             cover={{ src: '/raster/exterior.webp', alt: 'LISTONES WPC EXTERIOR' }}
             productURL="/API/collections?"
             prefilters={{
-    "collection": "Exterior",
-    "category": "LISTONES",
-    "subcategories": [
-        "LISTONES WPC EXTERIOR"
-    ],
-    "thicknessRange": [],
-    "widthRange": [],
-    "lengthRange": [],
-    "sort": "name-asc"
-}}
+                collection: "Exterior",
+                category: "LISTONES",
+                subcategories: [],
+                thicknessRange: [],
+                widthRange: [],
+                lengthRange: [],
+                sort: "name-asc",
+            }}
             currentCollection="Exterior"
         />
     );
