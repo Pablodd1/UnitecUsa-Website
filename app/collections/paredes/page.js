@@ -21,7 +21,7 @@ export default async function ParedesPage({ searchParams }) {
             prefilters={{
                 collection: "Interior",
                 category: "PAREDES",
-                subcategories: [],
+                subcategories: ["ROLLOS ADHESIVOS DE MARMOL", "PANELES ACOLCHADOS", "PANELES ACRILICOS MARMOL", "PANELES ACUSTICOS", "PANEL PS", "PAREDES MUROFLEX", "PAREDES PU ARQUNITEC", "PAREDES UNIFLEX"],
                 thicknessRange: [],
                 widthRange: [],
                 lengthRange: [],

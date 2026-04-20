@@ -4,30 +4,12 @@
     "totalCategories": 12,
     "totalSubcategories": 41,
     "technicalSheets": 49,
-    "coveragePercent": "65.9"
+    "coveragePercent": "95.1"
   },
   "missingByCategory": {
-    "CINTAS": [
-      "CINTA ADHESIVA DE PAPEL",
-      "CINTA ADHESIVA METALICA"
-    ],
     "CUBIERTAS UPVC": [
-      "CUBIERTA ACANALADA UPVC BLANCA 11.80",
-      "CUBIERTA ONDULADA ROMA",
-      "CUBIERTA TERMOACUSTICA UPVC 2.0mm BLANCA ONDA BAJA",
-      "CUBIERTA TERMOACUSTICA UPVC 2.5mm BLANCA ONDA ALTA",
-      "TEJA UPVC TIPO ZINC",
-      "TEJA PVC TERRACOTA COLONIAL",
       "CUBIERTA TRASLUCIDA ONDA ALTA OPAL",
       "LAMINA ALVEOLAR POLICARBONATO"
-    ],
-    "ILUMINACION": [
-      "ILUMINACION"
-    ],
-    "PANELES WPC Y ANGULOS": [
-      "PANELES WPC INTERIOR",
-      "PANELES WPC EXTERIOR",
-      "PANELES WPC REDONDOS"
     ]
   }
 }
