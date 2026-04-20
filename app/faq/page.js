@@ -13,6 +13,6 @@ export const metadata = {
 
 export default function FAQPage() {
     return (
-        <FAQ_UI faqs={faqData.faqs} conversions={faqData.unitConversions} />
+        <FAQ_UI />
     );
 }

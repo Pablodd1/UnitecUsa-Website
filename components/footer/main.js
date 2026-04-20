@@ -61,6 +61,32 @@ const Footer = () => {
     };
 
     const [isSubscribed, setIsSubscribed] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const onSubscribe = async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        if (!email) return;
+
+        setIsSubmitting(true);
+        try {
+            const res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, brand: brand.name }),
+            });
+
+            if (res.ok) {
+                setIsSubscribed(true);
+                e.target.reset();
+                setTimeout(() => setIsSubscribed(false), 5000);
+            }
+        } catch (error) {
+            console.error("Subscription error:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <footer className="bg-black text-gray-300 pt-16">
@@ -141,39 +167,28 @@ const Footer = () => {
                     <div className="text-center mb-8 max-w-64 float-right mx-auto lg:mr-0 relative lg:ml-auto w-full sm:col-span-2 md:col-span-1 lg:col-span-1 ">
                         <p className="text-lg">{t("footer.subscribe.title")}</p>
                         <form 
-                            onSubmit={(e) => {
-                                e.preventDefault();
-                                const email = e.target.email.value;
-                                if (!email) return;
-                                
-                                setIsSubscribed(true);
-                                
-                                const subject = encodeURIComponent("Website Subscription Request");
-                                const body = encodeURIComponent(`New subscription request from: ${email}\n\nPlease add this email to the mailing list.`);
-                                window.location.href = `mailto:${brand.email}?subject=${subject}&body=${body}`;
-                                
-                                setTimeout(() => setIsSubscribed(false), 5000);
-                            }}
+                            onSubmit={onSubscribe}
                             className="flex flex-col justify-center my-5"
                         >
                             <input
                                 name="email"
                                 type="email"
                                 required
-                                disabled={isSubscribed}
+                                disabled={isSubscribed || isSubmitting}
                                 placeholder={isSubscribed ? "Thank you!" : t("footer.subscribe.placeholder")}
                                 className="p-2 rounded-t-lg placeholder:text-accent2 border-2 border-primary text-black disabled:bg-gray-100"
                             />
                             <button 
                                 type="submit"
                                 aria-label='Subscribe Button' 
-                                disabled={isSubscribed}
-                                className={`bg-primary text-secondary font-semibold transition-all ease-in duration-300 cursor-pointer tracking-superwide uppercase py-2 px-3.5 rounded-b-lg ${isSubscribed ? 'opacity-50' : 'hover:bg-secondary hover:text-white'}`}
+                                disabled={isSubscribed || isSubmitting}
+                                className={`bg-primary text-secondary font-semibold transition-all ease-in duration-300 cursor-pointer tracking-superwide uppercase py-2 px-3.5 rounded-b-lg ${isSubscribed || isSubmitting ? 'opacity-50' : 'hover:bg-secondary hover:text-white'}`}
                             >
-                                {isSubscribed ? "✓ Subscribed" : t("footer.subscribe.btn")}
+                                {isSubmitting ? "..." : (isSubscribed ? "✓ Subscribed" : t("footer.subscribe.btn"))}
                             </button>
                         </form>
                     </div>
+
                 </section>
 
                 {/* Social Icons */}

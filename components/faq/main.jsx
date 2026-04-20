@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp, Calculator, Scale, Ruler, MessageCircle } from 'lucide-react';
 import Stylish_H2 from 'My_UI/stylish_h2';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from 'lib/LanguageContext';
+import faqsEn from 'StaticData/faqs.json';
+import faqsEs from 'StaticData/faqs_es.json';
 
 function FAQItem({ item, isOpen, onClick }) {
     return (
@@ -59,12 +62,17 @@ function ConversionCard({ title, icon: Icon, items }) {
     );
 }
 
-export default function FAQ_UI({ faqs, conversions }) {
+export default function FAQ_UI() {
+    const { t, language } = useLanguage();
+    const data = language === 'es' ? faqsEs : faqsEn;
+    const faqs = data.faqs;
+    const conversions = data.unitConversions;
+    
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-20">
-            <Stylish_H2 h2="Help Center & Resources" />
+            <Stylish_H2 h2={t("faq.title")} />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
                 {/* FAQs Section */}
@@ -73,7 +81,7 @@ export default function FAQ_UI({ faqs, conversions }) {
                         <div className="p-6 bg-gray-50 border-b border-gray-100">
                             <h3 className="text-xl font-bold flex items-center gap-2">
                                 <MessageCircle className="text-primary" />
-                                Frequently Asked Questions
+                                {t("faq.subtitle")}
                             </h3>
                         </div>
                         {faqs.map((faq, index) => (
@@ -92,18 +100,18 @@ export default function FAQ_UI({ faqs, conversions }) {
                     <div className="bg-black text-white p-6 rounded-2xl shadow-lg">
                         <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
                             <Calculator className="text-yellow-400" />
-                            Unit Conversions
+                            {t("faq.referenceTitle")}
                         </h3>
                         <p className="text-gray-400 text-sm mb-6">
-                            Quick reference guide for converting common measurements used in our catalog.
+                            {t("faq.referenceSubtitle")}
                         </p>
 
                         <div className="space-y-4">
-                            <ConversionCard title="Length" icon={Ruler} items={conversions.length} />
-                            <ConversionCard title="Weight" icon={Scale} items={conversions.weight} />
+                            <ConversionCard title={t("nav.listones")} icon={Ruler} items={conversions.length} />
+                            <ConversionCard title={t("cart.weight")} icon={Scale} items={conversions.weight} />
 
                             <div className="bg-yellow-400/10 rounded-xl p-4 border border-yellow-400/20">
-                                <h4 className="text-yellow-400 font-bold text-sm mb-2 uppercase">Examples</h4>
+                                <h4 className="text-yellow-400 font-bold text-sm mb-2 uppercase">{t("faq.examples")}</h4>
                                 <ul className="text-xs text-gray-300 space-y-1 font-mono">
                                     {conversions.examples.map((ex, i) => (
                                         <li key={i}>{ex}</li>
@@ -121,3 +129,4 @@ export default function FAQ_UI({ faqs, conversions }) {
         </div>
     );
 }
+

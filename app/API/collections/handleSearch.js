@@ -12,7 +12,8 @@ function matchesSearchQuery(product, query) {
         product.name,
         product.collection,
         product.subcategory,
-        // product.description,
+        product.category,
+        product.description,
     ];
 
     return fieldsToSearch.some((field) => {
