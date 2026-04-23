@@ -41,6 +41,7 @@ export default function SplashScreen() {
             muted
             playsInline
             onEnded={handleFinish}
+            onError={handleFinish}
             className="w-full h-full object-cover"
           >
             <source src="/videos/splash.mp4" type="video/mp4" />
