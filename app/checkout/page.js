@@ -146,21 +146,48 @@ export default function CheckoutPage() {
 
     const handleDownloadInvoice = async () => {
         try {
-            const cartData = getCart()
-            const res = await fetch('/api/invoices', {
+            const fullCart = getCart()
+            // Flatten: extract all items from all containers
+            const flatItems = []
+            fullCart.forEach(container => {
+                if (container.items && Array.isArray(container.items)) {
+                    container.items.forEach(item => {
+                        flatItems.push({
+                            id: item.id,
+                            name: item.name,
+                            price: item.basePrice || 0,
+                            qty: item.quantity || 1,
+                            containerId: container.id,
+                            containerName: container.name
+                        })
+                    })
+                }
+            })
+
+            const res = await fetch('/API/invoices', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ cart: cartData, language: lang })
+                body: JSON.stringify({ 
+                    cart: flatItems, 
+                    language: lang,
+                    reference: referenceId,
+                    customer: formData
+                })
             })
             if (!res.ok) {
                 console.error('Invoice generation failed')
                 return
             }
+
+            // Track analytics event
+            const { trackInvoiceDownload } = await import('lib/analytics')
+            trackInvoiceDownload(referenceId)
+
             const blob = await res.blob()
             const url = URL.createObjectURL(blob)
             const a = document.createElement('a')
             a.href = url
-            a.download = 'invoice.pdf'
+            a.download = `unitec-invoice-${referenceId}.pdf`
             document.body.appendChild(a)
             a.click()
             a.remove()
@@ -202,8 +229,15 @@ export default function CheckoutPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <button
-                                onClick={handlePrint}
+                                onClick={handleDownloadInvoice}
                                 className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-green-700 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-xl"
+                            >
+                                <FileText size={24} />
+                                {t("checkout.downloadInvoice") || (lang === 'es' ? 'Descargar Factura' : 'Download Invoice')}
+                            </button>
+                            <button
+                                onClick={handlePrint}
+                                className="flex items-center justify-center gap-3 px-10 py-5 bg-green-100 text-green-800 rounded-2xl font-bold text-lg hover:bg-white transition-all hover:scale-105 shadow-xl"
                             >
                                 <Printer size={24} />
                                 {t("checkout.print")}

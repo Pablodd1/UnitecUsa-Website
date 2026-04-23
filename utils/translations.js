@@ -407,7 +407,8 @@ const translations = {
             loading: "Loading products..."
         },
         search: {
-            placeholder: "Search..."
+            placeholder: "Search...",
+            noQueryTitle: "Featured Products"
         },
         footer: {
             logo: {
@@ -485,6 +486,7 @@ const translations = {
             successTitle: "Quote Request Submitted!",
             successDesc: "Thank you for your interest. Our team will review your request and contact you within 24 business hours.",
             print: "Print Summary",
+            downloadInvoice: "Download Quote PDF",
             continue: "Continue Shopping"
         },
         faq: {
@@ -1362,7 +1364,8 @@ const translations = {
             loading: "Cargando productos..."
         },
         search: {
-            placeholder: "Buscar..."
+            placeholder: "Buscar...",
+            noQueryTitle: "Productos Destacados"
         },
         footer: {
             logo: {
@@ -1867,6 +1870,7 @@ const translations = {
             successTitle: "¡Solicitud de Cotización Enviada!",
             successDesc: "Gracias por su interés. Nuestro equipo revisará su solicitud y lo contactará dentro de las próximas 24 horas hábiles.",
             print: "Imprimir Resumen",
+            downloadInvoice: "Descargar Cotización PDF",
             continue: "Continuar Comprando"
         },
         faq: {

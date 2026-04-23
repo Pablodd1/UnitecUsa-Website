@@ -51,6 +51,10 @@ const NavBar = ({ searchParams }) => {
     const q = searchParams?.q
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    const handleContactClick = () => {
+        import('lib/analytics').then(({ trackContactClick }) => trackContactClick());
+    }
+
     return (
         <header className="sticky top-0 z-30 bg-primary/75 shadow-accent2 border-b border-gray-300 shadow-sm backdrop-blur-md text-black  pr-8 pl-5 py-2.5">
             <div className="max-w-[1400px] mx-auto flex items-center justify-between relative">
@@ -88,6 +92,7 @@ const NavBar = ({ searchParams }) => {
                             ) : (
                                 <Link
                                     href={item.href}
+                                    onClick={item.id === 'contact' ? handleContactClick : undefined}
                                     aria-label={`Go To ${item.href}`}
                                     className="text-sm uppercase tracking-widest font-semibold flex items-center transition-all whitespace-nowrap cursor-pointer hover:text-primary"
                                 >
@@ -185,7 +190,10 @@ const NavBar = ({ searchParams }) => {
                                     ) : (
                                         <Link
                                             href={item.href}
-                                            onClick={() => setMobileMenuOpen(false)}
+                                            onClick={() => {
+                                                setMobileMenuOpen(false);
+                                                if (item.id === 'contact') handleContactClick();
+                                            }}
                                             className="text-sm uppercase tracking-widest font-semibold flex items-center py-2 hover:text-primary transition-colors"
                                         >
                                             {item.icon && <span className="mr-2">{item.icon}</span>}

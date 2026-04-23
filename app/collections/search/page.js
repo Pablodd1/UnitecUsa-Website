@@ -58,8 +58,8 @@ export default async function SearchPage({ searchParams }) {
             <SearchFrom full query={query} />
             {
                 query
-                    ? <SearchBody query={query} />
-                    : <RecommendationsSection />
+                        ? <SearchBody query={query} />
+                        : <RecommendationsSection title={t('search.noQueryTitle') || (lang === 'es' ? 'Productos Destacados' : 'Featured Products')} />
             }
         </section>
 

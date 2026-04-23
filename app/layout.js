@@ -81,7 +81,7 @@ export async function generateMetadata() {
 
     icons: {
       icon: [
-        { url: "/favicons/favicon.ico" },
+        { url: "/favicons/unitec-favicon.png" },
         { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
         { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       ],
@@ -136,11 +136,31 @@ export async function generateMetadata() {
 export default async function RootLayout({ children }) {
   const lang = 'es';
   const dict = getDictionary(lang);
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
+        {/* Google Analytics */}
+        {GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
         {/* Structured Data / JSON-LD */}
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
