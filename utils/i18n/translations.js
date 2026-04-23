@@ -250,7 +250,6 @@ export const translations = {
         phone: "Phone",
         email: "Email",
         address: "Address"
-      },
       }
     },
     
@@ -521,7 +520,6 @@ export const translations = {
         phone: "Teléfono",
         email: "Correo",
         address: "Dirección"
-      },
       }
     },
     

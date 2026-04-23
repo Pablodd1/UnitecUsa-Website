@@ -7,7 +7,6 @@ import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileTe
 import { useLanguage } from "lib/LanguageContext"
 import { useBrand } from "lib/BrandContext"
 import { getCart } from "utils/cart/cart.core"
-import { useLanguage } from "lib/LanguageContext"
 import Link from "next/link"
 import Image from "next/image"
 
