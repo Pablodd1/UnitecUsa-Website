@@ -1,7 +1,9 @@
+
 import SearchFrom from "My_UI/navbar/search";
 import RecommendationsSection from "My_UI/product_ui/recommended_section";
 import Image from "next/image";
 import SearchBody from "./body";
+import { getDictionary } from "lib/i18n/getDictionary";
 
 export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
@@ -39,6 +41,8 @@ export async function generateMetadata(_, parent) {
 
 export default async function SearchPage({ searchParams }) {
     const { q: query } = await searchParams
+    const lang = 'es';
+    const dict = getDictionary(lang);
 
     return (
         <section className="min-h-screen bg-primary flex flex-col items-center justify-center py-10" >
@@ -59,9 +63,10 @@ export default async function SearchPage({ searchParams }) {
             {
                 query
                         ? <SearchBody query={query} />
-                        : <RecommendationsSection title={t('search.noQueryTitle') || (lang === 'es' ? 'Productos Destacados' : 'Featured Products')} />
+                        : <div className="z-10 w-full"><RecommendationsSection title={dict.search.noQueryTitle || (lang === 'es' ? 'Productos Destacados' : 'Featured Products')} /></div>
             }
         </section>
 
     );
 }
+

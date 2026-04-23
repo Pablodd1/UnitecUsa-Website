@@ -1,12 +1,25 @@
 
 /**
+ * Normalizes a string by removing accents and converting to lowercase.
+ */
+function normalize(str) {
+    if (!str || typeof str !== "string") return "";
+    return str
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+}
+
+/**
  * Safely checks if a product matches a search query
  */
 function matchesSearchQuery(product, query) {
     if (!query || typeof query !== "string") return true;
 
-    const normalizedQuery = query.trim().toLowerCase();
+    const normalizedQuery = normalize(query).trim();
     if (!normalizedQuery) return true;
+
+    const queryWords = normalizedQuery.split(/\s+/).filter(Boolean);
 
     const fieldsToSearch = [
         product.name,
@@ -14,11 +27,15 @@ function matchesSearchQuery(product, query) {
         product.subcategory,
         product.category,
         product.description,
-    ];
+        product.id,
+        product.unit,
+        product.dimensions,
+    ].map(normalize);
 
-    return fieldsToSearch.some((field) => {
-        if (!field || typeof field !== "string") return false;
-        return field.toLowerCase().includes(normalizedQuery);
+    // AND logic: all words in the query must match at least one field
+    return queryWords.every((word) => {
+        return fieldsToSearch.some((field) => field.includes(word));
     });
 }
-export default matchesSearchQuery;
+
+export default matchesSearchQuery;

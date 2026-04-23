@@ -251,10 +251,6 @@ export const translations = {
         email: "Email",
         address: "Address"
       },
-      newsletter: {
-        title: "Subscribe to our newsletter",
-        placeholder: "Enter your email",
-        button: "Subscribe"
       }
     },
     
@@ -526,10 +522,6 @@ export const translations = {
         email: "Correo",
         address: "Dirección"
       },
-      newsletter: {
-        title: "Suscríbase a nuestro boletín",
-        placeholder: "Ingrese su correo",
-        button: "Suscribirse"
       }
     },
     

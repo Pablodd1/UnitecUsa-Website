@@ -447,11 +447,6 @@ const translations = {
                     privacy: "Privacy Policy"
                 }
             },
-            subscribe: {
-                title: "Subscribe for More Info",
-                placeholder: "Enter your email",
-                btn: "Subscribe"
-            },
             rights: "All rights reserved."
         },
         checkout: {
@@ -1402,11 +1397,6 @@ const translations = {
                     terms: "Términos y Condiciones",
                     privacy: "Política de Privacidad"
                 }
-            },
-            subscribe: {
-                title: "Suscríbase para Más Información",
-                placeholder: "Ingrese su correo electrónico",
-                btn: "Suscribirse"
             },
             rights: "Todos los derechos reservados."
         },

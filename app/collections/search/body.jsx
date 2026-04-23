@@ -17,7 +17,7 @@ export default function SearchBody({ query }) {
         if (query) {
             const fetchProducts = () => {
                 setLoading(true);
-                fetch(`/API/collections?query=${encodeURI(query)}&currentPage=${currentPage}`)
+                fetch(`/API/collections?query=${encodeURIComponent(query)}&currentPage=${currentPage}`)
                     .then(res => res.json())
                     .then(data => {
                         setProducts(data.items);

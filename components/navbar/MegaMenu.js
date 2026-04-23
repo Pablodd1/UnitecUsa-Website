@@ -63,7 +63,31 @@ const MegaMenu = () => {
         fetch(dynamicCategoriesEndpoint)
             .then((r) => r.json())
             .then((data) => {
-                if (!cancelled) setDynamicCategories(data);
+                if (cancelled) return;
+                
+                // Group flat items into the structure expected by the component
+                const grouped = { Interior: {}, Exterior: {} };
+                const items = data.items || [];
+                
+                items.forEach(item => {
+                    const collection = item.collection?.charAt(0).toUpperCase() + item.collection?.slice(1).toLowerCase();
+                    const category = item.category?.toUpperCase();
+                    
+                    if (collection === 'Interior' || collection === 'Exterior') {
+                        if (!grouped[collection][category]) {
+                            grouped[collection][category] = {
+                                page: `/collections/${category.toLowerCase().replace(/ /g, '-')}`,
+                                collection: collection.toUpperCase(),
+                                subcategories: []
+                            };
+                        }
+                        if (item.subcategory && !grouped[collection][category].subcategories.includes(item.subcategory)) {
+                            grouped[collection][category].subcategories.push(item.subcategory);
+                        }
+                    }
+                });
+                
+                setDynamicCategories(grouped);
             })
             .catch(() => {
                 // ignore fetch errors; fall back to static data
@@ -126,11 +150,12 @@ const MegaMenu = () => {
                                 return interiorEntriesFiltered.map(([category, data]) => {
                                     const subParam = (data.subcategories && data.subcategories.length) ? `&subcategories=${data.subcategories.join(',')}` : ''
                                     const href = `${data.page}?category=${category}&collection=${data.collection}${subParam}`
-                                    const label = labelMap[category] || category
+                                    const label = labelMap[category] || category;
+                                    const Icon = data.icon || LayoutGrid;
                                     return (
                                         <div key={category} className="group/item mb-2">
                                             <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-blue-600 mb-1 text-[12px] uppercase tracking-widest transition-all">
-                                                <data.icon className="w-4 h-4" />
+                                                <Icon className="w-4 h-4" />
                                                 {label}
                                             </Link>
                                         </div>
@@ -168,11 +193,12 @@ const MegaMenu = () => {
                                 return exteriorEntriesFiltered.map(([category, data]) => {
                                     const subParam = (data.subcategories && data.subcategories.length) ? `&subcategories=${data.subcategories.join(',')}` : ''
                                     const href = `${data.page}?category=${category}&collection=${data.collection}${subParam}`
-                                    const label = labelMapExt[category] || category
+                                    const label = labelMapExt[category] || category;
+                                    const Icon = data.icon || LayoutGrid;
                                     return (
                                         <div key={category} className="group/item">
                                             <Link href={href} className="flex items-center gap-2 font-bold text-gray-900 group-hover/item:text-emerald-700 mb-1 text-[12px] uppercase tracking-widest transition-all">
-                                                <data.icon className="w-4 h-4" />
+                                                <Icon className="w-4 h-4" />
                                                 {label}
                                             </Link>
                                         </div>
