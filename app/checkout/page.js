@@ -7,11 +7,14 @@ import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileTe
 import { useLanguage } from "lib/LanguageContext"
 import { useBrand } from "lib/BrandContext"
 import { getCart } from "utils/cart/cart.core"
+import { useLanguage } from "lib/LanguageContext"
 import Link from "next/link"
 import Image from "next/image"
 
 export default function CheckoutPage() {
     const { t } = useLanguage()
+    const { language } = useLanguage()
+    const lang = language || 'es'
     const [cart, setCart] = useState([])
     const [mounted, setMounted] = useState(false)
     const [submitted, setSubmitted] = useState(false)
@@ -139,6 +142,32 @@ export default function CheckoutPage() {
 
     const handlePrint = () => {
         window.print()
+    }
+
+    const handleDownloadInvoice = async () => {
+        try {
+            const cartData = getCart()
+            const res = await fetch('/api/invoices', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cart: cartData, language: lang })
+            })
+            if (!res.ok) {
+                console.error('Invoice generation failed')
+                return
+            }
+            const blob = await res.blob()
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'invoice.pdf'
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+            URL.revokeObjectURL(url)
+        } catch (err) {
+            console.error('Error generating invoice', err)
+        }
     }
 
     if (!mounted) {
