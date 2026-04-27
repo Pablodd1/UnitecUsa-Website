@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { addProduct, removeProduct } from "lib/cart/cart.actions"
+import { addProduct, removeProduct, deleteProduct } from "lib/cart/cart.actions"
 import Image from "next/image"
 import GetFinalPrice from "My_UI/getFinalPrice"
 import { subscribeCart } from "lib/cart/cart.events"
-import { Minus, Plus } from "lucide-react"
+import { Minus, Plus, Trash2 } from "lucide-react"
 import { getCart } from "lib/cart/cart.core"
 import { notify } from "lib/notify"
 import { useLanguage } from "lib/LanguageContext"
@@ -20,8 +20,9 @@ export default function RenderItemsList({ container }) {
 
     const t = {
         noProducts: isSpanish ? "No hay productos en este contenedor" : "No products in this container",
-        remove: isSpanish ? "Eliminar producto" : "Remove Product",
-        add: isSpanish ? "Añadir producto" : "Add product"
+        remove: isSpanish ? "Disminuir cantidad" : "Decrease quantity",
+        delete: isSpanish ? "Eliminar del carrito" : "Remove from cart",
+        add: isSpanish ? "Aumentar cantidad" : "Increase quantity"
     }
 
     async function fetchProduct(id) {
@@ -169,30 +170,39 @@ export default function RenderItemsList({ container }) {
                                         />
                                     </span>
 
-                                        <div className="flex items-center gap-2">
-                                        <button
-                                            aria-label={t.remove}
-                                            onClick={() => removeProduct(container.id, item.ID)}
-                                            className="flex h-7 w-7 items-center justify-center rounded-md border hover:bg-gray-100"
-                                        >
-                                            <Minus
-                                                size={14}
-                                                className={item.qty === 1 ? "text-red-500" : ""}
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-1 bg-gray-50 rounded-lg border border-gray-100 p-1">
+                                            <button
+                                                aria-label={t.remove}
+                                                disabled={item.qty <= 1}
+                                                onClick={() => item.qty > 1 && removeProduct(container.id, item.ID)}
+                                                className={`flex h-7 w-7 items-center justify-center rounded-md transition-colors ${item.qty <= 1 ? "text-gray-300 cursor-not-allowed" : "hover:bg-gray-200 text-gray-600"}`}
+                                            >
+                                                <Minus size={14} />
+                                            </button>
+
+                                            <input
+                                                value={item.qty}
+                                                readOnly
+                                                className="w-8 text-center text-sm font-bold bg-transparent outline-none cursor-default"
                                             />
-                                        </button>
 
-                                        <input
-                                            value={item.qty}
-                                            onChange={(e) => addProduct(container.id, item.ID, Number(e.target.value))}
-                                            className="min-w-5 max-w-15 text-center text-sm font-medium"
-                                        />
+                                            <button
+                                                aria-label={t.add}
+                                                onClick={() => addProduct(container.id, item.ID)}
+                                                className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-gray-200 text-gray-600 transition-colors"
+                                            >
+                                                <Plus size={14} />
+                                            </button>
+                                        </div>
 
                                         <button
-                                            aria-label={t.add}
-                                            onClick={() => addProduct(container.id, item.ID)}
-                                            className="flex h-7 w-7 items-center justify-center rounded-md border hover:bg-gray-100"
+                                            aria-label={t.delete}
+                                            onClick={() => deleteProduct(container.id, item.ID)}
+                                            className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all border border-red-100"
+                                            title={t.delete}
                                         >
-                                            <Plus size={14} />
+                                            <Trash2 size={16} />
                                         </button>
                                     </div>
                                 </div>

@@ -1,4 +1,4 @@
-import { getCart, addOne, removeOne, addContainer, removeContainer } from "./cart.core"
+import { getCart, addOne, removeOne, addContainer, removeContainer, setQty } from "./cart.core"
 import { emitCart } from "./cart.events"
 
 export function addContainerAction(container) {
@@ -13,6 +13,11 @@ export function addProduct(containerId, product, qty) {
 
 export function removeProduct(containerId, productId) {
   removeOne(containerId, productId)
+  emitCart()
+}
+
+export function deleteProduct(containerId, productId) {
+  setQty(containerId, { id: productId }, 0)
   emitCart()
 }
 

@@ -7,6 +7,7 @@ import MyButton from "My_UI/btn/main";
 import { Facebook, Instagram } from "lucide-react";
 import { useLanguage } from "lib/LanguageContext";
 import { useBrand } from "lib/BrandContext";
+import SearchForm from "components/navbar/search";
 
 // TikTok icon component since lucide-react doesn't have it
 const TikTokIcon = ({ className, strokeWidth }) => (
@@ -109,16 +110,20 @@ export default function HeroSec() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className="mt-2 md:mt-0"
+                            className="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-4"
                         >
                             <MyButton
                                 label={heroCta}
                                 href="/collections"
                                 className={{
-                                    btn: "bg-primary px-4 md:px-5 py-2 h-10 hover:bg-white transition-all duration-300 hover:scale-105 text-sm md:text-base",
-                                    label: ""
+                                    btn: "bg-primary px-6 py-2.5 h-12 hover:bg-white transition-all duration-300 hover:scale-105 text-sm md:text-base shadow-lg",
+                                    label: "font-bold"
                                 }}
                             />
+                            
+                            <div className="w-full max-w-sm">
+                                <SearchForm full={true} />
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
