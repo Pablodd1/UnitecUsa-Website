@@ -1,4 +1,5 @@
 import calcSheetVol from "lib/getSheetVol"
+import { CONTAINER_TYPES } from "./containerTypes"
 
 /**
  * CONTAINER_TOLERANCE
@@ -12,10 +13,12 @@ const CONTAINER_TOLERANCE = 0.95;
  * @param {string|null} currentItemId
  */
 export function containerFillPercent(container, currentItemId = null) {
-    const totalVolume =
-        (container?.dimension?.length || 0) *
-        (container?.dimension?.width || 0) *
-        (container?.dimension?.height || 0)
+    // Determine container capacity from CONTAINER_TYPES or fallback to dimensions
+    const containerType = container?.id?.includes('40') ? CONTAINER_TYPES['40ft'] : CONTAINER_TYPES['20ft'];
+    const totalVolume = containerType?.volume || 
+        ((container?.dimension?.length || 0) *
+         (container?.dimension?.width || 0) *
+         (container?.dimension?.height || 0));
 
     const usableVolume = totalVolume * CONTAINER_TOLERANCE;
 
@@ -37,7 +40,10 @@ export function containerFillPercent(container, currentItemId = null) {
         const volResult = calcSheetVol(productData)
 
         if (!volResult || typeof volResult.value !== "number") continue
-        const itemVolume = volResult.value * (item.qty || 1)
+        
+        // Multiply by itemsPerBox if available, as the item represents a box/unit
+        const multiplier = item.itemsPerBox || 1;
+        const itemVolume = volResult.value * multiplier * (item.qty || 1)
 
         if (item.id === currentItemId) usedByCurrent += itemVolume
         else usedByOthers += itemVolume
