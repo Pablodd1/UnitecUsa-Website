@@ -56,6 +56,7 @@ const Footer = () => {
             { title: t("footer.helpful.links.business"), link: "/about/business-models" },
             { title: t("footer.helpful.links.supports"), link: "/contact" },
             { title: t("footer.helpful.links.faqs"), link: "/faq" },
+            { title: t("nav.blog"), link: "/blog" },
             { title: t("footer.helpful.links.search"), link: "/collections/search" }
         ]
     };

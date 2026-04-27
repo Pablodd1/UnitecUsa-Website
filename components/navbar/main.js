@@ -42,7 +42,8 @@ const navItems = [
             { label: 'businessModels', href: '/about/business-models' },
         ]
     },
-    { label: 'Contact', id: 'contact', href: '/contact' }
+    { label: 'Contact', id: 'contact', href: '/contact' },
+    { label: 'Blog', id: 'blog', href: '/blog' }
 ];
 
 
