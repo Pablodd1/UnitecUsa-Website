@@ -255,9 +255,10 @@ export const translations = {
     
     // Meta
     meta: {
-      siteName: "UNITEC USA Design",
-      siteDescription: "Premium PVC, WPC, and SPC architectural materials for walls, ceilings, floors, and facades. Sustainable, waterproof, and high-design solutions.",
-      keywords: "PVC panels, WPC decking, SPC flooring, wall panels, ceiling panels, waterproof materials, sustainable construction, architectural materials"
+      siteName: "Unitec USA Design",
+      siteTitle: "Unitec USA Design | Container Logistics for Construction Materials",
+      siteDescription: "Specialists in container shipping with PVC, WPC, and SPC construction materials from Miami to all of Latin America. High-quality architectural solutions.",
+      keywords: "PVC panels, WPC decking, SPC flooring, wall panels, ceiling panels, waterproof materials, sustainable construction, architectural materials, container logistics"
     },
     
     // Language Switcher
@@ -525,9 +526,10 @@ export const translations = {
     
     // Meta
     meta: {
-      siteName: "UNITEC USA Design",
-      siteDescription: "Materiales arquitectónicos premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas. Soluciones sostenibles, impermeables y de alto diseño.",
-      keywords: "paneles PVC, decking WPC, piso SPC, paneles pared, paneles techo, materiales impermeables, construcción sostenible, materiales arquitectónicos"
+      siteName: "Unitec USA Design",
+      siteTitle: "Unitec USA Design | Logística de Contenedores para Materiales de Construcción",
+      siteDescription: "Especialistas en envío de contenedores con materiales de construcción PVC, WPC, SPC desde Miami a toda Latinoamérica. Soluciones arquitectónicas de alta calidad.",
+      keywords: "paneles PVC, decking WPC, piso SPC, paneles pared, paneles techo, materiales impermeables, construcción sostenible, materiales arquitectónicos, logística de contenedores"
     },
     
     // Language Switcher

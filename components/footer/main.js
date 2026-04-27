@@ -117,7 +117,7 @@ const Footer = () => {
                     {/* Sister Company Section */}
                     <div className="text-center md:text-left mb-8 flex flex-col items-center md:items-start">
                         <h3 className="text-lg font-bold text-accent1 mb-4 uppercase tracking-widest">
-                            {isSpanish ? "Empresa Hermana" : "Sister Company"}
+                            {isSpanish ? "Presencia Global" : "Global Presence"}
                         </h3>
                         <Link 
                             href="https://buildinginnovation.com.co" 
@@ -130,8 +130,10 @@ const Footer = () => {
                             </div>
                             <div className="text-left">
                                 <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">Building Innovation</p>
-                                <p className="text-[10px] text-gray-400 uppercase tracking-tighter">
-                                    {isSpanish ? "Logística e Innovación" : "Logistics & Innovation"}
+                                <p className="text-[10px] text-gray-400 uppercase tracking-tighter leading-tight">
+                                    {isSpanish 
+                                        ? "Misma organización, operando legalmente en USA como Unitec USA Design" 
+                                        : "Same organization, operating legally in USA as Unitec USA Design"}
                                 </p>
                             </div>
                         </Link>

@@ -14,24 +14,11 @@ export async function generateMetadata() {
   const lang = 'es';
   const dict = getDictionary(lang);
 
-  const rawBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL || "";
-  const resolveBaseUrl = (value) => {
-    if (!value) return "http://localhost:3000";
-    const trimmed = value.trim();
-    if (!trimmed) return "http://localhost:3000";
-    const withProtocol = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
-    try {
-      return new URL(withProtocol).toString();
-    } catch {
-      return "http://localhost:3000";
-    }
-  };
-
-  const BASE_URL = resolveBaseUrl(rawBaseUrl);
+  const BASE_URL = "https://unitecusadesign.com";
   const canonicalUrl = `${BASE_URL}/${lang}`;
 
   const defaults = {
-    title: dict.meta.siteName + " | " + (lang === 'es' ? "Diseñamos el Futuro" : "We Design the Future"),
+    title: dict.meta.siteTitle,
     description: dict.meta.siteDescription,
     keywords: dict.meta.keywords,
     image: `${BASE_URL}/og-image.jpg`,
@@ -169,14 +156,16 @@ export default async function RootLayout({ children }) {
               "@graph": [
                 {
                   "@type": "Organization",
-                  "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#organization`,
-                  "name": "UNITEC USA Design",
-                  "url": process.env.NEXT_PUBLIC_BASE_URL,
+                  "@id": "https://unitecusadesign.com/#organization",
+                  "name": "Unitec USA Design",
+                  "url": "https://unitecusadesign.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": `${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`
+                    "url": "https://unitecusadesign.com/logo.png"
                   },
-                  "description": dict.meta.siteDescription,
+                  "description": lang === 'es' 
+                    ? "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano."
+                    : "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets.",
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "contactType": lang === 'es' ? "Ventas" : "Sales",
@@ -189,11 +178,11 @@ export default async function RootLayout({ children }) {
                 },
                 {
                   "@type": "WebSite",
-                  "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#website`,
-                  "url": process.env.NEXT_PUBLIC_BASE_URL,
-                  "name": "UNITEC USA Design",
+                  "@id": "https://unitecusadesign.com/#website",
+                  "url": "https://unitecusadesign.com",
+                  "name": "Unitec USA Design",
                   "publisher": {
-                    "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/#organization`
+                    "@id": "https://unitecusadesign.com/#organization"
                   },
                   "inLanguage": ["en", "es"]
                 }

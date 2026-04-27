@@ -8,10 +8,10 @@ const translations = {
                 heroTitle: "Fill Your Container. Ship Your Way.",
                 heroSubtitle: "Choose the products you want, pack them into your container, and we'll handle the shipping — simple, flexible, and built around you.",
                 heroCta: "Explore Products",
-                metaTitle: "UNITEC USA Design | Premium Building Solutions",
-                metaDescription: "Premium PVC, WPC, and SPC architectural materials for walls, ceilings, floors, and facades. Sustainable, waterproof, and high-design solutions.",
+                metaTitle: "Unitec USA Design | Container Logistics for Construction Materials",
+                metaDescription: "Specialists in container shipping with PVC, WPC, and SPC construction materials from Miami to all of Latin America. High-quality architectural solutions.",
                 whyTitle: "Why UNITEC USA",
-                whyDescription: "UNITEC USA Design was founded on a simple idea: building materials should be innovative, durable, and environmentally responsible—without being complicated or costly.",
+                whyDescription: "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets. We believe building materials should be innovative, durable, and environmentally responsible.",
                 aboutHero: {
                     title: "Built for Scale.",
                     subtitle: "Designed for Containers.",
@@ -39,6 +39,7 @@ const translations = {
                     title: "Who We Are",
                     tagline: "",
                     intro: [
+                        "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets.",
                         "Bulk shipping is broken when treated like normal e-commerce. Products are not individual units — they are volumes, dimensions, and constraints within a container.",
                         "We built our platform around a simple belief: containers go first, products go second. This mindset allows businesses to plan realistic shipments, avoid over-booking, and get total visibility of capacity."
                     ],
@@ -956,10 +957,10 @@ const translations = {
                 heroTitle: "Llene Su Contenedor. Envíe a Su Manera.",
                 heroSubtitle: "Elija los productos que desee, empáquelos en su contenedor y nosotros nos encargamos del envío: simple, flexible y diseñado para usted.",
                 heroCta: "Explorar Productos",
-                metaTitle: "UNITEC USA Design | Soluciones de Construcción Premium",
-                metaDescription: "Materiales arquitectónicos premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas. Soluciones sostenibles, impermeables y de alto diseño.",
+                metaTitle: "Unitec USA Design | Logística de Contenedores para Materiales de Construcción",
+                metaDescription: "Especialistas en envío de contenedores con materiales de construcción PVC, WPC, SPC desde Miami a toda Latinoamérica. Soluciones arquitectónicas de alta calidad.",
                 whyTitle: "Por Qué UNITEC USA",
-                whyDescription: "UNITEC USA Design se fundó sobre una idea simple: los materiales de construcción deben ser innovadores, duraderos y ambientalmente responsables, sin ser complicados ni costosos.",
+                whyDescription: "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano. Creemos que los materiales de construcción deben ser innovadores, duraderos y ambientalmente responsables.",
                 aboutHero: {
                     title: "Construido para Escala.",
                     subtitle: "Diseñado para Contenedores.",
@@ -986,6 +987,7 @@ const translations = {
                     title: "Quiénes Somos",
                     tagline: "",
                     intro: [
+                        "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano.",
                         "El envío a granel está roto cuando se trata como el comercio electrónico normal. Los productos no son unidades individuales — son volúmenes, dimensiones y restricciones dentro de un contenedor.",
                         "Construimos nuestra plataforma alrededor de una creencia simple: los contenedores van primero, los productos van segundo. Esta mentalidad permite a las empresas planificar envíos realistas, evitar sobre reservas y obtener total visibilidad de la capacidad."
                     ],
