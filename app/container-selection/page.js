@@ -7,6 +7,7 @@ import { ArrowRight, Box as BoxIcon } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from 'lib/LanguageContext';
+import { useBrand } from 'lib/BrandContext';
 
 const containerTranslations = {
   en: {
@@ -54,6 +55,7 @@ function ContainerSelectionContent() {
   const productId = searchParams.get('product');
   const [loading, setLoading] = useState(false);
   const { language } = useLanguage();
+  const { brand } = useBrand();
   const t = containerTranslations[language] || containerTranslations.en;
 
   // Check if container already exists - if so, add product and redirect to cart
@@ -132,7 +134,7 @@ function ContainerSelectionContent() {
 
       <div className="absolute top-8 left-8 z-20">
           <h1 className="text-white text-2xl font-black italic tracking-tighter">
-            B.I. <span className="text-blue-500 font-medium not-italic ml-1">{t.logistics}</span>
+            {brand.shortName || 'UNITEC'} <span className="text-blue-500 font-medium not-italic ml-1">{t.logistics}</span>
           </h1>
       </div>
 
