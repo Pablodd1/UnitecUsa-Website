@@ -89,4 +89,14 @@ To ensure the long-term stability of the platform, the following terms apply to 
 
 ---
 
+## 9. Phase 2 & Future Capabilities (Not Included in Phase 1)
+The current platform is designed as a **B2B Lead & Logistics Engine**. The following enterprise features are ready to be integrated in future development cycles:
+
+*   **Automated Payment Gateways:** Integration with Stripe, PayPal, or Wire-Transfer verification for direct-on-site payments.
+*   **Live Freight Calculation:** API integration with shipping carriers (e.g., Maersk, DHL) to provide real-time shipping quotes based on container destination.
+*   **Customer Dashboard:** A logged-in area for distributors to view their past orders, download invoices, and track shipment status.
+*   **ERP/Inventory Sync:** Automatic synchronization with warehouse software (e.g., SAP, QuickBooks) to update stock levels in real-time.
+
+---
+
 **Technical Support:** This platform was designed to be low-maintenance. Most updates only require editing the `.json` or `.js` files mentioned above. For structural changes, a Next.js developer is recommended.
