@@ -8,8 +8,8 @@ import HomeCTA from "My_UI/homepage/home_CTA";
 import { getDictionary } from "lib/i18n/getDictionary";
 
 export const metadata = {
-  title: "BIwebsite | Logística e Innovación en Construcción",
-  description: "La plataforma líder en visualización de contenedores y suministro masivo de materiales de construcción."
+  title: "UNITEC USA Design | Logistics & Building Innovation",
+  description: "The leading platform for container visualization and bulk building material supply."
 };
 
 export default async function HomePage() {

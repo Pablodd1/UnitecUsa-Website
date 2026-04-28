@@ -33,7 +33,7 @@ const productCategories = {
         "LAMINAS": { page: "/collections/laminas", icon: Grid3X3, collection: "INTERIOR", subcategories: ["FOAM BOARD", "LAMINAS MARMOL PVC", "LAMINAS PVC BOARD", "LAMINAS SINTETICAS"] },
         "LISTONES": { page: "/collections/listones-wpc-exterior", icon: RectangleHorizontal, collection: "INTERIOR", subcategories: ["LISTONES PVC CIELO RASO", "LISTONES PVC INTERIOR ESTRUCTURAL"] },
         "PANELES WPC Y ANGULOS": { page: "/collections/paneles-wpc", icon: Square, collection: "INTERIOR", subcategories: ["PANELES WPC INTERIOR", "PANELES WPC REDONDOS"] },
-        "PAREDES": { page: "/collections/paredes", icon: RectangleHorizontal, collection: "INTERIOR", subcategories: ["PANEL PS", "PANELES ACUSTICOS", "PANELES ACOLCHADOS", "PAREDES ACOLCHADAS", "PAREDES MUROFLEX", "PAREDES PU ARQUNITEC", "ROLLOS ADHESIVOS DE MARMOL", "PANELES ACRILICOS MARMOL", "PAREDES UNIFLEX"] },
+        "PAREDES": { page: "/collections/paredes", icon: RectangleHorizontal, collection: "INTERIOR", subcategories: ["PANEL PS", "PANELES ACUSTICOS", "PANELES ACOLCHADOS", "PAREDES ACOLCHADAS", "PAREDES MUROFLEX", "PAREDES PU", "ROLLOS ADHESIVOS DE MARMOL", "PANELES ACRILICOS MARMOL", "PAREDES UNIFLEX"] },
         "CINTAS": { page: "/collections/cintas", icon: Palette, collection: "INTERIOR", subcategories: ["CINTA ADHESIVA DE PAPEL", "CINTA ADHESIVA METALICA"] },
         "PEGANTES": { page: "/collections/pegantes", icon: Droplets, collection: "INTERIOR", subcategories: ["PEGANTES"] },
         "PISOS": { page: "/collections/pisos", icon: Home, collection: "INTERIOR", subcategories: ["PISOS SPC"] },
