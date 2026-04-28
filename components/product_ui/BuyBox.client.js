@@ -8,7 +8,7 @@ import { useBrand } from "lib/BrandContext";
 const buyBoxTranslations = {
     en: {
         inStock: "In Stock",
-        shipsWithin: "Usually ships within 2-3 work days.",
+        shipsWithin: "Usually ships within 15 to 30 days.",
         shipsFrom: "Ships from",
         soldBy: "Sold by",
         returns: "Returns",
@@ -17,7 +17,7 @@ const buyBoxTranslations = {
     },
     es: {
         inStock: "En Stock",
-        shipsWithin: "Generalmente envía dentro de 2-3 días hábiles.",
+        shipsWithin: "Generalmente envía dentro de 15 a 30 días.",
         shipsFrom: "Envía desde",
         soldBy: "Vendido por",
         returns: "Devoluciones",
