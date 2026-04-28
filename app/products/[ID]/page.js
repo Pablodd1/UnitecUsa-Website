@@ -5,6 +5,7 @@ import HowShippingWorks from "My_UI/product_ui/steps";
 import ProductDimensions from "My_UI/product_ui/dimension";
 import ProductUseCases from "My_UI/product_ui/technical";
 import ProductStory from "My_UI/product_ui/story";
+import ProductSpecsTable from "My_UI/product_ui/ProductSpecsTable";
 import NotFoundPage from "../../not-found";
 
 // app/products/[ID]/page.jsx (or equivalent)
@@ -93,19 +94,52 @@ export default async function ProductPage({ params }) {
 
   if (!product) return <NotFoundPage />
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description || `Premium architectural materials by Unitec USA Design.`,
+    "image": product.image?.url || process.env.DEFAULT_IMAGE,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "Unitec USA Design"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "offerCount": "1",
+      "lowPrice": product.basePrice || "0",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": {
+        "@type": "Organization",
+        "name": "Unitec USA Design",
+        "url": "https://unitecusadesign.com"
+      }
+    }
+  };
+
   return (
-    <main className="">
-      <div className="max-w-6xl mx-auto bg-white px-2 md:px-5 lg:px-12 flex flex-col gap-15 py-16">
-        <ProductSection product={product} />
-        <ProductStory product={product} description={product.description} />
-        <ProductDimensions dimension={product.dimensions} />
-        <ProductUseCases description={product.description} />
-      </div>
-      <HowShippingWorks />
-      <div className="max-w-11/12 mx-auto bg-white px-12 py-16">
-        <RecommendationsSection itemID={ID} />
-        {/* <ReviewsSection reviews={productReview.reviews} /> */}
-      </div>
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <main className="">
+        <div className="max-w-6xl mx-auto bg-white px-2 md:px-5 lg:px-12 flex flex-col gap-15 py-16">
+          <ProductSection product={product} />
+          <ProductStory product={product} description={product.description} />
+          <ProductDimensions dimension={product.dimensions} />
+          <ProductUseCases description={product.description} />
+          <ProductSpecsTable product={product} />
+        </div>
+        <HowShippingWorks />
+        <div className="max-w-11/12 mx-auto bg-white px-12 py-16">
+          <RecommendationsSection itemID={ID} />
+          {/* <ReviewsSection reviews={productReview.reviews} /> */}
+        </div>
+      </main>
+    </>
   );
 }

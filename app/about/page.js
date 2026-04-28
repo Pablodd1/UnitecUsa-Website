@@ -29,8 +29,9 @@ import { useBrand } from 'lib/BrandContext';
 import SeoHead from "components/SeoHead"
 
 export default function AboutPage() {
-    const { t, getCompanyText } = useLanguage();
+    const { t, getCompanyText, language } = useLanguage();
     const { activeBrand } = useBrand();
+    const isSpanish = language === 'es';
     
     const companyKey = activeBrand === 'unitec' ? 'unitec' : 'binw';
     const aboutHeroTitle = getCompanyText(companyKey, 'aboutHero.title');
@@ -40,9 +41,39 @@ export default function AboutPage() {
     return (
         <>
             <SeoHead 
-                title="Sobre Nosotros | BIwebsite" 
-                description="Conoce más sobre nuestra visión, misión y el equipo detrás de BIwebsite."
-                canonical="https://yourdomain.com/about"
+                title={activeBrand === 'unitec' ? `About Us | Unitec USA Design` : `Sobre Nosotros | Building Innovation`} 
+                description={activeBrand === 'unitec' 
+                    ? "Learn more about our vision, mission, and the expert team at Unitec USA Design." 
+                    : "Conoce más sobre nuestra visión, misión y el equipo de Building Innovation."}
+                canonical={activeBrand === 'unitec' ? "https://unitecusadesign.com/about" : "https://buildinginnovation.us/about"}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "HowTo",
+                        "name": activeBrand === 'unitec' ? "How to Import with Unitec's Container Configurator" : "Cómo Importar con el Configurador de Building Innovation",
+                        "description": "Our specialized 3-step logistical workflow for bulk architectural material export.",
+                        "step": [
+                            {
+                                "@type": "HowToStep",
+                                "name": isSpanish ? "Crear Contenedor" : "Create Container",
+                                "text": isSpanish ? "Seleccione el tamaño del contenedor para definir su capacidad de envío." : "Select container size to define your shipping capacity."
+                            },
+                            {
+                                "@type": "HowToStep",
+                                "name": isSpanish ? "Agregar Productos" : "Add Products",
+                                "text": isSpanish ? "Agregue materiales y vea el peso volumétrico en tiempo real." : "Add materials and see real-time volumetric weight."
+                            },
+                            {
+                                "@type": "HowToStep",
+                                "name": isSpanish ? "Optimizar y Enviar" : "Optimize and Ship",
+                                "text": isSpanish ? "Alcance la capacidad máxima para eficiencia de costos y solicite su cotización." : "Reach maximum capacity for cost efficiency and request your quote."
+                            }
+                        ]
+                    })
+                }}
             />
             <main className="w-full">
             {/* ================= HERO ================= */}

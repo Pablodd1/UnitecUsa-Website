@@ -158,33 +158,55 @@ export default async function RootLayout({ children }) {
                   "@type": "Organization",
                   "@id": "https://unitecusadesign.com/#organization",
                   "name": "Unitec USA Design",
+                  "alternateName": "Unitec USA",
                   "url": "https://unitecusadesign.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://unitecusadesign.com/unitec-logo.png"
+                    "@id": "https://unitecusadesign.com/#logo",
+                    "url": "https://unitecusadesign.com/unitec-logo.png",
+                    "contentUrl": "https://unitecusadesign.com/unitec-logo.png",
+                    "caption": "Unitec USA Design"
                   },
-                  "description": lang === 'es' 
-                    ? "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano."
-                    : "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets.",
+                  "image": { "@id": "https://unitecusadesign.com/#logo" },
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "6120 NW 74th Ave",
+                    "addressLocality": "Doral",
+                    "addressRegion": "FL",
+                    "postalCode": "33166",
+                    "addressCountry": "US"
+                  },
                   "contactPoint": {
                     "@type": "ContactPoint",
-                    "contactType": lang === 'es' ? "Ventas" : "Sales",
+                    "telephone": "+57 314 233 2147",
+                    "contactType": "sales",
+                    "areaServed": ["US", "LATAM", "Caribbean"],
                     "availableLanguage": ["English", "Spanish"]
                   },
                   "sameAs": [
                     "https://instagram.com/unitecusadesign",
-                    "https://facebook.com/unitecusadesign"
-                  ]
+                    "https://facebook.com/unitecusadesign",
+                    "https://www.tiktok.com/@unitecusadesign"
+                  ],
+                  "parentOrganization": {
+                    "@type": "Organization",
+                    "name": "Building Innovation",
+                    "url": "https://buildinginnovation.com.co"
+                  }
                 },
                 {
                   "@type": "WebSite",
                   "@id": "https://unitecusadesign.com/#website",
                   "url": "https://unitecusadesign.com",
                   "name": "Unitec USA Design",
-                  "publisher": {
-                    "@id": "https://unitecusadesign.com/#organization"
-                  },
-                  "inLanguage": ["en", "es"]
+                  "description": "Premium Miami-based supplier of PVC, WPC, and SPC architectural materials at wholesale prices.",
+                  "publisher": { "@id": "https://unitecusadesign.com/#organization" },
+                  "inLanguage": ["en", "es"],
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://unitecusadesign.com/collections/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
                 }
               ]
             })

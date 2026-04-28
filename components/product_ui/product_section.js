@@ -14,7 +14,7 @@ export default async function ProductSection({ product }) {
                 <div className="lg:col-span-5 flex justify-center items-center h-[500px] lg:h-[600px] bg-white border border-gray-200 rounded-xl p-4 relative w-full sticky top-24">
                     <Image
                         src={product.image?.url || product.image || '/raster/product.jpg'}
-                        alt={product.name || 'Product Image'}
+                        alt={`${product.name} - ${product.category} - ${product.subcategory} | Unitec USA Design`}
                         className="object-contain p-4 mix-blend-multiply"
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"

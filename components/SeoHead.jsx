@@ -6,7 +6,7 @@ import Head from "next/head"
  * Pass title, description, url, image, canonical as needed.
  */
 export default function SeoHead({
-  title = "BIwebsite – Innovative Logistics",
+  title = "Unitec USA Design – Innovative Logistics",
   description = "Premium container visualization and logistics platform.",
   url,
   image,

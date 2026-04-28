@@ -24,8 +24,8 @@ export const translations = {
     
     // Hero Section
     hero: {
-      title: "We Design the Future",
-      subtitle: "Sustainable Architectural Materials for Modern Construction",
+      title: "Premium Architectural Materials in Miami",
+      subtitle: "Wholesale PVC, WPC, and SPC Building Solutions",
       description: "Premium PVC, WPC, and SPC solutions for walls, ceilings, floors, and facades. High-design, waterproof, and eco-friendly materials.",
       ctaPrimary: "Explore Products",
       ctaSecondary: "View Catalog",
@@ -257,9 +257,9 @@ export const translations = {
     // Meta
     meta: {
       siteName: "Unitec USA Design",
-      siteTitle: "Unitec USA Design | Container Logistics for Construction Materials",
-      siteDescription: "Specialists in container shipping with PVC, WPC, and SPC construction materials from Miami to all of Latin America. High-quality architectural solutions.",
-      keywords: "PVC panels, WPC decking, SPC flooring, wall panels, ceiling panels, waterproof materials, sustainable construction, architectural materials, container logistics"
+      siteTitle: "Premium Architectural Materials Miami | Wholesale PVC, WPC, SPC",
+      siteDescription: "Premium Miami-based supplier of PVC, WPC, and SPC architectural materials at wholesale prices. Specialized in container-based bulk export to Latin America and the Caribbean.",
+      keywords: "wholesale construction materials Miami, PVC panels bulk, WPC decking export, SPC flooring distributor, architectural solutions LATAM, bulk building materials Miami"
     },
     
     // Language Switcher
@@ -296,8 +296,8 @@ export const translations = {
     
     // Hero Section
     hero: {
-      title: "Diseñamos el Futuro",
-      subtitle: "Materiales Arquitectónicos Sostenibles para la Construcción Moderna",
+      title: "Materiales Arquitectónicos Premium en Miami",
+      subtitle: "Venta al por Mayor de Soluciones en PVC, WPC y SPC",
       description: "Soluciones premium de PVC, WPC y SPC para paredes, techos, pisos y fachadas. Materiales de alto diseño, impermeables y ecológicos.",
       ctaPrimary: "Explorar Productos",
       ctaSecondary: "Ver Catálogo",
@@ -529,9 +529,9 @@ export const translations = {
     // Meta
     meta: {
       siteName: "Unitec USA Design",
-      siteTitle: "Unitec USA Design | Logística de Contenedores para Materiales de Construcción",
-      siteDescription: "Especialistas en envío de contenedores con materiales de construcción PVC, WPC, SPC desde Miami a toda Latinoamérica. Soluciones arquitectónicas de alta calidad.",
-      keywords: "paneles PVC, decking WPC, piso SPC, paneles pared, paneles techo, materiales impermeables, construcción sostenible, materiales arquitectónicos, logística de contenedores"
+      siteTitle: "Materiales Arquitectónicos Premium Miami | Mayorista PVC, WPC, SPC",
+      siteDescription: "Proveedor premium en Miami de materiales arquitectónicos PVC, WPC y SPC a precios de mayorista. Especialistas en exportación masiva por contenedor a Latinoamérica y el Caribe.",
+      keywords: "mayorista materiales construcción Miami, paneles PVC al por mayor, exportación WPC decking, distribuidor pisos SPC, soluciones arquitectónicas LATAM, materiales construcción Miami"
     },
     
     // Language Switcher
