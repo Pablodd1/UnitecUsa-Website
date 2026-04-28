@@ -20,7 +20,7 @@ import {
 } from "lib/cart/experienceCart.core"
 
 import ContainerSelectionModal from "./ContainerSelectionModal"
-import PortOfMiamiScene from "./PortOfMiamiScene"
+import ContainerVisual from "./ContainerVisual"
 import ContainerHUD from "./ContainerHUD"
 
 export default function ExperienceCartDrawer() {
@@ -131,7 +131,7 @@ export default function ExperienceCartDrawer() {
                         </button>
                       </div>
                       
-                      <PortOfMiamiScene 
+                      <ContainerVisual 
                         fillPercent={volStats.percent}
                         containerType={cart.selectedContainer.type}
                       />
