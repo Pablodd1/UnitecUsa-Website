@@ -2,7 +2,7 @@
 
 import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Package, Plus, Minus, Info, ArrowRight, ShieldCheck } from "lucide-react"
+import { Package, Plus, Minus, Info, ArrowRight, ShieldCheck, Trash2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { containerFillPercent, calculateRemainingCapacity } from "utils/cart/cart.utils"
@@ -82,7 +82,7 @@ const CartControlPanel = ({
                                     </div>
 
                                     {/* Interaction Controls */}
-                                    <div className="flex flex-col items-center gap-1.5 ml-2">
+                                    <div className="flex flex-col items-center gap-2 ml-2">
                                         <div className="flex items-center bg-gray-50 rounded-xl border border-gray-100 p-1">
                                             <button 
                                                 onClick={() => onRemove(container.id, item.id)}
@@ -99,6 +99,14 @@ const CartControlPanel = ({
                                                 <Plus size={14} />
                                             </button>
                                         </div>
+                                        
+                                        <button 
+                                            onClick={() => onSetQty(container.id, item, 0)}
+                                            className="text-[9px] font-bold text-gray-300 hover:text-red-500 uppercase tracking-tighter transition-colors flex items-center gap-1"
+                                        >
+                                            <Trash2 size={10} />
+                                            Erase
+                                        </button>
                                     </div>
                                 </div>
                             </motion.div>
