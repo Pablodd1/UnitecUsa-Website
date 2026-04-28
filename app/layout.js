@@ -97,8 +97,8 @@ export async function generateMetadata() {
 
     twitter: {
       card: "summary_large_image",
-      site: "@building.innovation",
-      creator: "@building.innovation",
+      site: "@unitecusadesign",
+      creator: "@unitecusadesign",
       title: defaults.title,
       description: defaults.description,
       images: [defaults.image],
@@ -161,7 +161,7 @@ export default async function RootLayout({ children }) {
                   "url": "https://unitecusadesign.com",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://unitecusadesign.com/logo.png"
+                    "url": "https://unitecusadesign.com/unitec-logo.png"
                   },
                   "description": lang === 'es' 
                     ? "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano."
@@ -172,8 +172,8 @@ export default async function RootLayout({ children }) {
                     "availableLanguage": ["English", "Spanish"]
                   },
                   "sameAs": [
-                    "https://instagram.com/building.innovation",
-                    "https://facebook.com/buildinginnovation"
+                    "https://instagram.com/unitecusadesign",
+                    "https://facebook.com/unitecusadesign"
                   ]
                 },
                 {

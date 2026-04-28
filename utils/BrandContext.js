@@ -7,11 +7,11 @@ const BrandContext = createContext();
 export const BRAND_CONFIG = {
     binw: {
         id: 'binw',
-        name: "UNITEC USA Design",
+        name: "Building Innovation",
         logoText: "BINW",
         logoImage: "/logo.png",
         favicon: "/favicons/favicon-32x32.png",
-        metaTitle: "UNITEC USA Design | Premium PVC & WPC Building Materials",
+        metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
         colors: {
             primary: '#9EBECB',
             secondary: '#7296A4',

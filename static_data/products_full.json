@@ -29,7 +29,9 @@
     },
     "image": "/raster/products/14121301.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.36
   },
   {
     "id": "14121303",
@@ -61,7 +63,9 @@
     },
     "image": "/raster/products/14121303.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.36
   },
   {
     "id": "14121304",
@@ -93,7 +97,9 @@
     },
     "image": "/raster/products/14121304.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.36
   },
   {
     "id": "14121302",
@@ -125,7 +131,9 @@
     },
     "image": "/raster/products/14121302.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.36
   },
   {
     "id": "14081601",
@@ -157,7 +165,9 @@
     },
     "image": "/raster/products/14081601.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.5,
+    "weight": 53.867
   },
   {
     "id": "14081201",
@@ -189,7 +199,9 @@
     },
     "image": "/raster/products/14081201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 61.95
   },
   {
     "id": "14081003",
@@ -221,7 +233,9 @@
     },
     "image": "/raster/products/14081003.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 66.67
   },
   {
     "id": "14081001",
@@ -253,7 +267,9 @@
     },
     "image": "/raster/products/14081001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 63.13
   },
   {
     "id": "14081501",
@@ -285,7 +301,9 @@
     },
     "image": "/raster/products/14081501.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.76,
+    "weight": 4.992
   },
   {
     "id": "14081503",
@@ -317,7 +335,9 @@
     },
     "image": "/raster/products/14081503.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.76,
+    "weight": 4.992
   },
   {
     "id": "14081502",
@@ -349,7 +369,9 @@
     },
     "image": "/raster/products/14081502.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.76,
+    "weight": 4.992
   },
   {
     "id": "14123604",
@@ -381,7 +403,9 @@
     },
     "image": "/raster/products/14123604.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.167
   },
   {
     "id": "14123602",
@@ -413,7 +437,9 @@
     },
     "image": "/raster/products/14123602.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.167
   },
   {
     "id": "14091105",
@@ -445,7 +471,9 @@
     },
     "image": "/raster/products/14091105.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14091104",
@@ -477,7 +505,9 @@
     },
     "image": "/raster/products/14091104.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14091107",
@@ -509,7 +539,9 @@
     },
     "image": "/raster/products/14091107.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14091103",
@@ -541,7 +573,9 @@
     },
     "image": "/raster/products/14091103.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14091102",
@@ -573,7 +607,9 @@
     },
     "image": "/raster/products/14091102.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14123702",
@@ -605,7 +641,9 @@
     },
     "image": "/raster/products/14123702.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.225
   },
   {
     "id": "14123603",
@@ -637,7 +675,9 @@
     },
     "image": "/raster/products/14123603.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.167
   },
   {
     "id": "14123601",
@@ -669,7 +709,9 @@
     },
     "image": "/raster/products/14123601.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.167
   },
   {
     "id": "14123701",
@@ -701,7 +743,9 @@
     },
     "image": "/raster/products/14123701.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.555
   },
   {
     "id": "14181405",
@@ -733,7 +777,9 @@
     },
     "image": "/raster/products/14181405.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181403",
@@ -765,7 +811,9 @@
     },
     "image": "/raster/products/14181403.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181302",
@@ -797,7 +845,9 @@
     },
     "image": "/raster/products/14181302.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181301",
@@ -829,7 +879,9 @@
     },
     "image": "/raster/products/14181301.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181402",
@@ -861,7 +913,9 @@
     },
     "image": "/raster/products/14181402.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181109",
@@ -893,7 +947,9 @@
     },
     "image": "/raster/products/14181109.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181410",
@@ -925,7 +981,9 @@
     },
     "image": "/raster/products/14181410.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181104",
@@ -957,7 +1015,9 @@
     },
     "image": "/raster/products/14181104.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181411",
@@ -989,7 +1049,9 @@
     },
     "image": "/raster/products/14181411.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181303",
@@ -1021,7 +1083,9 @@
     },
     "image": "/raster/products/14181303.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181105",
@@ -1053,7 +1117,9 @@
     },
     "image": "/raster/products/14181105.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181202",
@@ -1085,7 +1151,9 @@
     },
     "image": "/raster/products/14181202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181204",
@@ -1117,7 +1185,9 @@
     },
     "image": "/raster/products/14181204.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181203",
@@ -1149,7 +1219,9 @@
     },
     "image": "/raster/products/14181203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181205",
@@ -1181,7 +1253,9 @@
     },
     "image": "/raster/products/14181205.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181201",
@@ -1213,7 +1287,9 @@
     },
     "image": "/raster/products/14181201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181404",
@@ -1245,7 +1321,9 @@
     },
     "image": "/raster/products/14181404.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181107",
@@ -1277,7 +1355,9 @@
     },
     "image": "/raster/products/14181107.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181108",
@@ -1309,7 +1389,9 @@
     },
     "image": "/raster/products/14181108.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181408",
@@ -1341,7 +1423,9 @@
     },
     "image": "/raster/products/14181408.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181106",
@@ -1373,7 +1457,9 @@
     },
     "image": "/raster/products/14181106.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181110",
@@ -1405,7 +1491,9 @@
     },
     "image": "/raster/products/14181110.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181407",
@@ -1437,7 +1525,9 @@
     },
     "image": "/raster/products/14181407.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181401",
@@ -1469,7 +1559,9 @@
     },
     "image": "/raster/products/14181401.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181103",
@@ -1501,7 +1593,9 @@
     },
     "image": "/raster/products/14181103.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181114",
@@ -1533,7 +1627,9 @@
     },
     "image": "/raster/products/14181114.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181412",
@@ -1565,7 +1661,9 @@
     },
     "image": "/raster/products/14181412.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181101",
@@ -1597,7 +1695,9 @@
     },
     "image": "/raster/products/14181101.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181304",
@@ -1629,7 +1729,9 @@
     },
     "image": "/raster/products/14181304.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181406",
@@ -1661,7 +1763,9 @@
     },
     "image": "/raster/products/14181406.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14181409",
@@ -1693,7 +1797,9 @@
     },
     "image": "/raster/products/14181409.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 9.5,
+    "weight": 28.28
   },
   {
     "id": "14124202",
@@ -1725,7 +1831,9 @@
     },
     "image": "/raster/products/14124202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14124203",
@@ -1757,7 +1865,9 @@
     },
     "image": "/raster/products/14124203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14124201",
@@ -1789,7 +1899,9 @@
     },
     "image": "/raster/products/14124201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14124204",
@@ -1821,7 +1933,9 @@
     },
     "image": "/raster/products/14124204.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14124205",
@@ -1853,7 +1967,9 @@
     },
     "image": "/raster/products/14124205.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.168
   },
   {
     "id": "14124207",
@@ -1885,7 +2001,9 @@
     },
     "image": "/raster/products/14124207.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.168
   },
   {
     "id": "14124206",
@@ -1917,7 +2035,9 @@
     },
     "image": "/raster/products/14124206.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.168
   },
   {
     "id": "14124208",
@@ -1949,7 +2069,9 @@
     },
     "image": "/raster/products/14124208.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14124209",
@@ -1981,7 +2103,9 @@
     },
     "image": "/raster/products/14124209.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.7,
+    "weight": 0.175
   },
   {
     "id": "14121201",
@@ -2013,7 +2137,9 @@
     },
     "image": "/raster/products/14121201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121202",
@@ -2045,7 +2171,9 @@
     },
     "image": "/raster/products/14121202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121203",
@@ -2077,7 +2205,9 @@
     },
     "image": "/raster/products/14121203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121204",
@@ -2109,7 +2239,9 @@
     },
     "image": "/raster/products/14121204.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121205",
@@ -2141,7 +2273,9 @@
     },
     "image": "/raster/products/14121205.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121206",
@@ -2173,7 +2307,9 @@
     },
     "image": "/raster/products/14121206.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121207",
@@ -2205,7 +2341,9 @@
     },
     "image": "/raster/products/14121207.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121208",
@@ -2237,7 +2375,9 @@
     },
     "image": "/raster/products/14121208.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121209",
@@ -2269,7 +2409,9 @@
     },
     "image": "/raster/products/14121209.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121210",
@@ -2301,7 +2443,9 @@
     },
     "image": "/raster/products/14121210.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121211",
@@ -2333,7 +2477,9 @@
     },
     "image": "/raster/products/14121211.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121214",
@@ -2365,7 +2511,9 @@
     },
     "image": "/raster/products/14121214.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121014",
@@ -2397,7 +2545,9 @@
     },
     "image": "/raster/products/14121014.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 67.222
   },
   {
     "id": "14121215",
@@ -2429,7 +2579,9 @@
     },
     "image": "/raster/products/14121215.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121216",
@@ -2461,7 +2613,9 @@
     },
     "image": "/raster/products/14121216.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121016",
@@ -2493,7 +2647,9 @@
     },
     "image": "/raster/products/14121016.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 67.222
   },
   {
     "id": "14121217",
@@ -2525,7 +2681,9 @@
     },
     "image": "/raster/products/14121217.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121218",
@@ -2557,7 +2715,9 @@
     },
     "image": "/raster/products/14121218.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121219",
@@ -2589,7 +2749,9 @@
     },
     "image": "/raster/products/14121219.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121220",
@@ -2621,7 +2783,9 @@
     },
     "image": "/raster/products/14121220.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121221",
@@ -2653,7 +2817,9 @@
     },
     "image": "/raster/products/14121221.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121222",
@@ -2685,7 +2851,9 @@
     },
     "image": "/raster/products/14121222.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121223",
@@ -2717,7 +2885,9 @@
     },
     "image": "/raster/products/14121223.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121229",
@@ -2749,7 +2919,9 @@
     },
     "image": "/raster/products/14121229.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121230",
@@ -2781,7 +2953,9 @@
     },
     "image": "/raster/products/14121230.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121231",
@@ -2813,7 +2987,9 @@
     },
     "image": "/raster/products/14121231.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121232",
@@ -2845,7 +3021,9 @@
     },
     "image": "/raster/products/14121232.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121233",
@@ -2877,7 +3055,9 @@
     },
     "image": "/raster/products/14121233.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121234",
@@ -2909,7 +3089,9 @@
     },
     "image": "/raster/products/14121234.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121235",
@@ -2941,7 +3123,9 @@
     },
     "image": "/raster/products/14121235.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 19,
+    "weight": 56.559
   },
   {
     "id": "14121502",
@@ -2973,7 +3157,9 @@
     },
     "image": "/raster/products/14121502.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 12,
+    "weight": 35.722
   },
   {
     "id": "14121501",
@@ -3005,7 +3191,9 @@
     },
     "image": "/raster/products/14121501.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 12,
+    "weight": 35.722
   },
   {
     "id": "14126304",
@@ -3037,7 +3225,9 @@
     },
     "image": "/raster/products/14126304.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.24
   },
   {
     "id": "14126307",
@@ -3069,7 +3259,9 @@
     },
     "image": "/raster/products/14126307.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.24
   },
   {
     "id": "14126302",
@@ -3101,7 +3293,9 @@
     },
     "image": "/raster/products/14126302.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.24
   },
   {
     "id": "14126306",
@@ -3133,7 +3327,9 @@
     },
     "image": "/raster/products/14126306.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.24
   },
   {
     "id": "14126404",
@@ -3165,7 +3361,9 @@
     },
     "image": "/raster/products/14126404.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.11
   },
   {
     "id": "14126407",
@@ -3197,7 +3395,9 @@
     },
     "image": "/raster/products/14126407.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.11
   },
   {
     "id": "14126402",
@@ -3229,7 +3429,9 @@
     },
     "image": "/raster/products/14126402.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.11
   },
   {
     "id": "14126406",
@@ -3261,7 +3463,9 @@
     },
     "image": "/raster/products/14126406.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.11
   },
   {
     "id": "14121410",
@@ -3293,7 +3497,9 @@
     },
     "image": "/raster/products/14121410.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121408",
@@ -3325,7 +3531,9 @@
     },
     "image": "/raster/products/14121408.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121406",
@@ -3357,7 +3565,9 @@
     },
     "image": "/raster/products/14121406.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121403",
@@ -3389,7 +3599,9 @@
     },
     "image": "/raster/products/14121403.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121404",
@@ -3421,7 +3633,9 @@
     },
     "image": "/raster/products/14121404.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121409",
@@ -3453,7 +3667,9 @@
     },
     "image": "/raster/products/14121409.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121405",
@@ -3485,7 +3701,9 @@
     },
     "image": "/raster/products/14121405.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121402",
@@ -3517,7 +3735,9 @@
     },
     "image": "/raster/products/14121402.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121407",
@@ -3549,7 +3769,9 @@
     },
     "image": "/raster/products/14121407.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14121401",
@@ -3581,7 +3803,9 @@
     },
     "image": "/raster/products/14121401.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 20.838
   },
   {
     "id": "14124303",
@@ -3613,7 +3837,9 @@
     },
     "image": "/raster/products/14124303.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.2
   },
   {
     "id": "14124304",
@@ -3645,7 +3871,9 @@
     },
     "image": "/raster/products/14124304.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.2
   },
   {
     "id": "14124301",
@@ -3677,7 +3905,9 @@
     },
     "image": "/raster/products/14124301.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.2
   },
   {
     "id": "14124302",
@@ -3709,7 +3939,9 @@
     },
     "image": "/raster/products/14124302.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.2
   },
   {
     "id": "14124403",
@@ -3741,7 +3973,9 @@
     },
     "image": "/raster/products/14124403.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.414
   },
   {
     "id": "14124404",
@@ -3773,7 +4007,9 @@
     },
     "image": "/raster/products/14124404.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.414
   },
   {
     "id": "14124401",
@@ -3805,7 +4041,9 @@
     },
     "image": "/raster/products/14124401.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.414
   },
   {
     "id": "14124402",
@@ -3837,7 +4075,9 @@
     },
     "image": "/raster/products/14124402.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.414
   },
   {
     "id": "14124503",
@@ -3869,7 +4109,9 @@
     },
     "image": "/raster/products/14124503.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 3.563
   },
   {
     "id": "14124504",
@@ -3901,7 +4143,9 @@
     },
     "image": "/raster/products/14124504.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 3.563
   },
   {
     "id": "14124501",
@@ -3933,7 +4177,9 @@
     },
     "image": "/raster/products/14124501.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 3.563
   },
   {
     "id": "14124502",
@@ -3965,7 +4211,9 @@
     },
     "image": "/raster/products/14124502.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 3.563
   },
   {
     "id": "14124603",
@@ -3997,7 +4245,9 @@
     },
     "image": "/raster/products/14124603.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.56
   },
   {
     "id": "14124604",
@@ -4029,7 +4279,9 @@
     },
     "image": "/raster/products/14124604.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.56
   },
   {
     "id": "14124601",
@@ -4061,7 +4313,9 @@
     },
     "image": "/raster/products/14124601.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.56
   },
   {
     "id": "14124602",
@@ -4093,7 +4347,9 @@
     },
     "image": "/raster/products/14124602.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 7.56
   },
   {
     "id": "14124703",
@@ -4125,7 +4381,9 @@
     },
     "image": "/raster/products/14124703.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 2.88
   },
   {
     "id": "14124704",
@@ -4157,7 +4415,9 @@
     },
     "image": "/raster/products/14124704.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 2.88
   },
   {
     "id": "14124701",
@@ -4189,7 +4449,9 @@
     },
     "image": "/raster/products/14124701.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 2.88
   },
   {
     "id": "14124702",
@@ -4221,7 +4483,9 @@
     },
     "image": "/raster/products/14124702.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 2.88
   },
   {
     "id": "14124803",
@@ -4253,7 +4517,9 @@
     },
     "image": "/raster/products/14124803.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 6.966
   },
   {
     "id": "14124801",
@@ -4285,7 +4551,9 @@
     },
     "image": "/raster/products/14124801.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 6.966
   },
   {
     "id": "14124804",
@@ -4317,7 +4585,9 @@
     },
     "image": "/raster/products/14124804.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 6.966
   },
   {
     "id": "14124802",
@@ -4349,7 +4619,9 @@
     },
     "image": "/raster/products/14124802.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 6.966
   },
   {
     "id": "14122502",
@@ -4381,7 +4653,9 @@
     },
     "image": "/raster/products/14122502.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.609
   },
   {
     "id": "14122518",
@@ -4413,7 +4687,9 @@
     },
     "image": "/raster/products/14122518.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 1.522
   },
   {
     "id": "14122512",
@@ -4445,7 +4721,9 @@
     },
     "image": "/raster/products/14122512.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 1.522
   },
   {
     "id": "14122511",
@@ -4477,7 +4755,9 @@
     },
     "image": "/raster/products/14122511.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.609
   },
   {
     "id": "14122516",
@@ -4509,7 +4789,9 @@
     },
     "image": "/raster/products/14122516.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122515",
@@ -4541,7 +4823,9 @@
     },
     "image": "/raster/products/14122515.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.812
   },
   {
     "id": "14122507",
@@ -4573,7 +4857,9 @@
     },
     "image": "/raster/products/14122507.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.863
   },
   {
     "id": "14122514",
@@ -4605,7 +4891,9 @@
     },
     "image": "/raster/products/14122514.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.812
   },
   {
     "id": "14122513",
@@ -4637,7 +4925,9 @@
     },
     "image": "/raster/products/14122513.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.812
   },
   {
     "id": "14122503",
@@ -4669,7 +4959,9 @@
     },
     "image": "/raster/products/14122503.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122501",
@@ -4701,7 +4993,9 @@
     },
     "image": "/raster/products/14122501.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.609
   },
   {
     "id": "14122504",
@@ -4733,7 +5027,9 @@
     },
     "image": "/raster/products/14122504.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122506",
@@ -4765,7 +5061,9 @@
     },
     "image": "/raster/products/14122506.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122505",
@@ -4797,7 +5095,9 @@
     },
     "image": "/raster/products/14122505.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122517",
@@ -4829,7 +5129,9 @@
     },
     "image": "/raster/products/14122517.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122509",
@@ -4861,7 +5163,9 @@
     },
     "image": "/raster/products/14122509.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122508",
@@ -4893,7 +5197,9 @@
     },
     "image": "/raster/products/14122508.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.609
   },
   {
     "id": "14122510",
@@ -4925,7 +5231,9 @@
     },
     "image": "/raster/products/14122510.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.75,
+    "weight": 0.761
   },
   {
     "id": "14122001",
@@ -4957,7 +5265,9 @@
     },
     "image": "/raster/products/14122001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122002",
@@ -4989,7 +5299,9 @@
     },
     "image": "/raster/products/14122002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122003",
@@ -5021,7 +5333,9 @@
     },
     "image": "/raster/products/14122003.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122004",
@@ -5053,7 +5367,9 @@
     },
     "image": "/raster/products/14122004.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122005",
@@ -5085,7 +5401,9 @@
     },
     "image": "/raster/products/14122005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122006",
@@ -5117,7 +5435,9 @@
     },
     "image": "/raster/products/14122006.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122007",
@@ -5149,7 +5469,9 @@
     },
     "image": "/raster/products/14122007.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122008",
@@ -5181,7 +5503,9 @@
     },
     "image": "/raster/products/14122008.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122009",
@@ -5213,7 +5537,9 @@
     },
     "image": "/raster/products/14122009.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122010",
@@ -5245,7 +5571,9 @@
     },
     "image": "/raster/products/14122010.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122011",
@@ -5277,7 +5605,9 @@
     },
     "image": "/raster/products/14122011.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122012",
@@ -5309,7 +5639,9 @@
     },
     "image": "/raster/products/14122012.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122013",
@@ -5341,7 +5673,9 @@
     },
     "image": "/raster/products/14122013.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122014",
@@ -5373,7 +5707,9 @@
     },
     "image": "/raster/products/14122014.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122016",
@@ -5405,7 +5741,9 @@
     },
     "image": "/raster/products/14122016.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122017",
@@ -5437,7 +5775,9 @@
     },
     "image": "/raster/products/14122017.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122018",
@@ -5469,7 +5809,9 @@
     },
     "image": "/raster/products/14122018.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122019",
@@ -5501,7 +5843,9 @@
     },
     "image": "/raster/products/14122019.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122020",
@@ -5533,7 +5877,9 @@
     },
     "image": "/raster/products/14122020.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122021",
@@ -5565,7 +5911,9 @@
     },
     "image": "/raster/products/14122021.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122022",
@@ -5597,7 +5945,9 @@
     },
     "image": "/raster/products/14122022.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122023",
@@ -5629,7 +5979,9 @@
     },
     "image": "/raster/products/14122023.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122024",
@@ -5661,7 +6013,9 @@
     },
     "image": "/raster/products/14122024.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122025",
@@ -5693,7 +6047,9 @@
     },
     "image": "/raster/products/14122025.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122026",
@@ -5725,7 +6081,9 @@
     },
     "image": "/raster/products/14122026.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122027",
@@ -5757,7 +6115,9 @@
     },
     "image": "/raster/products/14122027.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122028",
@@ -5789,7 +6149,9 @@
     },
     "image": "/raster/products/14122028.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122029",
@@ -5821,7 +6183,9 @@
     },
     "image": "/raster/products/14122029.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123115",
@@ -5853,7 +6217,9 @@
     },
     "image": "/raster/products/14123115.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122609",
@@ -5885,7 +6251,9 @@
     },
     "image": "/raster/products/14122609.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122611",
@@ -5917,7 +6285,9 @@
     },
     "image": "/raster/products/14122611.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14122208",
@@ -5949,7 +6319,9 @@
     },
     "image": "/raster/products/14122208.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122205",
@@ -5981,7 +6353,9 @@
     },
     "image": "/raster/products/14122205.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122204",
@@ -6013,7 +6387,9 @@
     },
     "image": "/raster/products/14122204.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122207",
@@ -6045,7 +6421,9 @@
     },
     "image": "/raster/products/14122207.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122203",
@@ -6077,7 +6455,9 @@
     },
     "image": "/raster/products/14122203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122202",
@@ -6109,7 +6489,9 @@
     },
     "image": "/raster/products/14122202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122201",
@@ -6141,7 +6523,9 @@
     },
     "image": "/raster/products/14122201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14122206",
@@ -6173,7 +6557,9 @@
     },
     "image": "/raster/products/14122206.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 10.6,
+    "weight": 6.732
   },
   {
     "id": "14124925",
@@ -6205,7 +6591,9 @@
     },
     "image": "/raster/products/14124925.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124902",
@@ -6237,7 +6625,9 @@
     },
     "image": "/raster/products/14124902.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124924",
@@ -6269,7 +6659,9 @@
     },
     "image": "/raster/products/14124924.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124913",
@@ -6301,7 +6693,9 @@
     },
     "image": "/raster/products/14124913.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124910",
@@ -6333,7 +6727,9 @@
     },
     "image": "/raster/products/14124910.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124916",
@@ -6365,7 +6761,9 @@
     },
     "image": "/raster/products/14124916.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124923",
@@ -6397,7 +6795,9 @@
     },
     "image": "/raster/products/14124923.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124903",
@@ -6429,7 +6829,9 @@
     },
     "image": "/raster/products/14124903.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124905",
@@ -6461,7 +6863,9 @@
     },
     "image": "/raster/products/14124905.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124930",
@@ -6493,7 +6897,9 @@
     },
     "image": "/raster/products/14124930.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124906",
@@ -6525,7 +6931,9 @@
     },
     "image": "/raster/products/14124906.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14124926",
@@ -6557,7 +6965,9 @@
     },
     "image": "/raster/products/14124926.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14126207",
@@ -6589,7 +6999,9 @@
     },
     "image": "/raster/products/14126207.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4,
+    "weight": 5.9
   },
   {
     "id": "14126201",
@@ -6621,7 +7033,9 @@
     },
     "image": "/raster/products/14126201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4,
+    "weight": 5.9
   },
   {
     "id": "14126203",
@@ -6653,7 +7067,9 @@
     },
     "image": "/raster/products/14126203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4,
+    "weight": 5.9
   },
   {
     "id": "14126205",
@@ -6685,7 +7101,9 @@
     },
     "image": "/raster/products/14126205.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4,
+    "weight": 5.9
   },
   {
     "id": "14126206",
@@ -6717,7 +7135,9 @@
     },
     "image": "/raster/products/14126206.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4,
+    "weight": 5.9
   },
   {
     "id": "14126001",
@@ -6749,7 +7169,9 @@
     },
     "image": "/raster/products/14126001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126002",
@@ -6781,7 +7203,9 @@
     },
     "image": "/raster/products/14126002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126008",
@@ -6813,7 +7237,9 @@
     },
     "image": "/raster/products/14126008.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126006",
@@ -6845,7 +7271,9 @@
     },
     "image": "/raster/products/14126006.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126107",
@@ -6877,7 +7305,9 @@
     },
     "image": "/raster/products/14126107.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126101",
@@ -6909,7 +7339,9 @@
     },
     "image": "/raster/products/14126101.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126102",
@@ -6941,7 +7373,9 @@
     },
     "image": "/raster/products/14126102.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14126106",
@@ -6973,7 +7407,9 @@
     },
     "image": "/raster/products/14126106.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 3.54
   },
   {
     "id": "14123404",
@@ -7005,7 +7441,9 @@
     },
     "image": "/raster/products/14123404.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123406",
@@ -7037,7 +7475,9 @@
     },
     "image": "/raster/products/14123406.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123402",
@@ -7069,7 +7509,9 @@
     },
     "image": "/raster/products/14123402.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123403",
@@ -7101,7 +7543,9 @@
     },
     "image": "/raster/products/14123403.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123405",
@@ -7133,7 +7577,9 @@
     },
     "image": "/raster/products/14123405.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123512",
@@ -7165,7 +7611,9 @@
     },
     "image": "/raster/products/14123512.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123503",
@@ -7197,7 +7645,9 @@
     },
     "image": "/raster/products/14123503.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123502",
@@ -7229,7 +7679,9 @@
     },
     "image": "/raster/products/14123502.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123506",
@@ -7261,7 +7713,9 @@
     },
     "image": "/raster/products/14123506.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14123407",
@@ -7293,7 +7747,9 @@
     },
     "image": "/raster/products/14123407.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.28,
+    "weight": 1.642
   },
   {
     "id": "14126026",
@@ -7325,7 +7781,9 @@
     },
     "image": "/raster/products/14126026.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14126024",
@@ -7357,7 +7815,9 @@
     },
     "image": "/raster/products/14126024.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14126023",
@@ -7389,7 +7849,9 @@
     },
     "image": "/raster/products/14126023.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14126025",
@@ -7421,7 +7883,9 @@
     },
     "image": "/raster/products/14126025.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14122628",
@@ -7453,7 +7917,9 @@
     },
     "image": "/raster/products/14122628.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14122627",
@@ -7485,7 +7951,9 @@
     },
     "image": "/raster/products/14122627.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14126022",
@@ -7517,7 +7985,9 @@
     },
     "image": "/raster/products/14126022.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14126021",
@@ -7549,7 +8019,9 @@
     },
     "image": "/raster/products/14126021.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.33,
+    "weight": 1.929
   },
   {
     "id": "14123302",
@@ -7581,7 +8053,9 @@
     },
     "image": "/raster/products/14123302.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123201",
@@ -7613,7 +8087,9 @@
     },
     "image": "/raster/products/14123201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123301",
@@ -7645,7 +8121,9 @@
     },
     "image": "/raster/products/14123301.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123215",
@@ -7677,7 +8155,9 @@
     },
     "image": "/raster/products/14123215.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123206",
@@ -7709,7 +8189,9 @@
     },
     "image": "/raster/products/14123206.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123210",
@@ -7741,7 +8223,9 @@
     },
     "image": "/raster/products/14123210.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123303",
@@ -7773,7 +8257,9 @@
     },
     "image": "/raster/products/14123303.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14123209",
@@ -7805,7 +8291,9 @@
     },
     "image": "/raster/products/14123209.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2.92,
+    "weight": 2.102
   },
   {
     "id": "14113001",
@@ -7837,7 +8325,9 @@
     },
     "image": "/raster/products/14113001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113002",
@@ -7869,7 +8359,9 @@
     },
     "image": "/raster/products/14113002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113008",
@@ -7901,7 +8393,9 @@
     },
     "image": "/raster/products/14113008.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113004",
@@ -7933,7 +8427,9 @@
     },
     "image": "/raster/products/14113004.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113003",
@@ -7965,7 +8461,9 @@
     },
     "image": "/raster/products/14113003.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113009",
@@ -7997,7 +8495,9 @@
     },
     "image": "/raster/products/14113009.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113007",
@@ -8029,7 +8529,9 @@
     },
     "image": "/raster/products/14113007.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14113005",
@@ -8061,7 +8563,9 @@
     },
     "image": "/raster/products/14113005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.37,
+    "weight": 3.592
   },
   {
     "id": "14112013",
@@ -8093,7 +8597,9 @@
     },
     "image": "/raster/products/14112013.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.179
   },
   {
     "id": "14112211",
@@ -8125,7 +8631,9 @@
     },
     "image": "/raster/products/14112211.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.223
   },
   {
     "id": "14112011",
@@ -8157,7 +8665,9 @@
     },
     "image": "/raster/products/14112011.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.179
   },
   {
     "id": "14112212",
@@ -8189,7 +8699,9 @@
     },
     "image": "/raster/products/14112212.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.223
   },
   {
     "id": "14112012",
@@ -8221,7 +8733,9 @@
     },
     "image": "/raster/products/14112012.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.179
   },
   {
     "id": "14112210",
@@ -8253,7 +8767,9 @@
     },
     "image": "/raster/products/14112210.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.223
   },
   {
     "id": "14112010",
@@ -8285,7 +8801,9 @@
     },
     "image": "/raster/products/14112010.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.179
   },
   {
     "id": "14091006",
@@ -8317,7 +8835,9 @@
     },
     "image": "/raster/products/14091006.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091007",
@@ -8349,7 +8869,9 @@
     },
     "image": "/raster/products/14091007.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091009",
@@ -8381,7 +8903,9 @@
     },
     "image": "/raster/products/14091009.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091001",
@@ -8413,7 +8937,9 @@
     },
     "image": "/raster/products/14091001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091011",
@@ -8445,7 +8971,9 @@
     },
     "image": "/raster/products/14091011.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091005",
@@ -8477,7 +9005,9 @@
     },
     "image": "/raster/products/14091005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091008",
@@ -8509,7 +9039,9 @@
     },
     "image": "/raster/products/14091008.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091010",
@@ -8541,7 +9073,9 @@
     },
     "image": "/raster/products/14091010.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091012",
@@ -8573,7 +9107,9 @@
     },
     "image": "/raster/products/14091012.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14091002",
@@ -8605,7 +9141,9 @@
     },
     "image": "/raster/products/14091002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.25,
+    "weight": 6.137
   },
   {
     "id": "14181003",
@@ -8637,7 +9175,9 @@
     },
     "image": "/raster/products/14181003.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181005",
@@ -8669,7 +9209,9 @@
     },
     "image": "/raster/products/14181005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181009",
@@ -8701,7 +9243,9 @@
     },
     "image": "/raster/products/14181009.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181012",
@@ -8733,7 +9277,9 @@
     },
     "image": "/raster/products/14181012.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181015",
@@ -8765,7 +9311,9 @@
     },
     "image": "/raster/products/14181015.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181018",
@@ -8797,7 +9345,9 @@
     },
     "image": "/raster/products/14181018.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181603",
@@ -8829,7 +9379,9 @@
     },
     "image": "/raster/products/14181603.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181606",
@@ -8861,7 +9413,9 @@
     },
     "image": "/raster/products/14181606.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181602",
@@ -8893,7 +9447,9 @@
     },
     "image": "/raster/products/14181602.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181607",
@@ -8925,7 +9481,9 @@
     },
     "image": "/raster/products/14181607.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181604",
@@ -8957,7 +9515,9 @@
     },
     "image": "/raster/products/14181604.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181605",
@@ -8989,7 +9549,9 @@
     },
     "image": "/raster/products/14181605.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14181601",
@@ -9021,7 +9583,9 @@
     },
     "image": "/raster/products/14181601.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 14.884
   },
   {
     "id": "14081101",
@@ -9053,7 +9617,9 @@
     },
     "image": "/raster/products/14081101.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 61.95
   },
   {
     "id": "14112413",
@@ -9085,7 +9651,9 @@
     },
     "image": "/raster/products/14112413.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112513",
@@ -9117,7 +9685,9 @@
     },
     "image": "/raster/products/14112513.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112411",
@@ -9149,7 +9719,9 @@
     },
     "image": "/raster/products/14112411.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112511",
@@ -9181,7 +9753,9 @@
     },
     "image": "/raster/products/14112511.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112412",
@@ -9213,7 +9787,9 @@
     },
     "image": "/raster/products/14112412.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112512",
@@ -9245,7 +9821,9 @@
     },
     "image": "/raster/products/14112512.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112410",
@@ -9277,7 +9855,9 @@
     },
     "image": "/raster/products/14112410.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14112510",
@@ -9309,7 +9889,9 @@
     },
     "image": "/raster/products/14112510.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 2,
+    "weight": 0.288
   },
   {
     "id": "14031001",
@@ -9341,7 +9923,9 @@
     },
     "image": "/raster/products/14031001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14031002",
@@ -9373,7 +9957,9 @@
     },
     "image": "/raster/products/14031002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14031005",
@@ -9405,7 +9991,9 @@
     },
     "image": "/raster/products/14031005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14031012",
@@ -9437,7 +10025,9 @@
     },
     "image": "/raster/products/14031012.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14031028",
@@ -9469,7 +10059,9 @@
     },
     "image": "/raster/products/14031028.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14032001",
@@ -9501,7 +10093,9 @@
     },
     "image": "/raster/products/14032001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14032002",
@@ -9533,7 +10127,9 @@
     },
     "image": "/raster/products/14032002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14032004",
@@ -9565,7 +10161,9 @@
     },
     "image": "/raster/products/14032004.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14032014",
@@ -9597,7 +10195,9 @@
     },
     "image": "/raster/products/14032014.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5.3,
+    "weight": 9.46
   },
   {
     "id": "14201001",
@@ -9629,7 +10229,9 @@
     },
     "image": "/raster/products/14201001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.1
   },
   {
     "id": "14201002",
@@ -9661,7 +10263,9 @@
     },
     "image": "/raster/products/14201002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.1
   },
   {
     "id": "14201201",
@@ -9693,7 +10297,9 @@
     },
     "image": "/raster/products/14201201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.03
   },
   {
     "id": "14201202",
@@ -9725,7 +10331,9 @@
     },
     "image": "/raster/products/14201202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.03
   },
   {
     "id": "14201203",
@@ -9757,7 +10365,9 @@
     },
     "image": "/raster/products/14201203.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.03
   },
   {
     "id": "14201204",
@@ -9789,7 +10399,9 @@
     },
     "image": "/raster/products/14201204.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.03
   },
   {
     "id": "14081301",
@@ -9821,7 +10433,9 @@
     },
     "image": "/raster/products/14081301.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 5,
+    "weight": 63.13
   },
   {
     "id": "14091101",
@@ -9853,7 +10467,9 @@
     },
     "image": "/raster/products/14091101.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 4.9,
+    "weight": 2.131
   },
   {
     "id": "14051105",
@@ -9885,7 +10501,9 @@
     },
     "image": "/raster/products/14051105.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.09
   },
   {
     "id": "14051107",
@@ -9917,7 +10535,9 @@
     },
     "image": "/raster/products/14051107.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.052
   },
   {
     "id": "14051112",
@@ -9949,7 +10569,9 @@
     },
     "image": "/raster/products/14051112.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.037
   },
   {
     "id": "14051201",
@@ -9981,7 +10603,9 @@
     },
     "image": "/raster/products/14051201.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.3,
+    "weight": 0.061
   },
   {
     "id": "14051202",
@@ -10013,7 +10637,9 @@
     },
     "image": "/raster/products/14051202.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.2,
+    "weight": 0.001
   },
   {
     "id": "14141001",
@@ -10045,7 +10671,9 @@
     },
     "image": "/raster/products/14141001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 2.93
   },
   {
     "id": "14141002",
@@ -10077,7 +10705,9 @@
     },
     "image": "/raster/products/14141002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 2.93
   },
   {
     "id": "14141003",
@@ -10109,7 +10739,9 @@
     },
     "image": "/raster/products/14141003.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 2.93
   },
   {
     "id": "14122705",
@@ -10141,7 +10773,9 @@
     },
     "image": "/raster/products/14122705.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 1.827
   },
   {
     "id": "14122710",
@@ -10173,7 +10807,9 @@
     },
     "image": "/raster/products/14122710.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 1.827
   },
   {
     "id": "14122713",
@@ -10205,7 +10841,9 @@
     },
     "image": "/raster/products/14122713.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 7,
+    "weight": 1.827
   },
   {
     "id": "14122805",
@@ -10237,7 +10875,9 @@
     },
     "image": "/raster/products/14122805.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.1,
+    "weight": 0.319
   },
   {
     "id": "14122810",
@@ -10269,7 +10909,9 @@
     },
     "image": "/raster/products/14122810.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.1,
+    "weight": 0.319
   },
   {
     "id": "14122813",
@@ -10301,7 +10943,9 @@
     },
     "image": "/raster/products/14122813.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 1.1,
+    "weight": 0.319
   },
   {
     "id": "14123001",
@@ -10333,7 +10977,9 @@
     },
     "image": "/raster/products/14123001.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.8,
+    "weight": 2.957
   },
   {
     "id": "14123002",
@@ -10365,7 +11011,9 @@
     },
     "image": "/raster/products/14123002.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.8,
+    "weight": 2.957
   },
   {
     "id": "14123004",
@@ -10397,7 +11045,9 @@
     },
     "image": "/raster/products/14123004.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.8,
+    "weight": 2.957
   },
   {
     "id": "14123005",
@@ -10429,7 +11079,9 @@
     },
     "image": "/raster/products/14123005.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 8.8,
+    "weight": 2.957
   },
   {
     "id": "14122606",
@@ -10461,7 +11113,9 @@
     },
     "image": "/raster/products/14122606.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.344
   },
   {
     "id": "14122607",
@@ -10493,7 +11147,9 @@
     },
     "image": "/raster/products/14122607.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.344
   },
   {
     "id": "14123102",
@@ -10525,7 +11181,9 @@
     },
     "image": "/raster/products/14123102.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123104",
@@ -10557,7 +11215,9 @@
     },
     "image": "/raster/products/14123104.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123105",
@@ -10589,7 +11249,9 @@
     },
     "image": "/raster/products/14123105.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123112",
@@ -10621,7 +11283,9 @@
     },
     "image": "/raster/products/14123112.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123113",
@@ -10653,7 +11317,9 @@
     },
     "image": "/raster/products/14123113.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14123114",
@@ -10685,7 +11351,9 @@
     },
     "image": "/raster/products/14123114.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "WPC-PARED-31",
@@ -10717,7 +11385,9 @@
     },
     "image": "/raster/products/WPC-PARED-31.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 3,
+    "weight": 1.416
   },
   {
     "id": "14212102",
@@ -10749,7 +11419,9 @@
     },
     "image": "/raster/products/14212102.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.004
   },
   {
     "id": "14212103",
@@ -10781,7 +11453,9 @@
     },
     "image": "/raster/products/14212103.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.5,
+    "weight": 0.004
   },
   {
     "id": "14112312",
@@ -10813,6 +11487,8 @@
     },
     "image": "/raster/products/14112312.webp",
     "usage": "",
-    "promptModifier": ""
+    "promptModifier": "",
+    "weightPerSqm": 0.8,
+    "weight": 0.28
   }
 ]
