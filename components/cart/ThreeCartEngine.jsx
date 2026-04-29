@@ -262,9 +262,12 @@ export default function ThreeCartEngine({ items = [], products = {}, container =
             const prod = products[it.id] || {}
             const dim = prod.dimensions?.metric || { length: 200, width: 60, thickness: 8 }
             
+            // Convert to meters
             const l = (dim.length || 200) / 100
             const w = (dim.width || 60) / 100
-            const h = ((dim.thickness || 8) / 100) * 4
+            // For very thin items (like adhesive rolls/vinyl), we give them a minimum 
+            // visual height so they are selectable, otherwise they are paper-thin in 3D.
+            const h = Math.max((dim.thickness || 8) / 100, 0.05) 
 
             if (cz + w > cW/2) {
                 cz = -cW/2 + 0.1
@@ -287,7 +290,11 @@ export default function ThreeCartEngine({ items = [], products = {}, container =
             box.position.set(cx + l/2, cy + h/2, cz + w/2)
             box.castShadow = true
             box.receiveShadow = true
-            box.userData = { name: prod.name, dims: dim, weight: 420 }
+            box.userData = { 
+                name: prod.name, 
+                dims: dim, 
+                weight: prod.weight || (it.weight || 0) 
+            }
             
             // Staggered Entrance
             box.scale.set(0,0,0)
@@ -295,7 +302,7 @@ export default function ThreeCartEngine({ items = [], products = {}, container =
                 const start = performance.now()
                 const grow = (t) => {
                     const progress = Math.min((t - start) / 400, 1)
-                    const s = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 3) // Ease out cubic
+                    const s = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 3) 
                     box.scale.set(s,s,s)
                     if (progress < 1) requestAnimationFrame(grow)
                 }
@@ -308,8 +315,16 @@ export default function ThreeCartEngine({ items = [], products = {}, container =
             maxH = Math.max(maxH, h + 0.05)
         })
 
-        const saturation = Math.min((flat.length / 40) * 100, 100)
-        setStats({ percent: saturation, count: flat.length, weight: flat.length * 420 })
+        const totalWeight = flat.reduce((sum, it) => sum + (it.weight || 0), 0)
+        const totalVol = flat.reduce((sum, it) => sum + (it.volume || 0), 0)
+        const saturation = (totalVol / (container.volume || 1)) * 100
+        
+        setStats({ 
+            percent: saturation, 
+            count: flat.length, 
+            weight: totalWeight,
+            volume: totalVol
+        })
         setIsFull(saturation > 98)
 
     }, [items, products, container])

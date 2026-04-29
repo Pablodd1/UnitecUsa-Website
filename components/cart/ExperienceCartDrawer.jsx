@@ -103,12 +103,21 @@ export default function ExperienceCartDrawer() {
             >
               <header className="flex items-center justify-between p-4 border-b bg-gray-50/50 backdrop-blur-sm">
                 <h2 className="text-lg font-bold">{t.cart}</h2>
-                <button 
-                  onClick={() => setOpen(false)}
-                  className="p-2 hover:bg-gray-200 rounded-full"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <Link 
+                    href="/logistics-lab"
+                    className="p-2 hover:bg-blue-600 hover:text-white rounded-full transition-all text-blue-500 border border-blue-500/20"
+                    title="Enter 3D Logistics Lab"
+                  >
+                    <Box className="w-4 h-4" />
+                  </Link>
+                  <button 
+                    onClick={() => setOpen(false)}
+                    className="p-2 hover:bg-gray-200 rounded-full"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </header>
 
               <main className="flex-1 overflow-y-auto p-4 space-y-4">
