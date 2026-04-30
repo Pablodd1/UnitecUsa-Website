@@ -170,11 +170,11 @@ export default async function RootLayout({ children }) {
                   "image": { "@id": "https://unitecusadesign.com/#logo" },
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "6120 NW 74th Ave",
-                    "addressLocality": "Doral",
-                    "addressRegion": "FL",
-                    "postalCode": "33166",
-                    "addressCountry": "US"
+                    "streetAddress": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274",
+                    "addressLocality": "Itagüí",
+                    "addressRegion": "Antioquia",
+                    "postalCode": "055413",
+                    "addressCountry": "CO"
                   },
                   "contactPoint": {
                     "@type": "ContactPoint",

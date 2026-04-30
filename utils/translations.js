@@ -1051,9 +1051,9 @@ const translations = {
                     description: "Nos especializamos en proporcionar materiales de construcción premium para proyectos de construcción de todos los tamaños. Contáctenos para discutir sus necesidades."
                 },
                 headquarters: {
-                    address: "6120 NW 74th Ave",
-                    city: "Doral, Miami, FL 33166",
-                    country: "Estados Unidos",
+                    address: "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274",
+                    city: "Itagüí, Medellín",
+                    country: "Colombia",
                     phone: "+57 314 233 2147"
                 },
                 quality: {
