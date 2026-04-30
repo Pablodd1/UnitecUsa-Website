@@ -10,8 +10,8 @@ export const BRAND_CONFIG = {
         name: "Building Innovation",
         logoText: "BINW",
         logoImage: "/logo.png",
-        favicon: "/favicons/favicon-32x32.png",
-        metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
+        favicon: "/favicons/unitec-favicon.png",
+        metaTitle: "UNITEC USA Design | Premium Building Solutions",
         colors: {
             primary: '#9EBECB',
             secondary: '#7296A4',

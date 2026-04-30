@@ -8,8 +8,8 @@ import HomeCTA from "My_UI/homepage/home_CTA";
 import { getDictionary } from "lib/i18n/getDictionary";
 
 export const metadata = {
-  title: "UNITEC USA Design | Logistics & Building Innovation",
-  description: "The leading platform for container visualization and bulk building material supply."
+  title: "UNITEC USA Design | Premium Architectural Materials",
+  description: "Premium Miami-based supplier of PVC, WPC, and SPC architectural materials. The leading platform for container visualization and bulk building material supply."
 };
 
 export default async function HomePage() {

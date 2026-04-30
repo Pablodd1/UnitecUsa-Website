@@ -69,8 +69,8 @@ export async function generateMetadata() {
     icons: {
       icon: [
         { url: "/favicons/unitec-favicon.png" },
-        { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicons/unitec-favicon.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicons/unitec-favicon.png", sizes: "32x32", type: "image/png" },
       ],
       apple: [
         { url: "/favicons/apple-icon.png" },
@@ -187,12 +187,7 @@ export default async function RootLayout({ children }) {
                     "https://instagram.com/unitecusadesign",
                     "https://facebook.com/unitecusadesign",
                     "https://www.tiktok.com/@unitecusadesign"
-                  ],
-                  "parentOrganization": {
-                    "@type": "Organization",
-                    "name": "Building Innovation",
-                    "url": "https://buildinginnovation.com.co"
-                  }
+                  ]
                 },
                 {
                   "@type": "WebSite",

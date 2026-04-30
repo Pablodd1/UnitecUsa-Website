@@ -11,7 +11,7 @@ const translations = {
                 metaTitle: "Unitec USA Design | Container Logistics for Construction Materials",
                 metaDescription: "Specialists in container shipping with PVC, WPC, and SPC construction materials from Miami to all of Latin America. High-quality architectural solutions.",
                 whyTitle: "Why UNITEC USA",
-                whyDescription: "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets. We believe building materials should be innovative, durable, and environmentally responsible.",
+                whyDescription: "Unitec USA Design is registered and legally operating in the United States to serve the North American and Latin American markets. We believe building materials should be innovative, durable, and environmentally responsible.",
                 aboutHero: {
                     title: "Built for Scale.",
                     subtitle: "Designed for Containers.",
@@ -39,7 +39,7 @@ const translations = {
                     title: "Who We Are",
                     tagline: "",
                     intro: [
-                        "Unitec USA Design is the same company as Building Innovation, but registered and legally operating in the United States to serve the North American and Latin American markets.",
+                        "Unitec USA Design is registered and legally operating in the United States to serve the North American and Latin American markets.",
                         "Bulk shipping is broken when treated like normal e-commerce. Products are not individual units — they are volumes, dimensions, and constraints within a container.",
                         "We built our platform around a simple belief: containers go first, products go second. This mindset allows businesses to plan realistic shipments, avoid over-booking, and get total visibility of capacity."
                     ],
@@ -80,15 +80,15 @@ const translations = {
                 }
             },
             binw: {
-                name: "Building Innovation",
+                name: "UNITEC USA Design",
                 shortName: "BINW",
                 tagline: "We Design the Future!",
                 heroTitle: "We Design the Future",
                 heroSubtitle: "Sustainable Architectural Materials for Modern Construction. Premium PVC, WPC, and SPC solutions for walls, ceilings, floors, and facades.",
                 heroCta: "Explore Products",
-                metaTitle: "Building Innovation | Premium PVC & WPC Building Materials",
+                metaTitle: "UNITEC USA Design | Premium PVC & WPC Building Materials",
                 metaDescription: "Premium PVC, WPC, and SPC solutions for walls, ceilings, floors, and facades. High-design, waterproof, and eco-friendly materials.",
-                whyTitle: "Why Choose Building Innovation?",
+                whyTitle: "Why Choose UNITEC USA Design?",
                 whyDescription: "Excellence in Every Detail. We combine quality, technology, and functionality in every product, transforming spaces and enhancing project value.",
                 aboutHero: {
                     title: "We Design the Future!",
@@ -109,24 +109,24 @@ const translations = {
                 },
                 quality: {
                     title: "Committed to Quality",
-                    quote: "\"At Building Innovation, quality is not a standard—it's a promise.\"",
+                    quote: "\"At UNITEC USA Design, quality is not a standard—it's a promise.\"",
                     intro: "Every product undergoes certified technical control processes and material selection, ensuring durability, precision, and high-end finishes.",
                     closing: "Quality you can see, feel, and trust over time"
                 },
                 whoWeAre: {
                     title: "Who We Are",
-                    company: "Building Innovation",
+                    company: "UNITEC USA Design",
                     tagline: "\"We design the future!\"",
                     intro: [
                         "We are an international company dedicated to the development and supply of innovative solutions for construction and architectural design.",
                         "We stand out by combining quality, technology, and functionality in every product, transforming spaces and enhancing the value of every project.",
                         "Our philosophy is built on excellence, continuous improvement, and personalized service, strengthening long-term partnerships with our distributors and strategic partners in the Americas and around the world.",
                         "We believe in innovation as a driving force for growth, and we work every day to anticipate market trends.",
-                        "We are Building Innovation: design, quality, and the future in every detail."
+                        "We are UNITEC USA Design: design, quality, and the future in every detail."
                     ],
                     mission: {
                         title: "Mission",
-                        text: "At Building Innovation, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
+                        text: "At UNITEC USA Design, we simplify the world of construction through innovative, sustainable, and high-design solutions, offering a comprehensive portfolio of architectural materials that create value, foster strategic partnerships, and improve the construction experience and quality of life."
                     },
                     vision: {
                         title: "Vision",
@@ -143,7 +143,7 @@ const translations = {
                 about: {
                     mission: {
                         title: "Mission",
-                        p1: "At Building Innovation, we simplify the world of construction through innovative, sustainable, and high-design solutions.",
+                        p1: "At UNITEC USA Design, we simplify the world of construction through innovative, sustainable, and high-design solutions.",
                         items: [
                             "Innovative building development",
                             "Sustainable materials",
@@ -989,7 +989,7 @@ const translations = {
                     title: "Quiénes Somos",
                     tagline: "",
                     intro: [
-                        "Unitec USA Design es la misma empresa que Building Innovation, pero registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano.",
+                        "Unitec USA Design es una empresa registrada y operando legalmente en los Estados Unidos para servir al mercado norteamericano y latinoamericano.",
                         "El envío a granel está roto cuando se trata como el comercio electrónico normal. Los productos no son unidades individuales — son volúmenes, dimensiones y restricciones dentro de un contenedor.",
                         "Construimos nuestra plataforma alrededor de una creencia simple: los contenedores van primero, los productos van segundo. Esta mentalidad permite a las empresas planificar envíos realistas, evitar sobre reservas y obtener total visibilidad de la capacidad."
                     ],

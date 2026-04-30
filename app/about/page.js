@@ -41,11 +41,11 @@ export default function AboutPage() {
     return (
         <>
             <SeoHead 
-                title={activeBrand === 'unitec' ? `About Us | Unitec USA Design` : `Sobre Nosotros | Building Innovation`} 
-                description={activeBrand === 'unitec' 
-                    ? "Learn more about our vision, mission, and the expert team at Unitec USA Design." 
-                    : "Conoce más sobre nuestra visión, misión y el equipo de Building Innovation."}
-                canonical={activeBrand === 'unitec' ? "https://unitecusadesign.com/about" : "https://buildinginnovation.us/about"}
+                title={`About Us | Unitec USA Design`} 
+                description={isSpanish 
+                    ? "Conoce más sobre nuestra visión, misión y el equipo experto de Unitec USA Design." 
+                    : "Learn more about our vision, mission, and the expert team at Unitec USA Design."}
+                canonical="https://unitecusadesign.com/about"
             />
             <script
                 type="application/ld+json"
@@ -53,7 +53,7 @@ export default function AboutPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "HowTo",
-                        "name": activeBrand === 'unitec' ? "How to Import with Unitec's Container Configurator" : "Cómo Importar con el Configurador de Building Innovation",
+                        "name": "How to Import with Unitec's Container Configurator",
                         "description": "Our specialized 3-step logistical workflow for bulk architectural material export.",
                         "step": [
                             {

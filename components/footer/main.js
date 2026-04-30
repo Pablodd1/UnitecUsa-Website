@@ -115,29 +115,26 @@ const Footer = () => {
                             ))}
                         </ul>
                     </div>
-                    {/* Sister Company Section */}
+                    {/* Brand Presence Section */}
                     <div className="text-center md:text-left mb-8 flex flex-col items-center md:items-start">
                         <h3 className="text-lg font-bold text-accent1 mb-4 uppercase tracking-widest">
-                            {isSpanish ? "Presencia Global" : "Global Presence"}
+                            {isSpanish ? "Sede Miami" : "Miami Headquarters"}
                         </h3>
-                        <Link 
-                            href="https://buildinginnovation.com.co" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="group flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all border border-white/10 hover:border-primary/50"
+                        <div 
+                            className="group flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10"
                         >
-                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1 group-hover:scale-110 transition-transform">
-                                <img src="/logo.png" alt="Building Innovation Logo" className="object-contain" />
+                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1">
+                                <img src="/unitec-logo.png" alt="Unitec USA Design Logo" className="object-contain" />
                             </div>
                             <div className="text-left">
-                                <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">Building Innovation</p>
+                                <p className="text-sm font-bold text-white transition-colors">UNITEC USA Design</p>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-tighter leading-tight">
                                     {isSpanish 
-                                        ? "Misma organización, operando legalmente en USA como Unitec USA Design" 
-                                        : "Same organization, operating legally in USA as Unitec USA Design"}
+                                        ? "Doral, Miami, FL 33166" 
+                                        : "Doral, Miami, FL 33166"}
                                 </p>
                             </div>
-                        </Link>
+                        </div>
                     </div>
 
 
