@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ShoppingCart, Lock, Unlock, Plus, Minus, Trash2 } from "lucide-react"
+import { X, ShoppingCart, Lock, Unlock, Plus, Minus, Trash2, Box } from "lucide-react"
 import { useLanguage } from "lib/LanguageContext"
 import Link from "next/link"
 
