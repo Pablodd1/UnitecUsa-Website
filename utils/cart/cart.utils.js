@@ -28,6 +28,8 @@ export function containerFillPercent(container, currentItemId = null) {
             availablePercent: 100,
             usableVolume,
             weightFilledTotal: 0,
+            weightFilledCurrent: 0,
+            weightFilledOthers: 0,
             weightAvailablePercent: 100,
             maxWeight,
             remainingWeight: maxWeight
@@ -42,13 +44,19 @@ export function containerFillPercent(container, currentItemId = null) {
     for (const item of container.items) {
         const productData = item.dimensions || item; // Support variations
         const volResult = calcSheetVol(productData)
-
-        if (!volResult || typeof volResult.value !== "number") continue
         
         // Multiply by itemsPerBox to account for packaging, checking productData as fallback
         const multiplier = item.itemsPerBox || productData.itemsPerBox || 1;
+        const itemWeight = (productData.weight || item.weight || 0) * multiplier * (item.qty || 1);
+
+        if (!volResult || typeof volResult.value !== "number") {
+            // Still count weight even if volume calculation fails
+            if (item.id === currentItemId) weightByCurrent += itemWeight;
+            else weightByOthers += itemWeight;
+            continue;
+        }
+
         const itemVolume = volResult.value * multiplier * (item.qty || 1)
-        const itemWeight = (productData.weight || 0) * multiplier * (item.qty || 1)
 
         if (item.id === currentItemId) {
             usedByCurrent += itemVolume;
@@ -74,7 +82,11 @@ export function containerFillPercent(container, currentItemId = null) {
         availablePercent: Math.max(100 - filledTotal, 0),
         usableVolume,
         remainingVolume: Math.max(usableVolume - (usedByCurrent + usedByOthers), 0),
+        
+        // Weight metrics
         weightFilledTotal: Math.min(weightFilledTotal, 100),
+        weightFilledCurrent: Math.min(weightFilledCurrent, 100),
+        weightFilledOthers: Math.min(weightFilledOthers, 100),
         weightAvailablePercent: Math.max(100 - weightFilledTotal, 0),
         maxWeight,
         remainingWeight: Math.max(maxWeight - (weightByCurrent + weightByOthers), 0)

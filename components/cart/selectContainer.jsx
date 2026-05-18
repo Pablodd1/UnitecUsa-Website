@@ -88,7 +88,13 @@ export default function ContainerModal({ showModal, toggleModal, item }) {
                                 meta?.internal?.width *
                                 meta?.internal?.height || 0
 
-                            const { filledTotal, filledCurrent, filledOthers, available } = containerFillPercent(container, item.ID)
+                            const { 
+                                filledTotal, filledCurrent, filledOthers, availablePercent,
+                                weightFilledTotal, weightFilledCurrent, weightFilledOthers, weightAvailablePercent
+                            } = containerFillPercent(container, item.ID)
+
+                            // We use the most restrictive metric to determine how much is "free"
+                            const lowestAvailablePercent = Math.min(availablePercent || 0, weightAvailablePercent || 0);
 
                             return (
                                 <button
@@ -105,21 +111,24 @@ export default function ContainerModal({ showModal, toggleModal, item }) {
                                         <div className="flex-1 px-1 space-y-0.5  text-left">
                                             <h4 className="my-1 w-full flex items-center text-lg text-secondary font-semibold" >
                                                 {label}
-                                                <span className="text-sm ml-auto mr-2 text-green-700 font-bold" >{`(${(available).toFixed(2)}% ${t.free})`}</span>
+                                                <span className="text-sm ml-auto mr-2 text-green-700 font-bold" >{`(${(lowestAvailablePercent).toFixed(2)}% ${t.free})`}</span>
                                             </h4>
-                                            <ul className=" grid grid-cols-[auto_auto] max-w-max gap-y-0.5 gap-x-5 my-2 tracking-wider text-xs font-semibold text-gray-700">
-                                                <li className="">
-                                                    {t.current}
-                                                </li>
-                                                <li >
+                                            <ul className=" grid grid-cols-[auto_auto_auto] max-w-max gap-y-1 gap-x-5 my-2 tracking-wider text-xs font-semibold text-gray-700">
+                                                <li className="col-span-3 text-secondary italic mb-1 border-b pb-1">Volume Capacity:</li>
+                                                <li className="">{t.current}</li>
+                                                <li className="col-span-2">
                                                     {items.find(x => x.ID == item.ID)?.qty || 0} unit @<strong>{(filledCurrent).toFixed(2)}%</strong>
                                                 </li>
-                                                <li className="">
-                                                    {t.others}
+                                                <li className="">{t.others}</li>
+                                                <li className="col-span-2">~{(filledOthers).toFixed(2)}%</li>
+
+                                                <li className="col-span-3 text-secondary italic mt-2 mb-1 border-b pb-1">Weight Capacity (PESO):</li>
+                                                <li className="">{t.current}</li>
+                                                <li className="col-span-2">
+                                                    {items.find(x => x.ID == item.ID)?.qty || 0} unit @<strong>{(weightFilledCurrent).toFixed(2)}%</strong>
                                                 </li>
-                                                <li>
-                                                    ~{(filledOthers).toFixed(2)}%
-                                                </li>
+                                                <li className="">{t.others}</li>
+                                                <li className="col-span-2">~{(weightFilledOthers).toFixed(2)}%</li>
                                             </ul>
                                         </div>
                                     </div>

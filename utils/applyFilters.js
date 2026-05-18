@@ -39,6 +39,13 @@ export function matchesSubcategoryFilter(productSubcategory, requestedSubcategor
 
 export function applyFilters(products, filters) {
     return products.filter(p => {
+        if (filters.searchQuery) {
+            const query = filters.searchQuery.toLowerCase();
+            const nameMatch = p.name?.toLowerCase().includes(query);
+            const descMatch = p.description?.toLowerCase().includes(query);
+            if (!nameMatch && !descMatch) return false;
+        }
+
         if (filters.collection && filters.collection !== 'All' && p.collection?.toLowerCase() !== filters.collection?.toLowerCase()) return false;
         if (filters.category && filters.category !== 'All' && p.category?.toLowerCase() !== filters.category?.toLowerCase()) return false;
         

@@ -41,14 +41,31 @@ export default function FilterUI({ filters, products, setFilters, currentCollect
                 <Stylish_H2 h2="Filters" />
             </div>
 
-            {/* Collection Toggle - Separate Row */}
-            <div className="mb-4">
-                <label className="block text-sm font-medium mb-2">Collection</label>
-                <CollectionToggle 
-                    value={filters.collection} 
-                    onChange={v => setFilters(f => ({ ...f, collection: v }))} 
-                    options={collectionOptions}
-                />
+            {/* Collection and Search - Top Row */}
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 mb-6">
+                <div>
+                    <label className="block text-sm font-medium mb-2">Collection</label>
+                    <CollectionToggle 
+                        value={filters.collection} 
+                        onChange={v => setFilters(f => ({ ...f, collection: v }))} 
+                        options={collectionOptions}
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium mb-2">Search Products</label>
+                    <div className="relative">
+                        <input
+                            type="text"
+                            placeholder="Search by name or description..."
+                            value={filters.searchQuery || ''}
+                            onChange={e => setFilters(f => ({ ...f, searchQuery: e.target.value }))}
+                            className="w-full px-4 py-[11px] border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        />
+                        <svg className="absolute right-3 top-3.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
             </div>
 
             {/* Subcategories and Sort - Same Row */}

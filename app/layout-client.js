@@ -8,6 +8,7 @@ import NavBar from "My_UI/navbar/main";
 import CartInit from "lib/cart/initCart";
 import CartDrawer from "My_UI/cart/CartDrawer.client";
 import SplashScreen from "My_UI/ui/SplashScreen";
+import VirtualFrontDesk from "My_UI/ui/VirtualFrontDesk";
 import Providers from "./providers";
 
 const NotifyPortal = dynamic(() => import("lib/notify"), {
@@ -24,6 +25,7 @@ export default function RootLayoutClient({ children, lang, dict }) {
       <Footer lang={lang} dict={dict} />
       <CartInit />
       <CartDrawer />
+      <VirtualFrontDesk />
       <div id="modal-root" />
       <div id="notify-container" />
       <Suspense fallback={<Loader className="w-6 h-6 animate-spin" />}>
