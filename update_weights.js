@@ -50,10 +50,12 @@ products.forEach(p => {
         if (p.dimensions && p.dimensions.metric) {
             const w = p.dimensions.metric.width || 0;
             const l = p.dimensions.metric.length || 0;
-            // Assumes width and length are in cm
-            if (p.dimensions.metric.widthUnit === 'cm' && p.dimensions.metric.lengthUnit === 'cm') {
-                areaSqm = (w / 100) * (l / 100);
-            }
+            const wUnit = (p.dimensions.metric.widthUnit || '').toLowerCase().trim();
+            const lUnit = (p.dimensions.metric.lengthUnit || '').toLowerCase().trim();
+
+            const widthInMeters = wUnit === 'cm' ? w / 100 : wUnit === 'mm' ? w / 1000 : w;
+            const lengthInMeters = lUnit === 'cm' ? l / 100 : lUnit === 'mm' ? l / 1000 : l;
+            areaSqm = widthInMeters * lengthInMeters;
         }
         p.weightPerSqm = pesoSqm;
         if (areaSqm > 0) {
