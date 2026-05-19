@@ -8,6 +8,32 @@ import { CONTAINER_TYPES } from "./containerTypes"
 const CONTAINER_TOLERANCE = 0.95;
 
 /**
+ * Resolve product weight dynamically with support for metric unit conversions and runtime fallback from weightPerSqm.
+ */
+export function getUnitWeight(item) {
+    if (!item) return 0;
+    const productData = item.dimensions || item;
+    let unitWeight = productData.weight || item.weight || 0;
+    if (!unitWeight) {
+        const weightPerSqm = productData.weightPerSqm || item.weightPerSqm || 0;
+        if (weightPerSqm) {
+            const metric = productData.metric || productData.dimensions?.metric;
+            if (metric) {
+                const w = metric.width || 0;
+                const l = metric.length || 0;
+                const wUnit = (metric.widthUnit || '').toLowerCase().trim();
+                const lUnit = (metric.lengthUnit || '').toLowerCase().trim();
+                const widthInMeters = wUnit === 'cm' ? w / 100 : wUnit === 'mm' ? w / 1000 : w;
+                const lengthInMeters = lUnit === 'cm' ? l / 100 : lUnit === 'mm' ? l / 1000 : l;
+                const areaSqm = widthInMeters * lengthInMeters;
+                unitWeight = parseFloat((weightPerSqm * areaSqm).toFixed(3));
+            }
+        }
+    }
+    return unitWeight || 0;
+}
+
+/**
  * Calculate container fill percentage.
  * @param {object} container 
  * @param {string|null} currentItemId
@@ -47,7 +73,8 @@ export function containerFillPercent(container, currentItemId = null) {
         
         // Multiply by itemsPerBox to account for packaging, checking productData as fallback
         const multiplier = item.itemsPerBox || productData.itemsPerBox || 1;
-        const itemWeight = (productData.weight || item.weight || 0) * multiplier * (item.qty || 1);
+        const unitWeight = getUnitWeight(item);
+        const itemWeight = unitWeight * multiplier * (item.qty || 1);
 
         if (!volResult || typeof volResult.value !== "number") {
             // Still count weight even if volume calculation fails
@@ -108,8 +135,9 @@ export function calculateRemainingCapacity(container, product) {
     const maxByVol = Math.floor(remainingVolume / itemVol.value);
     let maxByWeight = Infinity;
     
-    if (productData.weight > 0) {
-        maxByWeight = Math.floor(remainingWeight / productData.weight);
+    const unitWeight = getUnitWeight(product);
+    if (unitWeight > 0) {
+        maxByWeight = Math.floor(remainingWeight / unitWeight);
     }
     
     return Math.min(maxByVol, maxByWeight);
