@@ -18,6 +18,12 @@ export default function PoliciesPage() {
         
         <div className="px-6 py-8 sm:p-10 space-y-8 text-gray-700 leading-relaxed">
           
+          <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 text-slate-800 text-base leading-relaxed">
+            <p>
+              Esta Política de Privacidad describe cómo se recopila y utiliza la información para la aplicación móvil <strong>Building Innovation AI</strong>, desarrollada y mantenida por <strong>Unitec USA Design</strong>.
+            </p>
+          </div>
+
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3 border-b pb-2">Autorización y aviso de privacidad</h2>
             <p>
