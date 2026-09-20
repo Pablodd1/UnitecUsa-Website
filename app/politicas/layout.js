@@ -3,23 +3,23 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
 
     const defaultData = {
-        title: "Privacy Policy | Unitec USA Design",
+        title: "Política de Privacidad | Building Innovation AI - Unitec USA Design",
     };
 
     return {
         ...parentMeta,
         title: defaultData.title,
         description:
-            "Read Unitec USA Design’s privacy policy to understand how we collect, use, and protect your personal and business information.",
+            "Política de Privacidad y Tratamiento de Datos Personales para la aplicación móvil Building Innovation AI y los servicios de Unitec USA Design.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/policies`,
+            canonical: `https://unitecusadesign.com/politicas`,
         },
         openGraph: {
             ...parentMeta.openGraph,
-            title: "Unitec USA Design Privacy Policy",
+            title: "Política de Privacidad | Building Innovation AI - Unitec USA Design",
             description:
-                "Learn how Unitec USA Design safeguards your data and respects your privacy.",
-            url: `${process.env.BASE_URL}/policies`,
+                "Política de Privacidad y Tratamiento de Datos Personales para la aplicación móvil Building Innovation AI.",
+            url: `https://unitecusadesign.com/politicas`,
         },
         twitter: {
             ...parentMeta.twitter,
