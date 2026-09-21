@@ -1,4 +1,4 @@
-﻿/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   // Image optimization
   images: {
@@ -110,6 +110,11 @@ const nextConfig = {
       {
         source: '/about/:path*',
         destination: '/nosotros/:path*',
+        permanent: true
+      },
+      {
+        source: '/historia',
+        destination: '/nosotros/historia',
         permanent: true
       },
       {

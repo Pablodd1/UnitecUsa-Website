@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion"
 import {
     Boxes,
@@ -49,6 +50,25 @@ export default function AboutPage() {
             
             <main className="w-full bg-white overflow-hidden">
                 
+                {/* Secondary Navigation Pill Bar */}
+                <div className="bg-slate-100 border-b border-slate-200 py-2 px-6">
+                    <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
+                        <Link
+                            href="/nosotros"
+                            className="px-4 py-1.5 rounded-full text-xs md:text-sm font-bold bg-[#132c3f] text-white shadow-sm"
+                        >
+                            Sobre Nosotros
+                        </Link>
+                        <span className="text-slate-300">•</span>
+                        <Link
+                            href="/nosotros/historia"
+                            className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+                        >
+                            Nuestra Historia
+                        </Link>
+                    </div>
+                </div>
+
                 {/* ================= SECTION 1: HERO ================= */}
                 <section className="relative py-28 text-white min-h-[60vh] flex items-center justify-center">
                     <video

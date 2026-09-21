@@ -30,7 +30,15 @@ const navItems = [
         href: '#',
         catalogDropdown: true
     },
-    { label: 'Institutional', id: 'institutional', href: '/nosotros' },
+    {
+        label: 'Institutional',
+        id: 'institutional',
+        href: '/nosotros',
+        submenu: [
+            { label: 'whoWeAre', title: 'Sobre Nosotros', href: '/nosotros' },
+            { label: 'ourHistory', title: 'Nuestra Historia', href: '/nosotros/historia' },
+        ]
+    },
     { label: 'Contact', id: 'contact', href: '/contacto' },
     { label: 'Blog', id: 'blog', href: '/blog' }
 ];
@@ -116,7 +124,7 @@ const NavBar = ({ searchParams }) => {
                                                 href={subItem.href}
                                                 className="px-4 py-3 text-sm hover:bg-slate-800 transition-colors border-b last:border-0 border-slate-800 text-slate-300 hover:text-white"
                                             >
-                                                {t(`nav.${subItem.label}`)}
+                                                {subItem.title || t(`nav.${subItem.label}`)}
                                             </Link>
                                         ))}
                                     </div>
@@ -208,7 +216,7 @@ const NavBar = ({ searchParams }) => {
                                                         onClick={() => setMobileMenuOpen(false)}
                                                         className="block text-sm text-gray-600 hover:text-black py-1 hover:translate-x-2 transition-transform"
                                                     >
-                                                        {t(`nav.${subItem.label}`)}
+                                                        {subItem.title || t(`nav.${subItem.label}`)}
                                                     </Link>
                                                 </motion.div>
                                             ))}
