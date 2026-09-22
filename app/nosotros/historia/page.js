@@ -303,8 +303,8 @@ export default function HistoriaPage() {
 
 
                 {/* ================= 4. NUESTRA PRESENCIA (MAP & COUNTRIES) ================= */}
-                <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                <section className="py-20 md:py-28 max-w-[1400px] mx-auto px-6 md:px-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                         
                         {/* Left Column: Countries & Details */}
                         <div className="lg:col-span-5">
@@ -349,7 +349,7 @@ export default function HistoriaPage() {
                             </div>
                         </div>
 
-                        {/* Right Column: Enlarged Americas Map Graphic */}
+                        {/* Right Column: Significantly Enlarged High-Resolution Americas Map Graphic */}
                         <div className="lg:col-span-7 flex justify-center items-center">
                             <div className="w-full flex items-center justify-center p-2">
                                 <Image
@@ -357,7 +357,7 @@ export default function HistoriaPage() {
                                     alt="Presencia internacional de Unitec en el continente americano"
                                     width={2157}
                                     height={1802}
-                                    className="w-full h-auto max-w-2xl object-contain drop-shadow-md"
+                                    className="w-full h-auto max-w-3xl xl:max-w-[880px] 2xl:max-w-[980px] object-contain drop-shadow-md hover:drop-shadow-lg transition-all duration-300"
                                     unoptimized
                                     priority
                                 />
