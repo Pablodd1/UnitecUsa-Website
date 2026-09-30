@@ -89,7 +89,7 @@ export default function FilterUI({ filters, products, setFilters }) {
                         <MultiSelect 
                             label="Subcategorías" 
                             options={subCategoriesFromData} 
-                            value={filters.subcategories} 
+                            value={filters?.subcategories || []} 
                             onChange={v => setFilters(f => ({ ...f, subcategories: v }))} 
                         />
                     </div>

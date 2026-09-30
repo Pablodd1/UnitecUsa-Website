@@ -10,14 +10,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Premium artificial gardens, vertical gardens, and green wall solutions. UV-resistant, maintenance-free artificial plants and foliage for interior and exterior decoration.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/jardines-artificiales`,
+            canonical: "https://unitecusadesign.com/colecciones/jardines-artificiales/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Jardines Artificiales – Unitec USA Design",
             description:
                 "Transform spaces with beautiful artificial gardens and green walls. Zero maintenance, UV-resistant, and always green.",
-            url: `${process.env.BASE_URL}/jardines-artificiales`,
+            url: "https://unitecusadesign.com/colecciones/jardines-artificiales/",
             images: [
                 {
                     url: `/raster/exterior.webp` || process.env.DEFAULT_IMAGE,
@@ -39,7 +39,7 @@ export async function generateMetadata(_, parent) {
 
 
 export default async function JardinesArtificiales({ searchParams }) {
-    const sp = await searchParams;
+    const sp = (await searchParams) || {};
     return (
         <Collections_UI
             searchParams={sp}

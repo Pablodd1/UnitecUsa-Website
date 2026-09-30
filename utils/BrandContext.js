@@ -75,10 +75,6 @@ export function BrandProvider({ children }) {
             }
             link.href = brand.favicon;
         }
-        // Update page title
-        if (brand?.metaTitle) {
-            document.title = brand.metaTitle;
-        }
     }, [brand]);
 
     return (

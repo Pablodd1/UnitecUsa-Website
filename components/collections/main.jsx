@@ -10,12 +10,12 @@ import NoProductsFound from "./noproduct";
 import MyButton from "My_UI/btn/main";
 import { useBrand } from "lib/BrandContext";
 
-export default function Collections_UI({ searchParams, h1, description, productURL, cover, prefilters, currentCollection }) {
+export default function Collections_UI({ searchParams = {}, h1, description, productURL, cover, prefilters, currentCollection }) {
 
-    const queryCategory = searchParams.category;
-    const querySubcategory = searchParams.subcategory;
-    const querySubcategoriesParam = searchParams.subcategories;
-    const queryCollection = searchParams.collection;
+    const queryCategory = searchParams?.category;
+    const querySubcategory = searchParams?.subcategory;
+    const querySubcategoriesParam = searchParams?.subcategories;
+    const queryCollection = searchParams?.collection;
 
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);

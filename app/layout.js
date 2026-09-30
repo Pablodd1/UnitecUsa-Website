@@ -1,4 +1,4 @@
-﻿import { Montserrat } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import "./globals.css";
 import Script from "next/script";
 import { getDictionary } from "lib/i18n/getDictionary";
@@ -16,7 +16,7 @@ export async function generateMetadata() {
   const dict = getDictionary(lang);
 
   const BASE_URL = "https://unitecusadesign.com";
-  const canonicalUrl = `${BASE_URL}/${lang}`;
+  const canonicalUrl = `${BASE_URL}/`;
 
   const defaults = {
     title: dict.meta.siteTitle,
@@ -43,11 +43,10 @@ export async function generateMetadata() {
     manifest: "/favicons/manifest.json",
 
     alternates: {
-      canonical: defaults.canonical,
+      canonical: "/",
       languages: {
-        'en': `${BASE_URL}`,
-        'es': `${BASE_URL}/es`,
-        'x-default': `${BASE_URL}`
+        'es': `${BASE_URL}/`,
+        'x-default': `${BASE_URL}/`
       }
     },
 

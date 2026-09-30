@@ -9,14 +9,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Browse Unitec USA Design’s full collection of PVC and WPC building materials, engineered for interior and exterior applications with long-lasting performance and zero maintenance.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/colecciones`,
+            canonical: "https://unitecusadesign.com/colecciones/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Todas las Colecciones de Productos – Unitec USA Design",
             description:
                 "Explore our complete range of innovative PVC and WPC building solutions for residential, commercial, and architectural projects.",
-            url: `${process.env.BASE_URL}/colecciones`,
+            url: "https://unitecusadesign.com/colecciones/",
             images: [
                 {
                     url: `/raster/interior.webp` || process.env.DEFAULT_IMAGE,
@@ -38,7 +38,7 @@ export async function generateMetadata(_, parent) {
 
 
 export default async function Collections({ searchParams }) {
-    const sp = await searchParams;
+    const sp = (await searchParams) || {};
     return (
         <Collections_UI
             searchParams={sp}

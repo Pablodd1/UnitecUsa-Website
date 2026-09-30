@@ -9,14 +9,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Premium PVC and WPC panels for interior walls, ceilings, and decorative applications. Waterproof, antimicrobial, fire-resistant, and zero maintenance.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/interiors`,
+            canonical: "https://unitecusadesign.com/colecciones/interior/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Interior Building Solutions – Unitec USA Design",
             description:
                 "Elegant, durable PVC and WPC panels designed for modern interior spaces.",
-            url: `${process.env.BASE_URL}/interiors`,
+            url: "https://unitecusadesign.com/colecciones/interior/",
             images: [
                 {
                     url: `/raster/interior.webp` || process.env.DEFAULT_IMAGE,
@@ -38,7 +38,7 @@ export async function generateMetadata(_, parent) {
 
 
 export default async function Collections({ searchParams }) {
-    const sp = await searchParams;
+    const sp = (await searchParams) || {};
     return (
         <Collections_UI
             searchParams={sp}

@@ -12,14 +12,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Find answers to common questions about Unitec USA Design’s PVC and WPC products, installation methods, warranties, fire ratings, and sustainability.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/faq`,
+            canonical: "https://unitecusadesign.com/preguntas-frecuentes/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Unitec USA Design FAQs",
             description:
                 "Get clear answers about PVC & WPC materials, product performance, installation, warranties, and ordering from Unitec USA Design.",
-            url: `${process.env.BASE_URL}/faq`,
+            url: "https://unitecusadesign.com/preguntas-frecuentes/",
         },
         twitter: {
             ...parentMeta.twitter,

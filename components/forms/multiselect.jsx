@@ -4,17 +4,23 @@ import { createPortal } from "react-dom";
 import { ChevronDown, Check, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function MultiSelect({ label, options, value, onChange }) {
+export default function MultiSelect({ label, options = [], value = [], onChange }) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
 
+  const safeValue = Array.isArray(value) ? value : [];
+
   function toggle(val) {
-    onChange(value.includes(val) ? value.filter(v => v !== val) : [...value, val]);
+    if (typeof onChange === 'function') {
+      onChange(safeValue.includes(val) ? safeValue.filter(v => v !== val) : [...safeValue, val]);
+    }
   }
 
   function clearAll(e) {
     e.stopPropagation();
-    onChange([]);
+    if (typeof onChange === 'function') {
+      onChange([]);
+    }
   }
 
   return (
@@ -28,16 +34,16 @@ export default function MultiSelect({ label, options, value, onChange }) {
         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-sm flex justify-between items-center bg-white hover:border-gray-400 transition-colors"
       >
         <span className="truncate font-medium">
-          {value.length ? `${value.length} selected` : label}
+          {safeValue.length ? `${safeValue.length} selected` : label}
         </span>
         <div className="flex items-center gap-2">
-          {value.length > 0 && (
+          {safeValue.length > 0 && (
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               className="bg-black text-white text-xs px-2 py-0.5 rounded-full"
             >
-              {value.length}
+              {safeValue.length}
             </motion.div>
           )}
           <motion.div
@@ -72,11 +78,11 @@ export default function MultiSelect({ label, options, value, onChange }) {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">{label}</h3>
                   <p className="text-sm text-gray-500 mt-1">
-                    {value.length} option{value.length !== 1 ? 's' : ''} selected
+                    {safeValue.length} option{safeValue.length !== 1 ? 's' : ''} selected
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  {value.length > 0 && (
+                  {safeValue.length > 0 && (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -108,25 +114,25 @@ export default function MultiSelect({ label, options, value, onChange }) {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={`flex items-center gap-4 text-base p-4 rounded-xl cursor-pointer border-2 transition-all ${
-                          value.includes(opt) 
+                          safeValue.includes(opt) 
                             ? 'border-black bg-black/5' 
                             : 'border-gray-200 hover:border-gray-400 bg-white'
                         }`}
                       >
                         <div className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
-                          value.includes(opt) 
+                          safeValue.includes(opt) 
                             ? 'bg-black border-black' 
                             : 'border-gray-300 bg-white'
                         }`}>
-                          {value.includes(opt) && <Check size={16} className="text-white" />}
+                          {safeValue.includes(opt) && <Check size={16} className="text-white" />}
                         </div>
                         <input
                           type="checkbox"
-                          checked={value.includes(opt)}
+                          checked={safeValue.includes(opt)}
                           onChange={() => toggle(opt)}
                           className="hidden"
                         />
-                        <span className={`font-medium truncate ${value.includes(opt) ? "text-black" : "text-gray-700"}`}>
+                        <span className={`font-medium truncate ${safeValue.includes(opt) ? "text-black" : "text-gray-700"}`}>
                           {opt}
                         </span>
                       </motion.label>

@@ -48,3 +48,6 @@ downloads/
 !public/policies.pdf
 
 !public/fichas/*.pdf
+
+# Local scratch and audit scripts
+scratch/

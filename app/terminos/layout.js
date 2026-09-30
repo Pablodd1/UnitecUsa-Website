@@ -12,14 +12,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Review Unitec USA Design’s terms and conditions covering product use, warranties, ordering, intellectual property, and service limitations.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/terms`,
+            canonical: "https://unitecusadesign.com/terminos/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Unitec USA Design Terms & Conditions",
             description:
                 "Understand the terms governing the use of Unitec USA Design products, services, and website.",
-            url: `${process.env.BASE_URL}/terms`,
+            url: "https://unitecusadesign.com/terminos/",
         },
         twitter: {
             ...parentMeta.twitter,

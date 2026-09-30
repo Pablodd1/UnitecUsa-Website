@@ -14,7 +14,7 @@ export async function generateMetadata(_, parent) {
         description:
             "Search results for PVC and WPC building materials at Unitec USA Design. Find products by application, finish, and performance requirements.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/search`,
+            canonical: "https://unitecusadesign.com/colecciones/search/",
         },
 
         robots: {
@@ -27,7 +27,7 @@ export async function generateMetadata(_, parent) {
             title: "Search Results – Unitec USA Design",
             description:
                 "Browse search results across Unitec USA Design’s PVC and WPC building material collections.",
-            url: `${process.env.BASE_URL}/search`,
+            url: "https://unitecusadesign.com/colecciones/search/",
         },
 
         twitter: {
@@ -40,7 +40,8 @@ export async function generateMetadata(_, parent) {
 }
 
 export default async function SearchPage({ searchParams }) {
-    const { q: query } = await searchParams
+    const sp = (await searchParams) || {};
+    const query = sp.q;
     const lang = 'es';
     const dict = getDictionary(lang);
 

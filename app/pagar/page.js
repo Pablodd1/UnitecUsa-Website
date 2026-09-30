@@ -154,6 +154,22 @@ export default function CheckoutPage() {
             `ADDITIONAL NOTES:\n` +
             `${formData.notes || 'None'}`;
 
+        try {
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'checkout_quote',
+                    fullName: formData.contactName,
+                    companyName: formData.companyName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    volume: `Ref: ${referenceId}`,
+                    details: body
+                })
+            }).catch(err => console.warn('Lead dispatch notice:', err));
+        } catch (_) {}
+
         window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
         setSubmitted(true)

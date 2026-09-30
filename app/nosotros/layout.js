@@ -12,17 +12,17 @@ export async function generateMetadata(_, parent) {
         description:
             "Learn about Unitec USA Design — our innovation-driven approach to PVC and WPC building materials, sustainability commitment, and industry-leading quality standards.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/about`,
+            canonical: "https://unitecusadesign.com/nosotros/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "About Unitec USA Design",
             description:
                 "Discover the story, values, and innovation behind Unitec USA Design’s advanced PVC and WPC construction solutions.",
-            url: `${process.env.BASE_URL}/about`,
+            url: "https://unitecusadesign.com/nosotros/",
             images: [
                 {
-                    url: `/raster/containers.png` || process.env.DEFAULT_IMAGE,
+                    url: `/raster/containers.webp`,
                     width: 1200,
                     height: 630,
                     alt:

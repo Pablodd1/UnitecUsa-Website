@@ -7,27 +7,15 @@ import ProductUseCases from "My_UI/product_ui/technical";
 import ProductStory from "My_UI/product_ui/story";
 import ProductSpecsTable from "My_UI/product_ui/ProductSpecsTable";
 import NotFoundPage from "../../not-found";
+import productData from "static_data/products_full.json";
 
 // app/products/[ID]/page.jsx (or equivalent)
 
 export async function generateMetadata({ params }, parent) {
   const parentMeta = await parent;
-  const { ID } = await params;
+  const { ID } = (await params) || {};
 
-  let product = null;
-
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/API/products/${ID}?fields=id,name,description,image`,
-      { cache: "no-store" }
-    );
-
-    if (res.ok) {
-      product = await res.json();
-    }
-  } catch (e) {
-    // silent fail – fallback meta will be used
-  }
+  const product = productData.find((item) => String(item.id) === String(ID));
 
   const title =
     product?.name
@@ -40,9 +28,11 @@ export async function generateMetadata({ params }, parent) {
       : "Explore high-performance PVC and WPC building materials by Unitec USA Design, engineered for durability, aesthetics, and zero maintenance.";
 
   const image =
-    product?.image?.url || process.env.DEFAULT_IMAGE;
+    product?.image?.url
+      ? (product.image.url.startsWith("http") ? product.image.url : `https://unitecusadesign.com${product.image.url}`)
+      : `https://unitecusadesign.com/raster/products/${ID}.webp`;
 
-  const canonical = `${process.env.BASE_URL}/products/${ID}`;
+  const canonical = `https://unitecusadesign.com/productos/${ID}/`;
 
   return {
     ...parentMeta,
@@ -76,8 +66,6 @@ export async function generateMetadata({ params }, parent) {
     },
   };
 }
-
-import productData from "static_data/products_full.json";
 
 async function fetchProduct(id) {
   // Bypass fetch to avoid domain/env issues in Server Component

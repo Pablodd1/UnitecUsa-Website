@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion"
@@ -102,16 +102,43 @@ export default function ContactPage() {
         }
     ];
 
-    const handleMeetingSubmit = (e) => {
+    const [quoteStatus, setQuoteStatus] = useState({ state: 'idle', message: '' });
+    const [meetingStatus, setMeetingStatus] = useState({ state: 'idle', message: '' });
+
+    const handleMeetingSubmit = async (e) => {
         e.preventDefault();
+        setMeetingStatus({ state: 'submitting', message: '' });
         const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
         const subject = `Meeting Request - ${meetingData.date} at ${meetingData.time}`;
         const body = `I'd like to schedule a meeting.\n\nName: ${meetingData.name}\nEmail: ${meetingData.email}\nPhone: ${meetingData.phone}\nPreferred Date: ${meetingData.date}\nPreferred Time: ${meetingData.time}\n\nNotes:\n${meetingData.notes}`;
+
+        try {
+            await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'meeting',
+                    fullName: meetingData.name,
+                    email: meetingData.email,
+                    phone: meetingData.phone,
+                    date: meetingData.date,
+                    time: meetingData.time,
+                    notes: meetingData.notes
+                })
+            });
+            setMeetingStatus({
+                state: 'success',
+                message: isSpanish ? '¡Solicitud recibida! Le contactaremos a la brevedad.' : 'Request received! We will contact you shortly.'
+            });
+        } catch (err) {
+            console.warn('API submission fallback to mailto:', err);
+        }
         window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
-    const handleQuoteSubmit = (e) => {
+    const handleQuoteSubmit = async (e) => {
         e.preventDefault();
+        setQuoteStatus({ state: 'submitting', message: '' });
         const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
         const subject = `Quote Inquiry - ${quoteData.companyName || quoteData.fullName}`;
         const body = `Quote Request Details:\n\n` +
@@ -121,7 +148,28 @@ export default function ContactPage() {
             `Phone: ${quoteData.phone}\n` +
             `Estimated Volume: ${quoteData.volume}\n\n` +
             `Project Details:\n${quoteData.details}`;
-        
+
+        try {
+            await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'quote',
+                    fullName: quoteData.fullName,
+                    companyName: quoteData.companyName,
+                    email: quoteData.email,
+                    phone: quoteData.phone,
+                    volume: quoteData.volume,
+                    details: quoteData.details
+                })
+            });
+            setQuoteStatus({
+                state: 'success',
+                message: isSpanish ? '¡Gracias! Su cotización ha sido registrada exitosamente.' : 'Thank you! Your quote inquiry has been submitted.'
+            });
+        } catch (err) {
+            console.warn('API submission fallback to mailto:', err);
+        }
         window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
@@ -130,7 +178,7 @@ export default function ContactPage() {
             <SeoHead 
                 title={contactMetadata.title} 
                 description={contactMetadata.description}
-                canonical="https://unitecusadesign.com/contact"
+                canonical="https://unitecusadesign.com/contacto/"
             />
             <main className="w-full">
             {/* ================= HERO ================= */}

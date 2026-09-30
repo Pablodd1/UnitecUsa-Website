@@ -8,14 +8,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Shop discounted PVC and WPC building materials from Unitec USA Design. Limited-time offers on premium, durable, and maintenance-free products.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/sale`,
+            canonical: "https://unitecusadesign.com/colecciones/sales/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Discounted Building Materials – Unitec USA Design",
             description:
                 "Limited-time deals on premium PVC and WPC building solutions for bulk and project-based orders.",
-            url: `${process.env.BASE_URL}/sale`,
+            url: "https://unitecusadesign.com/colecciones/sales/",
             images: [
                 {
                     url: `/raster/sale.webp` || process.env.DEFAULT_IMAGE,
@@ -37,7 +37,7 @@ export async function generateMetadata(_, parent) {
 
 
 export default async function Collections({ searchParams }) {
-    const sp = await searchParams;
+    const sp = (await searchParams) || {};
     return (
         <Collections_UI
             searchParams={sp}

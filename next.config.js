@@ -106,7 +106,8 @@ const nextConfig = {
         source: '/collection',
         destination: '/colecciones',
         permanent: true
-      },
+      }
+,
       {
         source: '/about/:path*',
         destination: '/nosotros/:path*',
@@ -170,19 +171,21 @@ const nextConfig = {
     ];
   },
 
+  // Output file tracing excludes
+  outputFileTracingExcludes: {
+    '*': [
+      'public/fichas/**/*',
+      'public/videos/**/*',
+      'public/media/**/*',
+      'public/video/**/*',
+      'public/raster/**/*'
+    ],
+  },
+
   // Experimental features
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
     scrollRestoration: true,
-    outputFileTracingExcludes: {
-      '*': [
-        'public/fichas/**/*',
-        'public/videos/**/*',
-        'public/media/**/*',
-        'public/video/**/*',
-        'public/raster/**/*'
-      ],
-    },
   },
 
   // Webpack configuration

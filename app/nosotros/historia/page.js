@@ -87,7 +87,7 @@ export default function HistoriaPage() {
                 description={isSpanish
                     ? "Conoce la historia de Unitec USA Design: más de dos décadas de innovación, tecnología y soluciones constructivas en PVC y WPC en LATAM y EE. UU."
                     : "Discover the history of Unitec USA Design: over two decades of innovation, technology, and architectural solutions across LATAM and USA."}
-                canonical="https://unitecusadesign.com/nosotros/historia"
+                canonical="https://unitecusadesign.com/nosotros/historia/"
             />
 
             <main className="w-full bg-white overflow-hidden">

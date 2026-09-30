@@ -10,14 +10,14 @@ export async function generateMetadata(_, parent) {
         description:
             "Explore exterior-grade PVC building materials designed for facades, cladding, roofing, and outdoor structures. Waterproof, UV-resistant, fire-rated, and maintenance-free.",
         alternates: {
-            canonical: `${process.env.BASE_URL}/exteriors`,
+            canonical: "https://unitecusadesign.com/colecciones/exterior/",
         },
         openGraph: {
             ...parentMeta.openGraph,
             title: "Exterior Building Solutions – Unitec USA Design",
             description:
                 "High-performance PVC sheets engineered for exterior durability, weather resistance, and long-term architectural performance.",
-            url: `${process.env.BASE_URL}/exteriors`,
+            url: "https://unitecusadesign.com/colecciones/exterior/",
             images: [
                 {
                     url: `/raster/exterior.webp` || process.env.DEFAULT_IMAGE,
@@ -38,7 +38,7 @@ export async function generateMetadata(_, parent) {
 }
 
 export default async function Collections({ searchParams }) {
-    const sp = await searchParams;
+    const sp = (await searchParams) || {};
     return (
         <Collections_UI
             searchParams={sp}
