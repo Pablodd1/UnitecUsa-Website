@@ -1,0 +1,34 @@
+name: Jev Automated Web Review & Error Alert
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Every 6 hours
+  workflow_dispatch:        # Manual on-demand run
+  push:
+    branches: [ master, main ]
+
+jobs:
+  jev-audit:
+    name: Run Jev Website Health & Error Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Execute Jev Health Audit
+        run: node scripts/jev-audit.mjs
+        env:
+          BASE_URL: 'https://unitecusadesign.com'
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL || 'lidermercadeo@espaciosimportados.com.co' }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

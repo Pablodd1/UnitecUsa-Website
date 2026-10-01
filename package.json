@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "@typesafe-ai/sdk": "^0.6.0",
     "axios": "^1.13.6",
     "csv-parser": "^3.2.0",
     "eslint": "^9",
