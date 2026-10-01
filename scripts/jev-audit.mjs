@@ -1,9 +1,28 @@
 /**
  * Jev Automated Website Review & Error Notification Runner
- * Powered by TypeSafe AI (@typesafe-ai/sdk)
+ * Powered by TypeSafe AI Jev System-1 Model (@typesafe-ai/sdk)
  */
 
-import { TypeSafeClient } from '@typesafe-ai/sdk';
+import fs from 'fs';
+import path from 'path';
+import { TypeSafeClient, noul, choice } from '@typesafe-ai/sdk';
+
+// Automatically load .env.local or .env if present
+for (const envFile of ['.env.local', '.env']) {
+  const envPath = path.resolve(process.cwd(), envFile);
+  if (fs.existsSync(envPath)) {
+    const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const [key, ...rest] = trimmed.split('=');
+      const val = rest.join('=').trim().replace(/^["']|["']$/g, '');
+      if (key && val && !process.env[key.trim()]) {
+        process.env[key.trim()] = val;
+      }
+    }
+  }
+}
 
 const BASE_URL = process.env.BASE_URL || 'https://unitecusadesign.com';
 const TYPESAFE_API_KEY = process.env.TYPESAFE_API_KEY;
@@ -45,37 +64,52 @@ async function inspectRoute(client, route) {
   const loadTimeMs = Date.now() - startTime;
   const hasServerErrorKeywords = /500 Internal Server|TypeError|Unhandled Runtime|ReferenceError/i.test(html);
 
-  // If TypeSafe Jev API Key is available, use Jev System-1 model for classification
   let decision = {
     is_operational: status >= 200 && status < 400 && !hasServerErrorKeywords,
     severity: (status >= 500 || hasServerErrorKeywords) ? 'critical' : (status >= 400 ? 'medium' : 'none'),
     should_alert: status >= 500 || hasServerErrorKeywords || Boolean(errorMsg),
-    confidence: 0.95
+    confidence: 1.0,
+    model: 'heuristic-fallback'
   };
 
   if (client && TYPESAFE_API_KEY) {
     try {
-      const jevResult = await client.decide({
-        model: 'jev-1',
+      const response = await client.systemOne({
         state: {
           url: targetUrl,
           httpStatus: status,
           loadTimeMs,
           hasErrorMessage: Boolean(errorMsg),
-          errorDetails: errorMsg,
+          errorDetails: errorMsg || 'None',
           htmlLength: html.length,
-          hasHtmlTag: html.includes('<html'),
+          hasHtmlTag: html.includes('<html') || targetUrl.endsWith('.xml') || targetUrl.endsWith('.txt'),
           hasServerErrorKeywords
         },
         questions: {
-          is_operational: { type: 'boolean', description: 'Is the page rendering normally without critical defects?' },
-          severity: { type: 'choice', options: ['none', 'low', 'medium', 'critical'] },
-          should_alert: { type: 'boolean', description: 'Should this trigger an urgent notification to the engineering team?' }
+          is_operational: noul('Is the page rendering normally without critical defects or errors?'),
+          severity: choice('What is the severity of the operational issue?', {
+            none: 'No issues detected, page loaded normally and is functional',
+            low: 'Minor performance latency or warning',
+            medium: 'Client error (e.g. 404 or missing asset)',
+            critical: 'Server error (500), crash, blank page, or unhandled exception'
+          }),
+          should_alert: noul('Should an on-call engineer be immediately alerted about this page status?')
         }
       });
-      decision = { ...decision, ...jevResult };
+
+      if (response && response.answers) {
+        decision = {
+          is_operational: (response.answers.is_operational?.noul ?? 1) >= 0.5,
+          operational_score: response.answers.is_operational?.noul ?? 1,
+          severity: response.answers.severity?.choice || 'none',
+          severity_confidence: response.answers.severity?.confidence || 1,
+          should_alert: (response.answers.should_alert?.noul ?? 0) >= 0.65,
+          alert_score: response.answers.should_alert?.noul ?? 0,
+          model: response.model || 'jev-1'
+        };
+      }
     } catch (apiErr) {
-      console.warn(`[Jev API Warning] Failed remote inference for ${targetUrl}:`, apiErr.message);
+      console.warn(`[Jev API Warning] Inference failed for ${targetUrl}:`, apiErr.message);
     }
   }
 
@@ -105,13 +139,14 @@ async function sendNotification(alertReport) {
         body: JSON.stringify({
           from: 'Jev Error Monitor <onboarding@resend.dev>',
           to: [NOTIFICATION_EMAIL],
-          subject: `🚨 [Jev Alert] Website Error Detected on ${alertReport.url}`,
+          subject: `🚨 [Jev Alert] Error Detected on ${alertReport.url}`,
           html: `
             <h2>Jev Automated Quality Monitor Alert</h2>
             <p><strong>URL:</strong> <a href="${alertReport.url}">${alertReport.url}</a></p>
             <p><strong>HTTP Status:</strong> ${alertReport.status}</p>
             <p><strong>Latency:</strong> ${alertReport.loadTimeMs} ms</p>
             <p><strong>Severity:</strong> <span style="color:red;font-weight:bold;">${alertReport.decision.severity}</span></p>
+            <p><strong>Jev Model:</strong> ${alertReport.decision.model}</p>
             <p><strong>Error Details:</strong> ${alertReport.errorMsg || 'Server returned invalid response / 500 error.'}</p>
           `
         })
@@ -129,7 +164,7 @@ async function sendNotification(alertReport) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: `🚨 *[Jev Monitor Alert]* Error detected on \`${alertReport.url}\` (Status: ${alertReport.status}, Severity: ${alertReport.decision.severity})`
+          text: `🚨 *[Jev Monitor Alert]* Error detected on \`${alertReport.url}\` (Status: ${alertReport.status}, Severity: ${alertReport.decision.severity}, Model: ${alertReport.decision.model})`
         })
       });
       console.log('✅ Slack webhook alert dispatched.');
@@ -141,7 +176,9 @@ async function sendNotification(alertReport) {
 
 async function run() {
   console.log(`🔍 [Jev Health Monitor] Auditing ${BASE_URL}...`);
-  if (!TYPESAFE_API_KEY) {
+  if (TYPESAFE_API_KEY) {
+    console.log('⚡ TypeSafe AI Jev System-1 connection active.');
+  } else {
     console.log('ℹ️  Note: TYPESAFE_API_KEY not detected. Running in heuristic fallback mode.');
   }
 
@@ -154,7 +191,7 @@ async function run() {
     results.push(res);
 
     const mark = res.decision.is_operational ? '✅' : '❌';
-    console.log(`${mark} [${res.status}] ${res.url} (${res.loadTimeMs}ms) - Severity: ${res.decision.severity}`);
+    console.log(`${mark} [${res.status}] ${res.url} (${res.loadTimeMs}ms) - Severity: ${res.decision.severity} (Model: ${res.decision.model})`);
 
     if (res.decision.should_alert) {
       errorCount++;
