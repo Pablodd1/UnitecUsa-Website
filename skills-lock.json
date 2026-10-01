@@ -7,11 +7,23 @@
       "skillPath": "skills/accessibility/SKILL.md",
       "computedHash": "88c64dead9bb55925c7b983f5fd95cfecf30bd8c076fd384cdb17019d1becd87"
     },
+    "autofix": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/autofix/SKILL.md",
+      "computedHash": "c0f57fe308d32aeb186a8bddc8cf0dcea04ca87132e2d4b3fcfdc9117db8ca76"
+    },
     "best-practices": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "github",
       "skillPath": "skills/best-practices/SKILL.md",
       "computedHash": "fc34a8d4aea22d0158e0560457c82432e9d2d0ac74cf3e9aaccb599905f3f711"
+    },
+    "code-review": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/code-review/SKILL.md",
+      "computedHash": "041aa4d6a0f530738f175e45e9edec15d5895860698d5b30a3ecac367882d6e3"
     },
     "core-web-vitals": {
       "source": "addyosmani/web-quality-skills",
