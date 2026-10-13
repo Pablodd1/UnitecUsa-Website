@@ -20,7 +20,10 @@ import {
     ChevronDown,
     ChevronUp,
     User,
-    Users
+    Users,
+    CheckCircle2,
+    AlertCircle,
+    Loader2
 } from "lucide-react"
 import Stylish_H2 from "My_UI/stylish_h2"
 import Map from "./map";
@@ -105,15 +108,27 @@ export default function ContactPage() {
     const [quoteStatus, setQuoteStatus] = useState({ state: 'idle', message: '' });
     const [meetingStatus, setMeetingStatus] = useState({ state: 'idle', message: '' });
 
+    const trackMetaLead = (leadData = {}) => {
+        try {
+            if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+                window.fbq('track', 'Lead', {
+                    content_name: leadData.type || 'quote_inquiry',
+                    currency: 'USD',
+                    value: 0.00
+                });
+                console.log('[Meta Pixel] Lead event tracked successfully');
+            }
+        } catch (err) {
+            console.warn('[Meta Pixel] Error tracking Lead event:', err);
+        }
+    };
+
     const handleMeetingSubmit = async (e) => {
         e.preventDefault();
         setMeetingStatus({ state: 'submitting', message: '' });
-        const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
-        const subject = `Meeting Request - ${meetingData.date} at ${meetingData.time}`;
-        const body = `I'd like to schedule a meeting.\n\nName: ${meetingData.name}\nEmail: ${meetingData.email}\nPhone: ${meetingData.phone}\nPreferred Date: ${meetingData.date}\nPreferred Time: ${meetingData.time}\n\nNotes:\n${meetingData.notes}`;
 
         try {
-            await fetch('/api/contact', {
+            const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -126,31 +141,47 @@ export default function ContactPage() {
                     notes: meetingData.notes
                 })
             });
+
+            const data = await res.json().catch(() => ({}));
+
+            if (!res.ok) {
+                throw new Error(data.error || 'Failed to submit');
+            }
+
+            trackMetaLead({ type: 'meeting_request' });
+
             setMeetingStatus({
                 state: 'success',
-                message: isSpanish ? '¡Solicitud recibida! Le contactaremos a la brevedad.' : 'Request received! We will contact you shortly.'
+                message: isSpanish 
+                    ? '¡Solicitud enviada con éxito! Nuestro equipo se pondrá en contacto para confirmar su cita.' 
+                    : 'Request sent successfully! Our team will contact you shortly to confirm your meeting.'
+            });
+
+            setMeetingData({
+                name: '',
+                email: '',
+                phone: '',
+                date: '',
+                time: '',
+                notes: ''
             });
         } catch (err) {
-            console.warn('API submission fallback to mailto:', err);
+            console.error('Meeting submission error:', err);
+            setMeetingStatus({
+                state: 'error',
+                message: isSpanish 
+                    ? 'Hubo un inconveniente al enviar su solicitud. Por favor verifique sus datos o contáctenos por WhatsApp.' 
+                    : 'There was an issue submitting your request. Please check your information or reach us via WhatsApp.'
+            });
         }
-        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     const handleQuoteSubmit = async (e) => {
         e.preventDefault();
         setQuoteStatus({ state: 'submitting', message: '' });
-        const contactEmail = brand?.email || 'lidermercadeo@espaciosimportados.com.co';
-        const subject = `Quote Inquiry - ${quoteData.companyName || quoteData.fullName}`;
-        const body = `Quote Request Details:\n\n` +
-            `Full Name: ${quoteData.fullName}\n` +
-            `Company: ${quoteData.companyName}\n` +
-            `Email: ${quoteData.email}\n` +
-            `Phone: ${quoteData.phone}\n` +
-            `Estimated Volume: ${quoteData.volume}\n\n` +
-            `Project Details:\n${quoteData.details}`;
 
         try {
-            await fetch('/api/contact', {
+            const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -163,14 +194,41 @@ export default function ContactPage() {
                     details: quoteData.details
                 })
             });
+
+            const data = await res.json().catch(() => ({}));
+
+            if (!res.ok) {
+                throw new Error(data.error || 'Failed to submit quote inquiry');
+            }
+
+            // Track Meta Pixel Lead Conversion
+            trackMetaLead({ type: 'quote_inquiry' });
+
             setQuoteStatus({
                 state: 'success',
-                message: isSpanish ? '¡Gracias! Su cotización ha sido registrada exitosamente.' : 'Thank you! Your quote inquiry has been submitted.'
+                message: isSpanish 
+                    ? '¡Mensaje recibido con éxito! Nuestro equipo de ingeniería comercial revisará su requerimiento y le responderá a la brevedad.' 
+                    : 'Message received successfully! Our commercial engineering team will review your requirements and respond shortly.'
+            });
+
+            // Reset form fields
+            setQuoteData({
+                fullName: '',
+                companyName: '',
+                email: '',
+                phone: '',
+                volume: '',
+                details: ''
             });
         } catch (err) {
-            console.warn('API submission fallback to mailto:', err);
+            console.error('Quote submission error:', err);
+            setQuoteStatus({
+                state: 'error',
+                message: isSpanish 
+                    ? 'No fue posible procesar el envío en este momento. Por favor inténtelo nuevamente o comuníquese a nuestro WhatsApp.' 
+                    : 'We were unable to process your inquiry. Please try again or reach out directly via WhatsApp.'
+            });
         }
-        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     return (
@@ -302,17 +360,48 @@ export default function ContactPage() {
                                         label={isSpanish ? "Detalles del Proyecto" : t('contact.projectDetails')}
                                         placeholder="Describa tipos de productos, cantidades, destino y cronograma..."
                                         value={quoteData.details}
-                                        onChange={(e) => setQuoteData({ ...quoteData.details, details: e.target.value })}
+                                        onChange={(e) => setQuoteData({ ...quoteData, details: e.target.value })}
                                     />
                                 </div>
 
+                                {quoteStatus.state === 'success' && (
+                                    <div className="sm:col-span-2 flex items-start gap-3 p-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-sm">
+                                        <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
+                                        <div>
+                                            <p className="font-bold">{isSpanish ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!'}</p>
+                                            <p className="mt-0.5 text-xs text-green-700">{quoteStatus.message}</p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {quoteStatus.state === 'error' && (
+                                    <div className="sm:col-span-2 flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">
+                                        <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
+                                        <div>
+                                            <p className="font-bold">{isSpanish ? 'Error al enviar' : 'Submission Error'}</p>
+                                            <p className="mt-0.5 text-xs text-red-700">{quoteStatus.message}</p>
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="sm:col-span-2">
                                     <button
-                                        type="submit" aria-label="Submit Form"
-                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-900 active:scale-[0.98]"
+                                        type="submit" 
+                                        aria-label="Submit Form"
+                                        disabled={quoteStatus.state === 'submitting'}
+                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-900 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                                     >
-                                        <Send size={16} />
-                                        {isSpanish ? "Enviar Consulta" : t('contact.sendInquiry')}
+                                        {quoteStatus.state === 'submitting' ? (
+                                            <>
+                                                <Loader2 size={16} className="animate-spin" />
+                                                {isSpanish ? "Procesando envío..." : "Sending..."}
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Send size={16} />
+                                                {isSpanish ? "Enviar Consulta" : t('contact.sendInquiry')}
+                                            </>
+                                        )}
                                     </button>
                                 </div>
                             </form>

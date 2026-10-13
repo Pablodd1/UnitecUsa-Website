@@ -80,6 +80,45 @@ export async function POST(req) {
     let emailSent = false;
     let emailError = null;
 
+    // Forward lead to Escala CRM (if ESCALA_WEBHOOK_URL or ESCALA_API_URL is configured)
+    const escalaWebhook = process.env.ESCALA_WEBHOOK_URL || process.env.ESCALA_API_URL;
+    let escalaSent = false;
+    if (escalaWebhook) {
+      try {
+        const escalaPayload = {
+          contact: {
+            first_name: contactName.split(' ')[0] || contactName,
+            last_name: contactName.split(' ').slice(1).join(' ') || '',
+            email: contactEmail,
+            phone: phone || '',
+            company: companyName || '',
+          },
+          lead: {
+            source: 'Website Contact Form',
+            type,
+            volume: volume || '',
+            details: details || notes || '',
+            reference: leadRef,
+            created_at: new Date().toISOString()
+          }
+        };
+
+        const escalaRes = await fetch(escalaWebhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(escalaPayload)
+        });
+        if (escalaRes.ok) {
+          escalaSent = true;
+          console.log(`[Escala CRM] Lead forwarded successfully: ${leadRef}`);
+        } else {
+          console.warn(`[Escala CRM] Response status: ${escalaRes.status}`);
+        }
+      } catch (escalaErr) {
+        console.error('[Escala CRM Forward Error]', escalaErr);
+      }
+    }
+
     if (process.env.RESEND_API_KEY) {
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
