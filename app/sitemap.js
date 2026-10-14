@@ -1,4 +1,5 @@
 import products from '../static_data/products_full.json';
+import blogs from '../static_data/blogs_es.json';
 
 export default function sitemap() {
   const baseUrl = 'https://unitecusadesign.com';
@@ -10,6 +11,12 @@ export default function sitemap() {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/blog/`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/nosotros/`,
@@ -97,6 +104,13 @@ export default function sitemap() {
     },
   ];
 
+  const blogRoutes = blogs.map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: blog.dateModified ? new Date(blog.dateModified) : now,
+    changeFrequency: 'weekly',
+    priority: 0.85,
+  }));
+
   const collectionRoutes = [
     'colecciones',
     'colecciones/exterior',
@@ -133,5 +147,5 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  return [...coreRoutes, ...collectionRoutes, ...productRoutes];
+  return [...coreRoutes, ...blogRoutes, ...collectionRoutes, ...productRoutes];
 }
