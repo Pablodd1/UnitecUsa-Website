@@ -23,15 +23,23 @@ export default function BlogListingPage() {
     return (
         <main className="w-full bg-gray-50 min-h-screen">
             {/* Hero Section */}
-            <section 
-                className="bg-cover bg-center bg-no-repeat relative py-24 text-white"
-                style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/raster/top.jpg)' }}
-            >
+            <section className="relative py-28 md:py-36 text-white overflow-hidden bg-slate-900">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/raster/blog/lamina-marmol-pvc-restaurante-recepcion-unitec.webp"
+                        alt="Nuestro Blog - Ideas, Tendencias y Consejos sobre Construcción y Diseño UNITEC"
+                        fill
+                        sizes="100vw"
+                        priority
+                        className="object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/65 via-slate-900/55 to-slate-950/75" />
+                </div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <motion.h1 
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl font-bold mb-4 uppercase tracking-wider"
+                        className="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wider drop-shadow-md"
                     >
                         {t.title}
                     </motion.h1>
@@ -39,7 +47,7 @@ export default function BlogListingPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-200 max-w-2xl mx-auto"
+                        className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-xs"
                     >
                         {t.subtitle}
                     </motion.p>

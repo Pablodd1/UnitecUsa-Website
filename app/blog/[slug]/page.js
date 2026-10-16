@@ -127,12 +127,18 @@ export default async function BlogPostPage({ params }) {
             />
 
             {/* Hero Background Banner */}
-            <section
-                className="relative bg-cover bg-center bg-no-repeat py-16 md:py-24 text-white border-b border-gray-200"
-                style={{
-                    backgroundImage: `linear-gradient(rgba(19, 44, 63, 0.78), rgba(19, 44, 63, 0.88)), url(${blog.image})`,
-                }}
-            >
+            <section className="relative py-16 md:py-24 text-white border-b border-gray-200 overflow-hidden bg-slate-900">
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src={blog.image}
+                        alt={blog.imageAlt || blog.title}
+                        fill
+                        sizes="100vw"
+                        priority
+                        className="object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#132c3f]/75 via-[#132c3f]/70 to-[#132c3f]/85" />
+                </div>
                 <div className="container mx-auto px-4 max-w-4xl relative z-10">
                     <Link
                         href="/blog"
