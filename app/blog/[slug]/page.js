@@ -126,88 +126,90 @@ export default async function BlogPostPage({ params }) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
             />
 
-            {/* Header / Back Link */}
-            <div className="bg-gray-50 py-4 border-b border-gray-100">
-                <div className="container mx-auto px-4 max-w-4xl">
+            {/* Hero Background Banner */}
+            <section
+                className="relative bg-cover bg-center bg-no-repeat py-16 md:py-24 text-white border-b border-gray-200"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(19, 44, 63, 0.78), rgba(19, 44, 63, 0.88)), url(${blog.image})`,
+                }}
+            >
+                <div className="container mx-auto px-4 max-w-4xl relative z-10">
                     <Link
                         href="/blog"
-                        className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors text-sm font-semibold"
+                        className="inline-flex items-center gap-2 text-gray-200 hover:text-white transition-colors text-sm font-semibold mb-6"
                     >
                         <ChevronLeft size={18} />
                         Volver al Blog
                     </Link>
-                </div>
-            </div>
 
-            {/* Article Body */}
-            <article className="max-w-4xl mx-auto px-4 pt-10 md:pt-14">
-                {/* Category & Tags */}
-                <div className="mb-8">
                     <div className="flex flex-wrap items-center gap-2 mb-4">
-                        <span className="bg-[#132c3f] text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
+                        <span className="bg-white/15 backdrop-blur-xs text-white border border-white/25 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
                             {blog.category}
                         </span>
                         {blog.promoBadge && (
-                            <span className="bg-emerald-600 text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block">
+                            <span className="bg-emerald-500 text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest inline-block shadow-sm">
                                 {blog.promoBadge}
                             </span>
                         )}
                     </div>
 
                     {/* Single H1 on the Page */}
-                    <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
+                    <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
                         {blog.title}
                     </h1>
 
                     {/* Author & Publication Date */}
-                    <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 pb-6 border-b border-gray-100">
+                    <div className="flex flex-wrap items-center gap-6 text-sm text-gray-200 pt-2">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#132c3f] flex items-center justify-center text-white font-bold">
+                            <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold shadow-md">
                                 {(blog.author || 'U').charAt(0)}
                             </div>
                             <div>
-                                <span className="block font-bold text-gray-900">{blog.author || 'UNITEC USA Design'}</span>
-                                <span className="text-xs text-gray-400">Equipo Editorial & Técnico</span>
+                                <span className="block font-bold text-white">{blog.author || 'UNITEC USA Design'}</span>
+                                <span className="text-xs text-gray-300">Equipo Editorial & Técnico</span>
                             </div>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-600 font-medium">
-                            <Calendar size={16} className="text-emerald-700" />
+                        <div className="flex items-center gap-2 text-gray-200 font-medium">
+                            <Calendar size={16} className="text-emerald-400" />
                             <time dateTime={blog.date}>{blog.date}</time>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                {/* Featured Cover Image (1200x630 proportion) */}
-                <div className="relative aspect-[1200/630] w-full rounded-3xl overflow-hidden mb-10 shadow-xl border border-gray-100">
+            {/* Article Body */}
+            <article className="max-w-4xl mx-auto px-4 pt-10 md:pt-12">
+                {/* Featured Cover Banner (Uncropped 3:2 proportion) */}
+                <div className="relative aspect-[3/2] w-full rounded-3xl overflow-hidden mb-10 shadow-xl border border-gray-100 bg-gray-50">
                     <Image
                         src={blog.image}
                         alt={blog.imageAlt || blog.title}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                         priority
                     />
                 </div>
 
                 {/* Lead Paragraph (Destacado) */}
                 {blog.lead && (
-                    <p className="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed mb-10 pl-5 border-l-4 border-emerald-700 bg-emerald-50/40 py-4 pr-4 rounded-r-2xl">
+                    <p className="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed mb-10 pl-5 border-l-4 border-emerald-700 bg-emerald-50/40 py-5 pr-5 rounded-r-2xl">
                         {blog.lead}
                     </p>
                 )}
 
-                {/* Main Article Content (Server-Rendered HTML with green H2s and bold H3s) */}
+                {/* Main Article Content (Server-Rendered HTML with explicit paragraph spacing, green H2s, bold H3s, and inline figures) */}
                 <div
-                    className="prose prose-lg max-w-none 
-                        prose-headings:font-bold 
-                        prose-h2:text-emerald-800 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:tracking-tight
-                        prose-h3:text-gray-900 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:font-extrabold prose-h3:mt-8 prose-h3:mb-3
-                        prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-5
-                        prose-a:text-emerald-700 prose-a:font-semibold prose-a:underline hover:prose-a:text-emerald-900
-                        prose-strong:text-gray-900 prose-li:text-gray-700"
+                    className="blog-content max-w-none
+                        [&_p]:mb-6 [&_p]:leading-relaxed [&_p]:text-gray-700 [&_p]:text-lg
+                        [&_h2]:text-emerald-800 [&_h2]:text-2xl md:[&_h2]:text-3xl [&_h2]:font-bold [&_h2]:mt-12 [&_h2]:mb-5 [&_h2]:tracking-tight
+                        [&_h3]:text-gray-900 [&_h3]:text-xl md:[&_h3]:text-2xl [&_h3]:font-extrabold [&_h3]:mt-8 [&_h3]:mb-3
+                        [&_a]:text-emerald-700 [&_a]:font-semibold [&_a]:underline hover:[&_a]:text-emerald-900
+                        [&_strong]:text-gray-900 [&_li]:text-gray-700 [&_li]:mb-2
+                        [&_figure]:my-9 [&_figure]:rounded-2xl [&_figure]:overflow-hidden [&_figure]:border [&_figure]:border-gray-200 [&_figure]:shadow-md"
                     dangerouslySetInnerHTML={{ __html: blog.content }}
                 />
 
-                {/* Project / Showroom Image Gallery (if provided) */}
+                {/* Project / Showroom Image Gallery (if provided and not already inline) */}
                 {blog.gallery && blog.gallery.length > 0 && (
                     <section className="my-12">
                         <h2 className="text-2xl md:text-3xl font-bold text-emerald-800 mb-6 tracking-tight">
@@ -216,7 +218,7 @@ export default async function BlogPostPage({ params }) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {blog.gallery.map((item, idx) => (
                                 <figure key={idx} className="group rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 shadow-sm hover:shadow-md transition-all">
-                                    <div className="relative h-64 w-full overflow-hidden">
+                                    <div className="relative aspect-[3/2] w-full overflow-hidden">
                                         <Image
                                             src={item.src}
                                             alt={item.alt}

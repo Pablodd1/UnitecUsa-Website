@@ -109,12 +109,12 @@ export default function BlogListingPage() {
                             transition={{ delay: index * 0.1 }}
                             className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col h-full"
                         >
-                            <Link href={`/blog/${blog.slug}`} className="relative h-56 w-full block overflow-hidden group">
+                            <Link href={`/blog/${blog.slug}`} className="relative aspect-[3/2] w-full block overflow-hidden group">
                                 <Image 
                                     src={blog.image} 
                                     alt={blog.imageAlt || blog.title}
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                                     <span className="bg-[#132c3f] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm">
