@@ -1,515 +1,435 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import {
-    Phone,
-    Mail,
-    MapPin,
-    Boxes,
-    Clock,
-    Truck,
-    ShieldCheck,
-    Container,
-    Send,
-    Calendar,
-    MessageCircle,
-    Facebook,
-    Instagram,
-    ChevronDown,
-    ChevronUp,
-    User,
-    Users,
-    CheckCircle2,
-    AlertCircle,
-    Loader2
-} from "lucide-react"
-import Stylish_H2 from "My_UI/stylish_h2"
-import Map from "./map";
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, Globe } from "lucide-react";
+import Link from "next/link";
 import { useLanguage } from "lib/LanguageContext";
-import { useBrand } from 'lib/BrandContext';
-import teamData from 'static_data/team.json';
-
-const TikTokIcon = ({ className }) => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-    </svg>
-);
-
-import SeoHead from "components/SeoHead"
-
-const contactMetadata = {
-    title: "Contacto | UNITEC USA Design",
-    description: "Ponte en contacto con nuestro equipo de UNITEC USA para consultas, soporte o para agendar una reunión sobre sus proyectos."
-};
+import siteSettings, { getMiamiAddressFormatted, getWhatsAppUrl, getTelUrl, getMailtoUrl } from "lib/siteSettings";
 
 export default function ContactPage() {
-    const { t, language: lang, getCompanyText } = useLanguage();
-    const { activeBrand, brand } = useBrand();
-    const isSpanish = lang === 'es';
-    const companyKey = activeBrand === 'unitec' ? 'unitec' : 'binw';
-    
-    const contactHeroTitle = getCompanyText(companyKey, 'contact.title');
-    const contactHeroSubtitle = getCompanyText(companyKey, 'contact.subtitle');
-    const contactHeroDescription = getCompanyText(companyKey, 'contact.description');
-    
-    const brandData = teamData[activeBrand] || teamData.binw;
-    const team = brandData.team || [];
-    const contact = brandData.contact || {};
-    const social = teamData.social || {};
+    const { t, language } = useLanguage();
+    const isSpanish = language === "es";
 
-    const [showScheduler, setShowScheduler] = useState(false);
-    const [expandedFAQ, setExpandedFAQ] = useState(null);
-    const [meetingData, setMeetingData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        time: '',
-        notes: ''
-    });
-    const [quoteData, setQuoteData] = useState({
-        fullName: '',
-        companyName: '',
-        email: '',
-        phone: '',
-        volume: '',
-        details: ''
+    const miamiAddress = getMiamiAddressFormatted();
+    const medellinAddress = siteSettings.medellin_showroom_address;
+    const whatsappHref = getWhatsAppUrl();
+    const telHref = getTelUrl();
+    const mailtoHref = getMailtoUrl();
+
+    const [formData, setFormData] = useState({
+        fullName: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        volume: "",
+        details: ""
     });
 
-    const faqs = [
-        {
-            q: 'What are your shipping times?',
-            q_es: '¿Cuáles son los tiempos de envío?',
-            a: 'Standard shipping takes 15-25 business days for international orders. Express options available upon request.',
-            a_es: 'El envío estándar toma 15-25 días hábiles para pedidos internacionales. Opciones exprés disponibles bajo solicitud.'
-        },
-        {
-            q: 'Do you offer samples?',
-            q_es: '¿Ofrecen muestras?',
-            a: 'Yes! Contact our team to request product samples for your project evaluation. We provide samples for qualified projects.',
-            a_es: '¡Sí! Contacta a nuestro equipo para solicitar muestras de productos para evaluación de tu proyecto.'
-        },
-        {
-            q: 'What is the minimum order?',
-            q_es: '¿Cuál es el pedido mínimo?',
-            a: 'Our minimum order is one full container (20ft or 40ft). We offer volume discounts for larger orders.',
-            a_es: 'Nuestro pedido mínimo es un contenedor completo (20ft o 40ft). Ofrecemos descuentos por volumen.'
-        },
-        {
-            q: 'Do you provide installation?',
-            q_es: '¿Brindan instalación?',
-            a: 'We work with certified installers across the US. Contact us for recommendations in your area.',
-            a_es: 'Trabajamos con instaladores certificados en EE.UU. Contáctanos para recomendaciones en tu área.'
-        }
-    ];
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const [quoteStatus, setQuoteStatus] = useState({ state: 'idle', message: '' });
-    const [meetingStatus, setMeetingStatus] = useState({ state: 'idle', message: '' });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-    const trackMetaLead = (leadData = {}) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setErrorMessage("");
+
         try {
-            if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-                window.fbq('track', 'Lead', {
-                    content_name: leadData.type || 'quote_inquiry',
-                    currency: 'USD',
-                    value: 0.00
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || (isSpanish ? "Error al enviar el formulario." : "Error submitting the form."));
+            }
+
+            if (typeof window !== "undefined" && typeof window.fbq === "function") {
+                window.fbq("track", "Lead", {
+                    content_name: "Contact Form Submission",
+                    content_category: "Lead Generation",
+                    value: formData.volume || "Standard",
+                    currency: "USD"
                 });
-                console.log('[Meta Pixel] Lead event tracked successfully');
-            }
-        } catch (err) {
-            console.warn('[Meta Pixel] Error tracking Lead event:', err);
-        }
-    };
-
-    const handleMeetingSubmit = async (e) => {
-        e.preventDefault();
-        setMeetingStatus({ state: 'submitting', message: '' });
-
-        try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'meeting',
-                    fullName: meetingData.name,
-                    email: meetingData.email,
-                    phone: meetingData.phone,
-                    date: meetingData.date,
-                    time: meetingData.time,
-                    notes: meetingData.notes
-                })
-            });
-
-            const data = await res.json().catch(() => ({}));
-
-            if (!res.ok) {
-                throw new Error(data.error || 'Failed to submit');
             }
 
-            trackMetaLead({ type: 'meeting_request' });
-
-            setMeetingStatus({
-                state: 'success',
-                message: isSpanish 
-                    ? '¡Solicitud enviada con éxito! Nuestro equipo se pondrá en contacto para confirmar su cita.' 
-                    : 'Request sent successfully! Our team will contact you shortly to confirm your meeting.'
-            });
-
-            setMeetingData({
-                name: '',
-                email: '',
-                phone: '',
-                date: '',
-                time: '',
-                notes: ''
+            setSubmitted(true);
+            setFormData({
+                fullName: "",
+                companyName: "",
+                email: "",
+                phone: "",
+                volume: "",
+                details: ""
             });
         } catch (err) {
-            console.error('Meeting submission error:', err);
-            setMeetingStatus({
-                state: 'error',
-                message: isSpanish 
-                    ? 'Hubo un inconveniente al enviar su solicitud. Por favor verifique sus datos o contáctenos por WhatsApp.' 
-                    : 'There was an issue submitting your request. Please check your information or reach us via WhatsApp.'
-            });
-        }
-    };
-
-    const handleQuoteSubmit = async (e) => {
-        e.preventDefault();
-        setQuoteStatus({ state: 'submitting', message: '' });
-
-        try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    type: 'quote',
-                    fullName: quoteData.fullName,
-                    companyName: quoteData.companyName,
-                    email: quoteData.email,
-                    phone: quoteData.phone,
-                    volume: quoteData.volume,
-                    details: quoteData.details
-                })
-            });
-
-            const data = await res.json().catch(() => ({}));
-
-            if (!res.ok) {
-                throw new Error(data.error || 'Failed to submit quote inquiry');
-            }
-
-            // Track Meta Pixel Lead Conversion
-            trackMetaLead({ type: 'quote_inquiry' });
-
-            setQuoteStatus({
-                state: 'success',
-                message: isSpanish 
-                    ? '¡Mensaje recibido con éxito! Nuestro equipo de ingeniería comercial revisará su requerimiento y le responderá a la brevedad.' 
-                    : 'Message received successfully! Our commercial engineering team will review your requirements and respond shortly.'
-            });
-
-            // Reset form fields
-            setQuoteData({
-                fullName: '',
-                companyName: '',
-                email: '',
-                phone: '',
-                volume: '',
-                details: ''
-            });
-        } catch (err) {
-            console.error('Quote submission error:', err);
-            setQuoteStatus({
-                state: 'error',
-                message: isSpanish 
-                    ? 'No fue posible procesar el envío en este momento. Por favor inténtelo nuevamente o comuníquese a nuestro WhatsApp.' 
-                    : 'We were unable to process your inquiry. Please try again or reach out directly via WhatsApp.'
-            });
+            setErrorMessage(
+                err.message || (isSpanish ? "Hubo un problema al procesar su solicitud. Por favor, intente nuevamente." : "There was an issue processing your request. Please try again.")
+            );
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <>
-            <SeoHead 
-                title={contactMetadata.title} 
-                description={contactMetadata.description}
-                canonical="https://unitecusadesign.com/contacto/"
-            />
-            <main className="w-full">
-            {/* ================= HERO ================= */}
-            <section className="relative overflow-hidden py-20 text-white min-h-fit">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0">
+        <main className="w-full">
+            {/* Hero Section */}
+            <section className="relative h-[50vh] min-h-[350px] w-full flex items-center justify-center overflow-hidden bg-slate-900">
+                <div className="absolute inset-0 opacity-30">
                     <Image
-                        src="/raster/Representation.png"
-                        alt="Unitec USA Design Support Team and Logistics Representation"
+                        src="/raster/exterior.webp"
+                        alt={isSpanish ? `Contacto ${siteSettings.brand_name}` : `Contact ${siteSettings.brand_name}`}
                         fill
-                        className="object-cover object-center w-full h-full"
+                        className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-black/70"></div>
                 </div>
-
-                <div className="mx-auto max-w-6xl px-4 relative z-10">
+                <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-semibold tracking-wider uppercase mb-4"
+                    >
+                        {t("contact.badge")}
+                    </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="max-w-3xl text-2xl sm:text-3xl font-bold leading-tight md:text-4xl"
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
                     >
-                        {contactHeroTitle}
-                        <span className="text-gray-300"> {contactHeroSubtitle}</span>
+                        {t("contact.title")}
                     </motion.h1>
-
-                    <p className="my-4 max-w-2xl text-sm text-gray-300">
-                        {contactHeroDescription}
-                    </p>
-
-                    {/* Trust signals */}
-                    <div className="my-8 grid gap-4 grid-cols-2 md:grid-cols-4">
-                        <TrustItem icon={Container} label={t('contact.hero.bulkOrders')} value={t('contact.hero.containerBased')} />
-                        <TrustItem icon={Truck} label={t('contact.hero.logistics')} value={t('contact.hero.optimizedPacking')} />
-                        <TrustItem icon={Clock} label={t('contact.hero.responseTime')} value={t('contact.hero.within24h')} />
-                        <TrustItem icon={ShieldCheck} label={t('contact.hero.handling')} value={t('contact.hero.secureTracked')} />
-                    </div>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light"
+                    >
+                        {t("contact.subtitle")}
+                    </motion.p>
                 </div>
             </section>
 
-            {/* ================= MAP ================= */}
-            <Map />
-
-            {/* ================= QUICK CONTACT ================= */}
-            <section className="py-12 md:py-16">
+            {/* Contact Form & Info */}
+            <section className="py-20 bg-white">
                 <div className="mx-auto max-w-6xl px-4">
-                    <div className="flex justify-center items-center gap-4">
-                        <motion.a
-                            href="https://wa.me/573142332147"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.02 }}
-                            className="flex items-center gap-4 p-4 px-8 rounded-xl bg-green-500 text-white shadow-lg hover:shadow-xl transition-shadow w-full md:w-auto min-w-[300px] justify-center"
-                        >
-                            <MessageCircle size={32} fill="white" />
-                            <div>
-                                <p className="font-bold text-lg">WhatsApp</p>
-                                <p className="text-sm opacity-90">+57 314 233 2147</p>
-                            </div>
-                        </motion.a>
-                    </div>
-                </div>
-            </section>
-
-            {/* ================= CONTACT CONTENT ================= */}
-            <section className="py-12 md:py-20 bg-gray-50">
-                <div className="mx-auto grid max-w-6xl gap-8 md:gap-12 px-4 lg:grid-cols-5">
-                    <Stylish_H2 h2={t('contact.talkTeam')} className="col-span-full tracking-widest uppercase text-xs md:text-sm lg:text-lg" />
-
-                    {/* RIGHT FORM */}
-                    <div className="lg:col-span-5 max-w-2xl mx-auto w-full">
-                        <div className="rounded-2xl border bg-white p-6 shadow-sm">
-                            <h3 className="text-lg font-bold">
-                                {t('contact.requestQuote')}
-                            </h3>
-
-                            <p className="mt-1 text-sm text-gray-500">
-                                {t('contact.provideDetails')}
+                    <div className="grid md:grid-cols-2 gap-12">
+                        {/* Contact Form */}
+                        <div>
+                            <h2 className="text-3xl font-bold mb-6">{t("contact.form.title")}</h2>
+                            <p className="text-gray-600 mb-8">
+                                {t("contact.form.subtitle")}
                             </p>
 
-                            <form onSubmit={handleQuoteSubmit} className="mt-6 grid gap-4 sm:grid-cols-2">
-                                <Input 
-                                    label={isSpanish ? "Nombre Completo" : t('contact.fullName')} 
-                                    placeholder="Nombre y Apellido"
-                                    value={quoteData.fullName}
-                                    onChange={(e) => setQuoteData({ ...quoteData, fullName: e.target.value })}
-                                    required 
-                                />
-                                <Input 
-                                    label={isSpanish ? "Nombre de la Empresa" : t('contact.companyName')} 
-                                    placeholder="Su Empresa S.A.S."
-                                    value={quoteData.companyName}
-                                    onChange={(e) => setQuoteData({ ...quoteData, companyName: e.target.value })}
-                                />
-                                <Input 
-                                    label={isSpanish ? "Correo Electrónico" : t('contact.email')} 
-                                    type="email"
-                                    placeholder="su-nombre@ejemplo.com"
-                                    value={quoteData.email}
-                                    onChange={(e) => setQuoteData({ ...quoteData, email: e.target.value })}
-                                    required
-                                />
-                                <Input 
-                                    label={isSpanish ? "Teléfono" : t('contact.phone')} 
-                                    placeholder="+57 300 000 0000"
-                                    value={quoteData.phone}
-                                    onChange={(e) => setQuoteData({ ...quoteData, phone: e.target.value })}
-                                />
-
-                                <div className="sm:col-span-2">
-                                    <Input
-                                        label={isSpanish ? "Volumen / Contenedores Estimados" : t('contact.estimatedVolume')}
-                                        placeholder="e.j. 1x contenedor de 40 pies"
-                                        value={quoteData.volume}
-                                        onChange={(e) => setQuoteData({ ...quoteData, volume: e.target.value })}
-                                    />
-                                </div>
-
-                                <div className="sm:col-span-2">
-                                    <Textarea
-                                        label={isSpanish ? "Detalles del Proyecto" : t('contact.projectDetails')}
-                                        placeholder="Describa tipos de productos, cantidades, destino y cronograma..."
-                                        value={quoteData.details}
-                                        onChange={(e) => setQuoteData({ ...quoteData, details: e.target.value })}
-                                    />
-                                </div>
-
-                                {quoteStatus.state === 'success' && (
-                                    <div className="sm:col-span-2 flex items-start gap-3 p-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-sm">
-                                        <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                                        <div>
-                                            <p className="font-bold">{isSpanish ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!'}</p>
-                                            <p className="mt-0.5 text-xs text-green-700">{quoteStatus.message}</p>
-                                        </div>
+                            {submitted ? (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center shadow-sm"
+                                >
+                                    <div className="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                                        <Send className="w-8 h-8" />
                                     </div>
-                                )}
-
-                                {quoteStatus.state === 'error' && (
-                                    <div className="sm:col-span-2 flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">
-                                        <AlertCircle className="h-5 w-5 text-red-600 shrink-0 mt-0.5" />
-                                        <div>
-                                            <p className="font-bold">{isSpanish ? 'Error al enviar' : 'Submission Error'}</p>
-                                            <p className="mt-0.5 text-xs text-red-700">{quoteStatus.message}</p>
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="sm:col-span-2">
+                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                                        {isSpanish ? "¡Mensaje enviado con éxito!" : "Message sent successfully!"}
+                                    </h3>
+                                    <p className="text-slate-600 mb-6 leading-relaxed">
+                                        {t("contact.form.success") || (isSpanish
+                                            ? "Gracias por contactarnos. Hemos recibido tu información correctamente y uno de nuestros asesores se comunicará contigo muy pronto."
+                                            : "Thank you for contacting us. We have received your information and an advisor will reach out to you shortly.")}
+                                    </p>
                                     <button
-                                        type="submit" 
-                                        aria-label="Submit Form"
-                                        disabled={quoteStatus.state === 'submitting'}
-                                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-900 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                                        type="button"
+                                        onClick={() => setSubmitted(false)}
+                                        className="px-6 py-2.5 bg-slate-900 hover:bg-primary text-white text-sm font-semibold rounded-lg transition-colors cursor-pointer"
                                     >
-                                        {quoteStatus.state === 'submitting' ? (
-                                            <>
-                                                <Loader2 size={16} className="animate-spin" />
-                                                {isSpanish ? "Procesando envío..." : "Sending..."}
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Send size={16} />
-                                                {isSpanish ? "Enviar Consulta" : t('contact.sendInquiry')}
-                                            </>
-                                        )}
+                                        {isSpanish ? "Enviar otro mensaje" : "Send another message"}
                                     </button>
-                                </div>
-                            </form>
+                                </motion.div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    {errorMessage && (
+                                        <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                                            {errorMessage}
+                                        </div>
+                                    )}
 
-                            <p className="mt-4 text-xs text-gray-500">
-                                {isSpanish ? "Nuestro equipo generalmente responde dentro de 24 horas hábiles." : t('contact.responseTimeText')}
+                                    <div>
+                                        <label htmlFor="contact-fullName" className="block text-sm font-semibold text-gray-700 mb-2">
+                                            {t("contact.form.fullName")} *
+                                        </label>
+                                        <input
+                                            id="contact-fullName"
+                                            type="text"
+                                            name="fullName"
+                                            value={formData.fullName}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                            placeholder={t("contact.form.placeholders.name")}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="contact-companyName" className="block text-sm font-semibold text-gray-700 mb-2">
+                                            {t("contact.form.companyName")}
+                                        </label>
+                                        <input
+                                            id="contact-companyName"
+                                            type="text"
+                                            name="companyName"
+                                            value={formData.companyName}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                            placeholder={t("contact.form.placeholders.company")}
+                                        />
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label htmlFor="contact-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                                                {t("contact.form.email")} *
+                                            </label>
+                                            <input
+                                                id="contact-email"
+                                                type="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
+                                                required
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                                placeholder={t("contact.form.placeholders.email")}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="contact-phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                                                {t("contact.form.phone")} *
+                                            </label>
+                                            <input
+                                                id="contact-phone"
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                required
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                                placeholder={t("contact.form.placeholders.phone")}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="contact-volume" className="block text-sm font-semibold text-gray-700 mb-2">
+                                            {t("contact.form.volume")}
+                                        </label>
+                                        <select
+                                            id="contact-volume"
+                                            name="volume"
+                                            value={formData.volume}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition bg-white"
+                                        >
+                                            <option value="">{t("contact.form.volumeOptions.select")}</option>
+                                            <option value="20ft">{t("contact.form.volumeOptions.c20")}</option>
+                                            <option value="40ft">{t("contact.form.volumeOptions.c40")}</option>
+                                            <option value="multiple">{t("contact.form.volumeOptions.multiple")}</option>
+                                            <option value="unsure">{t("contact.form.volumeOptions.unsure")}</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="contact-details" className="block text-sm font-semibold text-gray-700 mb-2">
+                                            {t("contact.form.details")} *
+                                        </label>
+                                        <textarea
+                                            id="contact-details"
+                                            rows={5}
+                                            name="details"
+                                            value={formData.details}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"
+                                            placeholder={t("contact.form.placeholders.details")}
+                                        />
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full bg-black text-white py-4 px-6 rounded-lg font-semibold hover:bg-primary transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                                    >
+                                        <Send className="w-5 h-5" />
+                                        {loading
+                                            ? (isSpanish ? "Enviando..." : "Sending...")
+                                            : t("contact.form.submit")}
+                                    </button>
+                                </form>
+                            )}
+                        </div>
+
+                        {/* Contact Info (Single Source of Truth from site_settings.json) */}
+                        <div>
+                            <h2 className="text-3xl font-bold mb-6">{t("contact.info.title")}</h2>
+                            <p className="text-gray-600 mb-8">
+                                {t("contact.info.subtitle")}
                             </p>
+
+                            <div className="space-y-6">
+                                {/* WhatsApp Direct */}
+                                {siteSettings.primary_whatsapp && (
+                                    <div className="flex items-start gap-4 p-6 bg-green-50 border border-green-100 rounded-xl">
+                                        <div className="w-12 h-12 bg-[#25D366] text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <MessageCircle className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-bold text-gray-900 mb-1">WhatsApp</h3>
+                                            <a
+                                                href={whatsappHref}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-800 hover:text-primary font-semibold transition-colors"
+                                            >
+                                                {siteSettings.primary_phone}
+                                            </a>
+                                            <p className="text-sm text-gray-500 mt-1">
+                                                {isSpanish ? "Atención inmediata para cotizaciones y contenedores" : "Immediate assistance for quotes and containers"}
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Phone */}
+                                {siteSettings.primary_phone && (
+                                    <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+                                        <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <Phone className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-bold text-gray-900 mb-1">{t("contact.info.phone.title")}</h3>
+                                            <a href={telHref} className="text-gray-600 hover:text-primary transition-colors">
+                                                {siteSettings.primary_phone}
+                                            </a>
+                                            <p className="text-sm text-gray-500 mt-1">{t("contact.info.phone.hours")}</p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Email */}
+                                {siteSettings.public_email && (
+                                    <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+                                        <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <Mail className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-bold text-gray-900 mb-1">{t("contact.info.email.title")}</h3>
+                                            <a href={mailtoHref} className="text-gray-600 hover:text-primary transition-colors break-all">
+                                                {siteSettings.public_email}
+                                            </a>
+                                            <p className="text-sm text-gray-500 mt-1">{t("contact.info.email.note")}</p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Office & Showroom Locations */}
+                                <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+                                    <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <div>
+                                            <h3 className="font-bold text-gray-900 mb-0.5">
+                                                {isSpanish ? "Sede Estados Unidos (Miami)" : "United States Headquarters (Miami)"}
+                                            </h3>
+                                            <p className="text-gray-600 text-sm">{miamiAddress}</p>
+                                        </div>
+                                        {medellinAddress && (
+                                            <div className="pt-2 border-t border-gray-200">
+                                                <h3 className="font-bold text-gray-900 mb-0.5">
+                                                    {isSpanish ? "Showroom Medellín, Colombia" : "Medellín Showroom, Colombia"}
+                                                </h3>
+                                                <p className="text-gray-600 text-sm">{medellinAddress}</p>
+                                            </div>
+                                        )}
+                                        {(siteSettings.nit || siteSettings.us_ein) && (
+                                            <div className="pt-2 border-t border-gray-200 text-xs text-gray-500">
+                                                {siteSettings.nit && <p>NIT: {siteSettings.nit}</p>}
+                                                {siteSettings.us_ein && <p>US EIN: {siteSettings.us_ein}</p>}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Business Hours */}
+                                <div className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+                                    <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <Clock className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-gray-900 mb-1">{t("contact.info.hours.title")}</h3>
+                                        <p className="text-gray-600">
+                                            {t("contact.info.hours.weekdays")}<br />
+                                            {t("contact.info.hours.saturday")}<br />
+                                            {t("contact.info.hours.sunday")}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Quick Response Box */}
+                            <div className="mt-8 p-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-xl">
+                                <h3 className="font-bold text-lg mb-2">{t("contact.info.fastTrack.title")}</h3>
+                                <p className="text-gray-300 text-sm mb-4">
+                                    {t("contact.info.fastTrack.desc")}
+                                </p>
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <a
+                                        href={telHref}
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-primary transition-colors"
+                                    >
+                                        <Phone className="w-4 h-4" />
+                                        {t("contact.info.fastTrack.action")}
+                                    </a>
+                                    <Link
+                                        href="/paises"
+                                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors"
+                                    >
+                                        <Globe className="w-4 h-4" />
+                                        {isSpanish ? "Ver países atendidos" : "View countries served"}
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ================= FAQ SECTION ================= */}
-            <section className="py-12 md:py-16">
-                <div className="mx-auto max-w-4xl px-4">
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                        {isSpanish ? 'Preguntas Frecuentes' : 'Frequently Asked Questions'}
-                    </h2>
-
-                    <div className="space-y-3">
-                        {faqs.map((faq, idx) => (
-                            <div key={idx} className="border rounded-xl overflow-hidden">
-                                <button
-                                    onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
-                                    className="w-full flex items-center justify-between p-4 bg-white hover:bg-gray-50 transition-colors text-left"
-                                >
-                                    <span className="font-medium text-gray-900">
-                                        {isSpanish ? faq.q_es : faq.q}
-                                    </span>
-                                    {expandedFAQ === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                                </button>
-                                <AnimatePresence>
-                                    {expandedFAQ === idx && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            className="bg-gray-50 px-4 pb-4"
-                                        >
-                                            <p className="text-sm text-gray-600">
-                                                {isSpanish ? faq.a_es : faq.a}
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        ))}
-                    </div>
+            {/* FAQ Preview */}
+            <section className="py-16 bg-gray-50">
+                <div className="mx-auto max-w-4xl px-4 text-center">
+                    <h2 className="text-2xl font-bold mb-4">{t("contact.faqPreview.title")}</h2>
+                    <p className="text-gray-600 mb-6">
+                        {t("contact.faqPreview.desc")}
+                    </p>
+                    <Link
+                        href="/preguntas-frecuentes"
+                        className="inline-block px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-primary transition-all"
+                    >
+                        {t("contact.faqPreview.button")}
+                    </Link>
                 </div>
             </section>
         </main>
-        </>
-    )
+    );
 }
-
-/* ================= SUB COMPONENTS ================= */
-
-function TrustItem({ icon: Icon, label, value }) {
-    return (
-        <div className="rounded-xl bg-white/5 p-3 md:p-4 text-center">
-            <Icon strokeWidth={0.5} className="mx-auto mb-3 md:mb-5 h-10 md:h-18 w-auto text-gray-300" />
-            <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
-            <p className="text-xs md:text-sm font-thin tracking-widest uppercase my-2">{value}</p>
-        </div>
-    )
-}
-
-function InfoCard({ icon: Icon, title, value, hint }) {
-    return (
-        <div className="flex items-start gap-4 rounded-xl border p-4 break-anywhere">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
-                <Icon size={18} />
-            </div>
-            <div>
-                <p className="text-sm font-semibold">{title}</p>
-                <p className="text-sm">{value}</p>
-                <p className="text-xs text-gray-500">{hint}</p>
-            </div>
-        </div>
-    )
-}
-
-function Input({ label, ...props }) {
-    return (
-        <div>
-            <label className="mb-1 block text-xs font-medium text-gray-600">
-                {label}
-            </label>
-            <input
-                {...props}
-                className="w-full rounded-lg border px-3 py-2 text-sm outline-none transition focus:border-black"
-            />
-        </div>
-    )
-}
-
-function Textarea({ label, ...props }) {
-    return (
-        <div>
-            <label className="mb-1 block text-xs font-medium text-gray-600">
-                {label}
-            </label>
-            <textarea
-                {...props}
-                rows={4}
-                className="w-full rounded-lg border px-3 py-2 text-sm outline-none transition focus:border-black"
-            />
-        </div>
-    )
-}
-

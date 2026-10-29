@@ -1,16 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import styles from "./herosection.module.css";
 import MyButton from "My_UI/btn/main";
 import { Instagram, Linkedin, Youtube } from "lucide-react";
 import { useLanguage } from "lib/LanguageContext";
 import { useBrand } from "lib/BrandContext";
-import SearchForm from "components/navbar/search";
+import { siteSettings, getWhatsAppUrl } from "lib/siteSettings";
 
-// TikTok icon component since lucide-react doesn't have it
 const TikTokIcon = ({ className }) => (
     <svg 
         viewBox="0 0 24 24" 
@@ -28,32 +25,32 @@ const WhatsAppIcon = ({ className }) => (
     </svg>
 );
 
+const whatsappLink = getWhatsAppUrl();
+
 const socials = [
-    { Icon: WhatsAppIcon, label: "WhatsApp", link: "https://wa.me/13054233147" },
-    { Icon: Instagram, label: "Instagram", link: "https://www.instagram.com/unitecusadesign/" },
-    { Icon: Linkedin, label: "LinkedIn", link: "https://www.linkedin.com/" },
-    { Icon: Youtube, label: "YouTube", link: "https://www.youtube.com/" },
-    { Icon: TikTokIcon, label: "TikTok", link: "https://www.tiktok.com/@unitecusadesign" },
+    { Icon: WhatsAppIcon, label: "WhatsApp", link: whatsappLink },
+    { Icon: Instagram, label: "Instagram", link: siteSettings.social?.instagram || "https://www.instagram.com/unitecusadesign/" },
+    { Icon: Linkedin, label: "LinkedIn", link: siteSettings.social?.linkedin || "https://www.linkedin.com/" },
+    { Icon: Youtube, label: "YouTube", link: siteSettings.social?.youtube || "https://www.youtube.com/" },
+    { Icon: TikTokIcon, label: "TikTok", link: siteSettings.social?.tiktok || "https://www.tiktok.com/@unitecusadesign" },
 ];
 
 export default function HeroSec() {
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [, setIsVideoLoaded] = useState(false);
     useEffect(() => {
         setIsVideoLoaded(true);
     }, []);
 
-
-    const { t, getCompanyText } = useLanguage();
+    const { getCompanyText, language } = useLanguage();
     const { activeBrand } = useBrand();
 
     const companyKey = activeBrand === 'unitec' ? 'unitec' : 'binw';
     const heroTitle = getCompanyText(companyKey, 'heroTitle');
     const heroSubtitle = getCompanyText(companyKey, 'heroSubtitle');
     const heroCta = getCompanyText(companyKey, 'heroCta');
-    const heroCta2 = getCompanyText(companyKey, 'heroCta2');
-    const whatsappLink = activeBrand === 'unitec' ? "https://wa.me/573142332147" : "https://wa.me/13054233147";
-
-
+    const secondaryLabel = language === 'en'
+        ? "TALK TO AN ADVISOR & QUOTE YOUR PROJECT"
+        : "HABLE Y COTICE SUS PROYECTOS CON UN ASESOR";
 
     return (
         <main className="overflow-hidden min-h-screen relative">
@@ -68,7 +65,6 @@ export default function HeroSec() {
                 >
                     <source src="/videos/hero-video.mp4" type="video/mp4" />
                 </video>
-                {/* Overlay to ensure text readability */}
                 <div className="absolute inset-0 bg-black/40 z-10"></div>
             </div>
 
@@ -97,14 +93,14 @@ export default function HeroSec() {
                             {heroTitle}
                         </motion.h1>
 
-                        <motion.h3
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                             className="text-sm sm:text-base font-normal text-white/90 w-full md:w-8/12 drop-shadow-md"
                         >
                             {heroSubtitle}
-                        </motion.h3>
+                        </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -120,7 +116,7 @@ export default function HeroSec() {
                                 }}
                             />
                             <MyButton
-                                label="HABLE Y COTICE SUS PROYECTOS CON UN ASESOR"
+                                label={secondaryLabel}
                                 href={whatsappLink}
                                 className={{
                                     btn: "bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2.5 h-12 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-sm md:text-base shadow-lg",
@@ -160,4 +156,3 @@ export default function HeroSec() {
         </main>
     );
 }
-

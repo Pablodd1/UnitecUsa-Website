@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "WPC Panels & Angles | PANELES WPC | Composite Materials | Unitec USA Design",
+        title: "WPC Panels & Angles | PANELES WPC | Composite Materials",
         description: "Premium WPC (Wood Plastic Composite) panels and angles for interior applications. Eco-friendly, durable, and beautiful wood-like finishes.",
     };
 }

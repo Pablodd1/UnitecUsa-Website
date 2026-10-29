@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Uniflex Walls | PAREDES UNIFLEX | Unitec USA Design",
+        title: "Uniflex Walls | PAREDES UNIFLEX",
         description: "Flexible and modern wall cladding solutions for diverse architectural needs.",
     };
 }

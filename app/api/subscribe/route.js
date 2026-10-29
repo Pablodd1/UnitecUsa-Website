@@ -1,9 +1,9 @@
 import { Resend } from 'resend';
+import { siteSettings } from 'lib/siteSettings';
 
 export async function POST(request) {
     const resend = new Resend(process.env.RESEND_API_KEY || 'no-key-provided');
     try {
-
         const { email, brand } = await request.json();
 
         if (!email) {
@@ -13,12 +13,11 @@ export async function POST(request) {
             });
         }
 
-        // Send email notification of new subscriber
         const { data, error } = await resend.emails.send({
             from: 'UnitecUsa Subscriptions <onboarding@resend.dev>',
-            to: ['lidermercadeo@espaciosimportados.com.co'],
+            to: [siteSettings.public_email],
             subject: `New Subscriber: ${email}`,
-            html: `<p>New subscriber for <strong>${brand}</strong>: ${email}</p>`,
+            html: `<p>New subscriber for <strong>${brand || siteSettings.brand_name}</strong>: ${email}</p>`,
         });
 
         if (error) {

@@ -85,9 +85,9 @@ export default function WhoItsFor() {
                                     <u.icon className="w-6 h-6" />
                                 </motion.div>
                                 <div className="flex flex-col gap-1.5">
-                                    <h2 className="font-extrabold text-lg text-slate-900 leading-tight">
+                                    <h3 className="font-extrabold text-lg text-slate-900 leading-tight">
                                         {u.title}
-                                    </h2>
+                                    </h3>
                                     <p className="text-sm text-gray-600 leading-relaxed font-normal">
                                         {u.desc}
                                     </p>

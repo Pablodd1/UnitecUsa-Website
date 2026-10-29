@@ -4,7 +4,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "PVC Wall Panels | PAREDES | Interior Wall Solutions | Unitec USA Design",
+        title: "PVC Wall Panels | PAREDES | Interior Wall Solutions",
         description: "Premium PVC wall panels for interior walls. Waterproof, antimicrobial, and easy to install. Perfect for residential and commercial spaces.",
     };
 }

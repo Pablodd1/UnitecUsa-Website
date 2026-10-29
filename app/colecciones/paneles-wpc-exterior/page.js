@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Outdoor WPC Panels | PANELES WPC EXTERIOR | Unitec USA Design",
+        title: "Outdoor WPC Panels | PANELES WPC EXTERIOR",
         description: "Premium durable outdoor WPC panels for architectural projects and exterior cladding.",
     };
 }

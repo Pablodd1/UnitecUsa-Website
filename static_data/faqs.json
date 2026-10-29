@@ -3,7 +3,7 @@
         {
             "id": 1,
             "question": "How do I place an order?",
-            "answer": "Contact our sales team directly:\n\n• Distribution Sales Manager: Johana Mesa at +1 (786) 968-5783\n• Sales Representatives: Antonio Borjas +1 (786) 546-9051\n• Southwest Florida: Marlon Moncada +1 (239) 878-9299\n• International Orders: Alexander Gomez Zapata +57 311 3017763\n\nWe offer flexible payment terms including FOB and CIF. Our team will guide you through the process and provide personalized quotes based on your volume requirements."
+            "answer": "Contact our {{BRAND_NAME}} sales and commercial engineering team directly:\n\n• Main Line & WhatsApp: {{PRIMARY_PHONE}}\n• Corporate Email: {{PUBLIC_EMAIL}}\n\nWe offer flexible B2B trade terms including FOB (origin ports in China) and CIF (destination ports in Latin America and the Caribbean), as well as direct dispatch from Miami and Medellín. Our team will guide you through container consolidation and provide personalized quotes based on your volume requirements."
         },
         {
             "id": 2,
@@ -13,12 +13,12 @@
         {
             "id": 3,
             "question": "Do you ship internationally?",
-            "answer": "Yes! We serve customers across the Americas and globally. Our international shipping includes:\n\n• Export documentation support\n• Customs assistance\n• Multi-currency pricing available\n• Global logistics coordination\n\nContact Alexander Gomez Zapata (+57 311 3017763) for international shipping details and pricing."
+            "answer": "Yes! We serve B2B distributors, builders, and developers across the United States, Colombia, Mexico, Panama, Costa Rica, Dominican Republic, Ecuador, Peru, Chile, and Guatemala. Our international shipping includes:\n\n• Export documentation support (Bill of Lading, Commercial Invoice, Packing List, Certificate of Origin)\n• Customs assistance\n• Explicit ISO currency pricing (USD and COP)\n• Global logistics coordination\n\nContact our international trade desk at {{PRIMARY_PHONE}} or {{PUBLIC_EMAIL}} for shipping details and container pricing."
         },
         {
             "id": 4,
             "question": "What products do you offer?",
-            "answer": "UNITEC USA Design offers a comprehensive portfolio of architectural materials:\n\n• Wall Panels & Cladding (PVC and WPC)\n• Ceilings & Roofing Systems\n• Flooring Systems (SPC with click-lock)\n• Facade Solutions\n• Acoustic Treatments\n• Decorative Finishes\n\nAll products feature 100% waterproof, fire-resistant properties with 15-25 year warranties. Browse our Products List to see our complete catalog."
+            "answer": "{{BRAND_NAME}} offers a comprehensive portfolio of architectural materials:\n\n• Wall Panels & Cladding (PVC and WPC)\n• Ceilings & Roofing Systems\n• Flooring Systems (SPC with click-lock)\n• Facade Solutions\n• Acoustic Treatments\n• Decorative Finishes\n\nAll products feature 100% waterproof, fire-resistant properties with 15-25 year warranties. Browse our Products List to see our complete catalog."
         },
         {
             "id": 5,
@@ -52,18 +52,18 @@
         },
         {
             "id": 11,
-            "question": "What's the difference between COP and USD pricing?",
-            "answer": "Our catalog lists prices in Colombian Pesos (COP) for reference. For USD pricing or international currency conversions:\n\n• Contact our sales team for current exchange rates\n• We can provide quotations in USD, EUR, or other major currencies\n• Pricing may vary based on volume and shipping terms\n• International orders may have different pricing structures\n\nRequest a personalized quote for accurate pricing in your preferred currency."
+            "question": "What's the difference between USD and COP pricing?",
+            "answer": "Our catalog displays prices with explicit ISO currency codes (USD for United States Dollars or COP for Colombian Pesos) so international buyers always have unambiguous pricing:\n\n• Product pages display unit price and computed price per m² in USD\n• Quotations can be issued in USD or COP according to destination market\n• Container load orders (20ft GP and 40ft HQ) include customized FOB or CIF proforma pricing\n\nRequest a personalized quote for container volume pricing in your preferred currency."
         },
         {
             "id": 12,
             "question": "Can I visit your showroom?",
-            "answer": "Yes! Our headquarters and showroom are located at:\n\n6120 NW 74th Ave, Doral, Miami, FL 33166, United States\n\nPlease call ahead to schedule an appointment:\n• Main Line: +1 (786) 968-5783\n• Distribution Manager: Johana Mesa +1 (786) 968-5783\n\nWe welcome distributors, contractors, architects, and serious buyers to view our product range in person."
+            "answer": "Yes! Our headquarters and showrooms are located at:\n\n• United States Headquarters: {{MIAMI_ADDRESS}}, United States\n• Colombia Showroom: {{MEDELLIN_ADDRESS}}\n\nPlease contact us ahead to schedule an appointment:\n• Main Line & WhatsApp: {{PRIMARY_PHONE}}\n• Email: {{PUBLIC_EMAIL}}\n\nWe welcome distributors, contractors, architects, and project buyers to view our product range in person."
         },
         {
             "id": 13,
             "question": "What's your lead time for orders?",
-            "answer": "Lead times vary based on:\n\n• Product availability and stock status\n• Order volume (container loads vs. small orders)\n• Production schedule\n• Shipping destination and method\n\nContact our sales team for current lead times and stock availability. Container load orders typically receive priority processing and better lead times."
+            "answer": "Lead times vary based on:\n\n• Product availability and stock status (typically 15-30 days for standard dispatch)\n• Order volume (20ft GP and 40ft HQ container loads vs. local inventory)\n• Production schedule\n• Shipping destination and method\n\nContact our sales team for current lead times and stock availability. Container load orders receive dedicated logistics coordination."
         },
         {
             "id": 14,
@@ -78,7 +78,7 @@
         {
             "id": 16,
             "question": "How does container shipping work?",
-            "answer": "Our platform is designed for container-based shipping:\n\n1. Create Container: Define container specifications and capacity\n2. Fill with Products: Add products based on dimensions and volume\n3. Optimize Loading: Our system helps maximize container utilization\n4. Ship with Confidence: Know exactly how full each container is\n\nThis approach reduces waste, optimizes space, and simplifies logistics. Perfect for bulk orders and international shipping."
+            "answer": "Our platform is designed for container-based shipping:\n\n1. Create Container: Select a 20ft GP or 40ft HQ container specification\n2. Fill with Products: Add products based on real box dimensions, m² coverage, and cubic volume\n3. Optimize Loading: Our system calculates exact volume and weight utilization\n4. Ship with Confidence: Know exactly how full each container is before requesting your FOB/CIF quote\n\nThis approach reduces waste, optimizes freight cost per m², and simplifies international logistics."
         },
         {
             "id": 17,
@@ -111,8 +111,8 @@
             "122 cm = 4 ft = 48.03 in",
             "244 cm = 8 ft = 96.06 in",
             "2.5 mm = 0.098 in",
-            "1 container = ~33 m³ = ~1,165 ft³"
+            "20ft GP container = ~28–33 m³ | 40ft HQ container = ~68–76 m³"
         ],
-        "note": "All catalog prices are in Colombian Pesos (COP). For USD or other currencies, contact sales team. Measurements are approximate - always verify critical dimensions."
+        "note": "All catalog prices include an explicit ISO currency code (USD or COP). Container capacity depends on exact product box dimensions and weight limits."
     }
 }

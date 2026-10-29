@@ -1,525 +1,758 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion"
-import {
-    Boxes,
-    Ruler,
-    Truck,
-    ShieldCheck,
-    Globe,
-    Users,
-    Target,
-    ArrowRight,
-    Droplets,
-    Flame,
-    Leaf,
-    Zap,
-    Handshake,
-    Award,
-    BookOpen,
-    ClipboardCheck,
-    Layers,
-    Home,
-    Grid,
-    Layout,
-    Volume2,
-    Palette
-} from "lucide-react"
-import MyButton from "My_UI/btn/main"
-import SeoHead from "components/SeoHead"
-import { useLanguage } from 'lib/LanguageContext';
-import { useBrand } from 'lib/BrandContext';
+import { motion } from "framer-motion";
+import { Globe, Layers, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "lib/LanguageContext";
+import siteSettings, { getWhatsAppUrl } from "lib/siteSettings";
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.12 }
+    }
+};
 
 export default function AboutPage() {
     const { language } = useLanguage();
-    const { activeBrand } = useBrand();
-    const isSpanish = language === 'es';
+    const isSpanish = language === "es";
 
-    const whatsappLink = activeBrand === 'unitec' ? "https://wa.me/573054233147" : "https://wa.me/13054233147";
+    const whatsappLink = getWhatsAppUrl();
+
+    const valueBullets = isSpanish
+        ? [
+            "Rápida instalación",
+            "Cero mantenimiento con pinturas, solventes ni químicos",
+            "Durabilidad entre 15 y 25 años",
+            "Resistentes al fuego",
+            "Elaborados con materiales recuperados y 100 % reciclables",
+            "100 % impermeables"
+        ]
+        : [
+            "Fast installation",
+            "Zero maintenance with paints, solvents, or chemicals",
+            "15 to 25 years of durability",
+            "Fire-resistant performance",
+            "Manufactured with recovered and 100% recyclable materials",
+            "100% waterproof"
+        ];
+
+    const materialSolutions = isSpanish
+        ? [
+            {
+                title: "Láminas tipo mármol",
+                desc: "Acabados elegantes para muros interiores con estética de piedra natural y fácil limpieza.",
+                href: "/colecciones/laminas"
+            },
+            {
+                title: "Cielo raso en PVC",
+                desc: "Soluciones ligeras, durables e impermeables para techos residenciales, comerciales e institucionales.",
+                href: "/colecciones/interior"
+            },
+            {
+                title: "Paredes en WPC",
+                desc: "Revestimientos acanalados y arquitectónicos que aportan calidez, textura y confort acústico.",
+                href: "/colecciones/paneles-wpc"
+            },
+            {
+                title: "Jardines sintéticos",
+                desc: "Follaje decorativo de apariencia natural para muros verdes en interiores y exteriores sin riego.",
+                href: "/colecciones/jardines-artificiales"
+            },
+            {
+                title: "Pisos",
+                desc: "Superficies SPC y deck de alta resistencia al tráfico, la humedad y los cambios de temperatura.",
+                href: "/colecciones/pisos"
+            },
+            {
+                title: "Fachadas",
+                desc: "Sistemas constructivos exteriores diseñados para soportar sol, lluvia e intemperie sin deterioro.",
+                href: "/colecciones/fachadas"
+            },
+            {
+                title: "Listones",
+                desc: "Elementos arquitectónicos versátiles para divisiones de ambientes, pérgolas y detalles de diseño.",
+                href: "/colecciones/listones-wpc-exterior"
+            },
+            {
+                title: "Adhesivos de pared",
+                desc: "Recubrimientos autoadhesivos prácticos para renovar superficies en cuestión de horas.",
+                href: "/colecciones/paredes"
+            },
+            {
+                title: "Tejas",
+                desc: "Cubiertas termoacústicas UPVC de alta resistencia estructural y protección climática.",
+                href: "/colecciones/cubiertas-upvc"
+            },
+            {
+                title: "Zócalos y accesorios",
+                desc: "Perfilería, cintas, pegantes y remates para una instalación limpia y profesional de principio a fin.",
+                href: "/colecciones/zocalos"
+            }
+        ]
+        : [
+            {
+                title: "PVC Marble Sheets",
+                desc: "High-gloss UV-coated wall sheets delivering natural stone aesthetics with rapid installation.",
+                href: "/colecciones/laminas"
+            },
+            {
+                title: "PVC Ceiling Panels",
+                desc: "Lightweight, waterproof ceiling systems for residential, commercial, and institutional projects.",
+                href: "/colecciones/interior"
+            },
+            {
+                title: "WPC Wall Panels",
+                desc: "Fluted and architectural wall cladding providing warmth, texture, and acoustic comfort.",
+                href: "/colecciones/paneles-wpc"
+            },
+            {
+                title: "Artificial Vertical Gardens",
+                desc: "UV-protected decorative foliage for indoor and outdoor green walls with zero irrigation.",
+                href: "/colecciones/jardines-artificiales"
+            },
+            {
+                title: "SPC & Deck Flooring",
+                desc: "High-traffic rigid-core SPC flooring and outdoor WPC decking engineered for moisture resistance.",
+                href: "/colecciones/pisos"
+            },
+            {
+                title: "Exterior Facades",
+                desc: "Weather-resistant exterior cladding designed to withstand sun, rain, and humidity.",
+                href: "/colecciones/fachadas"
+            },
+            {
+                title: "Architectural Louvers & Slats",
+                desc: "Versatile WPC profiles for room dividers, pergolas, and contemporary architectural accents.",
+                href: "/colecciones/listones-wpc-exterior"
+            },
+            {
+                title: "Self-Adhesive Wall Rolls",
+                desc: "Fast-application decorative wall coverings for commercial and residential renovations.",
+                href: "/colecciones/paredes"
+            },
+            {
+                title: "UPVC Thermoacoustic Roofing",
+                desc: "Structural UPVC roofing sheets with thermal and acoustic insulation for industrial and residential roofs.",
+                href: "/colecciones/cubiertas-upvc"
+            },
+            {
+                title: "Baseboards & Accessories",
+                desc: "Trims, structural adhesives, and finishing profiles for complete professional installations.",
+                href: "/colecciones/zocalos"
+            }
+        ];
 
     return (
-        <>
-            <SeoHead 
-                title={isSpanish ? "Sobre Nosotros | Unitec USA Design" : "About Us | Unitec USA Design"} 
-                description={isSpanish 
-                    ? "Conozca más sobre la operación de Unitec USA Design en Latinoamérica y nuestras alternativas constructivas." 
-                    : "Learn more about Unitec USA Design operations in Latam and our architectural alternatives."}
-                canonical="https://unitecusadesign.com/nosotros"
-            />
-            
-            <main className="w-full bg-white overflow-hidden">
-                
-                {/* Secondary Navigation Pill Bar */}
-                <div className="bg-slate-100 border-b border-slate-200 py-2 px-6">
-                    <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
-                        <Link
-                            href="/nosotros"
-                            className="px-4 py-1.5 rounded-full text-xs md:text-sm font-bold bg-[#132c3f] text-white shadow-sm"
-                        >
-                            Sobre Nosotros
-                        </Link>
-                        <span className="text-slate-300">•</span>
-                        <Link
-                            href="/nosotros/historia"
-                            className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
-                        >
-                            Nuestra Historia
-                        </Link>
-                    </div>
+        <main className="w-full bg-white text-slate-900 overflow-hidden">
+            {/* Sub-navigation bar to Historia */}
+            <div className="bg-slate-100 border-b border-slate-200 py-2.5 px-6 sticky top-[68px] z-20 backdrop-blur-md bg-slate-100/90">
+                <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
+                    <Link
+                        href="/nosotros"
+                        className="px-5 py-1.5 rounded-full text-xs md:text-sm font-bold bg-[#132c3f] text-white shadow-sm"
+                    >
+                        {isSpanish ? "Sobre Nosotros" : "About Us"}
+                    </Link>
+                    <span className="text-slate-300">•</span>
+                    <Link
+                        href="/nosotros/historia"
+                        className="px-5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+                    >
+                        {isSpanish ? "Nuestra Historia (+20 Años)" : "Our History (+20 Years)"}
+                    </Link>
+                    <span className="text-slate-300">•</span>
+                    <Link
+                        href="/paises"
+                        className="px-5 py-1.5 rounded-full text-xs md:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+                    >
+                        {isSpanish ? "Países que Atendemos" : "Countries Served"}
+                    </Link>
+                </div>
+            </div>
+
+            {/* ================= 1. HERO SECTION ================= */}
+            <section className="relative min-h-[75vh] w-full flex items-center justify-center overflow-hidden bg-[#132c3f]">
+                <div className="absolute inset-0">
+                    <Image
+                        src="/raster/nosotros/hero_nosotros.webp"
+                        alt={isSpanish
+                            ? `${siteSettings.brand_name} - Materiales arquitectónicos para construcción y remodelación`
+                            : `${siteSettings.brand_name} - Architectural building and renovation materials`}
+                        fill
+                        className="object-cover opacity-35 scale-105"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#132c3f]/80 via-[#132c3f]/65 to-[#132c3f]/95" />
                 </div>
 
-                {/* ================= SECTION 1: HERO ================= */}
-                <section className="relative py-28 text-white min-h-[60vh] flex items-center justify-center">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover z-0"
-                        poster="/raster/containers.webp"
+                <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center text-white">
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold tracking-[0.2em] uppercase mb-6 text-sky-300"
                     >
-                        <source src="/videos/institutional-hero.mp4" type="video/mp4" />
-                    </video>
-                    
-                    <div className="absolute inset-0 bg-black/65 z-10" />
+                        <Sparkles className="w-3.5 h-3.5" />
+                        {siteSettings.brand_name}
+                    </motion.span>
 
-                    <div className="mx-auto max-w-4xl px-6 relative z-20 text-center flex flex-col items-center gap-6">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 25 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-3xl md:text-5xl font-black leading-tight uppercase tracking-wide drop-shadow-md"
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.12] mb-6 max-w-4xl mx-auto"
+                    >
+                        {isSpanish
+                            ? "Materiales que hacen más fácil construir, renovar y transformar espacios"
+                            : "Materials That Make Building, Renovating, and Transforming Spaces Easier"}
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="text-base sm:text-lg md:text-xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed mb-10"
+                    >
+                        {isSpanish
+                            ? `En ${siteSettings.brand_name} llevamos más de dos décadas impulsando soluciones constructivas innovadoras para interiores y exteriores en distintos mercados del continente.`
+                            : `At ${siteSettings.brand_name}, we have spent over two decades delivering innovative interior and exterior architectural building solutions across the Americas.`}
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    >
+                        <Link
+                            href="/colecciones"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#F37B24] hover:bg-[#e06912] text-white font-bold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300"
                         >
-                            Una marca que hace evolucionar al sector de la construcción en LATAM
-                        </motion.h1>
+                            {isSpanish ? "Conoce nuestras soluciones" : "Explore Our Solutions"}
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <a
+                            href={whatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-sm font-bold text-sm uppercase tracking-wider transition-all duration-300"
+                        >
+                            {isSpanish ? "Habla con un asesor" : "Speak with an Advisor"}
+                        </a>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ================= 2. QUIÉNES SOMOS ================= */}
+            <section className="py-20 md:py-28 bg-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-12 gap-12 items-center">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-80px" }}
+                            variants={fadeInUp}
+                            className="lg:col-span-6 space-y-6"
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-10 bg-sky-500" />
+                                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600">
+                                    {isSpanish ? "QUIÉNES SOMOS" : "WHO WE ARE"}
+                                </span>
+                            </div>
+
+                            <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight leading-tight">
+                                {isSpanish
+                                    ? "Soluciones constructivas pensadas para el mundo real"
+                                    : "Architectural Building Solutions Engineered for the Real World"}
+                            </h2>
+
+                            <div className="space-y-4 text-slate-600 text-base md:text-lg leading-relaxed">
+                                <p>
+                                    {isSpanish
+                                        ? `${siteSettings.brand_name} es una empresa enfocada en el desarrollo, importación y comercialización de materiales para construcción, remodelación y diseño de espacios.`
+                                        : `${siteSettings.brand_name} specializes in the development, container export, and wholesale distribution of architectural materials for construction, renovation, and interior design.`}
+                                </p>
+                                <p>
+                                    {isSpanish
+                                        ? "Nuestro portafolio reúne alternativas prácticas, durables y visualmente atractivas en PVC, WPC y otras líneas complementarias para hogares, comercios y proyectos institucionales."
+                                        : "Our catalog brings together practical, durable, and high-design solutions in PVC, WPC, and SPC for residential, commercial, and institutional projects."}
+                                </p>
+                                <p className="font-medium text-slate-800">
+                                    {isSpanish
+                                        ? "Creemos en una construcción más ágil, más limpia y más eficiente. Por eso trabajamos con productos que facilitan la instalación, reducen tiempos de obra y responden a las necesidades reales de nuestros clientes."
+                                        : "We believe in faster, cleaner, and more efficient construction—providing materials that simplify installation, reduce project timelines, and lower long-term maintenance."}
+                                </p>
+                            </div>
+                        </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="mt-4"
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ duration: 0.7 }}
+                            className="lg:col-span-6"
                         >
-                            <span className="text-white/90 text-xs sm:text-sm font-bold uppercase tracking-widest bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 inline-block select-none">
-                                Creatividad, diseño y transformación real
-                            </span>
+                            <div className="relative h-[380px] sm:h-[460px] w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+                                <Image
+                                    src="/raster/nosotros/quienes_somos.webp"
+                                    alt={isSpanish
+                                        ? `Showroom y soluciones arquitectónicas ${siteSettings.brand_name}`
+                                        : `${siteSettings.brand_name} showroom and architectural solutions`}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#132c3f]/50 via-transparent to-transparent" />
+                            </div>
                         </motion.div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-
-                {/* ================= SECTION 2: POR QUÉ EXISTIMOS ================= */}
-                <section id="existimos" className="py-24 max-w-6xl mx-auto px-6 md:px-8">
-                    {/* Centered Separator Header */}
-                    <div className="flex items-center justify-center gap-4 mb-16">
-                        <div className="flex-1 h-[1px] bg-gray-300" />
-                        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase text-center shrink-0">
-                            POR QUÉ EXISTIMOS
+            {/* ================= 3. NUESTRO PROPÓSITO (MISIÓN Y VISIÓN) ================= */}
+            <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-200/70">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center max-w-3xl mx-auto mb-14">
+                        <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600 block mb-3">
+                            {isSpanish ? "NUESTRO PROPÓSITO" : "OUR PURPOSE"}
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight">
+                            {isSpanish
+                                ? "Lo que guía cada paso que damos"
+                                : "What Guides Every Step We Take"}
                         </h2>
-                        <div className="flex-1 h-[1px] bg-gray-300" />
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-                        {/* Left Side (H3 Paragraphs with proportional vertical distribution) */}
-                        <div className="lg:col-span-5 flex flex-col justify-between py-1 text-gray-700">
-                            <p className="text-base leading-relaxed text-slate-900 font-semibold">
-                                Unitec USA Design es la empresa responsable de la operación internacional de Building Innovation en Latinoamérica. Una compañía de materiales arquitectónicos en PVC y WPC con sede principal en Doral (Miami) y showroom en Medellín, que abastece, asesora y acompaña a distribuidores, constructores y arquitectos en la implementación de nuevas técnicas constructivas, eficientes y sofisticadas.
-                            </p>
-                            <p className="text-[14px] leading-relaxed text-gray-500 font-normal mt-10 md:mt-16">
-                                Con más de 20 años de trayectoria en el mercado y presencia en más de 5 países del continente, Unitec se ha consolidado como una organización promotora de nuevas alternativas constructivas en el mercado, ofreciendo un portafolio integrado por más 500 productos con acabados y estilos diferentes, fáciles de instalar y de implementar en cualquier proyecto.
-                            </p>
-                        </div>
-
-                        {/* Right Side (LO QUE NOS IDENTIFICA Cards) */}
-                        <div className="lg:col-span-7 flex flex-col gap-5">
-                            <div className="text-center lg:text-left mb-2">
-                                <h3 className="text-lg font-extrabold text-slate-800 uppercase tracking-widest pb-2 border-b border-gray-200 inline-block">
-                                    LO QUE NOS IDENTIFICA
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Misión */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="bg-white rounded-3xl p-8 md:p-10 shadow-md border border-slate-100 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="absolute top-0 left-0 w-2 h-full bg-[#132c3f]" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-[#132c3f]/10 text-[#132c3f] flex items-center justify-center mb-6">
+                                    <Layers className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-2xl font-black text-[#132c3f] mb-4">
+                                    {isSpanish ? "Misión" : "Mission"}
                                 </h3>
+                                <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+                                    {isSpanish
+                                        ? "Brindar soluciones innovadoras y sostenibles para el sector de la construcción y la remodelación, con productos de alta calidad que generen valor para clientes, aliados, colaboradores y comunidades."
+                                        : "To provide innovative and sustainable building and renovation solutions through high-quality architectural materials that create lasting value for clients, partners, and communities."}
+                                </p>
                             </div>
-                            
-                            {[
-                                { icon: BookOpen, title: "Conocimiento sectorial." },
-                                { icon: Globe, title: "Logística internacional" },
-                                { icon: Handshake, title: "Experiencia, asesoría y acompañamiento especializado." },
-                                { icon: Award, title: "Calidad comprobada y verificada." }
-                            ].map((item, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    whileHover={{ scale: 1.01, x: 5, borderColor: "#132c3f" }}
-                                    className="flex gap-4 items-center rounded-2xl border border-gray-200 p-5 bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
-                                >
-                                    <div className="text-slate-900 bg-slate-100 p-2.5 rounded-lg flex-shrink-0">
-                                        <item.icon className="w-5 h-5" />
-                                    </div>
-                                    <h4 className="font-extrabold text-[15px] text-slate-900 leading-snug">
-                                        {item.title}
-                                    </h4>
-                                </motion.div>
-                            ))}
-                        </div>
+                        </motion.div>
+
+                        {/* Visión */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="bg-white rounded-3xl p-8 md:p-10 shadow-md border border-slate-100 flex flex-col justify-between relative overflow-hidden group hover:shadow-xl transition-all duration-300"
+                        >
+                            <div className="absolute top-0 left-0 w-2 h-full bg-sky-500" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 flex items-center justify-center mb-6">
+                                    <Globe className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-2xl font-black text-[#132c3f] mb-4">
+                                    {isSpanish ? "Visión" : "Vision"}
+                                </h3>
+                                <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+                                    {isSpanish
+                                        ? "Consolidarnos como una marca referente en soluciones constructivas en América, reconocida por su innovación, cumplimiento, cercanía comercial y capacidad de adaptación a cada mercado."
+                                        : "To stand as a benchmark architectural materials supplier across the Americas, recognized for product innovation, container logistics reliability, and market adaptability."}
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
-                </section>
+                </div>
+            </section>
 
+            {/* ================= 4. NUESTRA PROPUESTA DE VALOR ================= */}
+            <section className="py-20 md:py-28 bg-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-12 gap-12 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="lg:col-span-5 order-2 lg:order-1"
+                        >
+                            <div className="relative h-[420px] sm:h-[500px] w-full rounded-3xl overflow-hidden shadow-xl border border-slate-100">
+                                <Image
+                                    src="/raster/nosotros/propuesta_valor.webp"
+                                    alt={isSpanish ? "Atributos de materiales PVC y WPC" : "PVC and WPC material attributes"}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#132c3f]/70 via-transparent to-transparent" />
+                                <div className="absolute bottom-6 left-6 right-6 text-white">
+                                    <span className="text-xs font-bold uppercase tracking-widest text-sky-300 block mb-1">
+                                        {isSpanish ? "Alto Desempeño" : "High Performance"}
+                                    </span>
+                                    <p className="text-lg font-bold leading-snug">
+                                        {isSpanish
+                                            ? "Materiales diseñados para resistir el uso real y conservar su estética por décadas."
+                                            : "Materials engineered to withstand daily wear and preserve their aesthetic for decades."}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
 
-                {/* ================= SECTION 3: PROPÓSITO ================= */}
-                <section className="py-24 bg-gray-50/50 border-y border-gray-100">
-                    <div className="max-w-6xl mx-auto px-6 md:px-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                            
-                            {/* Left Side: Propósito Header & Intro */}
-                            <div className="lg:col-span-5 flex flex-col gap-5">
-                                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase">
-                                    PROPÓSITO
-                                </h2>
-                                <div className="w-12 h-1 bg-[#F37B24] rounded-full mb-2" />
-                                <p className="text-md leading-relaxed text-slate-900 font-extrabold">
-                                    Hacer que construir sea más eficiente, estético y versátil, reemplazando los sistemas tradicionales por materiales sostenibles y de calidad verificada en PVC y WPC.
-                                </p>
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="lg:col-span-7 order-1 lg:order-2 space-y-6"
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-10 bg-sky-500" />
+                                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600">
+                                    {isSpanish ? "POR QUÉ ELEGIRNOS" : "WHY CHOOSE US"}
+                                </span>
                             </div>
 
-                            {/* Right Side: Cómo lo cumplimos big box */}
-                            <div className="lg:col-span-7 rounded-[2rem] border border-gray-200 bg-white p-8 md:p-10 shadow-sm">
-                                <h3 className="text-lg font-black text-slate-900 uppercase tracking-widest mb-4">
-                                    CÓMO LO CUMPLIMOS
-                                </h3>
-                                <p className="text-[15px] text-gray-600 leading-relaxed font-normal">
-                                    Facilitamos que distribuidores, constructores y arquitectos de Latinoamérica accedan a materiales arquitectónicos con calidad verificada en origen, precios de importación directa y una logística de contenedor que pueden planear y controlar.
-                                </p>
-                            </div>
+                            <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight leading-tight">
+                                {isSpanish
+                                    ? "Productos pensados para durar, rendir y verse bien"
+                                    : "Products Engineered to Last, Perform, and Look Exceptional"}
+                            </h2>
 
-                        </div>
+                            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                                {isSpanish
+                                    ? "Nuestras líneas están diseñadas para responder a las exigencias del uso diario, optimizar el tiempo de instalación y ofrecer acabados modernos con bajo mantenimiento."
+                                    : "Our product lines are engineered to handle daily demands, streamline installation times, and deliver contemporary architectural finishes with minimal upkeep."}
+                            </p>
 
-                        {/* Workflow Compact Badges underneath */}
-                        <div className="mt-16 pt-10 border-t border-gray-200">
-                            <div className="flex items-center justify-center gap-4 mb-10">
-                                <div className="flex-1 h-[1px] bg-gray-300" />
-                                <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase text-center shrink-0">
-                                    COMPROMISOS UNITEC
-                                </h2>
-                                <div className="flex-1 h-[1px] bg-gray-300" />
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                {[
-                                    "Calidad auditada en fábrica antes de cada despacho.",
-                                    "Asesoría técnica en la especificación y la instalación.",
-                                    "Ficha técnica y garantía documentada en cada referencia.",
-                                    "Tiempos y costos de importación claros desde la cotización."
-                                ].map((item, idx) => (
-                                    <div 
-                                        key={idx} 
-                                        className="bg-[#132c3f] text-white p-5 rounded-2xl text-center text-[13px] font-bold shadow-sm hover:scale-102 transition-transform cursor-default duration-300 flex items-center justify-center leading-relaxed"
+                            <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                                {valueBullets.map((bullet, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="flex items-start gap-3.5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 hover:bg-sky-50/30 transition-colors"
                                     >
-                                        {item}
+                                        <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                                        <span className="text-sm md:text-base font-bold text-slate-800 leading-snug">
+                                            {bullet}
+                                        </span>
                                     </div>
                                 ))}
                             </div>
-                        </div>
-
+                        </motion.div>
                     </div>
-                </section>
+                </div>
+            </section>
 
+            {/* ================= 5. COMPROMISO CON LA SOSTENIBILIDAD Y LA CALIDAD ================= */}
+            <section className="py-20 md:py-28 bg-[#132c3f] text-white relative overflow-hidden">
+                <div className="max-w-6xl mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-12 items-center">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="lg:col-span-7 space-y-6"
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-10 bg-sky-400" />
+                                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-300">
+                                    {isSpanish ? "SOSTENIBILIDAD Y CALIDAD" : "SUSTAINABILITY & QUALITY"}
+                                </span>
+                            </div>
 
-                {/* ================= SECTION 4: POR QUÉ ELEGIRNOS ================= */}
-                <section className="py-24 max-w-6xl mx-auto px-6 md:px-8">
-                    {/* Centered Separator Header */}
-                    <div className="flex items-center justify-center gap-4 mb-10">
-                        <div className="flex-1 h-[1px] bg-gray-250" />
-                        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase text-center shrink-0">
-                            POR QUÉ ELEGIRNOS
-                        </h2>
-                        <div className="flex-1 h-[1px] bg-gray-250" />
-                    </div>
-
-                    <div className="text-center max-w-4xl mx-auto mb-16">
-                        <p className="text-base text-gray-600 leading-relaxed font-semibold">
-                            Somos más que una empresa de materiales constructivos. <span className="text-slate-900 font-extrabold">Somos rentabilidad, eficiencia, innovación y creatividad hecha producto.</span> Una marca que trabaja de la mano del sector constructivo para evolucionar las dinámicas tradicionales y proponer modelos prácticos, estéticos y de cero mantenimiento.
-                        </p>
-                    </div>
-
-                    {/* Features grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[
-                            { icon: ShieldCheck, title: "Garantía de 15 a 25 Años", desc: "Durabilidad líder en la industria respaldada por confianza." },
-                            { icon: Droplets, title: "100% Impermeables", desc: "Sin humedad, pudrición ni corrosión — nunca." },
-                            { icon: ToolCase, title: "Cero Mantenimiento", desc: "Sin pintura, sellado ni barnizado." },
-                            { icon: Flame, title: "Resistente al Fuego", desc: "Autoextinguible con baja propagación de llama." },
-                            { icon: Leaf, title: "Ecológicos y Sostenibles", desc: "Materiales recuperados 100% reciclables." },
-                            { icon: Zap, title: "Instalación Rápida", desc: "Ahorre tiempo y mano de obra en cada proyecto." }
-                        ].map((feat, idx) => (
-                            <motion.div
-                                key={idx}
-                                whileHover={{ y: -4, borderColor: "#132c3f" }}
-                                className="rounded-3xl border border-gray-200 p-6 bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-default"
-                            >
-                                <div className="text-slate-900 bg-slate-100 p-2.5 rounded-xl w-fit mb-4">
-                                    <feat.icon className="w-5 h-5" />
-                                </div>
-                                <h3 className="font-extrabold text-[15px] text-slate-900 mb-1.5">{feat.title}</h3>
-                                <p className="text-[13px] text-gray-500 leading-relaxed font-normal">{feat.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </section>
-
-
-                {/* ================= SECTION 5: SOSTENIBILIDAD Y CALIDAD ================= */}
-                <section className="py-24 bg-gray-50/50 border-y border-gray-100">
-                    <div className="max-w-6xl mx-auto px-6 md:px-8">
-                        {/* Centered Separator Header */}
-                        <div className="flex items-center justify-center gap-4 mb-16">
-                            <div className="flex-1 h-[1px] bg-gray-250" />
-                            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase text-center shrink-0">
-                                SOSTENIBILIDAD Y CALIDAD EN LOS PRODUCTOS
+                            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+                                {isSpanish
+                                    ? "Construir mejor también es pensar en el futuro"
+                                    : "Building Better Also Means Thinking Ahead"}
                             </h2>
-                            <div className="flex-1 h-[1px] bg-gray-250" />
-                        </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                            {/* Left Column (H3 Text) */}
-                            <div className="lg:col-span-5">
-                                <p className="text-[15px] text-gray-700 leading-relaxed font-semibold">
-                                    Fabricamos nuestros productos bajo estándares de calidad y certificación ISO 9001, pruebas de laboratorio independientes y auditorías físicas en planta que permiten garantizar la durabilidad de cada artículo constructivo.
+                            <div className="space-y-4 text-slate-200 text-base md:text-lg leading-relaxed">
+                                <p>
+                                    {isSpanish
+                                        ? `En ${siteSettings.brand_name} promovemos materiales que ayudan a reducir el mantenimiento, optimizar recursos y disminuir el impacto ambiental frente a alternativas tradicionales.`
+                                        : `At ${siteSettings.brand_name}, we promote architectural materials that reduce chemical maintenance, optimize resources, and lower environmental impact compared to traditional stone and timber.`}
+                                </p>
+                                <p>
+                                    {isSpanish
+                                        ? "Nuestros productos incorporan procesos responsables, materiales recuperados y opciones reciclables, sin dejar de lado el diseño, la resistencia y la practicidad que exige cada proyecto."
+                                        : "Our products incorporate recovered polymers and recyclable formulations while maintaining the structural durability and visual precision demanded by commercial and residential projects."}
+                                </p>
+                                <p className="text-sky-200 font-medium">
+                                    {isSpanish
+                                        ? "Fabricamos nuestros productos bajo estándares de calidad y certificación ISO 9001, garantizando procesos más seguros, materiales confiables y resultados consistentes en cada aplicación."
+                                        : "Our manufacturing partners operate under ISO 9001 quality management standards, ensuring consistent tolerances, safe formulations, and reliable batch-to-batch performance."}
                                 </p>
                             </div>
+                        </motion.div>
 
-                            {/* Right Column (Recuadro Responsables con el Medio Ambiente) */}
-                            <div className="lg:col-span-7 rounded-[2rem] border border-gray-200 bg-white p-8 md:p-10 shadow-sm flex flex-col gap-4">
-                                <h3 className="text-md font-extrabold text-[#132c3f] uppercase tracking-widest border-b border-gray-100 pb-3">
-                                    RESPONSABLES CON EL MEDIO AMBIENTE
-                                </h3>
-                                <p className="text-[14px] text-gray-600 leading-relaxed font-normal">
-                                    Contenido de PVC reciclado en todos los productos, 100% reciclables al final de su vida útil y bajas emisiones de VOC, hacen que cada referencia pueda ser utilizada en proyectos de diseño interior, sin afectaciones a la salud y al medio ambiente, con una vida útil prolongada que reduce la frecuencia de reemplazo.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-
-                {/* ================= SECTION 6: SOMOS EL ALIADO DE QUIENES VIVEN DE CONSTRUIR ================= */}
-                <section className="py-24 max-w-6xl mx-auto px-6 md:px-8 border-b border-gray-100">
-                    {/* Header */}
-                    <div className="text-center max-w-4xl mx-auto mb-16">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 tracking-wide uppercase leading-tight">
-                            SOMOS EL ALIADO DE QUIENES VIVEN DE CONSTRUIR Y COMERCIALIZAR
-                        </h2>
-                        <div className="w-16 h-1 bg-[#F37B24] mx-auto mt-4 rounded-full" />
-                    </div>
-
-                    {/* Two Big Cards Split Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        
-                        {/* Card Left */}
-                        <div className="rounded-[2.5rem] border border-gray-200 p-8 md:p-10 bg-white shadow-sm flex flex-col gap-8">
-                            {/* Block 1 */}
-                            <div className="flex flex-col gap-2">
-                                <h3 className="font-extrabold text-lg text-slate-900 border-l-4 border-[#F37B24] pl-3">
-                                    Calidad verificada en origen:
-                                </h3>
-                                <p className="text-sm text-gray-600 leading-relaxed font-normal">
-                                    Auditamos cada producto en fábrica antes del despacho y respaldamos cada referencia con ficha técnica y garantía documentada.
-                                </p>
-                            </div>
-                            
-                            {/* Block 2 */}
-                            <div className="flex flex-col gap-2">
-                                <h3 className="font-extrabold text-lg text-slate-900 border-l-4 border-[#F37B24] pl-3">
-                                    Control total de la importación:
-                                </h3>
-                                <p className="text-sm text-gray-600 leading-relaxed font-normal">
-                                    Usted arma su contenedor, ve cuánto espacio ocupa cada referencia y confirma su carga completa antes de pagar. Metros cúbicos visibles, costos sin sorpresas.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Card Right */}
-                        <div className="rounded-[2.5rem] border border-gray-200 p-8 md:p-10 bg-white shadow-sm flex flex-col gap-8">
-                            {/* Block 1 */}
-                            <div className="flex flex-col gap-2">
-                                <h3 className="font-extrabold text-lg text-slate-900 border-l-4 border-[#F37B24] pl-3">
-                                    Acompañamiento de aliado:
-                                </h3>
-                                <p className="text-sm text-gray-600 leading-relaxed font-normal">
-                                    Detrás de cada relacionamiento comercial tenemos un asesor con nombre propio que ayuda a especificar, cotizar y resolver. En el contenedor no viaja solo carga: viaja la confianza que el cliente ha puesto en usted.
-                                </p>
-                            </div>
-                            
-                            {/* Block 2 */}
-                            <div className="flex flex-col gap-2">
-                                <h3 className="font-extrabold text-lg text-slate-900 border-l-4 border-[#F37B24] pl-3">
-                                    Puente entre dos mercados:
-                                </h3>
-                                <p className="text-sm text-gray-600 leading-relaxed font-normal">
-                                    Sede en Doral (Miami) y showroom en Medellín: una sola cadena de suministro que conecta la fábrica con la obra en más de 5 países.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-
-
-                {/* ================= SECTION 7: ASÍ SE IMPORTA CON UNITEC ================= */}
-                <section 
-                    className="relative py-24 text-white overflow-hidden"
-                    style={{
-                        backgroundImage: "linear-gradient(to bottom, rgba(19, 44, 63, 0.94), rgba(19, 44, 63, 0.94)), url('/raster/containers.webp')",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center"
-                    }}
-                >
-                    <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10 text-center">
-                        {/* Title & Subtitle */}
-                        <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-wide leading-tight max-w-4xl mx-auto">
-                            ASÍ SE IMPORTA CON UNITEC
-                        </h2>
-                        <p className="mt-4 text-base md:text-lg italic font-normal tracking-wide text-white/80 max-w-2xl mx-auto">
-                            Nuestra plataforma refleja cómo se planifica una importación real por contenedor, no por carrito.
-                        </p>
-
-                        {/* 3 Columns Workflow Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-left">
-                            {[
-                                {
-                                    id: "01",
-                                    title: "VERIFIQUE Y SELECCIONE SUS PRODUCTOS",
-                                    desc: "Elija una o varias referencias del catálogo. Podrá apoyar su decisión con la ficha técnica que está al lado de cada artículo."
-                                },
-                                {
-                                    id: "02",
-                                    title: "PÓNGALOS EN EL CARRITO Y EN EL CONTENEDOR",
-                                    desc: "Vea en tiempo real cuánto espacio ocupa cada producto y cuánta capacidad le queda. (Un contenedor de 20 pies carga ≈ 33 m³)."
-                                },
-                                {
-                                    id: "03",
-                                    title: "RECIBA LOS PRODUCTOS",
-                                    desc: "Recójalos en nuestro showroom de Medellín, si su contacto fue directo con un asesor o impórtelos vía marítima con trazabilidad, bajo el Incoterm que usted elija (FOB o CIF)."
-                                }
-                            ].map((step) => (
-                                <div 
-                                    key={step.id} 
-                                    className="relative bg-white/5 backdrop-blur-md border border-white/15 rounded-3xl p-8 shadow-lg flex flex-col justify-between"
-                                >
-                                    <div className="absolute top-6 right-8 text-5xl font-black text-white/10 italic select-none">
-                                        {step.id}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="lg:col-span-5"
+                        >
+                            <div className="relative h-[360px] sm:h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl border border-white/15">
+                                <Image
+                                    src="/raster/nosotros/sostenibilidad_calidad.webp"
+                                    alt={isSpanish ? "Calidad y sostenibilidad en recubrimientos" : "Quality and sustainability in architectural cladding"}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#132c3f]/80 via-transparent to-transparent" />
+                                <div className="absolute bottom-6 left-6 right-6 flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl">
+                                    <div className="w-12 h-12 rounded-xl bg-sky-400 text-[#132c3f] flex items-center justify-center font-black text-sm shrink-0">
+                                        ISO
                                     </div>
                                     <div>
-                                        <h3 className="text-md font-extrabold tracking-wider leading-snug uppercase mb-4 w-4/5 text-white/95">
-                                            {step.title}
-                                        </h3>
-                                        <p className="text-[13px] text-white/80 leading-relaxed font-normal">
-                                            {step.desc}
+                                        <p className="text-sm font-extrabold text-white">
+                                            {isSpanish ? "Certificación ISO 9001" : "ISO 9001 Certified"}
+                                        </p>
+                                        <p className="text-xs text-slate-200">
+                                            {isSpanish ? "Calidad verificada y materiales 100 % reciclables" : "Verified quality & 100% recyclable materials"}
                                         </p>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-
-                {/* ================= SECTION 8: LO QUE COMERCIALIZAMOS ================= */}
-                <section className="py-24 max-w-6xl mx-auto px-6 md:px-8">
-                    {/* Centered Separator Header */}
-                    <div className="flex items-center justify-center gap-4 mb-10">
-                        <div className="flex-1 h-[1px] bg-gray-250" />
-                        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-wider uppercase text-center shrink-0">
-                            LO QUE COMERCIALIZAMOS
-                        </h2>
-                        <div className="flex-1 h-[1px] bg-gray-250" />
-                    </div>
-
-                    <div className="text-center max-w-4xl mx-auto mb-12">
-                        <p className="text-sm md:text-base text-gray-600 leading-relaxed font-semibold">
-                            Fabricamos nuestros productos bajo estándares de calidad y certificación ISO 9001, pruebas de laboratorio independientes e inspección física en planta que permiten garantizar la durabilidad de cada artículo constructivo.
-                        </p>
-                    </div>
-
-                    {/* 6 Grid Categories with Icons */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-6">
-                        {[
-                            { icon: Layers, title: "Paneles de pared y revestimientos" },
-                            { icon: Home, title: "Techos y cubiertas" },
-                            { icon: Grid, title: "Pisos SPC y deck WPC" },
-                            { icon: Layout, title: "Fachadas" },
-                            { icon: Volume2, title: "Paneles acústicos" },
-                            { icon: Palette, title: "Acabados decorativos" }
-                        ].map((cat, idx) => (
-                            <div 
-                                key={idx} 
-                                className="bg-white border border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:shadow-md hover:border-[#132c3f] transition-all duration-300 cursor-default group"
-                            >
-                                <div className="text-slate-900 bg-slate-100 p-2.5 rounded-xl group-hover:bg-[#132c3f] group-hover:text-white transition-all duration-300 flex-shrink-0">
-                                    <cat.icon className="w-5 h-5" />
-                                </div>
-                                <h3 className="font-extrabold text-[14px] text-slate-800 leading-snug group-hover:text-[#132c3f] transition-colors duration-300">
-                                    {cat.title}
-                                </h3>
                             </div>
-                        ))}
+                        </motion.div>
                     </div>
+                </div>
+            </section>
 
-                    {/* Catalog Explorer Button */}
-                    <div className="text-center mt-12">
-                        <MyButton
-                            label="EXPLORAR EL CATÁLOGO COMPLETO"
-                            href="/colecciones"
-                            className={{
-                                btn: "bg-[#132c3f] hover:bg-[#1c3e57] px-8 py-3.5 h-12 hover:scale-105 transition-all duration-300 rounded-full text-white shadow-md border-none",
-                                label: "font-black text-white uppercase text-[12px] tracking-widest"
-                            }}
-                        />
-                    </div>
-                </section>
+            {/* ================= 6. CÓMO TRABAJAMOS CON NUESTROS ALIADOS ================= */}
+            <section className="py-20 md:py-28 bg-slate-50">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-12 gap-12 items-center mb-14">
+                        <div className="lg:col-span-7 space-y-4">
+                            <div className="flex items-center gap-3">
+                                <span className="h-[2px] w-10 bg-sky-500" />
+                                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600">
+                                    {isSpanish ? "MODELO DE OPERACIÓN" : "OPERATING MODEL"}
+                                </span>
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight leading-tight">
+                                {isSpanish
+                                    ? "Flexibilidad logística y acompañamiento comercial"
+                                    : "Logistics Flexibility and Commercial Support"}
+                            </h2>
+                            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                                {isSpanish
+                                    ? `En ${siteSettings.brand_name} acompañamos a distribuidores, comercializadores y aliados estratégicos con modelos de negociación claros, seguros y adaptados a cada operación.`
+                                    : `At ${siteSettings.brand_name}, we support distributors, importers, and contractors with transparent international trade terms tailored to each supply chain.`}
+                            </p>
+                        </div>
 
-
-                {/* ================= SECTION 9: HABLAMOS DE SU PRÓXIMO PROYECTO ================= */}
-                <section className="bg-[#132c3f] text-white py-20 px-6 text-center">
-                    <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase italic tracking-wide leading-tight">
-                            ¿HABLÁMOS DE SU PRÓXIMO PROYECTO?
-                        </h2>
-                        
-                        <p className="text-sm md:text-base text-white/85 leading-relaxed max-w-2xl mx-auto">
-                            Cotice, pida muestras o visite nuestro showroom en Medellín. Un asesor le responde en menos de 24 horas.
-                        </p>
-
-                        <div className="mt-6">
-                            <MyButton
-                                label="HABLE YA CON UN ASESOR"
-                                href={whatsappLink}
-                                className={{
-                                    btn: "bg-white hover:bg-gray-100 px-8 py-3.5 h-12 rounded-full text-slate-900 border-none transition-all duration-300 hover:scale-105 shadow-lg",
-                                    label: "font-black text-slate-900 uppercase text-[12px] tracking-widest"
-                                }}
-                            />
+                        <div className="lg:col-span-5">
+                            <div className="relative h-[240px] w-full rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+                                <Image
+                                    src="/raster/nosotros/logistica_aliados.webp"
+                                    alt={isSpanish ? "Logística internacional por contenedor" : "International container logistics"}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-[#132c3f]/30" />
+                            </div>
                         </div>
                     </div>
-                </section>
 
-            </main>
-        </>
-    )
-}
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* FOB */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="bg-white rounded-3xl p-8 md:p-10 shadow-md border border-slate-200/80 hover:border-sky-400 transition-all duration-300"
+                        >
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#132c3f] text-white text-xs font-black tracking-wider uppercase mb-5">
+                                Incoterm FOB
+                            </div>
+                            <h3 className="text-2xl font-black text-[#132c3f] mb-3">
+                                FOB (Free On Board)
+                            </h3>
+                            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                                {isSpanish
+                                    ? "Gestionamos la mercancía hasta el puerto de embarque, permitiendo que el cliente mantenga el control del flete marítimo y del seguro desde ese punto."
+                                    : "We manage production, quality inspection, and port loading at origin, allowing the buyer to control ocean freight and marine insurance through their preferred forwarder."}
+                            </p>
+                        </motion.div>
 
-function ToolCase({ className, size }) {
-    return (
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width={size || 24} 
-            height={size || 24} 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            className={className}
-        >
-            <rect width="20" height="14" x="2" y="7" rx="2" />
-            <path d="M16 21V7a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v14" />
-        </svg>
-    )
+                        {/* CIF */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="bg-white rounded-3xl p-8 md:p-10 shadow-md border border-slate-200/80 hover:border-sky-400 transition-all duration-300"
+                        >
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500 text-white text-xs font-black tracking-wider uppercase mb-5">
+                                Incoterm CIF
+                            </div>
+                            <h3 className="text-2xl font-black text-[#132c3f] mb-3">
+                                CIF (Cost, Insurance and Freight)
+                            </h3>
+                            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+                                {isSpanish
+                                    ? "Nos encargamos del costo, seguro y flete hasta el puerto de destino, brindando una solución integral y más simple para el proceso de importación."
+                                    : "We coordinate product cost, marine insurance, and ocean freight directly to your destination port in Latin America or the Caribbean for a turnkey import experience."}
+                            </p>
+                        </motion.div>
+                    </div>
+
+                    <div className="mt-10 bg-[#132c3f] text-white rounded-2xl p-6 md:p-8 text-center shadow-lg">
+                        <p className="text-base md:text-xl font-bold tracking-wide">
+                            {isSpanish
+                                ? "Nos adaptamos a cada necesidad logística con transparencia, respaldo y seguimiento en todo el proceso."
+                                : "We adapt to your container consolidation needs with full cubic-meter transparency and end-to-end support."}
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ================= 7. NUESTRA PRESENCIA ================= */}
+            <section className="py-20 md:py-24 bg-white border-b border-slate-200/70">
+                <div className="max-w-5xl mx-auto px-6 text-center">
+                    <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600 block mb-3">
+                        {isSpanish ? "PRESENCIA REGIONAL" : "REGIONAL PRESENCE"}
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight mb-6">
+                        {isSpanish ? "Creciendo junto a nuevos mercados" : "Growing Across the Americas"}
+                    </h2>
+                    <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+                        {isSpanish
+                            ? "Desde nuestras operaciones y alianzas comerciales hemos llevado soluciones constructivas a clientes en Estados Unidos, Colombia, Venezuela, Ecuador, República Dominicana, El Salvador, Guatemala, Honduras y Perú, construyendo relaciones de largo plazo basadas en confianza y cumplimiento."
+                            : "Through our Miami headquarters, Medellín showroom, and regional distribution network, we supply container-load and wholesale architectural materials to the United States, Colombia, Venezuela, Ecuador, Dominican Republic, El Salvador, Guatemala, Honduras, and Peru."}
+                    </p>
+
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <Link
+                            href="/nosotros/historia"
+                            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#132c3f] hover:bg-sky-600 text-white font-bold text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300"
+                        >
+                            {isSpanish ? "Conoce nuestra historia" : "Explore Our History"}
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <Link
+                            href="/paises"
+                            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-slate-100 hover:bg-slate-200 text-[#132c3f] font-bold text-sm uppercase tracking-wider transition-all duration-300"
+                        >
+                            {isSpanish ? "Ver países que atendemos" : "View Countries Served"}
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ================= 8. NUESTRAS SOLUCIONES (DISTINCT CONTENT - NO DUPLICATION) ================= */}
+            <section className="py-20 md:py-28 bg-slate-50">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="text-center max-w-3xl mx-auto mb-14">
+                        <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-600 block mb-3">
+                            {isSpanish ? "LO QUE COMERCIALIZAMOS" : "OUR PRODUCT PORTFOLIO"}
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-black text-[#132c3f] tracking-tight mb-4">
+                            {isSpanish ? "Un portafolio versátil para interiores y exteriores" : "A Versatile Portfolio for Interiors and Exteriors"}
+                        </h2>
+                        <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
+                            {isSpanish
+                                ? "Contamos con líneas diseñadas para transformar muros, techos, pisos, fachadas y cubiertas con acabados modernos y funcionales."
+                                : "We offer specialized architectural product lines engineered to transform walls, ceilings, floors, facades, and roofs with modern, functional finishes."}
+                        </p>
+                        <p className="text-slate-700 font-medium text-sm md:text-base leading-relaxed">
+                            {isSpanish
+                                ? "Cada referencia cuenta con especificaciones dimensionales por caja y cubicaje por contenedor de 20 y 40 pies para facilitar la planeación de compras mayoristas y proyectos constructivos."
+                                : "Every SKU includes box-level dimensional specifications and 20ft/40ft container loading capacities to streamline wholesale purchasing and project planning."}
+                        </p>
+                    </div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={staggerContainer}
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                        {materialSolutions.map((item, idx) => (
+                            <motion.div key={idx} variants={fadeInUp}>
+                                <Link
+                                    href={item.href}
+                                    className="group h-full bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-sky-400 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between gap-3 mb-3">
+                                            <h3 className="text-lg font-extrabold text-[#132c3f] group-hover:text-sky-600 transition-colors">
+                                                {item.title}
+                                            </h3>
+                                            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all shrink-0" />
+                                        </div>
+                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ================= 9. CIERRE COMERCIAL (CTA) ================= */}
+            <section className="relative py-20 md:py-28 bg-[#132c3f] text-white overflow-hidden">
+                <div className="absolute inset-0 opacity-20">
+                    <Image
+                        src="/raster/nosotros/cta_nosotros.webp"
+                        alt={isSpanish ? `Proyectos ${siteSettings.brand_name}` : `${siteSettings.brand_name} Projects`}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+                <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+                        {isSpanish
+                            ? "¿Buscas un aliado confiable para tu próximo proyecto o negocio?"
+                            : "Looking for a Reliable Supplier for Your Next Project or Container Order?"}
+                    </h2>
+                    <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed mb-10">
+                        {isSpanish
+                            ? "Nuestro equipo está listo para asesorarte y ayudarte a encontrar la solución adecuada según tu mercado, tu obra o tu necesidad comercial."
+                            : "Our sales engineering team is ready to advise you on product specifications, container consolidation, and FOB/CIF shipping to your destination port."}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a
+                            href={whatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#F37B24] hover:bg-[#e06912] text-white font-bold text-sm uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300"
+                        >
+                            {isSpanish ? "Solicitar asesoría" : "Request Commercial Advisory"}
+                            <ArrowRight className="w-4 h-4" />
+                        </a>
+                        <Link
+                            href="/colecciones"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-[#132c3f] hover:bg-slate-100 font-bold text-sm uppercase tracking-wider shadow-md transition-all duration-300"
+                        >
+                            {isSpanish ? "Ver catálogo de productos" : "Browse Product Catalog"}
+                        </Link>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
 }

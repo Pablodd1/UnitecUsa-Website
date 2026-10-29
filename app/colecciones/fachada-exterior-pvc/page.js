@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Outdoor PVC Facade | FACHADA EXTERIOR PVC | Unitec USA Design",
+        title: "Outdoor PVC Facade | FACHADA EXTERIOR PVC",
         description: "Durable and weather-resistant PVC facade panels for building exteriors.",
     };
 }

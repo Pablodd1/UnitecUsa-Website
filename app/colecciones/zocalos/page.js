@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "SPC Baseboards | ZOCALOS | Floor Trim | Unitec USA Design",
+        title: "SPC Baseboards | ZOCALOS | Floor Trim",
         description: "Premium SPC baseboards and floor trims. Perfect finishing touches for your flooring installations.",
     };
 }

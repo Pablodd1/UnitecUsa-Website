@@ -6,11 +6,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Jardines Artificiales | Artificial Gardens & Green Walls | Unitec USA Design",
-        description:
-            "Premium artificial gardens, vertical gardens, and green wall solutions. UV-resistant, maintenance-free artificial plants and foliage for interior and exterior decoration.",
+        title: "Jardines Artificiales | Artificial Gardens & Green Walls",
+        description: "Módulos de jardines verticales sintéticos y musgo decorativo para muros verdes interiores y exteriores con filtro UV y cero riego.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/jardines-artificiales/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/jardines-artificiales/",
+                en: "https://unitecusadesign.com/en/colecciones/jardines-artificiales/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/jardines-artificiales/",
+            },
         },
         openGraph: {
             ...parentMeta.openGraph,

@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "UPVC Roofing | CUBIERTAS UPVC | Roof Sheets | Unitec USA Design",
+        title: "UPVC Roofing | CUBIERTAS UPVC | Roof Sheets",
         description: "Premium UPVC roofing sheets and tiles. Weatherproof, UV-resistant, and durable for exterior applications.",
     };
 }

@@ -3,7 +3,7 @@
         {
             "id": 1,
             "question": "¿Cómo realizo un pedido?",
-            "answer": "Contacte a nuestro equipo de ventas directamente:\n\n• Gerente de Ventas de Distribución: Johana Mesa al +1 (786) 968-5783\n• Representantes de Ventas: Antonio Borjas +1 (786) 546-9051\n• Suroeste de Florida: Marlon Moncada +1 (239) 878-9299\n• Pedidos Internacionales: Alexander Gomez Zapata +57 311 3017763\n\nOfrecemos términos de pago flexibles, incluyendo FOB y CIF. Nuestro equipo lo guiará a través del proceso y proporcionará cotizaciones personalizadas según sus requisitos de volumen."
+            "answer": "Contacte directamente a nuestro equipo comercial y de ingeniería de {{BRAND_NAME}}:\n\n• Línea Principal y WhatsApp: {{PRIMARY_PHONE}}\n• Correo Corporativo: {{PUBLIC_EMAIL}}\n\nOfrecemos modalidades de comercio internacional B2B flexibles, incluyendo FOB (puertos de origen en China) y CIF (puertos de destino en Latinoamérica y el Caribe), así como despacho directo desde Miami y Medellín. Nuestro equipo lo guiará en la consolidación de su contenedor y emitirá cotizaciones según sus requisitos de volumen."
         },
         {
             "id": 2,
@@ -13,12 +13,12 @@
         {
             "id": 3,
             "question": "¿Realizan envíos internacionales?",
-            "answer": "¡Sí! Servimos a clientes en toda América y a nivel mundial. Nuestros envíos internacionales incluyen:\n\n• Soporte en documentación de exportación\n• Asistencia en aduanas\n• Precios disponibles en múltiples divisas\n• Coordinación logística global\n\nContacte a Alexander Gomez Zapata (+57 311 3017763) para obtener detalles sobre envíos internacionales y precios."
+            "answer": "¡Sí! Atendemos a distribuidores B2B, constructoras y desarrolladores en Estados Unidos, Colombia, México, Panamá, Costa Rica, República Dominicana, Ecuador, Perú, Chile y Guatemala. Nuestros envíos internacionales incluyen:\n\n• Soporte en documentación de exportación (Bill of Lading, Factura Comercial, Packing List, Certificado de Origen)\n• Asistencia en aduanas\n• Precios con código de divisa ISO explícito (USD y COP)\n• Coordinación logística global\n\nContacte a nuestra mesa de comercio internacional al {{PRIMARY_PHONE}} o a {{PUBLIC_EMAIL}} para detalles de envío y cotizaciones por contenedor."
         },
         {
             "id": 4,
             "question": "¿Qué productos ofrecen?",
-            "answer": "UNITEC USA Design ofrece una cartera completa de materiales arquitectónicos:\n\n• Paneles de Pared y Revestimientos (PVC y WPC)\n• Sistemas de Techos y Cubiertas\n• Sistemas de Pisos (SPC con click-lock)\n• Soluciones de Fachada\n• Tratamientos Acústicos\n• Acabados Decorativos\n\nTodos los productos cuentan con propiedades 100% impermeables y resistentes al fuego, con garantías de 15 a 25 años. Explore nuestra Lista de Productos para ver nuestro catálogo completo."
+            "answer": "{{BRAND_NAME}} ofrece un portafolio completo de materiales arquitectónicos:\n\n• Paneles de Pared y Revestimientos (PVC y WPC)\n• Sistemas de Techos y Cielo Raso PVC\n• Sistemas de Pisos (SPC con sistema click-lock)\n• Soluciones de Fachada Exterior\n• Tratamientos Acústicos\n• Acabados Decorativos y Láminas Tipo Mármol UV\n\nTodos los productos cuentan con propiedades 100% impermeables y resistentes al fuego, con garantías de 15 a 25 años. Explore nuestro catálogo para ver todas las referencias."
         },
         {
             "id": 5,
@@ -52,18 +52,18 @@
         },
         {
             "id": 11,
-            "question": "¿Cuál es la diferencia entre los precios en COP y USD?",
-            "answer": "Nuestro catálogo muestra precios en Pesos Colombianos (COP) como referencia. Para precios en USD o conversiones a otras divisas internacionales:\n\n• Contacte a nuestro equipo de ventas para conocer las tasas de cambio actuales\n• Podemos proporcionar cotizaciones en USD, EUR u otras divisas principales\n• Los precios pueden variar según el volumen y los términos de envío\n• Los pedidos internacionales pueden tener diferentes estructuras de precios\n\nSolicite una cotización personalizada para obtener precios precisos en su moneda preferida."
+            "question": "¿Cuál es la diferencia entre los precios en USD y COP?",
+            "answer": "Nuestro catálogo presenta todos los precios con su código de moneda ISO explícito (USD para dólares estadounidenses o COP para pesos colombianos) para brindar total claridad a compradores locales e internacionales:\n\n• Las fichas de producto muestran el precio unitario y el precio por m² calculado en USD\n• Emitimos cotizaciones en USD o COP según el país de destino y modalidad logística\n• Los pedidos por contenedor (20ft GP y 40ft HQ) cuentan con cotización proforma FOB o CIF personalizada\n\nSolicite una cotización personalizada para precios por volumen de contenedor en su moneda preferida."
         },
         {
             "id": 12,
             "question": "¿Puedo visitar su showroom?",
-            "answer": "¡Sí! Nuestra sede y showroom se encuentran en:\n\n6120 NW 74th Ave, Doral, Miami, FL 33166, Estados Unidos\n\nPor favor, llame con anticipación para programar una cita:\n• Línea Principal: +1 (786) 968-5783\n• Gerente de Distribución: Johana Mesa +1 (786) 968-5783\n\nDamos la bienvenida a distribuidores, contratistas, arquitectos y compradores serios para ver nuestra gama de productos en persona."
+            "answer": "¡Sí! Nuestra sede principal y showrooms se encuentran en:\n\n• Sede Principal Estados Unidos: {{MIAMI_ADDRESS}}, Estados Unidos\n• Showroom Colombia: {{MEDELLIN_ADDRESS}}\n\nPor favor, contáctenos con anticipación para programar una cita:\n• Línea Principal y WhatsApp: {{PRIMARY_PHONE}}\n• Correo Electrónico: {{PUBLIC_EMAIL}}\n\nDamos la bienvenida a distribuidores, contratistas, arquitectos y compradores de proyectos para conocer nuestro portafolio en persona."
         },
         {
             "id": 13,
             "question": "¿Cuál es el tiempo de entrega de los pedidos?",
-            "answer": "Los tiempos de entrega varían según:\n\n• Disponibilidad de productos y estado del stock\n• Volumen del pedido (cargas de contenedores vs. pedidos pequeños)\n• Programa de producción\n• Destino y método de envío\n\nContacte a nuestro equipo de ventas para conocer los tiempos de entrega actuales y la disponibilidad de stock. Los pedidos de contenedores completos suelen recibir procesamiento prioritario y mejores tiempos de entrega."
+            "answer": "Los tiempos de entrega varían según:\n\n• Disponibilidad de productos y estado del stock (generalmente de 15 a 30 días para despacho estándar)\n• Volumen del pedido (contenedores de 20ft GP y 40ft HQ vs. inventario local)\n• Programa de producción\n• Destino y método de envío\n\nContacte a nuestro equipo comercial para conocer los tiempos de entrega actuales y disponibilidad de stock."
         },
         {
             "id": 14,
@@ -78,7 +78,7 @@
         {
             "id": 16,
             "question": "¿Cómo funciona el envío de contenedores?",
-            "answer": "Nuestra plataforma está diseñada para envíos basados en contenedores:\n\n1. Crear Contenedor: Defina las especificaciones y capacidad del contenedor\n2. Llenar con Productos: Agregue productos según dimensiones y volumen\n3. Optimizar la Carga: Nuestro sistema ayuda a maximizar la utilización del contenedor\n4. Envíe con Confianza: Sepa exactamente qué tan lleno está cada contenedor\n\nEste enfoque reduce el desperdicio, optimiza el espacio y simplifica la logística. Perfecto para pedidos a granel y envíos internacionales."
+            "answer": "Nuestra plataforma está diseñada para envíos basados en contenedores:\n\n1. Crear Contenedor: Seleccione un contenedor de 20ft GP o 40ft HQ\n2. Llenar con Productos: Agregue productos según las dimensiones reales de la caja, cobertura en m² y volumen cúbico\n3. Optimizar la Carga: Nuestro sistema calcula la utilización exacta de volumen y peso\n4. Envíe con Confianza: Conozca exactamente qué tan lleno está cada contenedor antes de solicitar su cotización FOB o CIF\n\nEste enfoque reduce el desperdicio, optimiza el costo de flete por m² y simplifica la logística internacional."
         },
         {
             "id": 17,
@@ -111,8 +111,8 @@
             "122 cm = 4 ft = 48.03 in",
             "244 cm = 8 ft = 96.06 in",
             "2.5 mm = 0.098 in",
-            "1 contenedor = ~33 m³ = ~1,165 ft³"
+            "Contenedor 20ft GP = ~28–33 m³ | Contenedor 40ft HQ = ~68–76 m³"
         ],
-        "note": "Todos los precios del catálogo están en Pesos Colombianos (COP). Para USD u otras divisas, contacte al equipo de ventas. Las medidas son aproximadas: siempre verifique las dimensiones críticas."
+        "note": "Todos los precios del catálogo incluyen su código de moneda ISO explícito (USD o COP). La capacidad por contenedor depende de las dimensiones exactas por caja y límites de peso de cada referencia."
     }
 }

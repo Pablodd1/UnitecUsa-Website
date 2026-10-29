@@ -1,162 +1,159 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useLanguage } from "lib/LanguageContext";
-import { useBrand } from "lib/BrandContext";
-import { translateText } from "lib/translate";
+import { CheckCircle2, Layers, Box, Ruler, Ship } from "lucide-react";
 
-const productTranslations = {
-    en: {
-        aboutThisItem: "About this item",
-        engineeredFor: "Engineered for durability and high performance.",
-        perfectlySuited: "Perfectly suited for",
-        variousApplications: "various applications",
-        itemsPerBox: "Items per box",
-        inStock: "In Stock",
-        shipsWithin: "Usually ships within 15 to 30 days.",
-        shipsFrom: "Ships from",
-        soldBy: "Sold by",
-        returns: "Returns",
-        eligibleForReturn: "Eligible for Return",
-        secureTransaction: "Secure transaction",
-        ratings: "ratings",
-        collection: "Collection",
-        category: "Category",
-        loading: "Loading translation..."
-    },
-    es: {
-        aboutThisItem: "Acerca de este producto",
-        engineeredFor: "Diseñado para durabilidad y alto rendimiento.",
-        perfectlySuited: "Perfectamente adecuado para",
-        variousApplications: "varias aplicaciones",
-        itemsPerBox: "Artículos por caja",
-        inStock: "En Stock",
-        shipsWithin: "Generalmente envía dentro de 15 a 30 días.",
-        shipsFrom: "Envía desde",
-        soldBy: "Vendido por",
-        returns: "Devoluciones",
-        eligibleForReturn: "Elegible para devolución",
-        secureTransaction: "Transacción segura",
-        ratings: "calificaciones",
-        collection: "Colección",
-        category: "Categoría",
-        loading: "Cargando traducción..."
-    }
-};
+export default function ProductContent({ product }) {
+  const { language } = useLanguage();
+  const isSpanish = language === "es";
 
-const categoryTranslations = {
-    en: {
-        "PAREDES": "Walls",
-        "PISOS": "Floors",
-        "TECHOS": "Ceilings",
-        "FACHADAS": "Facades",
-        "COMPLEMENTOS": "Accessories",
-        "EXTERIOR": "Exterior",
-        "INTERIOR": "Interior",
-        "LAMINAS": "Panels"
-    },
-    es: {
-        "PAREDES": "Paredes",
-        "PISOS": "Pisos",
-        "TECHOS": "Techos",
-        "FACHADAS": "Fachadas",
-        "COMPLEMENTOS": "Complementos",
-        "EXTERIOR": "Exterior",
-        "INTERIOR": "Interior",
-        "LAMINAS": "Láminas"
-    }
-};
+  const localeData = product.locale_variants?.[language] || product.locale_variants?.es || {};
+  const displayName = localeData.name || product.name;
+  const displayCategory = localeData.category || product.category;
+  const displaySubcategory = localeData.subcategory || product.subcategory;
 
-const collectionTranslations = {
-    en: {
-        "INTERIOR": "Interior",
-        "EXTERIOR": "Exterior",
-        "SALE": "Sale"
-    },
-    es: {
-        "INTERIOR": "Interior",
-        "EXTERIOR": "Exterior",
-        "SALE": "Venta"
-    }
-};
+  const hasReviews = Array.isArray(product.reviews) && product.reviews.length > 0;
+  const avgRating = hasReviews
+    ? (product.reviews.reduce((acc, r) => acc + Number(r.rating || 5), 0) / product.reviews.length).toFixed(1)
+    : null;
 
-export function ProductContent({ product }) {
-    const { language } = useLanguage();
-    const { activeBrand } = useBrand();
-    
-    const [translatedName, setTranslatedName] = useState(product.name);
-    const [translatedDesc, setTranslatedDesc] = useState(product.description);
-    const [isTranslating, setIsTranslating] = useState(false);
-    
-    const t = productTranslations[language] || productTranslations.en;
-    const category = product.category || '';
-    const collection = product.collection || '';
-    
-    const translatedCategory = categoryTranslations[language]?.[category] || category;
-    const translatedCollection = collectionTranslations[language]?.[collection] || collection;
-    
-    const companyName = 'UNITEC USA Design';
-    
-    useEffect(() => {
-        const translateProduct = async () => {
-            // Source is es, if target is es, no need to translate
-            if (language === 'es') {
-                setTranslatedName(product.name);
-                setTranslatedDesc(product.description);
-                return;
-            }
-            
-            setIsTranslating(true);
-            try {
-                const [name, desc] = await Promise.all([
-                    translateText(product.name, 'en', 'es'),
-                    translateText(product.description, 'en', 'es')
-                ]);
-                setTranslatedName(name);
-                setTranslatedDesc(desc);
-            } catch (error) {
-                console.error('Translation error:', error);
-                setTranslatedName(product.name);
-                setTranslatedDesc(product.description);
-            } finally {
-                setIsTranslating(false);
-            }
-        };
-        
-        translateProduct();
-    }, [language, product.name, product.description]);
-    
-    const displayName = isTranslating ? t.loading : translatedName;
-    const displayDesc = isTranslating ? t.loading : translatedDesc;
+  const t = {
+    sku: "SKU",
+    category: isSpanish ? "Categoría" : "Category",
+    application: isSpanish ? "Aplicación" : "Application",
+    dimensions: isSpanish ? "Dimensiones por Unidad" : "Unit Dimensions",
+    thickness: isSpanish ? "Espesor" : "Thickness",
+    boxCoverage: isSpanish ? "Cobertura por Empaque" : "Coverage per Pack",
+    container20: isSpanish ? "Carga Contenedor 20 FT" : "20 FT Container Load",
+    container40: isSpanish ? "Carga Contenedor 40 FT HC" : "40 FT HC Container Load",
+    units: isSpanish ? "unidades" : "units",
+    packs: isSpanish ? "empaques" : "packs",
+    reviewsLabel: isSpanish ? "calificaciones verificadas" : "verified reviews",
+  };
 
-    return (
-        <div className="lg:col-span-4 flex flex-col pt-2 lg:pt-6">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-2">
-                {displayName}
-            </h1>
-            
-            <div className="text-sm text-blue-600 font-semibold mb-4 uppercase tracking-wider">
-                {translatedCollection} • {translatedCategory}
-            </div>
-
-            <div className="border-b border-gray-200 pb-4 mb-4">
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
-                    <span className="flex items-center text-yellow-500">
-                        ★★★☆☆
-                    </span>
-                    <span className="text-blue-600 hover:underline cursor-pointer">142 {t.ratings}</span>
-                </div>
-            </div>
-
-            <div className="mb-6">
-                <div className="text-sm font-semibold text-gray-900 mb-2">{t.aboutThisItem}</div>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                    <li>{displayDesc}</li>
-                    <li>{t.engineeredFor}</li>
-                    <li>{t.perfectlySuited} {product.subcategory?.toLowerCase() || t.variousApplications}.</li>
-                    {product.itemsPerBox && <li>{t.itemsPerBox}: {product.itemsPerBox}</li>}
-                </ul>
-            </div>
+  return (
+    <div className="space-y-6">
+      {/* Category & SKU Badge */}
+      <div>
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800">
+            {displayCategory}
+          </span>
+          {displaySubcategory && displaySubcategory !== displayCategory && (
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-sky-50 text-sky-800">
+              {displaySubcategory}
+            </span>
+          )}
+          <span className="text-xs font-mono text-slate-500 ml-auto">
+            {t.sku}: {product.id}
+          </span>
         </div>
-    );
+
+        {/* H1 = Product Name (unique) */}
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-snug">
+          {displayName}
+        </h1>
+
+        {/* Star rating ONLY rendered if real verified reviews exist */}
+        {hasReviews && (
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-amber-500 text-sm">★★★★★</span>
+            <span className="text-xs font-semibold text-slate-600">
+              {avgRating} ({product.reviews.length} {t.reviewsLabel})
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Quick Engineering Summary Grid */}
+      <div className="grid grid-cols-2 gap-3 pt-2">
+        {product.width_cm && product.length_cm && (
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-1">
+              <Ruler className="w-3.5 h-3.5 text-sky-600" />
+              <span>{t.dimensions}</span>
+            </div>
+            <p className="text-sm font-bold text-slate-900">
+              {product.width_cm} × {product.length_cm} cm
+            </p>
+            {product.m2_per_unit && (
+              <p className="text-xs text-slate-500">{product.m2_per_unit} m² / {isSpanish ? "unidad" : "unit"}</p>
+            )}
+          </div>
+        )}
+
+        {product.thickness_mm > 0 && (
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-1">
+              <Layers className="w-3.5 h-3.5 text-sky-600" />
+              <span>{t.thickness}</span>
+            </div>
+            <p className="text-sm font-bold text-slate-900">
+              {product.thickness_mm} mm
+            </p>
+            <p className="text-xs text-slate-500">
+              {product.collection === "EXTERIOR"
+                ? (isSpanish ? "Grado Exterior" : "Exterior Grade")
+                : (isSpanish ? "Grado Interior" : "Interior Grade")}
+            </p>
+          </div>
+        )}
+
+        {product.units_per_box > 0 && (
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-1">
+              <Box className="w-3.5 h-3.5 text-sky-600" />
+              <span>{t.boxCoverage}</span>
+            </div>
+            <p className="text-sm font-bold text-slate-900">
+              {product.m2_per_box ? `${product.m2_per_box} m²` : `${product.units_per_box} ${t.units}`}
+            </p>
+            <p className="text-xs text-slate-500">
+              {product.units_per_box} {t.units}
+              {product.weight_kg_per_box ? ` • ${product.weight_kg_per_box} kg` : ""}
+            </p>
+          </div>
+        )}
+
+        {product.boxes_per_container_20ft > 0 && (
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-1">
+              <Ship className="w-3.5 h-3.5 text-sky-600" />
+              <span>{t.container20}</span>
+            </div>
+            <p className="text-sm font-bold text-slate-900">
+              {product.boxes_per_container_20ft.toLocaleString("en-US")} {t.packs}
+            </p>
+            {product.m2_per_container_20ft && (
+              <p className="text-xs text-slate-500">
+                {product.m2_per_container_20ft.toLocaleString("en-US")} m² / 20ft
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Verified Product Attributes */}
+      <ul className="space-y-2 text-xs sm:text-sm text-slate-700 pt-2 border-t border-slate-100">
+        <li className="flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span>
+            {isSpanish
+              ? "100 % resistente a la humedad y libre de mantenimiento con solventes"
+              : "100% moisture-resistant and maintenance-free without harsh solvents"}
+          </span>
+        </li>
+        {product.boxes_per_container_40ft > 0 && (
+          <li className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>
+              {isSpanish
+                ? `Capacidad en contenedor 40ft High Cube: ${product.boxes_per_container_40ft.toLocaleString("en-US")} empaques (${product.m2_per_container_40ft ? `${product.m2_per_container_40ft.toLocaleString("en-US")} m²` : ""})`
+                : `40ft High Cube container capacity: ${product.boxes_per_container_40ft.toLocaleString("en-US")} packs (${product.m2_per_container_40ft ? `${product.m2_per_container_40ft.toLocaleString("en-US")} m²` : ""})`}
+            </span>
+          </li>
+        )}
+      </ul>
+    </div>
+  );
 }

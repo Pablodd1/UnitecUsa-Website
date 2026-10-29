@@ -1,33 +1,37 @@
-import AddToContainer from "My_UI/cart/addToContainer";
-import GetFinalPrice from "My_UI/getFinalPrice";
 import Image from "next/image";
-import NotFoundPage from "../../app/not-found";
-import { ProductContent } from "./ProductContent.client";
-import { BuyBox } from "./BuyBox.client";
+import ProductContent from "./ProductContent.client";
+import BuyBox from "./BuyBox.client";
 
-export default async function ProductSection({ product }) {
+export default function ProductSection({ data }) {
+  const imageSrc = data.image?.url || data.image || "/raster/product.jpg";
+  const imageAlt = data.image_alt_text || data.name || "Product image";
 
-    return (
-        product ?
-            <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-                {/* Left Column - Image (Amazon style) */}
-                <div className="lg:col-span-5 flex justify-center items-center h-[500px] lg:h-[600px] bg-white border border-gray-200 rounded-xl p-4 relative w-full sticky top-24">
-                    <Image
-                        src={product.image?.url || product.image || '/raster/product.jpg'}
-                        alt={`${product.name} - ${product.category} - ${product.subcategory} | Unitec USA Design`}
-                        className="object-contain p-4 mix-blend-multiply"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        priority
-                    />
-                </div>
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Image Gallery */}
+        <div className="lg:col-span-5">
+          <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gray-100 border border-slate-200/70">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              priority
+              className="object-contain p-4"
+            />
+          </div>
+        </div>
 
-                {/* Middle Column - Product Info */}
-                <ProductContent product={product} />
+        {/* Summary Info */}
+        <div className="lg:col-span-4">
+          <ProductContent product={data} />
+        </div>
 
-                {/* Right Column - Buy Box */}
-                <BuyBox product={product} />
-            </section>
-            : <NotFoundPage />
-    );
+        {/* Price & Container Action Box */}
+        <div className="lg:col-span-3 lg:sticky lg:top-24">
+          <BuyBox product={data} />
+        </div>
+      </div>
+    </section>
+  );
 }

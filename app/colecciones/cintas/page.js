@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Industrial Tapes | CINTAS | Tapes | Unitec USA Design",
+        title: "Industrial Tapes | CINTAS | Tapes",
         description: "High-performance adhesive tapes for construction and industrial applications.",
     };
 }

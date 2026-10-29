@@ -5,11 +5,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Interior PVC & WPC Panels | Walls, Ceilings & Decorative Solutions | Unitec USA Design",
-        description:
-            "Premium PVC and WPC panels for interior walls, ceilings, and decorative applications. Waterproof, antimicrobial, fire-resistant, and zero maintenance.",
+        title: "Interior PVC & WPC Panels | Walls, Ceilings & Decorative Solutions",
+        description: "Revestimientos arquitectónicos para interiores: paneles WPC acanalados, láminas de mármol PVC, cielo raso PVC, paneles acústicos y pisos SPC.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/interior/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/interior/",
+                en: "https://unitecusadesign.com/en/colecciones/interior/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/interior/",
+            },
         },
         openGraph: {
             ...parentMeta.openGraph,

@@ -6,6 +6,7 @@ import { Printer, Check, ArrowLeft, Building2, User, Mail, Phone, MapPin, FileTe
 
 import { useLanguage } from "lib/LanguageContext"
 import { useBrand } from "lib/BrandContext"
+import { siteSettings } from "lib/siteSettings"
 import { getCart } from "utils/cart/cart.core"
 import Link from "next/link"
 import Image from "next/image"
@@ -125,7 +126,7 @@ export default function CheckoutPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         
-        const contactEmail = brand?.email || "lidermercadeo@espaciosimportados.com.co";
+        const contactEmail = brand?.email || siteSettings.public_email;
         const subject = `New Quote Request - ${formData.companyName || formData.contactName} (${referenceId})`;
         
         let itemsSummary = cart.map(container => {

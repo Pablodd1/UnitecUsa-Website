@@ -1,0 +1,40 @@
+{
+  "brand_name": "UNITEC USA Design",
+  "public_email": "lidermercadeo@espaciosimportados.com.co",
+  "primary_phone": "+57 314 233 2147",
+  "primary_whatsapp": "573142332147",
+  "miami_address_street": "6120 NW 74th Ave",
+  "miami_address_suite": "",
+  "miami_city": "Doral",
+  "miami_state": "FL",
+  "miami_zip": "33166",
+  "medellin_showroom_address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274, Itagüí, Medellín, Antioquia, Colombia",
+  "medellin_postal_code": "055413",
+  "nit": "",
+  "us_ein": "",
+  "base_url": "https://unitecusadesign.com",
+  "social": {
+    "instagram": "https://instagram.com/unitecusadesign",
+    "facebook": "https://facebook.com/unitecusadesign",
+    "tiktok": "https://www.tiktok.com/@unitecusadesign"
+  },
+  "countries_served": [
+    { "code": "US", "name_es": "Estados Unidos", "name_en": "United States", "city_es": "Miami / Doral, FL", "city_en": "Miami / Doral, FL" },
+    { "code": "CO", "name_es": "Colombia", "name_en": "Colombia", "city_es": "Medellín (Showroom C.C. IDEO) y envíos nacionales", "city_en": "Medellín (C.C. IDEO Showroom) & nationwide delivery" },
+    { "code": "VE", "name_es": "Venezuela", "name_en": "Venezuela", "city_es": "Exportación por contenedor (La Guaira / Puerto Cabello)", "city_en": "Container export (La Guaira / Puerto Cabello)" },
+    { "code": "EC", "name_es": "Ecuador", "name_en": "Ecuador", "city_es": "Exportación por contenedor (Guayaquil)", "city_en": "Container export (Guayaquil)" },
+    { "code": "DO", "name_es": "República Dominicana", "name_en": "Dominican Republic", "city_es": "Exportación por contenedor (Caucedo / Haina)", "city_en": "Container export (Caucedo / Haina)" },
+    { "code": "SV", "name_es": "El Salvador", "name_en": "El Salvador", "city_es": "Exportación por contenedor (Acajutla)", "city_en": "Container export (Acajutla)" },
+    { "code": "GT", "name_es": "Guatemala", "name_en": "Guatemala", "city_es": "Exportación por contenedor (Puerto Quetzal / Santo Tomás)", "city_en": "Container export (Puerto Quetzal / Santo Tomás)" },
+    { "code": "HN", "name_es": "Honduras", "name_en": "Honduras", "city_es": "Exportación por contenedor (Puerto Cortés)", "city_en": "Container export (Puerto Cortés)" },
+    { "code": "PE", "name_es": "Perú", "name_en": "Peru", "city_es": "Exportación por contenedor (Callao)", "city_en": "Container export (Callao)" }
+  ],
+  "_owner_pending_fields": [
+    "nit (Colombia NIT - leave empty until supplied by [OWNER])",
+    "us_ein (US EIN - leave empty until supplied by [OWNER])",
+    "miami_address_suite (Suite/Unit if applicable - leave empty until supplied by [OWNER])",
+    "brand_name (Confirm single canonical brand name if different from UNITEC USA Design)",
+    "public_email (Confirm public sales email if different from lidermercadeo@espaciosimportados.com.co)",
+    "primary_whatsapp (Confirm single canonical WhatsApp if different from 573142332147)"
+  ]
+}

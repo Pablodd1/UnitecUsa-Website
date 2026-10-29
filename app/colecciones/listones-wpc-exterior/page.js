@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Outdoor WPC Slats | LISTONES WPC EXTERIOR | Unitec USA Design",
+        title: "Outdoor WPC Slats | LISTONES WPC EXTERIOR",
         description: "Weatherproof WPC slats and battens for outdoor architectural use.",
     };
 }

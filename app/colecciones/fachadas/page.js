@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Exterior Wall Cladding | FACHADA | Facade Panels | Unitec USA Design",
+        title: "Exterior Wall Cladding | FACHADA | Facade Panels",
         description: "Premium exterior wall cladding and facade solutions. Weatherproof, UV-resistant, and beautiful designs for building exteriors.",
     };
 }

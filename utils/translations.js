@@ -1,3 +1,4 @@
+import siteSettings from "../static_data/site_settings.json";
 const translations = {
     "en": {
         "company": {
@@ -144,10 +145,10 @@ const translations = {
                 },
                 "headquarters": {
                     "title": "Colombia Headquarters",
-                    "address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
+                    "address": siteSettings.medellin_showroom_address,
                     "city": "Medellín, Colombia",
                     "country": "Colombia",
-                    "phone": "+57 314 233 2147"
+                    "phone": siteSettings.primary_phone
                 },
                 "quality": {
                     "title": "Committed to Quality",
@@ -173,10 +174,10 @@ const translations = {
                     },
                     "headquarters": {
                         "title": "Colombia Headquarters",
-                        "address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
+                        "address": siteSettings.medellin_showroom_address,
                         "city": "Medellín, Colombia",
                         "country": "Colombia",
-                        "phone": "+57 314 233 2147"
+                        "phone": siteSettings.primary_phone
                     }
                 },
                 "about": {
@@ -515,10 +516,10 @@ const translations = {
                 },
                 "headquarters": {
                     "title": "USA Headquarters",
-                    "address": "6120 NW 74th Ave",
+                    "address": siteSettings.miami_address_street,
                     "city": "Doral, Miami, FL 33166",
                     "country": "United States",
-                    "phone": "+57 314 233 2147"
+                    "phone": siteSettings.primary_phone
                 },
                 "quality": {
                     "title": "Committed to Quality",
@@ -547,10 +548,10 @@ const translations = {
                     },
                     "headquarters": {
                         "title": "USA Headquarters",
-                        "address": "6120 NW 74th Ave",
+                        "address": siteSettings.miami_address_street,
                         "city": "Doral, Miami, FL 33166",
                         "country": "United States",
-                        "phone": "+57 314 233 2147"
+                        "phone": siteSettings.primary_phone
                     }
                 },
                 "about": {
@@ -1569,7 +1570,7 @@ const translations = {
                     "text": "For questions regarding these Terms & Conditions, please contact our Legal Department."
                 }
             },
-            "email": "lidermercadeo@espaciosimportados.com.co"
+            "email": siteSettings.public_email
         },
         "policies": {
             "title": "Privacy Policy",
@@ -1614,7 +1615,7 @@ const translations = {
                     "text": "For questions about this Privacy Policy or our data practices, please contact our Privacy Department."
                 }
             },
-            "email": "lidermercadeo@espaciosimportados.com.co"
+            "email": siteSettings.public_email
         },
         "whoWeAre": {
             "title": "Who We Are",
@@ -1637,10 +1638,10 @@ const translations = {
             },
             "headquarters": {
                 "title": "Global Headquarters",
-                "address": "6120 NW 74th Ave",
+                "address": siteSettings.miami_address_street,
                 "city": "Doral, Miami, FL 33166",
                 "country": "United States",
-                "phone": "+57 314 233 2147"
+                "phone": siteSettings.primary_phone
             },
             "bulk": {
                 "title": "Built for Volume. Designed for Control.",
@@ -1835,10 +1836,10 @@ const translations = {
                     "responseTimeText": "Nuestro equipo responde habitualmente en un plazo de 24 horas hábiles."
                 },
                 "headquarters": {
-                    "address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
+                    "address": siteSettings.medellin_showroom_address,
                     "city": "Medellín, Colombia",
                     "country": "Colombia",
-                    "phone": "+57 314 233 2147"
+                    "phone": siteSettings.primary_phone
                 },
                 "quality": {
                     "title": "Comprometidos con la Calidad",
@@ -1884,10 +1885,10 @@ const translations = {
                     },
                     "headquarters": {
                         "title": "Sede Colombia",
-                        "address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274. Itagüí, Medellín",
+                        "address": siteSettings.medellin_showroom_address,
                         "city": "Medellín, Colombia",
                         "country": "Colombia",
-                        "phone": "+57 314 233 2147"
+                        "phone": siteSettings.primary_phone
                     }
                 },
                 "about": {
@@ -2138,7 +2139,7 @@ const translations = {
                     "address": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274",
                     "city": "Itagüí, Medellín",
                     "country": "Colombia",
-                    "phone": "+57 314 233 2147"
+                    "phone": siteSettings.primary_phone
                 },
                 "quality": {
                     "title": "Comprometidos con la Calidad",
@@ -2186,10 +2187,10 @@ const translations = {
                     },
                     "headquarters": {
                         "title": "Sede Global USA",
-                        "address": "6120 NW 74th Ave",
+                        "address": siteSettings.miami_address_street,
                         "city": "Doral, Miami, FL 33166",
                         "country": "Estados Unidos",
-                        "phone": "+57 314 233 2147"
+                        "phone": siteSettings.primary_phone
                     }
                 },
                 "about": {
@@ -2642,7 +2643,7 @@ const translations = {
             "text": "Explore aquí más de 500 referencias y escoja los productos con los que quiere darle un ambiente diferente a cada proyecto.",
             "btn": "EXPLORE NUESTROS PRODUCTOS",
             "btnSecondary": "COTICE FÁCIL POR WHATSAPP",
-            "btnSecondaryHref": "https://wa.me/13054233147"
+            "btnSecondaryHref": "https://wa.me/whatsapp-contact"
         },
         "recommendations": {
             "title": "Productos Más Vendidos",
@@ -2965,7 +2966,7 @@ const translations = {
                     "text": "Para preguntas sobre estos Términos y Condiciones, por favor contacte a nuestro Departamento Legal."
                 }
             },
-            "email": "lidermercadeo@espaciosimportados.com.co"
+            "email": siteSettings.public_email
         },
         "policies": {
             "title": "Política de Privacidad",
@@ -3010,7 +3011,7 @@ const translations = {
                     "text": "Para preguntas sobre esta Política de Privacidad o nuestras prácticas de datos, por favor contacte a nuestro Departamento de Privacidad."
                 }
             },
-            "email": "lidermercadeo@espaciosimportados.com.co"
+            "email": siteSettings.public_email
         },
         "checkout": {
             "title": "Finalizar Compra",

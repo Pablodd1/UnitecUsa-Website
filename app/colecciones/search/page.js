@@ -10,11 +10,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Search Results | Unitec USA Design",
-        description:
-            "Search results for PVC and WPC building materials at Unitec USA Design. Find products by application, finish, and performance requirements.",
+        title: "Search Results",
+        description: "Buscador técnico del catálogo de productos UNITEC USA Design por referencia, SKU, categoría, dimensiones y aplicación interior o exterior.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/search/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/search/",
+                en: "https://unitecusadesign.com/en/colecciones/search/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/search/",
+            },
         },
 
         robots: {

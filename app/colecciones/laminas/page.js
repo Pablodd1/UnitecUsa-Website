@@ -4,7 +4,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "PVC Laminates | LAMINAS | Sheet Materials | Unitec USA Design",
+        title: "PVC Laminates | LAMINAS | Sheet Materials",
         description: "High-quality PVC laminates and sheets for interior applications. Durable, waterproof, and available in various finishes.",
     };
 }

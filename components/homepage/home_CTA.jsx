@@ -4,13 +4,15 @@ import { motion } from "framer-motion"
 import MyButton from "My_UI/btn/main"
 import { useLanguage } from "lib/LanguageContext"
 import { useBrand } from "lib/BrandContext"
+import { getWhatsAppUrl } from "lib/siteSettings"
 
 export default function HomeCTA() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const { activeBrand } = useBrand();
 
-    // Determine target WhatsApp link based on the active brand configuration
-    const whatsappLink = activeBrand?.whatsapp || "https://wa.me/13054233147";
+    const whatsappLink = getWhatsAppUrl();
+    const line1 = language === "en" ? "YOUR PROJECT" : "SU PROYECTO";
+    const line2 = language === "en" ? "STARTS HERE" : "EMPIEZA AQUÍ";
 
     return (
         <section className="bg-[#132c3f] text-white py-16 px-6 border-t border-gray-800">
@@ -32,30 +34,22 @@ export default function HomeCTA() {
                         strokeLinecap="round" 
                         strokeLinejoin="round"
                     >
-                        {/* House frame */}
                         <path d="M12 50 L50 15 L88 50" />
                         <path d="M22 50 L22 82 L78 82 L78 50" />
-                        
-                        {/* Hammer outline diagonal inside */}
-                        {/* Handle */}
                         <path d="M35 70 L58 47" />
-                        {/* Handle grips */}
                         <path d="M38 73 L42 69" strokeWidth="1.5" />
                         <path d="M41 76 L45 72" strokeWidth="1.5" />
                         <path d="M44 79 L48 75" strokeWidth="1.5" />
-                        {/* Head body */}
                         <path d="M57 48 L65 40 L70 45 L62 53 Z" />
-                        {/* Claw curve */}
                         <path d="M56 47 C 52 45, 48 48, 47 52" />
-                        {/* Head face */}
                         <path d="M66 39 L71 34 L76 39 L71 44 Z" />
                     </svg>
 
                     {/* Title */}
-                    <div className="text-left font-black tracking-wider leading-none flex flex-col justify-center">
-                        <span className="block text-2xl md:text-3xl lg:text-4xl uppercase italic">SU PROYECTO</span>
-                        <span className="block text-2xl md:text-3xl lg:text-4xl uppercase italic mt-1.5 text-white/95">EMPIEZA AQUÍ</span>
-                    </div>
+                    <h2 className="text-left font-black tracking-wider leading-none flex flex-col justify-center">
+                        <span className="block text-2xl md:text-3xl lg:text-4xl uppercase italic">{line1}</span>
+                        <span className="block text-2xl md:text-3xl lg:text-4xl uppercase italic mt-1.5 text-white/95">{line2}</span>
+                    </h2>
                 </motion.div>
 
                 {/* Subtitle Description */}

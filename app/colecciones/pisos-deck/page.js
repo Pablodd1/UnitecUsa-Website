@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "WPC Decking | PISOS DECK | Outdoor Flooring | Unitec USA Design",
+        title: "WPC Decking | PISOS DECK | Outdoor Flooring",
         description: "Premium WPC decking for outdoor spaces. Weather-resistant, durable, and beautiful wood-like finishes for decks and patios.",
     };
 }

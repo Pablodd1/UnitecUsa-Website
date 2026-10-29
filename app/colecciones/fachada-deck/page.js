@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Deck Facade | FACHADA DECK | Unitec USA Design",
+        title: "Deck Facade | FACHADA DECK",
         description: "Premium deck facade solutions for exterior walls and architectural cladding.",
     };
 }

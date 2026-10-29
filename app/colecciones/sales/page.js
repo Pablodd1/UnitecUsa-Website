@@ -4,11 +4,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Sale | Discounted PVC & WPC Building Materials | Unitec USA Design",
-        description:
-            "Shop discounted PVC and WPC building materials from Unitec USA Design. Limited-time offers on premium, durable, and maintenance-free products.",
+        title: "Sale | Discounted PVC & WPC Building Materials",
+        description: "Referencias seleccionadas de paneles WPC, láminas tipo mármol y pisos SPC con condiciones especiales para pedidos mayoristas por contenedor.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/sales/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/sales/",
+                en: "https://unitecusadesign.com/en/colecciones/sales/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/sales/",
+            },
         },
         openGraph: {
             ...parentMeta.openGraph,

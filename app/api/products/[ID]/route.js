@@ -2,16 +2,19 @@ import productData from "static_data/products_full.json";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
-    const { ID } = await params;
+    const resolvedParams = await params;
+    const lookupKey = String(resolvedParams.id || resolvedParams.ID || "").trim();
 
-    // Parse requested fields from query string
     const { searchParams } = new URL(request.url);
     const fieldsParam = searchParams.get("fields");
     const fields = fieldsParam ? fieldsParam.split(",") : null;
 
-    // Find product by ID
+    // Find product by ID or keyword slug (case-insensitive)
+    const lowerKey = lookupKey.toLowerCase();
     const product = productData.find(
-        (item) => String(item.id) === String(ID)
+        (item) =>
+            String(item.id).toLowerCase() === lowerKey ||
+            String(item.slug || "").toLowerCase() === lowerKey
     );
 
     if (!product) {
@@ -21,17 +24,14 @@ export async function GET(request, { params }) {
         );
     }
 
-    // If no fields requested, return full product
     if (!fields) {
         return NextResponse.json(product);
     }
 
-    // Pick only requested fields
     const filteredProduct = {};
     for (const field of fields) {
-        // Handle ID fetching explicitly if requested as ID vs id
         const key = field === 'ID' ? 'id' : field;
-        const targetKey = field === 'dimension' ? 'dimensions' : key; // backward compat request
+        const targetKey = field === 'dimension' ? 'dimensions' : key;
 
         if (targetKey in product) {
             filteredProduct[field] = product[targetKey];

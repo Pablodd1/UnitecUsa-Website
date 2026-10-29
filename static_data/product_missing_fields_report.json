@@ -1,0 +1,143 @@
+{
+  "generated_at": "2026-10-28T23:59:47.331Z",
+  "total_products": 338,
+  "complete_products": 328,
+  "incomplete_products_count": 10,
+  "owner_notes": [
+    "Do not fill missing fields with placeholder or copied values — supply verified factory specs from [OWNER].",
+    "Confirm whether basePrice / price in products_full.json is USD per unit or USD per box/pack for each subcategory."
+  ],
+  "flagged_products": [
+    {
+      "id": "14201001",
+      "slug": "cinta-adhesiva-de-papel-dorada",
+      "name": "CINTA ADHESIVA DE PAPEL DORADA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA DE PAPEL",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14201002",
+      "slug": "cinta-adhesiva-de-papel-plateada",
+      "name": "CINTA ADHESIVA DE PAPEL PLATEADA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA DE PAPEL",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14201201",
+      "slug": "cinta-adhesiva-metalica-dorada",
+      "name": "CINTA ADHESIVA METALICA DORADA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA METALICA",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14201202",
+      "slug": "cinta-adhesiva-metalica-plateada",
+      "name": "CINTA ADHESIVA METALICA PLATEADA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA METALICA",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14201203",
+      "slug": "cinta-adhesiva-metalica-negra",
+      "name": "CINTA ADHESIVA METALICA NEGRA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA METALICA",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14201204",
+      "slug": "cinta-adhesiva-metalica-palo-de-rosa",
+      "name": "CINTA ADHESIVA METALICA PALO DE ROSA",
+      "category": "CINTAS",
+      "subcategory": "CINTA ADHESIVA METALICA",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14081301",
+      "slug": "cubierta-traslucida-onda-alta-opal",
+      "name": "CUBIERTA TRASLUCIDA ONDA ALTA OPAL",
+      "category": "CUBIERTAS UPVC",
+      "subcategory": "CUBIERTA TRASLUCIDA ONDA ALTA OPAL",
+      "missing_fields": [
+        "thickness_mm",
+        "price",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14051201",
+      "slug": "transformador-cinta-led",
+      "name": "TRANSFORMADOR CINTA LED",
+      "category": "ILUMINACION",
+      "subcategory": "ILUMINACION",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14212102",
+      "slug": "adhesivo-mixto-multiproposito-pegatec-blanco",
+      "name": "ADHESIVO MIXTO MULTIPROPOSITO PEGATEC BLANCO",
+      "category": "PEGANTES",
+      "subcategory": "PEGANTES",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    },
+    {
+      "id": "14212103",
+      "slug": "adhesivo-mixto-multiproposito-pegatec-transparente",
+      "name": "ADHESIVO MIXTO MULTIPROPOSITO PEGATEC TRANSPARENTE",
+      "category": "PEGANTES",
+      "subcategory": "PEGANTES",
+      "missing_fields": [
+        "thickness_mm",
+        "boxes_per_container_20ft",
+        "boxes_per_container_40ft"
+      ],
+      "status": "incomplete_requires_owner_data"
+    }
+  ]
+}

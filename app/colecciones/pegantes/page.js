@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Construction Adhesives | PEGANTES | Adhesives | Unitec USA Design",
+        title: "Construction Adhesives | PEGANTES | Adhesives",
         description: "Professional building adhesives and bonding solutions for architectural projects.",
     };
 }

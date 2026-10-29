@@ -5,111 +5,55 @@ export default function sitemap() {
   const baseUrl = 'https://unitecusadesign.com';
   const now = new Date();
 
+  const withAlternates = (routePath, priority = 0.8, changeFrequency = 'weekly', lastModified = now) => {
+    const clean = routePath.startsWith('/') ? routePath : `/${routePath}`;
+    const normalized = clean === '/' ? '/' : `${clean.replace(/\/+$/, '')}/`;
+    return {
+      url: `${baseUrl}${normalized}`,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          es: `${baseUrl}/es${normalized}`,
+          en: `${baseUrl}/en${normalized}`,
+        },
+      },
+    };
+  };
+
   const coreRoutes = [
-    {
-      url: `${baseUrl}/`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/blog/`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/nosotros/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nosotros/historia/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/nosotros/who-we-are/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros/mission/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros/vision/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros/quality/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros/business-models/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nosotros/negotiation/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contacto/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/laboratorio-logistico/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/seleccion-de-contenedores/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/politicas/`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/terminos/`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/preguntas-frecuentes/`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
+    withAlternates('/', 1.0, 'weekly'),
+    withAlternates('/paises/', 0.9, 'monthly'),
+    withAlternates('/guias/', 0.9, 'weekly'),
+    withAlternates('/guias/mejores-proveedores-cielo-raso-pvc-colombia/', 0.9, 'weekly'),
+    withAlternates('/guias/panel-wpc-vs-drywall-precio-m2/', 0.9, 'weekly'),
+    withAlternates('/guias/como-importar-contenedor-pisos-spc/', 0.9, 'weekly'),
+    withAlternates('/blog/', 0.9, 'weekly'),
+    withAlternates('/nosotros/', 0.8, 'monthly'),
+    withAlternates('/nosotros/historia/', 0.8, 'monthly'),
+    withAlternates('/nosotros/who-we-are/', 0.7, 'monthly'),
+    withAlternates('/nosotros/mission/', 0.7, 'monthly'),
+    withAlternates('/nosotros/vision/', 0.7, 'monthly'),
+    withAlternates('/nosotros/quality/', 0.7, 'monthly'),
+    withAlternates('/nosotros/business-models/', 0.7, 'monthly'),
+    withAlternates('/nosotros/negotiation/', 0.7, 'monthly'),
+    withAlternates('/contacto/', 0.8, 'monthly'),
+    withAlternates('/laboratorio-logistico/', 0.7, 'monthly'),
+    withAlternates('/seleccion-de-contenedores/', 0.7, 'monthly'),
+    withAlternates('/politicas/', 0.5, 'yearly'),
+    withAlternates('/terminos/', 0.5, 'yearly'),
+    withAlternates('/preguntas-frecuentes/', 0.7, 'monthly'),
   ];
 
-  const blogRoutes = blogs.map((blog) => ({
-    url: `${baseUrl}/blog/${blog.slug}`,
-    lastModified: blog.dateModified ? new Date(blog.dateModified) : now,
-    changeFrequency: 'weekly',
-    priority: 0.85,
-  }));
+  const blogRoutes = blogs.map((blog) =>
+    withAlternates(
+      `/blog/${blog.slug}/`,
+      0.85,
+      'weekly',
+      blog.dateModified ? new Date(blog.dateModified) : now
+    )
+  );
 
   const collectionRoutes = [
     'colecciones',
@@ -133,19 +77,12 @@ export default function sitemap() {
     'colecciones/polifachada',
     'colecciones/sales',
     'colecciones/zocalos',
-  ].map((slug) => ({
-    url: `${baseUrl}/${slug}/`,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: 0.85,
-  }));
+  ].map((slug) => withAlternates(`/${slug}/`, 0.85, 'weekly'));
 
-  const productRoutes = products.map((product) => ({
-    url: `${baseUrl}/productos/${product.id}/`,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
+  // Only canonical keyword product slugs (numeric URLs are 301-redirected and excluded from sitemap)
+  const productRoutes = products.map((product) =>
+    withAlternates(`/productos/${product.slug}/`, 0.8, 'weekly')
+  );
 
   return [...coreRoutes, ...blogRoutes, ...collectionRoutes, ...productRoutes];
 }

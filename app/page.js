@@ -6,11 +6,22 @@ import BuiltForBulk from "My_UI/homepage/buy_bulk";
 import WhoItsFor from "My_UI/homepage/for_whom";
 import HomeCTA from "My_UI/homepage/home_CTA";
 import { getDictionary } from "lib/i18n/getDictionary";
+import { buildPageMetadata, getRequestLocale } from "lib/seoMetadata";
 
-
+export async function generateMetadata() {
+  return buildPageMetadata({
+    path: "/",
+    titleEs: "Cielo Raso PVC, Paneles WPC y Pisos SPC por Contenedor",
+    titleEn: "PVC Ceiling, WPC Wall Panels & SPC Flooring by Container",
+    descriptionEs:
+      "Importación directa por contenedor (20ft GP y 40ft HQ) y distribución mayorista de cielo raso PVC, paneles WPC, pisos SPC y láminas tipo mármol UV en EE. UU. y Latinoamérica.",
+    descriptionEn:
+      "Direct container import (20ft GP and 40ft HQ) and wholesale distribution of PVC ceilings, WPC wall panels, SPC flooring, and UV marble sheets across the US and Latin America.",
+  });
+}
 
 export default async function HomePage() {
-  const lang = 'es';
+  const lang = await getRequestLocale();
   const dict = getDictionary(lang);
 
   return (

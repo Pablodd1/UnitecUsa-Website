@@ -1,19 +1,24 @@
 import FAQ_UI from "My_UI/faq/main";
-import faqData from "static_data/faqs.json";
+import faqsEn from "static_data/faqs.json";
+import faqsEs from "static_data/faqs_es.json";
+import { getRequestLocale } from "lib/seoMetadata";
+import { interpolateSiteSettings } from "lib/siteSettings";
 
+export default async function FAQPage() {
+    const locale = await getRequestLocale();
+    const faqData = locale === "en" ? faqsEn : faqsEs;
 
-export default function FAQPage() {
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": faqData.faqs.map(faq => ({
+        "mainEntity": faqData.faqs.map((faq) => ({
             "@type": "Question",
-            "name": faq.question,
+            "name": interpolateSiteSettings(faq.question),
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
+                "text": interpolateSiteSettings(faq.answer),
+            },
+        })),
     };
 
     return (

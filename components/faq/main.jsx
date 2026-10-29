@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, Calculator, Scale, Ruler, MessageCircle } from 
 import Stylish_H2 from 'My_UI/stylish_h2';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from 'lib/LanguageContext';
+import { interpolateSiteSettings } from 'lib/siteSettings';
 import faqsEn from 'static_data/faqs.json';
 import faqsEs from 'static_data/faqs_es.json';
 
@@ -15,7 +16,7 @@ function FAQItem({ item, isOpen, onClick }) {
                 className="w-full flex items-center justify-between py-5 px-6 text-left hover:bg-gray-50 transition-colors group"
             >
                 <span className={`font-medium text-lg ${isOpen ? 'text-black' : 'text-gray-600'} group-hover:text-black`}>
-                    {item.question}
+                    {interpolateSiteSettings(item.question)}
                 </span>
                 {isOpen ? (
                     <ChevronUp className="w-5 h-5 text-primary transition-transform" />
@@ -33,7 +34,7 @@ function FAQItem({ item, isOpen, onClick }) {
                         className="overflow-hidden"
                     >
                         <div className="px-6 pb-6 pt-0 text-gray-600 leading-relaxed whitespace-pre-line">
-                            {item.answer}
+                            {interpolateSiteSettings(item.answer)}
                         </div>
                     </motion.div>
                 )}
@@ -120,7 +121,7 @@ export default function FAQ_UI() {
                             </div>
 
                             <p className="text-xs text-gray-500 italic border-t border-gray-800 pt-4">
-                                {conversions.note}
+                                {interpolateSiteSettings(conversions.note)}
                             </p>
                         </div>
                     </div>
@@ -129,4 +130,3 @@ export default function FAQ_UI() {
         </div>
     );
 }
-

@@ -1,35 +1,16 @@
+import { buildPageMetadata } from "lib/seoMetadata";
 
-export async function generateMetadata(_, parent) {
-    const parentMeta = await parent;
-
-    const defaultData = {
-        title: "Terms & Conditions | Unitec USA Design",
-    };
-
-    return {
-        ...parentMeta,
-        title: defaultData.title,
-        description:
-            "Review Unitec USA Design’s terms and conditions covering product use, warranties, ordering, intellectual property, and service limitations.",
-        alternates: {
-            canonical: "https://unitecusadesign.com/terminos/",
-        },
-        openGraph: {
-            ...parentMeta.openGraph,
-            title: "Unitec USA Design Terms & Conditions",
-            description:
-                "Understand the terms governing the use of Unitec USA Design products, services, and website.",
-            url: "https://unitecusadesign.com/terminos/",
-        },
-        twitter: {
-            ...parentMeta.twitter,
-            title: "Unitec USA Design Terms & Conditions",
-            description:
-                "Official terms and conditions for using Unitec USA Design products and services.",
-        },
-    };
+export async function generateMetadata() {
+  return buildPageMetadata({
+    path: "/terminos/",
+    title_es: "Términos y Condiciones Comerciales de Uso y Exportación",
+    title_en: "Terms & Conditions of Service and Container Export",
+    description_es: "Términos y condiciones aplicables a cotizaciones, pedidos por contenedor, modalidades FOB/CIF, garantías y uso del portal de UNITEC USA Design.",
+    description_en: "Terms and conditions governing quotes, container orders, FOB/CIF shipping terms, product warranties, and website usage at UNITEC USA Design.",
+    noindex: false,
+  });
 }
 
-export default function PageLayout({children}) {
-    return children
+export default function RouteLayout({ children }) {
+  return children;
 }

@@ -2,6 +2,7 @@ import { Montserrat } from 'next/font/google'
 import "./globals.css";
 import Script from "next/script";
 import { getDictionary } from "lib/i18n/getDictionary";
+import siteSettings, { getOrganizationSchema } from "lib/siteSettings";
 import RootLayoutClient from "./layout-client";
 
 const montserrat = Montserrat({
@@ -15,15 +16,16 @@ export async function generateMetadata() {
   const lang = 'es';
   const dict = getDictionary(lang);
 
-  const BASE_URL = "https://unitecusadesign.com";
+  const BASE_URL = siteSettings.base_url || "https://unitecusadesign.com";
   const canonicalUrl = `${BASE_URL}/`;
+  const brandName = siteSettings.brand_name;
 
   const defaults = {
-    title: dict.meta.siteTitle,
+    title: `${dict.meta.siteTitle} | ${brandName}`,
     description: dict.meta.siteDescription,
     keywords: dict.meta.keywords,
     image: `${BASE_URL}/og-image.jpg`,
-    siteName: dict.meta.siteName,
+    siteName: brandName,
     canonical: canonicalUrl,
   };
 
@@ -31,22 +33,23 @@ export async function generateMetadata() {
     metadataBase: new URL(BASE_URL),
     title: {
       default: defaults.title,
-      template: `%s | ${dict.meta.siteName}`
+      template: `%s | ${brandName}`
     },
     description: defaults.description,
     keywords: defaults.keywords,
-    authors: [{ name: "UNITEC USA Design Team" }],
-    creator: "UNITEC USA Design",
-    publisher: "UNITEC USA Design",
-    applicationName: dict.meta.siteName,
+    authors: [{ name: `${brandName} Team` }],
+    creator: brandName,
+    publisher: brandName,
+    applicationName: brandName,
     generator: "Next.js",
     manifest: "/favicons/manifest.json",
 
     alternates: {
-      canonical: "/",
+      canonical: `${BASE_URL}/`,
       languages: {
-        'es': `${BASE_URL}/`,
-        'x-default': `${BASE_URL}/`
+        'es': `${BASE_URL}/es/`,
+        'en': `${BASE_URL}/en/`,
+        'x-default': `${BASE_URL}/es/`
       }
     },
 
@@ -80,7 +83,7 @@ export async function generateMetadata() {
 
     openGraph: {
       type: "website",
-      locale: lang === 'es' ? 'es_ES' : 'en_US',
+      locale: lang === 'es' ? 'es_CO' : 'en_US',
       url: defaults.canonical,
       siteName: defaults.siteName,
       title: defaults.title,
@@ -90,7 +93,7 @@ export async function generateMetadata() {
           url: defaults.image,
           width: 1200,
           height: 630,
-          alt: lang === 'es' ? "UNITEC USA Design - Materiales Arquitectónicos" : "UNITEC USA Design - Architectural Materials",
+          alt: lang === 'es' ? `${brandName} - Materiales Arquitectónicos PVC, WPC y SPC` : `${brandName} - Architectural Materials PVC, WPC & SPC`,
         }
       ],
     },
@@ -107,7 +110,7 @@ export async function generateMetadata() {
     appleWebApp: {
       capable: true,
       statusBarStyle: "default",
-      title: dict.meta.siteName,
+      title: brandName,
     },
 
     formatDetection: {
@@ -124,6 +127,8 @@ export default async function RootLayout({ children }) {
   const lang = 'es';
   const dict = getDictionary(lang);
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const BASE_URL = siteSettings.base_url || "https://unitecusadesign.com";
+  const organizationSchema = getOrganizationSchema();
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -176,59 +181,26 @@ export default async function RootLayout({ children }) {
             />
           </>
         )}
-        {/* Structured Data / JSON-LD */}
-
-        <Script id="schema-script" type="application/ld+json"
+        {/* Structured Data / JSON-LD (Server-Side Organization & WebSite from siteSettings) */}
+        <script
+          id="schema-script"
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
-                {
-                  "@type": "Organization",
-                  "@id": "https://unitecusadesign.com/#organization",
-                  "name": "Unitec USA Design",
-                  "alternateName": "Unitec USA",
-                  "url": "https://unitecusadesign.com",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "@id": "https://unitecusadesign.com/#logo",
-                    "url": "https://unitecusadesign.com/unitec-logo.png",
-                    "contentUrl": "https://unitecusadesign.com/unitec-logo.png",
-                    "caption": "Unitec USA Design"
-                  },
-                  "image": { "@id": "https://unitecusadesign.com/#logo" },
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Carrera 42, Auto. S #75-83 C.C. IDEO Local 274",
-                    "addressLocality": "Itagüí",
-                    "addressRegion": "Antioquia",
-                    "postalCode": "055413",
-                    "addressCountry": "CO"
-                  },
-                  "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "+57 314 233 2147",
-                    "contactType": "sales",
-                    "areaServed": ["US", "LATAM", "Caribbean"],
-                    "availableLanguage": ["English", "Spanish"]
-                  },
-                  "sameAs": [
-                    "https://instagram.com/unitecusadesign",
-                    "https://facebook.com/unitecusadesign",
-                    "https://www.tiktok.com/@unitecusadesign"
-                  ]
-                },
+                organizationSchema,
                 {
                   "@type": "WebSite",
-                  "@id": "https://unitecusadesign.com/#website",
-                  "url": "https://unitecusadesign.com",
-                  "name": dict.meta.siteName,
+                  "@id": `${BASE_URL}/#website`,
+                  "url": BASE_URL,
+                  "name": siteSettings.brand_name,
                   "description": dict.meta.siteDescription,
-                  "publisher": { "@id": "https://unitecusadesign.com/#organization" },
+                  "publisher": { "@id": `${BASE_URL}/#organization` },
                   "inLanguage": ["es", "en"],
                   "potentialAction": {
                     "@type": "SearchAction",
-                    "target": "https://unitecusadesign.com/colecciones/search?q={search_term_string}",
+                    "target": `${BASE_URL}/colecciones/search?q={search_term_string}`,
                     "query-input": "required name=search_term_string"
                   }
                 }

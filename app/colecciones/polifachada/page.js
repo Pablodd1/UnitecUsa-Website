@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "Polyfacade | POLIFACHADA | Unitec USA Design",
+        title: "Polyfacade | POLIFACHADA",
         description: "Advanced architectural facade solutions with modern finishes.",
     };
 }

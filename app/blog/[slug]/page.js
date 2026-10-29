@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogBySlug, getBlogs } from 'lib/blogService';
+import { siteSettings, getWhatsAppUrl, getMiamiAddressFormatted, interpolateSiteSettings } from 'lib/siteSettings';
 import { Calendar, ChevronLeft, MessageCircle, MapPin, Tag, ArrowRight } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -18,25 +19,31 @@ export async function generateMetadata({ params }) {
 
     if (!blog) {
         return {
-            title: 'Artículo no encontrado | UNITEC',
+            title: 'Artículo no encontrado',
         };
     }
 
-    const metaTitle = blog.metaTitle || `${blog.title} | UNITEC`;
+    const cleanTitle = String(blog.metaTitle || blog.title || "")
+        .replace(/\s*\|\s*(?:UNITEC\s*USA\s*Design|Unitec\s*USA\s*Design|Unitec\s*USA|UNITEC)\s*$/i, "")
+        .trim();
+    const metaTitle = `${cleanTitle} | ${siteSettings.brand_name}`;
     const metaDescription = blog.metaDescription || blog.excerpt;
-    const canonicalUrl = `https://unitecusadesign.com/blog/${blog.slug}`;
+    const canonicalUrl = `${siteSettings.base_url}/blog/${blog.slug}/`;
     const ogImage = blog.image?.startsWith('http')
         ? blog.image
-        : `https://unitecusadesign.com${blog.image}`;
+        : `${siteSettings.base_url}${blog.image}`;
 
     return {
-        title: {
-            absolute: metaTitle,
-        },
+        title: cleanTitle,
         description: metaDescription,
         keywords: blog.keywords || undefined,
         alternates: {
             canonical: canonicalUrl,
+            languages: {
+                es: `${siteSettings.base_url}/es/blog/${blog.slug}/`,
+                en: `${siteSettings.base_url}/en/blog/${blog.slug}/`,
+                "x-default": `${siteSettings.base_url}/es/blog/${blog.slug}/`,
+            },
         },
         openGraph: {
             title: metaTitle,
@@ -45,7 +52,7 @@ export async function generateMetadata({ params }) {
             type: 'article',
             publishedTime: blog.date,
             modifiedTime: blog.dateModified || blog.date,
-            authors: [blog.author || 'UNITEC USA Design'],
+            authors: [blog.author || siteSettings.brand_name],
             images: [
                 {
                     url: ogImage,
@@ -72,7 +79,7 @@ export default async function BlogPostPage({ params }) {
         notFound();
     }
 
-    const baseUrl = 'https://unitecusadesign.com';
+    const baseUrl = siteSettings.base_url;
     const fullImageUrl = blog.image?.startsWith('http') ? blog.image : `${baseUrl}${blog.image}`;
 
     const structuredData = blog.schemaGraph || {
@@ -88,15 +95,15 @@ export default async function BlogPostPage({ params }) {
                 "inLanguage": "es",
                 "author": {
                     "@type": "Organization",
-                    "name": "UNITEC USA Design",
+                    "name": siteSettings.brand_name,
                     "url": baseUrl
                 },
                 "publisher": {
                     "@type": "Organization",
-                    "name": "UNITEC USA Design",
+                    "name": siteSettings.brand_name,
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://www.unitecusadesign.com/unitec-logo.png"
+                        "url": `${baseUrl}/unitec-logo.png`
                     }
                 },
                 "mainEntityOfPage": `${baseUrl}/blog/${blog.slug}`,
@@ -107,10 +114,10 @@ export default async function BlogPostPage({ params }) {
                     "@type": "FAQPage",
                     "mainEntity": blog.faqs.map(faq => ({
                         "@type": "Question",
-                        "name": faq.q,
+                        "name": interpolateSiteSettings(faq.q),
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": faq.a
+                            "text": interpolateSiteSettings(faq.a)
                         }
                     }))
                 }
@@ -120,7 +127,6 @@ export default async function BlogPostPage({ params }) {
 
     return (
         <main className="w-full bg-white min-h-screen pb-20">
-            {/* Structured Data JSON-LD for Google & AI (GEO) */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -171,7 +177,7 @@ export default async function BlogPostPage({ params }) {
                                 {(blog.author || 'U').charAt(0)}
                             </div>
                             <div>
-                                <span className="block font-bold text-white">{blog.author || 'UNITEC USA Design'}</span>
+                                <span className="block font-bold text-white">{blog.author || siteSettings.brand_name}</span>
                                 <span className="text-xs text-gray-300">Equipo Editorial & Técnico</span>
                             </div>
                         </div>
@@ -185,7 +191,6 @@ export default async function BlogPostPage({ params }) {
 
             {/* Article Body */}
             <article className="max-w-4xl mx-auto px-4 pt-10 md:pt-12">
-                {/* Featured Cover Banner (Uncropped 3:2 proportion) */}
                 <div className="relative aspect-[3/2] w-full rounded-3xl overflow-hidden mb-10 shadow-xl border border-gray-100 bg-gray-50">
                     <Image
                         src={blog.image}
@@ -196,14 +201,12 @@ export default async function BlogPostPage({ params }) {
                     />
                 </div>
 
-                {/* Lead Paragraph (Destacado) */}
                 {blog.lead && (
                     <p className="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed mb-10 pl-5 border-l-4 border-emerald-700 bg-emerald-50/40 py-5 pr-5 rounded-r-2xl">
                         {blog.lead}
                     </p>
                 )}
 
-                {/* Main Article Content (Server-Rendered HTML with explicit paragraph spacing, green H2s, bold H3s, and inline figures) */}
                 <div
                     className="blog-content max-w-none
                         [&_p]:mb-6 [&_p]:leading-relaxed [&_p]:text-gray-700 [&_p]:text-lg
@@ -212,14 +215,13 @@ export default async function BlogPostPage({ params }) {
                         [&_a]:text-emerald-700 [&_a]:font-semibold [&_a]:underline hover:[&_a]:text-emerald-900
                         [&_strong]:text-gray-900 [&_li]:text-gray-700 [&_li]:mb-2
                         [&_figure]:my-9 [&_figure]:rounded-2xl [&_figure]:overflow-hidden [&_figure]:border [&_figure]:border-gray-200 [&_figure]:shadow-md"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                    dangerouslySetInnerHTML={{ __html: interpolateSiteSettings(blog.content) }}
                 />
 
-                {/* Project / Showroom Image Gallery (if provided and not already inline) */}
                 {blog.gallery && blog.gallery.length > 0 && (
                     <section className="my-12">
                         <h2 className="text-2xl md:text-3xl font-bold text-emerald-800 mb-6 tracking-tight">
-                            Aplicaciones Reales y Referencias UNITEC
+                            Aplicaciones Reales y Referencias {siteSettings.brand_name}
                         </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {blog.gallery.map((item, idx) => (
@@ -245,32 +247,23 @@ export default async function BlogPostPage({ params }) {
                 <section className="my-12 rounded-3xl bg-gradient-to-br from-[#132c3f] to-[#1e425e] text-white p-8 md:p-10 shadow-xl">
                     <div className="max-w-3xl">
                         <span className="inline-block bg-emerald-500 text-white text-xs font-extrabold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
-                            Promoción Octubre 2026 · 15 % DTO
+                            Atención Directa · Proyectos y Contenedores
                         </span>
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
                             Cotice directamente con nuestro equipo técnico y comercial
                         </h2>
                         <p className="text-gray-200 text-sm md:text-base mb-6 leading-relaxed">
-                            Del 1 al 31 de octubre de 2026 aproveche el 15 % de descuento en todas las referencias de láminas de mármol PVC y paneles WPC de interior. Atención directa en Colombia y Estados Unidos.
+                            Reciba asesoría técnica personalizada para especificaciones de láminas de mármol PVC, paneles WPC y pisos SPC en Colombia, Estados Unidos y Latinoamérica.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <a
-                                href="https://wa.me/573142332147"
+                                href={getWhatsAppUrl()}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg transition-all"
                             >
                                 <MessageCircle size={18} />
-                                WhatsApp Colombia (+57 314 233 2147)
-                            </a>
-                            <a
-                                href="https://wa.me/13054233147"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2.5 bg-white hover:bg-gray-100 text-[#132c3f] font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg transition-all"
-                            >
-                                <MessageCircle size={18} />
-                                WhatsApp EE. UU. (+1 305 423 3147)
+                                WhatsApp Oficial ({siteSettings.primary_phone})
                             </a>
                             <Link
                                 href="/colecciones/interior"
@@ -283,10 +276,10 @@ export default async function BlogPostPage({ params }) {
                         <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center gap-4 text-xs text-gray-300">
                             <span className="flex items-center gap-1.5">
                                 <MapPin size={14} className="text-emerald-400" />
-                                Showroom Medellín: C.C. IDEO Itagüí (Cra 42, Auto. S #75-83)
+                                Showroom Medellín: {siteSettings.medellin_showroom_address}
                             </span>
                             <span>•</span>
-                            <span>Sede EE. UU.: Doral, Miami, FL</span>
+                            <span>Sede EE. UU.: {getMiamiAddressFormatted()}</span>
                         </div>
                     </div>
                 </section>
@@ -304,10 +297,10 @@ export default async function BlogPostPage({ params }) {
                                     className="p-6 rounded-2xl bg-gray-50 border border-gray-200/80 shadow-xs"
                                 >
                                     <h3 className="text-lg md:text-xl font-extrabold text-gray-900 mb-2">
-                                        {faq.q}
+                                        {interpolateSiteSettings(faq.q)}
                                     </h3>
                                     <p className="text-gray-700 leading-relaxed text-base">
-                                        {faq.a}
+                                        {interpolateSiteSettings(faq.a)}
                                     </p>
                                 </div>
                             ))}
@@ -315,7 +308,6 @@ export default async function BlogPostPage({ params }) {
                     </section>
                 )}
 
-                {/* Article Tags */}
                 {blog.tags && blog.tags.length > 0 && (
                     <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-2">
                         <Tag size={16} className="text-gray-400 mr-1" />
@@ -330,7 +322,6 @@ export default async function BlogPostPage({ params }) {
                     </div>
                 )}
 
-                {/* Footer Navigation */}
                 <div className="mt-12 pt-8 border-t border-gray-200 flex flex-wrap items-center justify-between gap-4">
                     <Link
                         href="/blog"

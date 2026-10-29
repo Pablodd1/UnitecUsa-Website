@@ -1,34 +1,16 @@
+import { buildPageMetadata } from "lib/seoMetadata";
 
-export async function generateMetadata(_, parent) {
-    const parentMeta = await parent;
-
-    const defaultData = {
-        title: "FAQs | PVC & WPC Products, Installation & Warranty | Unitec USA Design",
-    };
-
-    return {
-        ...parentMeta,
-        title: defaultData.title,
-        description:
-            "Find answers to common questions about Unitec USA Design’s PVC and WPC products, installation methods, warranties, fire ratings, and sustainability.",
-        alternates: {
-            canonical: "https://unitecusadesign.com/preguntas-frecuentes/",
-        },
-        openGraph: {
-            ...parentMeta.openGraph,
-            title: "Unitec USA Design FAQs",
-            description:
-                "Get clear answers about PVC & WPC materials, product performance, installation, warranties, and ordering from Unitec USA Design.",
-            url: "https://unitecusadesign.com/preguntas-frecuentes/",
-        },
-        twitter: {
-            ...parentMeta.twitter,
-            title: "Unitec USA Design FAQs",
-            description:
-                "Everything you need to know about Unitec’s PVC and WPC construction products."
-        },
-    };
+export async function generateMetadata() {
+  return buildPageMetadata({
+    path: "/preguntas-frecuentes/",
+    title_es: "Preguntas Frecuentes sobre Paneles WPC, PVC, SPC y Contenedores",
+    title_en: "Frequently Asked Questions — WPC, PVC, SPC & Container Import",
+    description_es: "Respuestas claras sobre instalación, durabilidad, cubicaje de contenedores de 20ft y 40ft, precios FOB/CIF y envíos de materiales arquitectónicos.",
+    description_en: "Clear answers regarding installation, durability, 20ft and 40ft container loading capacities, FOB/CIF pricing, and international shipping.",
+    noindex: false,
+  });
 }
-export default function PageLayout({children}) {
-    return children
+
+export default function RouteLayout({ children }) {
+  return children;
 }

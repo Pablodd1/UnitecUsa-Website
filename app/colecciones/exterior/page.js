@@ -6,11 +6,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Exterior PVC Building Solutions | Weatherproof & UV Resistant | Unitec USA Design",
-        description:
-            "Explore exterior-grade PVC building materials designed for facades, cladding, roofing, and outdoor structures. Waterproof, UV-resistant, fire-rated, and maintenance-free.",
+        title: "Exterior PVC Building Solutions | Weatherproof & UV Resistant",
+        description: "Soluciones arquitectónicas para exteriores: fachadas WPC, pisos deck, cubiertas UPVC y jardines verticales con protección UV e impermeabilidad.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/exterior/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/exterior/",
+                en: "https://unitecusadesign.com/en/colecciones/exterior/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/exterior/",
+            },
         },
         openGraph: {
             ...parentMeta.openGraph,

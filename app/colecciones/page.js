@@ -5,11 +5,15 @@ export async function generateMetadata(_, parent) {
 
     return {
         ...parentMeta,
-        title: "Colecciones de Productos | Materiales de Construcción PVC y WPC | Unitec USA Design",
-        description:
-            "Browse Unitec USA Design’s full collection of PVC and WPC building materials, engineered for interior and exterior applications with long-lasting performance and zero maintenance.",
+        title: "Colecciones de Productos | Materiales de Construcción PVC y WPC",
+        description: "Explore el catálogo completo de materiales arquitectónicos en PVC, WPC y pisos SPC con especificaciones por caja y cubicaje para contenedores de 20ft y 40ft.",
         alternates: {
             canonical: "https://unitecusadesign.com/colecciones/",
+            languages: {
+                es: "https://unitecusadesign.com/es/colecciones/",
+                en: "https://unitecusadesign.com/en/colecciones/",
+                "x-default": "https://unitecusadesign.com/es/colecciones/",
+            },
         },
         openGraph: {
             ...parentMeta.openGraph,

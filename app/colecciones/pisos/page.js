@@ -5,7 +5,7 @@ export async function generateMetadata(_, parent) {
     const parentMeta = await parent;
     return {
         ...parentMeta,
-        title: "SPC Flooring | PISOS | Stone Plastic Composite | Unitec USA Design",
+        title: "SPC Flooring | PISOS | Stone Plastic Composite",
         description: "Premium SPC flooring for interior spaces. Waterproof, durable, and easy to install. Perfect for residential and commercial flooring.",
     };
 }

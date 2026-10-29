@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { siteSettings } from 'lib/siteSettings';
 
 // Simple in-memory rate limiter (per-IP window)
 const rateLimitMap = new Map();
@@ -73,7 +74,7 @@ export async function POST(req) {
       );
     }
 
-    const recipient = process.env.CONTACT_EMAIL || process.env.NOTIFICATION_EMAIL || 'lidermercadeo@espaciosimportados.com.co';
+    const recipient = process.env.CONTACT_EMAIL || process.env.NOTIFICATION_EMAIL || siteSettings.public_email;
     const sender = process.env.RESEND_FROM_EMAIL || 'Unitec USA Leads <onboarding@resend.dev>';
     const leadRef = `LEAD-${Date.now().toString(36).toUpperCase()}`;
 
