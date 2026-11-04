@@ -51,7 +51,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
+            value: 'camera=(), microphone=(self "https://unitec-front-desk.vercel.app"), geolocation=()'
           },
           {
             key: 'X-XSS-Protection',
