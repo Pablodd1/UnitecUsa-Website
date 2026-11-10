@@ -59,7 +59,7 @@ export default function Footer() {
                                     alt={`${siteSettings.brand_name} Logo`}
                                     width={220}
                                     height={75}
-                                    className="h-16 w-auto object-contain"
+                                    className="h-16 w-auto brightness-0 invert object-contain"
                                 />
                             </Link>
                             <p className="text-slate-200 leading-relaxed max-w-sm text-sm">
