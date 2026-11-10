@@ -1,6 +1,10 @@
 {
   "brand_name": "UNITEC USA Design",
   "public_email": "lidermercadeo@espaciosimportados.com.co",
+  "contact_form_recipients": [
+    "lidermercadeo@espaciosimportados.com.co",
+    "comercial.buildinginnovation@gmail.com"
+  ],
   "primary_phone": "+57 314 233 2147",
   "primary_whatsapp": "573142332147",
   "miami_address_street": "6120 NW 74th Ave",

@@ -74,7 +74,15 @@ export async function POST(req) {
       );
     }
 
-    const recipient = process.env.CONTACT_EMAIL || process.env.NOTIFICATION_EMAIL || siteSettings.public_email;
+    const configuredRecipients = Array.isArray(siteSettings.contact_form_recipients) && siteSettings.contact_form_recipients.length > 0
+      ? siteSettings.contact_form_recipients
+      : [siteSettings.public_email];
+    const envRecipients = (process.env.CONTACT_EMAIL || process.env.NOTIFICATION_EMAIL || '')
+      .split(',')
+      .map((e) => e.trim())
+      .filter(Boolean);
+    const recipients = Array.from(new Set([...envRecipients, ...configuredRecipients]));
+    const recipient = recipients.join(', ');
     const sender = process.env.RESEND_FROM_EMAIL || 'Unitec USA Leads <onboarding@resend.dev>';
     const leadRef = `LEAD-${Date.now().toString(36).toUpperCase()}`;
 
@@ -159,7 +167,7 @@ export async function POST(req) {
 
         const { data, error } = await resend.emails.send({
           from: sender,
-          to: [recipient],
+          to: recipients,
           replyTo: contactEmail,
           subject,
           html: htmlContent,

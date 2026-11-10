@@ -13,9 +13,13 @@ export async function POST(request) {
             });
         }
 
+        const recipients = Array.isArray(siteSettings.contact_form_recipients) && siteSettings.contact_form_recipients.length > 0
+            ? siteSettings.contact_form_recipients
+            : [siteSettings.public_email];
+
         const { data, error } = await resend.emails.send({
             from: 'UnitecUsa Subscriptions <onboarding@resend.dev>',
-            to: [siteSettings.public_email],
+            to: recipients,
             subject: `New Subscriber: ${email}`,
             html: `<p>New subscriber for <strong>${brand || siteSettings.brand_name}</strong>: ${email}</p>`,
         });

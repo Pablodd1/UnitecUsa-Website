@@ -126,7 +126,9 @@ export default function CheckoutPage() {
     const handleSubmit = (e) => {
         e.preventDefault()
         
-        const contactEmail = brand?.email || siteSettings.public_email;
+        const contactEmail = Array.isArray(siteSettings.contact_form_recipients) && siteSettings.contact_form_recipients.length > 0
+            ? siteSettings.contact_form_recipients.join(",")
+            : (brand?.email || siteSettings.public_email);
         const subject = `New Quote Request - ${formData.companyName || formData.contactName} (${referenceId})`;
         
         let itemsSummary = cart.map(container => {
