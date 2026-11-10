@@ -372,7 +372,8 @@ const translations = {
                             }
                         }
                     }
-                }
+                },
+                "description": "Direct container import (20ft GP & 40ft HQ) and wholesale distribution of PVC ceilings, WPC wall panels, SPC flooring, and architectural finishes across the United States and Latin America."
             },
             "binw": {
                 "businessModels": {
@@ -746,7 +747,8 @@ const translations = {
                             }
                         }
                     }
-                }
+                },
+                "description": "Direct container import (20ft GP & 40ft HQ) and wholesale distribution of PVC ceilings, WPC wall panels, SPC flooring, and architectural finishes across the United States and Latin America."
             }
         },
         "nav": {
@@ -1093,7 +1095,8 @@ const translations = {
         "cta": {
             "title": "Start filling your first container",
             "text": "Explore products, see how they fit inside containers, and ship with complete confidence — before checkout.",
-            "btn": "Browse Products"
+            "btn": "Browse Products",
+            "btnSecondary": "QUOTE EASILY VIA WHATSAPP"
         },
         "recommendations": {
             "title": "Best Selling Products",
@@ -1112,7 +1115,9 @@ const translations = {
                 "title": "CONTACT INFORMATION",
                 "moreInfo": "More information:",
                 "visitShowroom": "Visit our showroom:",
-                "whether": "Whether you have questions about our products or are interested in our services, our team is ready to help."
+                "whether": "Whether you have questions about our products or are interested in our services, our team is ready to help.",
+                "phone": "Phone & WhatsApp",
+                "email": "Corporate Email"
             },
             "information": {
                 "title": "Information",
@@ -1141,7 +1146,10 @@ const translations = {
                     "privacy": "Privacy Policy"
                 }
             },
-            "rights": "All rights reserved."
+            "rights": "All rights reserved.",
+            "followUs": "Follow Us",
+            "privacy": "Privacy Policy",
+            "terms": "Terms & Conditions"
         },
         "checkout": {
             "title": "Checkout",
@@ -1498,7 +1506,64 @@ const translations = {
             "estimatedVolume": "Estimated Volume / Containers",
             "projectDetails": "Project Details",
             "sendInquiry": "Send Inquiry",
-            "responseTimeText": "Our team usually responds within 24 business hours."
+            "responseTimeText": "Our team usually responds within 24 business hours.",
+            "badge": "B2B & Container Logistics Desk",
+            "title": "Let's Move Your Project at Scale",
+            "subtitle": "Request a direct factory container quote (20ft GP / 40ft HQ) or connect with our Miami and Medellín showrooms.",
+            "form": {
+                "title": "Request a Quote or Technical Consultation",
+                "subtitle": "Provide your project or volume details below. Our commercial engineering team responds within 24 business hours.",
+                "success": "Thank you for contacting us. We have received your inquiry and a commercial advisor will reach out to you shortly.",
+                "fullName": "Full Name",
+                "companyName": "Company Name",
+                "email": "Business Email",
+                "phone": "Phone / WhatsApp",
+                "volume": "Estimated Order Volume",
+                "details": "Project & Material Details",
+                "submit": "Send Inquiry",
+                "placeholders": {
+                    "name": "John Doe",
+                    "company": "Your Company LLC",
+                    "email": "name@company.com",
+                    "phone": "+1 (305) 000-0000",
+                    "details": "Specify product lines (PVC ceilings, WPC wall panels, SPC flooring, UV marble sheets), destination port/city, and estimated m²..."
+                },
+                "volumeOptions": {
+                    "select": "Select estimated volume...",
+                    "c20": "1x 20ft GP Container (~28–33 m³)",
+                    "c40": "1x 40ft HQ Container (~68–76 m³)",
+                    "multiple": "Multiple Containers (B2B Distribution)",
+                    "unsure": "Local Showroom Order / Need Volume Advisory"
+                }
+            },
+            "info": {
+                "title": "Direct Contact Information",
+                "subtitle": "Connect directly with our international trade desk in Miami or our architectural showroom in Medellín.",
+                "phone": {
+                    "title": "Phone & Commercial Line",
+                    "hours": "Monday – Friday, 8:00 AM – 6:00 PM EST"
+                },
+                "email": {
+                    "title": "Corporate Email",
+                    "note": "For B2B quotes, container packing lists, and technical datasheets"
+                },
+                "hours": {
+                    "title": "Business Hours",
+                    "weekdays": "Monday – Friday: 8:00 AM – 6:00 PM",
+                    "saturday": "Saturday: 9:00 AM – 2:00 PM (Showroom)",
+                    "sunday": "Sunday: Closed"
+                },
+                "fastTrack": {
+                    "title": "Need Immediate Container Pricing?",
+                    "desc": "Speak directly with our commercial engineering team to calculate box and m² consolidation for your destination port.",
+                    "action": "Call Commercial Desk"
+                }
+            },
+            "faqPreview": {
+                "title": "Frequently Asked Questions About Container Imports",
+                "desc": "Learn about FOB and CIF Incoterms, container capacities, lead times, and product warranties.",
+                "button": "View All FAQs"
+            }
         },
         "quality": {
             "title": "Committed to Quality",
@@ -2083,7 +2148,8 @@ const translations = {
                             }
                         }
                     }
-                }
+                },
+                "description": "Importación directa por contenedor (20ft GP y 40ft HQ) y distribución mayorista de cielo raso PVC, paneles WPC, pisos SPC y acabados arquitectónicos en Estados Unidos, Colombia y Latinoamérica."
             },
             "binw": {
                 "name": "UNITEC USA Design",
@@ -2385,7 +2451,8 @@ const translations = {
                             }
                         }
                     }
-                }
+                },
+                "description": "Importación directa por contenedor (20ft GP y 40ft HQ) y distribución mayorista de cielo raso PVC, paneles WPC, pisos SPC y acabados arquitectónicos en Estados Unidos, Colombia y Latinoamérica."
             }
         },
         "nav": {
@@ -2667,7 +2734,9 @@ const translations = {
             "contact": {
                 "title": "INFORMACIÓN DE CONTACTO",
                 "moreInfo": "Mas información:",
-                "visitShowroom": "Visita nuestro showroom:"
+                "visitShowroom": "Visita nuestro showroom:",
+                "phone": "Teléfono y WhatsApp",
+                "email": "Correo Electrónico"
             },
             "information": {
                 "title": "Información",
@@ -2696,7 +2765,10 @@ const translations = {
                     "privacy": "Política de Privacidad"
                 }
             },
-            "rights": "Todos los derechos reservados."
+            "rights": "Todos los derechos reservados.",
+            "followUs": "Síguenos",
+            "privacy": "Política de Privacidad",
+            "terms": "Términos y Condiciones"
         },
         "about": {
             "title": "Nosotros",
@@ -3083,7 +3155,64 @@ const translations = {
             "estimatedVolume": "Volumen Estimado / Contenedores",
             "projectDetails": "Detalles del Proyecto",
             "sendInquiry": "Enviar Consulta",
-            "responseTimeText": "Nuestro equipo responde habitualmente en un plazo de 24 horas hábiles."
+            "responseTimeText": "Nuestro equipo responde habitualmente en un plazo de 24 horas hábiles.",
+            "badge": "Mesa Comercial B2B y Logística por Contenedor",
+            "title": "Cotice Su Proyecto o Contenedor Directo",
+            "subtitle": "Solicite cotización por contenedor (20ft GP / 40ft HQ) bajo Incoterms FOB o CIF, o comuníquese con nuestras sedes en Miami y Medellín.",
+            "form": {
+                "title": "Solicitar Cotización o Asesoría Técnica",
+                "subtitle": "Complete los datos de su empresa o proyecto. Nuestro equipo de ingeniería comercial responde en menos de 24 horas hábiles.",
+                "success": "Gracias por contactarnos. Hemos recibido su información correctamente y uno de nuestros asesores se comunicará con usted muy pronto.",
+                "fullName": "Nombre Completo",
+                "companyName": "Empresa / Constructora",
+                "email": "Correo Electrónico Corporativo",
+                "phone": "Teléfono / WhatsApp",
+                "volume": "Volumen Estimado de Compra",
+                "details": "Detalles del Proyecto y Materiales",
+                "submit": "Enviar Solicitud",
+                "placeholders": {
+                    "name": "Juan Pérez",
+                    "company": "Constructora o Distribuidora S.A.S.",
+                    "email": "contacto@empresa.com",
+                    "phone": "+57 300 000 0000",
+                    "details": "Indique las líneas de interés (cielo raso PVC, paneles WPC, pisos SPC, láminas mármol UV), ciudad/puerto de destino y m² estimados..."
+                },
+                "volumeOptions": {
+                    "select": "Seleccione el volumen estimado...",
+                    "c20": "1 Contenedor de 20 pies GP (~28–33 m³)",
+                    "c40": "1 Contenedor de 40 pies HQ (~68–76 m³)",
+                    "multiple": "Múltiples Contenedores (Distribución Mayorista)",
+                    "unsure": "Despacho Local / Requiere Asesoría de Cubicaje"
+                }
+            },
+            "info": {
+                "title": "Información de Contacto Directo",
+                "subtitle": "Comuníquese directamente con nuestra sede en Estados Unidos (Doral, Miami) o nuestro showroom en Medellín (C.C. IDEO Itagüí).",
+                "phone": {
+                    "title": "Línea Telefónica y Comercial",
+                    "hours": "Lunes a Viernes, 8:00 AM – 6:00 PM"
+                },
+                "email": {
+                    "title": "Correo Corporativo",
+                    "note": "Cotizaciones B2B, fichas técnicas y órdenes de contenedor"
+                },
+                "hours": {
+                    "title": "Horario de Atención",
+                    "weekdays": "Lunes a Viernes: 8:00 AM – 6:00 PM",
+                    "saturday": "Sábados: 9:00 AM – 2:00 PM (Showroom)",
+                    "sunday": "Domingos y Festivos: Cerrado"
+                },
+                "fastTrack": {
+                    "title": "¿Necesita Cotización Inmediata por Contenedor?",
+                    "desc": "Hable directamente con nuestro equipo comercial para calcular cajas, m² y cubicaje según su puerto o ciudad de destino.",
+                    "action": "Llamar a Mesa Comercial"
+                }
+            },
+            "faqPreview": {
+                "title": "¿Tiene preguntas sobre importación, medidas o garantías?",
+                "desc": "Consulte nuestra guía de preguntas frecuentes sobre términos FOB/CIF, capacidades de contenedor y especificaciones técnicas.",
+                "button": "Ver Preguntas Frecuentes"
+            }
         },
         "negotiation": {
             "title": "Términos de Negocio",
@@ -3105,6 +3234,57 @@ const translations = {
                     }
                 }
             }
+        },
+        "quality": {
+            "title": "Comprometidos con la Calidad",
+            "quote": "\"En UNITEC USA, la calidad no es un estándar—es una promesa.\"",
+            "intro": "Cada producto pasa por procesos de control técnico y selección de materiales certificados, asegurando durabilidad, precisión y acabados de alta gama.",
+            "closing": "Calidad que puede ver, sentir y confiar a través del tiempo",
+            "commitment": "Nuestros Pilares de Calidad",
+            "pillars": {
+                "audits": {
+                    "title": "Auditorías Técnicas de Fábrica",
+                    "desc": "Inspeccionamos directamente las instalaciones de fabricación para verificar la consistencia del material, la precisión dimensional y la resistencia estructural."
+                },
+                "supervision": {
+                    "title": "Supervisión de Carga de Contenedores",
+                    "desc": "Cada contenedor se empaca y asegura bajo estricta supervisión para evitar daños durante el tránsito marítimo y terrestre."
+                },
+                "partnerships": {
+                    "title": "Alianzas de Manufactura Certificada",
+                    "desc": "Trabajamos exclusivamente con fabricantes certificados que cumplen con estándares internacionales de calidad y sostenibilidad ISO."
+                },
+                "innovation": {
+                    "title": "Innovación Continua en Materiales",
+                    "desc": "Evaluamos y mejoramos constantemente las formulaciones de PVC, WPC y SPC para ofrecer la máxima resistencia térmica, acústica e hidrófuga."
+                }
+            }
+        },
+        "whoWeAre": {
+            "title": "Quiénes Somos",
+            "tagline": "\"¡Diseñamos el futuro!\"",
+            "intro": [
+                "Unitec USA Design es la empresa responsable de la operación internacional de Building Innovation en Latinoamérica. Una compañía de materiales arquitectónicos en PVC y WPC con sede principal en Doral (Miami) y showroom en Medellín, que abastece, asesora y acompaña a distribuidores, constructores y arquitectos en la implementación de nuevas técnicas constructivas, eficientes y sofisticadas.",
+                "Con más de 10 años de trayectoria en el mercado y presencia en más de 5 países del continente, Unitec se ha consolidado como una organización promotora de estas alternativas constructivas en el mercado, ofreciendo un portafolio integrado por más 500 productos con acabados y estilos diferentes, fáciles de instalar y de implementar en cualquier proyecto.",
+                "El envío a granel está roto cuando se trata como el comercio electrónico normal. Los productos no son unidades individuales — son volúmenes, dimensiones y restricciones dentro de un contenedor.",
+                "Construimos nuestra plataforma alrededor de una creencia simple: los contenedores van primero, los productos van segundo. Esta mentalidad permite a las empresas planificar envíos realistas, evitar sobre reservas y obtener total visibilidad de la capacidad."
+            ],
+            "mission": {
+                "title": "Nuestra Misión",
+                "text": "En Unitec USA Design, nuestra misión es redefinir la construcción moderna entregando materiales de construcción innovadores, sostenibles y de alta calidad de PVC y WPC que elevan los espacios cotidianos."
+            },
+            "vision": {
+                "title": "Nuestra Visión",
+                "text": "Nuestra visión es convertirnos en el proveedor líder de soluciones de construcción de PVC y WPC en América Latina y Norteamérica — transformando cómo profesionales y propietarios abordan la construcción y el diseño."
+            },
+            "headquarters": {
+                "title": "Sede Colombia",
+                "address": siteSettings.medellin_showroom_address,
+                "city": "Medellín, Colombia",
+                "country": "Colombia",
+                "phone": siteSettings.primary_phone
+            },
+            "company": "UNITEC USA Design"
         }
     }
 };

@@ -127,7 +127,7 @@ const NavBar = ({ searchParams }) => {
                                                 href={subItem.href}
                                                 className="px-4 py-3 text-sm hover:bg-slate-800 transition-colors border-b last:border-0 border-slate-800 text-slate-300 hover:text-white"
                                             >
-                                                {subItem.title || t(`nav.${subItem.label}`)}
+                                                {t(`nav.${subItem.label}`)}
                                             </Link>
                                         ))}
                                     </div>
@@ -243,7 +243,7 @@ const NavBar = ({ searchParams }) => {
                                                     onClick={() => setMobileMenuOpen(false)}
                                                     className="block text-sm font-medium text-slate-600 hover:text-slate-900 py-1.5 transition-colors"
                                                 >
-                                                    {subItem.title || t(`nav.${subItem.label}`)}
+                                                    {t(`nav.${subItem.label}`)}
                                                 </Link>
                                             ))}
                                         </div>
